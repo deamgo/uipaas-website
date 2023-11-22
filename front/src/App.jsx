@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.less'
 import featureSVG from './assets/feature.svg'
+import logoSvg from './assets/logo.svg'
 
 function App() {
 
@@ -16,7 +17,9 @@ function App() {
     <>
       <header>
         <div 
-          className='head'></div>
+          className='head'>
+            <img className='logo' src={logoSvg} alt="Logo" />
+          </div>
       </header>
       <main>
         <div className='container'>
@@ -27,9 +30,9 @@ function App() {
             <button className='reserveButton'>
               <span>立即预约体验</span>
             </button>
-            <div className='svg_block'>
+          </div>
+          <div className='svg_block'>
               <img src={featureSVG} alt='feature' />
-            </div>
           </div>
         </div>
         <div className='container'></div>
