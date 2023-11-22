@@ -27,12 +27,32 @@ main {
   width: 100%;
 }
 
-.container {
+main .title {
+  position: absolute;
+  left: 104px;
+  top: 194px;
+  width: 520px;
+  height: 116px;
+  opacity: 1;
+
+  font-family: Source Han Sans;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0em;
+
+  font-feature-settings: "kern" on;
+  color: #6366F1;
+}
+
+main .container {
   height: 100vh;
   border-bottom: 1px solid #000;
 }
 
-.tail {
+main .tail {
   height: 209px;
   border-bottom: 1px solid #000;
 }
