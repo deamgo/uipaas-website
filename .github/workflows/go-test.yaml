@@ -12,6 +12,21 @@ jobs:
   run-test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: 'rootroot'
+          MYSQL_DATABASE: "uipass-waitlist-page"
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=10s
+          --health-retries=10
+
     steps:
       - uses: actions/checkout@v2
 

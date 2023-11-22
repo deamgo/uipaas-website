@@ -2,6 +2,6 @@ database:
   host: localhost
   port: 3306
   user: root
-  password: ""
+  password: "rootroot"
   dbname: uipass-waitlist-page
   charset: utf8mb4
