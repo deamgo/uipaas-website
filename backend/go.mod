@@ -7,7 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/pkg/errors v0.8.1
 	github.com/stretchr/testify v1.8.4
-	go.uber.org/zap v1.23.0
+	go.uber.org/zap v1.24.0
 	gorm.io/gorm v1.25.5
 )
 
@@ -23,6 +23,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.16.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
+	github.com/golangci/golangci-lint v1.55.2 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
