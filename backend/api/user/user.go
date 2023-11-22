@@ -28,7 +28,6 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 		)
 		req.ID = c.Param("id")
 		userService := user.User{UserID: req.ID}
-
 		userInfo, err := ctx.UserService.UserGet(c, &userService)
 		if err != nil {
 			switch err {
