@@ -11,14 +11,16 @@ import (
 
 func main() {
 	dao := dao.NewAUserDao(db.DB)
-	ctx := context.ApplicationContext{user.NewUserService(
-		user.UserServiceParams{dao},
+	ctx := context.ApplicationContext{UserService: user.NewUserService(
+		user.UserServiceParams{Dao: dao},
 	)}
 
 	r := gin.Default()
 	user := router.NewRouter(ctx)
 	r.Any("/*any", gin.WrapH(user))
 
-	r.Run(":8080")
-
+	err := r.Run(":8080")
+	if err != nil {
+		panic(err)
+	}
 }
