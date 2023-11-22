@@ -10,7 +10,7 @@ on:
 
 jobs:
   golang_lint_and_test:
-    name: Code style and tests
+    name: Code style
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -25,8 +25,6 @@ jobs:
         with:
           version: latest
           args: -E gofmt
-      - name: Run tests
-        run: go test ./...
   run-test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -37,6 +35,6 @@ jobs:
         with:
           go-version: '1.21.4'
       - name: Run Unit Test Suites
-        working-directory: ./
+        working-directory: ./backend
         run: |
           make test
