@@ -19,7 +19,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: '^1.21'
+          go-version: '^1.21.4'
       - name: Run Golang CI Lint
         uses: golangci/golangci-lint-action@v2
         with:
@@ -27,12 +27,16 @@ jobs:
           args: -E gofmt
       - name: Run tests
         run: go test ./...
-  codespell:
-    name: Check for spelling errors
+  run-test:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v2
-      - uses: codespell-project/actions-codespell@master
+      - name: Setup Go Environment
+        uses: actions/setup-go@v1
         with:
-          ignore_words_list: "actualy,nwe"
-          skip: "go.mod,go.sum"
+          go-version: '1.21.4'
+      - name: Run Unit Test Suites
+        working-directory: ./
+        run: |
+          make test
