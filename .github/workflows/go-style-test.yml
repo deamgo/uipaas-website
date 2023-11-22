@@ -42,4 +42,5 @@ jobs:
       - name: Run Unit Test Suites
         working-directory: ./backend
         run: |
+          go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.55.2
           make test
