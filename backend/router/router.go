@@ -20,7 +20,12 @@ func NewRouter(ctx context.ApplicationContext) http.Handler {
 func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("api")
 	{
-		api.Handle("GET", "/user", user.UserGet(ctx))
+		api.GET("/user", user.UserGet(ctx))
+		api.GET("/ping", func(c *gin.Context) {
+			c.JSON(http.StatusOK, gin.H{
+				"message": "success",
+			})
+		})
 	}
 
 }
