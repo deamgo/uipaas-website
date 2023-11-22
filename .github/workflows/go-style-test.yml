@@ -24,7 +24,7 @@ jobs:
         uses: golangci/golangci-lint-action@v2
         with:
           version: latest
-          args: ./backend -E gofmt
+          args: backend/... -E gofmt
   run-test:
     runs-on: ubuntu-latest
     timeout-minutes: 20
