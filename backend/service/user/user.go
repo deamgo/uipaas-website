@@ -37,6 +37,7 @@ func (u userService) UserGet(ctx context.Context, user *User) (*User, error) {
 func convertUserDao(user *User) *dao.UserDO {
 	return &dao.UserDO{}
 }
-func convertUser(userdao *dao.UserDO) *User {
+
+func convertUser(userDao *dao.UserDO) *User {
 	return &User{}
 }
