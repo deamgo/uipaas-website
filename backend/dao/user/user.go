@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+
 	"github.com/pkg/errors"
 
 	daolayer "github.com/deamgo/uipass-waitlist-page/backend/dao"

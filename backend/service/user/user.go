@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+
 	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
 )
 
