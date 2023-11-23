@@ -44,12 +44,85 @@ main .title {
   letter-spacing: 0em;
 
   font-feature-settings: "kern" on;
-  color: #6366F1;
+  color: #6366f1;
 }
 
 main .container {
   height: 100vh;
   border-bottom: 1px solid #000;
+}
+
+@media only screen and (max-width: 1440px) {
+  .text_block_headline {
+    text-align: center;
+    margin: 107.5px auto 73.5px auto;
+    /* 产品特性 */
+
+    width: 10rem;
+    height: 58px;
+    opacity: 1;
+
+    font-family: Source Han Sans;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0em;
+
+    font-feature-settings: "kern" on;
+    color: #6366f1;
+  }
+  .main_container {
+    display: flex;
+  }
+  .main_container .img_container {
+    margin: auto 117px auto 129px;
+  }
+
+  .text_dsp_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .text_block_headline {
+    text-align: center;
+    /* 产品特性 */
+    margin: 30px auto;
+
+    width: 160px;
+    height: 58px;
+    opacity: 1;
+
+    font-family: Source Han Sans;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0em;
+
+    font-feature-settings: "kern" on;
+    color: #6366f1;
+  }
+  .main_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+   .img_container .zinclabsolution{
+    height: auto;
+    width: 100%;
+  }
+
+  .text_dsp_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 main .tail {
@@ -59,5 +132,5 @@ main .tail {
 
 footer {
   width: 100%;
-  height: 88px
+  height: 88px;
 }
