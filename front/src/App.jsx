@@ -74,8 +74,11 @@ function App() {
         </div>
         <div className="container"></div>
         <div className="tail"></div>
+        <div className="container"></div>
+        <div className="tail"></div>
       </main>
       <footer>
+        <div className="foot"></div>
         <div className="foot"></div>
       </footer>
     </>
