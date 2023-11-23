@@ -48,3 +48,30 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(UserGetResp{userInfo}))
 	}
 }
+
+func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var err error
+
+		username := c.PostForm("username")
+		password := c.PostForm("password")
+		userLogin := user.User{UserName: username, Password: password}
+
+		err = ctx.UserService.UserLogin(c, &userLogin)
+		if err != nil {
+			switch err {
+			case dao.DBError:
+				log.Errorw("login failed") // zap.Error(err),
+				// zap.Any("user", req),
+
+				c.AbortWithStatus(http.StatusInternalServerError)
+			default:
+				c.AbortWithStatusJSON(http.StatusBadRequest, "登录失败")
+			}
+			return
+		}
+
+		c.AbortWithStatusJSON(http.StatusOK, "登录成功")
+	}
+
+}

@@ -26,6 +26,8 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 				"message": "success",
 			})
 		})
+		api.POST("/login", user.UserLogin(ctx))
+
 	}
 
 }

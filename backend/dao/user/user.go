@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+
 	"github.com/pkg/errors"
 
 	daolayer "github.com/deamgo/uipass-waitlist-page/backend/dao"
@@ -13,6 +14,7 @@ var UserNotExistError = errors.New("user not exist")
 
 type UserDao interface {
 	UserGet(ctx context.Context, user *UserDO) (*UserDO, error)
+	UserLogin(ctx context.Context, user *UserDO) error
 }
 
 type userDao struct {
@@ -35,4 +37,11 @@ func (dao *userDao) UserGet(ctx context.Context, user *UserDO) (*UserDO, error) 
 	}
 
 	return user, nil
+}
+
+func (dao *userDao) UserLogin(ctx context.Context, user *UserDO) error {
+
+	err := dao.db.Where("username = ? AND password = ?", user.UserName, user.Password).First(&user).Error
+
+	return err
 }
