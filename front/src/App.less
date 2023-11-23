@@ -1,7 +1,7 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: Source Han Sans;
+    font-family: "Source Han Sans CN";
   }
   
   a {
@@ -13,45 +13,49 @@
   }
   
   header {
-    position: fixed;
-    width: 100%;
+    // position: fixed;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1440rem;
     z-index: 1001;
     .head {
-        height: 102px;
+        height: 102rem;
         background-color: #FFFFFF;
         // opacity: 0.3;
         .logo {
           position: relative;
-          left: 104px;
-          top: 50px;
+          left: 104rem;
+          top: 50rem;
         }
     }
   }
   
   main {
-    width: 100vw;
+    width: 1440rem;
     .container {
-        --Hg: '';
-        --Wd: 100vw;
-        height: 100vh;
-        border-bottom: 1px solid #000;
+        // --Hg: '';
+        // --Wd: 100vw;
+        // height: 100vh;
+        border-bottom: 1rem solid #000;
         .text_dsp_block {
             position: absolute;
-            left: 103px;
+            left: 103rem;
             // top: 193px;
-            top: calc(100vh * (193/900));
-            width: 525px;
-            height: 350px;
+            top: 193rem;
+            width: 525rem;
+            height: 350rem;
+
             .title {
 
                 position: relative;
                 left: 0;
                 top: 0;
-                width: 520px;
-                height: 116px;
+                width: 520rem;
+                height: 116rem;
                 opacity: 1;
             
-                font-size: 40px;
+                font-size: 40rem;
                 font-weight: 900;
                 line-height: normal;
                 display: flex;
@@ -64,13 +68,13 @@
             .gary {
                 position: relative;
                 left: 0;
-                top: 10px;
-                width: 426px;
-                height: 43px;
+                top: 10rem;
+                width: 426rem;
+                height: 43rem;
                 opacity: 1;
                   
                 
-                font-size: 30px;
+                font-size: 30rem;
                 font-weight: normal;
                 line-height: normal;
                 text-align: center;
@@ -83,14 +87,14 @@
             .mark {
           
                 position: relative;
-                left: 2px;
-                top: 25px;
-                width: 204px;
-                height: 52px;
+                left: 2rem;
+                top: 25rem;
+                width: 204rem;
+                height: 52rem;
                 opacity: 1;
                   
                 
-                font-size: 36px;
+                font-size: 36em;
                 font-weight: 900;
                 line-height: normal;
                 text-align: center;
@@ -105,24 +109,23 @@
             .reserveButton {
                 position: relative;
   
-                left: 0px;
-                top: 53px;
-                width: 194px;
-                height: 48px;
-                border-radius: 5px;
-                border: 0px;
+                left: 0rem;
+                top: 53rem;
+                width: 194rem;
+                height: 48rem;
+                border-radius: 5rem;
+                border: 0rem;
                 opacity: 1;
                   
                 background: #6366F1;
-                box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.16);
+                box-shadow: 0rem 3rem 8rem 0rem rgba(0, 0, 0, 0.16);
 
                 cursor: pointer;
                 span {
-                    height: 35px;
+                    height: 35rem;
                     opacity: 1;
-                        
-                    font-family: 思源黑体;
-                    font-size: 24px;
+
+                    font-size: 24rem;
                     font-weight: normal;
                     line-height: normal;
                     text-align: center;
@@ -139,18 +142,21 @@
         }
         .svg_block {
             position: absolute;
-            left: 640px;
-            top: 163px;
+            left: 640rem;
+            top: 163rem;
+            img {
+              width: 750rem;
+            }
         }
         
     }
     .tail {
-        height: 209px;
-        border-bottom: 1px solid #000;
+        height: 209rem;
+        border-bottom: 1rem solid #000;
     }
   }
   
   footer {
     width: 100%;
-    height: 88px
+    height: 88rem
   }
