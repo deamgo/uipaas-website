@@ -16,8 +16,8 @@ import (
 type UserGetReq struct {
 	ID string
 }
-type UserGetRep struct {
-	user.User
+type UserGetResp struct {
+	*user.User
 }
 
 func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
@@ -28,11 +28,11 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 		)
 		req.ID = c.Param("id")
 		userService := user.User{UserID: req.ID}
-		ctx.UserService.UserGet(c, &userService)
+		userInfo, err := ctx.UserService.UserGet(c, &userService)
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				log.Errorw("failed to create api source",
+				log.Errorw("failed to get user",
 					zap.Error(err),
 					zap.Any("user", req),
 				)
@@ -40,9 +40,8 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 			default:
 				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewErrorResponse(err.Error()))
 			}
-			c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(req))
 			return
-
 		}
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(UserGetResp{userInfo}))
 	}
 }
