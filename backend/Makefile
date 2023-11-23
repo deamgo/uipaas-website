@@ -14,4 +14,4 @@ fmt: ## Run go fmt for code formatting
 .PHONY: lint
 lint: ## Run golangci-lint
 	@echo "Running golangci-lint"
-	@golangci-lint run
+	@golangci-lint run ./...
