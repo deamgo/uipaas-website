@@ -29,6 +29,7 @@ func InitDB() *gorm.DB {
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
 	}
+
 	configFile, err := os.ReadFile(path + "/config.yaml")
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
