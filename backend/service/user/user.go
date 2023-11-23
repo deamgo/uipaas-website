@@ -10,7 +10,7 @@ type UserService interface {
 	UserGet(ctx context.Context, user *User) (*User, error)
 }
 
-type userServiceParams struct {
+type UserServiceParams struct {
 	Dao dao.UserDao
 }
 
@@ -18,7 +18,7 @@ type userService struct {
 	dao dao.UserDao
 }
 
-func NewUserService(params userServiceParams) UserService {
+func NewUserService(params UserServiceParams) UserService {
 	return &userService{
 		dao: params.Dao,
 	}
