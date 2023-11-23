@@ -5,11 +5,17 @@ import logoSvg from './assets/logo.svg'
 
 function App() {
 
-  const [__HG, setHG] = useState(1440);
+  // const [__HG, setHG] = useState(1440);
   
   useEffect(() => {
-    let HG = window.screen.height
-    setHG(HG)
+    let WD = window.screen.width
+    let IwD = window.innerWidth
+    let InH = window.innerHeight
+    document.querySelectorAll('.container').forEach(el => {
+      el.style.height = `${InH}px`
+    })
+    document.documentElement.style.fontSize = IwD/1440 + 'px'
+    // setHG(HG)
   },[])
 
 
