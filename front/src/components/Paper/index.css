@@ -1,0 +1,65 @@
+
+
+.ctr {
+  /* AI原生 打造应用开发新范式 */
+  width: 539px;
+  height: 87px;
+  opacity: 1;
+  margin-bottom: 10px;
+
+
+  font-family: Source Han Sans;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: 0em;
+
+  font-feature-settings: "kern" on;
+  color: #6366f1;
+}
+
+.ctr .title_block {
+  /* AI原生 */
+  font-family: Source Han Sans;
+  font-weight: 400;
+  font-size: 36px;
+}
+.ctr .content {
+  /* 打造应用开发新范式 */
+  font-family: Source Han Sans;
+  font-weight: 400;
+  font-size: 24px;
+
+}
+
+@media only screen  and (max-width:600px){
+  .ctr {
+    /* AI原生 打造应用开发新范式 */
+    width: 80%;
+    height: 87px;
+    opacity: 1;
+    margin-bottom: 10px;
+  
+    font-family: Source Han Sans;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 0em;
+  
+    font-feature-settings: "kern" on;
+    color: #6366f1;
+  }
+
+  .ctr .title_block {
+    /* AI原生 */
+    font-family: Source Han Sans;
+    font-weight: 400;
+    font-size: 2.25rem;
+  }
+  .ctr .content {
+    /* 打造应用开发新范式 */
+    font-family: Source Han Sans;
+    font-weight: 400;
+    font-size: 1.5rem;
+  
+  }
+  
+}
