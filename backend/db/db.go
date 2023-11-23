@@ -25,7 +25,11 @@ type Config struct {
 }
 
 func InitDB() *gorm.DB {
-	configFile, err := os.ReadFile("./config.yaml")
+	path, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Cannot open config file: %v", err)
+	}
+	configFile, err := os.ReadFile(path + "/config.yaml")
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
 	}

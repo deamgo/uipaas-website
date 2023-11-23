@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/deamgo/uipass-waitlist-page/backend/context"
@@ -14,7 +15,7 @@ import (
 )
 
 type UserGetReq struct {
-	ID string
+	ID string `json:"id"`
 }
 type UserGetResp struct {
 	*user.User
@@ -27,8 +28,10 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 			err error
 		)
 		req.ID = c.Param("id")
+		fmt.Println("#######", req.ID)
 		userService := user.User{UserID: req.ID}
 		userInfo, err := ctx.UserService.UserGet(c, &userService)
+		//fmt.Println("##########", userInfo.UserID)
 		if err != nil {
 			switch err {
 			case dao.DBError:

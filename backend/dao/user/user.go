@@ -2,7 +2,9 @@ package user
 
 import (
 	"context"
-	"errors"
+	"github.com/pkg/errors"
+
+	daolayer "github.com/deamgo/uipass-waitlist-page/backend/dao"
 
 	"gorm.io/gorm"
 )
@@ -24,5 +26,13 @@ func NewAUserDao(db *gorm.DB) UserDao {
 }
 
 func (dao *userDao) UserGet(ctx context.Context, user *UserDO) (*UserDO, error) {
+	id := user.UserID
+	if err := dao.db.WithContext(ctx).Model(&user).Where("id = ?", id).First(&user).Error; err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, UserNotExistError
+		}
+		return nil, errors.Wrap(daolayer.DBError, err.Error())
+	}
+
 	return user, nil
 }

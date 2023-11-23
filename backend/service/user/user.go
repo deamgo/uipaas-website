@@ -2,7 +2,6 @@ package user
 
 import (
 	"context"
-
 	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
 )
 
@@ -31,13 +30,24 @@ func (u userService) UserGet(ctx context.Context, user *User) (*User, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	return convertUser(userDO), nil
 }
 
 func convertUserDao(user *User) *dao.UserDO {
-	return &dao.UserDO{}
+	return &dao.UserDO{
+		UserID:   user.UserID,
+		UserName: user.UserName,
+		Email:    user.Email,
+		Password: user.Password,
+	}
 }
 
 func convertUser(userDao *dao.UserDO) *User {
-	return &User{}
+	return &User{
+		UserID:   userDao.UserID,
+		UserName: userDao.UserName,
+		Email:    userDao.Email,
+		Password: userDao.Password,
+	}
 }
