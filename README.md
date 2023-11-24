@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <div align="center"><h1>
   <h3 align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/deamgo/uipaas-home">
     <img src="https://github.com/deamgo/uipaas-home/assets/109783795/97f0681b-e8f7-4aaa-9404-0522cd3f157a
 " alt="Logo" width="170" height="34">
   </a>
@@ -54,8 +54,6 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://github.com/deamgo/uipaas-home/assets/109783795/94d67b68-72a3-4857-85d3-c9bfc73be6e2)
 
 AI base <br>
 Creating a New Paradigm for Application Development
