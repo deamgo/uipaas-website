@@ -1,11 +1,13 @@
 # uipass-waitlist-page
 <a name="readme-top"></a>
-
+<div align="center">
 
 [![GitHub Workflow Status][ci-shield]][ci-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Github pull requests][pull requests-shield]][pull requests-url]
 [![Issues][issues-shield]][issues-url]
+
+</div>
 <!-- PROJECT LOGO -->
 <div align="center"><h1>
   <h3 align="center">
