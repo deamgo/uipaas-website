@@ -25,7 +25,6 @@ func NewUserService(params UserServiceParams) UserService {
 
 func (u userService) UserGet(ctx context.Context, user *User) (*User, error) {
 	userdao := convertUserDao(user)
-
 	userDO, err := u.dao.UserGet(ctx, userdao)
 	if err != nil {
 		return nil, err
