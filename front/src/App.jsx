@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import './App.less'
 import featureSVG from './assets/feature.svg'
 import logoSvg from './assets/logo.svg'
+import { CollectInfo } from "./components/CollectInfo";
 
 function App() {
 
