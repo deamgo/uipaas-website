@@ -1,4 +1,4 @@
-# uipass-homepage
+# UIPaaS HomePage
 
 ## Introduction
 Official website.
