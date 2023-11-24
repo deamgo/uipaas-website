@@ -1,0 +1,50 @@
+//index.less
+.message-wrap{
+    position: fixed;
+    left: 50%;
+    top: 60px;
+    transform: translate(-50%);
+    z-index: 1000;
+    .message{
+      height: 34px;
+      min-width: 180px;
+      padding: 0px 10px;
+      font-size: 12px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      box-shadow: 0 0 8px #ddd;
+      border: 1px solid #eee;
+      .icon {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+      }
+    }
+    .info {
+        color: #5a98e9;
+        >.icon{
+          background: #5a98e9;
+        }
+      }
+    .error {
+      color: #ff4d4f;
+      >.icon{
+        background: #ff4d4f;
+      }
+    }
+     .warning {
+      color: #faad14;
+      >.icon{
+        background: #faad14;
+      }
+    }
+     .success {
+      color: #52c41a;
+      >.icon{
+        background: #52c41a;
+      }
+    }
+}

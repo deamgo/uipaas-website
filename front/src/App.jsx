@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import './App.less'
 import featureSVG from './assets/feature.svg'
 import logoSvg from './assets/logo.svg'
+import { CollectInfo } from "./components/CollectInfo";
 
 function App() {
 
@@ -72,13 +73,12 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="container"></div>
-        <div className="tail"></div>
-        <div className="container"></div>
+        <div className="container">
+          <CollectInfo></CollectInfo>
+        </div>
         <div className="tail"></div>
       </main>
       <footer>
-        <div className="foot"></div>
         <div className="foot"></div>
       </footer>
     </>
