@@ -10,8 +10,7 @@
 <div align="center"><h1>
   <h3 align="center">
   <a href="https://github.com/deamgo/uipaas-home">
-    <img src="https://github.com/deamgo/uipaas-home/assets/109783795/97f0681b-e8f7-4aaa-9404-0522cd3f157a
-" alt="Logo" width="170" height="34">
+    <img src="https://github.com/deamgo/uipaas-home/assets/109783795/97f0681b-e8f7-4aaa-9404-0522cd3f157a" alt="Logo" width="170" height="34">
   </a>
   </h3>
 
