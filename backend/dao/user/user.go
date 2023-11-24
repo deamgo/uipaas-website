@@ -28,6 +28,7 @@ func NewAUserDao(db *gorm.DB) UserDao {
 func (dao *userDao) UserGet(ctx context.Context, user *UserDO) (*UserDO, error) {
 	id := user.UserID
 	if err := dao.db.WithContext(ctx).Model(&user).Where("id = ?", id).First(&user).Error; err != nil {
+
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, UserNotExistError
 		}
