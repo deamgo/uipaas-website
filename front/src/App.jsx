@@ -7,15 +7,6 @@ import './App.less'
 import featureSVG from './assets/feature.svg'
 import logoSvg from './assets/logo.svg'
 import { CollectInfo } from "./components/CollectInfo";
-// import "./App.css";
-import zinclSvg from "./assets/zinclabsolution.svg";
-import { Paper } from "./components/Paper";
-
-import { useState, useEffect } from 'react'
-import './App.less'
-import featureSVG from './assets/feature.svg'
-import logoSvg from './assets/logo.svg'
-import { CollectInfo } from "./components/CollectInfo";
 
 function App() {
 
@@ -105,12 +96,9 @@ function App() {
       </main>
       <footer>
         <div className="foot"></div>
-        <div className="foot"></div>
       </footer>
     </>
   );
-  );
 }
 
-export default App;
 export default App;
