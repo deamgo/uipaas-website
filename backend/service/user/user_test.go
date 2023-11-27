@@ -2,13 +2,14 @@ package user
 
 import (
 	"context"
-	"github.com/DATA-DOG/go-sqlmock"
-	"gorm.io/gorm"
 	"testing"
 
 	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
 	mock_test "github.com/deamgo/uipass-waitlist-page/backend/mock"
+
+	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
 )
 
 func setupUserServiceTest(t *testing.T) (UserService, sqlmock.Sqlmock) {
@@ -74,6 +75,64 @@ func TestUserService_UserGet(t *testing.T) {
 				userGet, err := userservice.UserGet(context.Background(), &user)
 				assert.EqualError(t, err, tt.expectedError.Error())
 				assert.Equal(t, tt.expectedUser, userGet)
+			}
+
+			assert.NoError(t, mock.ExpectationsWereMet())
+		})
+	}
+
+}
+
+func TestUserService_UserLogin(t *testing.T) {
+	tests := []struct {
+		name     string
+		UserName string
+		Password string
+
+		expectedError  error
+		expectedErrMsg string
+	}{
+		{
+			name:          "User login success",
+			UserName:      "zhangsan",
+			Password:      "1234",
+			expectedError: nil,
+		},
+		{
+			name:           "User login failed",
+			UserName:       "lisi",
+			Password:       "1234",
+			expectedError:  dao.UserLoginError,
+			expectedErrMsg: "incorrect username or password",
+		},
+		// Add more test cases as needed
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			userservice, mock := setupUserServiceTest(t)
+
+			rows := mock.NewRows([]string{"userid", "username", "password"}).
+				AddRow("1", "zhangsan", "1234")
+
+			if tt.expectedError == nil {
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
+					WithArgs(tt.UserName, tt.Password).
+					WillReturnRows(rows)
+				user := User{UserName: tt.UserName,
+					Password: tt.Password}
+				err := userservice.UserLogin(context.Background(), &user)
+				assert.NoError(t, err)
+				assert.Equal(t, tt.expectedError, err)
+			} else {
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
+					WithArgs(tt.UserName, tt.Password).
+					WillReturnError(gorm.ErrRecordNotFound)
+				user := User{UserName: tt.UserName,
+					Password: tt.Password}
+				err := userservice.UserLogin(context.Background(), &user)
+				assert.EqualError(t, err, tt.expectedError.Error())
+				assert.Equal(t, tt.expectedError, err)
 			}
 
 			assert.NoError(t, mock.ExpectationsWereMet())
