@@ -7,6 +7,7 @@ import (
 	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
 	"github.com/deamgo/uipass-waitlist-page/backend/router"
 	"github.com/deamgo/uipass-waitlist-page/backend/service/user"
+
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
@@ -20,7 +21,6 @@ func main() {
 	r := gin.Default()
 	user := router.NewRouter(ctx)
 	r.Any("/*any", gin.WrapH(user))
-
 	err := r.Run(":8080")
 	if err != nil {
 		log.Fatalw("gin run error",

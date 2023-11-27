@@ -70,14 +70,28 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 			err error
 			req UserPostReq
 		)
-		c.ShouldBind(&req.loginUser)
+		err = c.ShouldBind(&req.loginUser)
+		if err != nil {
+			log.Errorw("login format error",
+				zap.Error(err),
+				zap.Any("userlogin", req),
+			)
 
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+				Code: -1,
+				Msg:  "login format error",
+				Data: nil,
+			})
+		}
 		err = ctx.UserService.UserLogin(c, req.loginUser)
 
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				log.Errorw("failed to get userinfo")
+				log.Errorw("failed to get userinfo",
+					zap.Error(err),
+					zap.Any("userlogin", req),
+				)
 
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:

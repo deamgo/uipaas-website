@@ -2,12 +2,11 @@ package db
 
 import (
 	"fmt"
-	"log"
-	"os"
-
 	"gopkg.in/yaml.v3"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"log"
+	"os"
 )
 
 var DB = InitDB()
@@ -31,7 +30,7 @@ func InitDB() *gorm.DB {
 		log.Fatalf("Cannot open config file: %v", err)
 	}
 
-	configFile, err := os.ReadFile(path + "/db/config.yaml")
+	configFile, err := os.ReadFile(path + "/config.yaml")
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
 	}
