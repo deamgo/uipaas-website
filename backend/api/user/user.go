@@ -49,29 +49,51 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 	}
 }
 
+const (
+	LoginSuccess = 0
+	LoginFailed  = -1
+)
+
+type UserPostReq struct {
+	loginUser *user.User
+}
+
+type Resp struct {
+	Code int         `json:"code"`
+	Msg  string      `json:"msg"`
+	Data interface{} `json:"data"`
+}
+
 func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var err error
+		var (
+			err error
+			req UserPostReq
+		)
+		c.ShouldBind(&req.loginUser)
 
-		username := c.PostForm("username")
-		password := c.PostForm("password")
-		userLogin := user.User{UserName: username, Password: password}
+		err = ctx.UserService.UserLogin(c, req.loginUser)
 
-		err = ctx.UserService.UserLogin(c, &userLogin)
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				log.Errorw("login failed") // zap.Error(err),
-				// zap.Any("user", req),
+				log.Errorw("failed to get userinfo")
 
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
-				c.AbortWithStatusJSON(http.StatusBadRequest, "登录失败")
+				c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+					Code: LoginFailed,
+					Msg:  "login failed",
+					Data: nil,
+				})
 			}
 			return
 		}
 
-		c.AbortWithStatusJSON(http.StatusOK, "登录成功")
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+			Code: LoginSuccess,
+			Msg:  "login failed",
+			Data: nil,
+		}))
 	}
-
 }
