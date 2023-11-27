@@ -81,6 +81,7 @@ export function CollectInfo() {
               <input
                 type="text"
                 name="companyName"
+                id="companyName"
                 value={formData.companyName}
                 onChange={handleChange}
               />
@@ -92,6 +93,7 @@ export function CollectInfo() {
               <input
                 type="text"
                 name="companySize"
+                id="companySize"
                 value={formData.companySize}
                 onChange={handleChange}
               />
@@ -103,6 +105,7 @@ export function CollectInfo() {
               <input
                 type="text"
                 name="name"
+                id="name"
                 value={formData.name}
                 onChange={handleChange}
               />
@@ -114,6 +117,7 @@ export function CollectInfo() {
               <input
                 type="text"
                 name="businessEmail"
+                id="businessEmail"
                 value={formData.businessEmail}
                 onChange={handleChange}
               />
@@ -124,6 +128,7 @@ export function CollectInfo() {
               </label>
               <textarea
                 name="requirementDescription"
+                id="requirementDescription"
                 cols="30"
                 rows="5"
                 className="desc_textarea"

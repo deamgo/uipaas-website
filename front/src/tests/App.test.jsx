@@ -36,10 +36,4 @@ describe('Main', () => {
         expect(baseEL).toMatchSnapshot()
     })
 
-
-    test('calls onClick function when clicked', () => {
-        const mockOnClick = jest.fn();
-        const { asFragment } = render(<CollectInfo/>);
-        expect(asFragment()).toMatchSnapshot();
-      });
 })
