@@ -35,5 +35,4 @@ describe('Main', () => {
         const { baseEL } = render(<RouterProvider router={router}><App /></RouterProvider>)
         expect(baseEL).toMatchSnapshot()
     })
-
 })
