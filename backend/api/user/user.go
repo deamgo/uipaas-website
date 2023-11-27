@@ -78,7 +78,7 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 			)
 
 			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
-				Code: -1,
+				Code: LoginFailed,
 				Msg:  "login format error",
 				Data: nil,
 			})

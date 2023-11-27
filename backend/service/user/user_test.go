@@ -5,11 +5,11 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
 
 	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
 	mock_test "github.com/deamgo/uipass-waitlist-page/backend/mock"
-	"github.com/stretchr/testify/assert"
 )
 
 func setupUserServiceTest(t *testing.T) (UserService, sqlmock.Sqlmock) {

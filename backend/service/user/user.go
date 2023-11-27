@@ -2,8 +2,9 @@ package user
 
 import (
 	"context"
-
 	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
+	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
+	"go.uber.org/zap"
 )
 
 type UserService interface {
@@ -40,6 +41,14 @@ func (u userService) UserLogin(ctx context.Context, user *User) error {
 	userdao := convertUserDao(user)
 
 	err := u.dao.UserLogin(ctx, userdao)
+	if err != nil {
+		log.Errorw("user login failed",
+			zap.Error(err),
+			zap.Any("userlogin", user),
+		)
+		return err
+	}
+
 	if err != nil {
 		return err
 	}
