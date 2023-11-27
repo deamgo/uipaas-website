@@ -1,13 +1,20 @@
-// import "./App.css";
-import zinclSvg from "./assets/zinclabsolution.svg";
+//components
 import { Paper } from "./components/Paper";
 import { Divider } from "./components/Divider";
-
+//
 import { useState, useEffect } from 'react'
+//style
 import './App.less'
+//svg
 import featureSVG from './assets/feature.svg'
-import logoSvg from './assets/logo.svg'
-import aboutSvg from './assets/aboutushero.svg'
+import zinclSvg from "./assets/zinclabsolution.svg";
+import logoSvg from './assets/logov1.svg'
+import bannerSVG from './assets/ab/banner-pic.svg'
+import aboutSvg from './assets/ab/aboutus.svg'
+import aiiSvg from './assets/ab/ai-icon.svg'
+import modiSvg from './assets/ab/model-icon.svg'
+import serviSvg from './assets/ab/server-icon.svg'
+import sectiSvg from './assets/ab/section-icon.svg'
 
 
 function App() {
@@ -28,16 +35,12 @@ function App() {
 
   const resize = () => {
     let IwD = window.innerWidth
-    // let InH = window.innerHeight
-    // document.querySelectorAll('.container').forEach(el => {
-    //   el.style.height = `${IwD*(5/8)}px`
-    // })
-    document.documentElement.style.fontSize = IwD/1440 + 'px'
+    document.documentElement.style.fontSize = IwD/1920 + 'px'
   }
   
   const scrollDetector = () => {
     window.addEventListener('scroll', () => {
-      let Hbtn = document.querySelector('#homeBtn')
+      let Hbtn = document.querySelector('#hBtn')
       let Hbtn_T = Hbtn.offsetTop
       let Hbtn_H = Hbtn.offsetHeight
       let tTH = Hbtn_H + Hbtn_T
@@ -46,19 +49,22 @@ function App() {
           position: 'fixed'
         })
         setbtnVis({
-          visibility: 'visible'
+          display: 'block'
         })
       } else {
         setbtnS({
           position: 'absolute'
         })
         setbtnVis({
-          visibility: 'hidden'
+          display: 'none'
         })
       }
     })
   }
 
+  const handleClick = () => {
+    console.log('open table');
+  }
 
   return (
     <>
@@ -66,11 +72,14 @@ function App() {
         <div 
           className='head'>
             <img className='logo' src={logoSvg} alt="Logo" />
-            <div className="reserve" id="headBtn" style={btnVis}>
-                <button className='reserveButton'>
-                    <span>Book demo</span>
-                </button>
-            </div>
+              <button 
+                className='reserveButton' 
+                style={btnVis}
+                onClick={handleClick}>
+                  <span>Book demo</span>
+              </button>
+            {/* <div className="reserve" id="headBtn" style={btnVis}>
+            </div> */}
         </div>
       </header>
       <main>
@@ -79,112 +88,105 @@ function App() {
             <span>
               AI-base, future-oriented, 
               <br />
-              drag-and-drop  development platform.
+              drag-and-drop
+              <br />
+              development platform.
             </span>
           </div>
           <div className="dsp">
             <span>
-              The agile delivery tool for software development teams
+              The agile delivery tool for software development teams.
               <br/>
               Delivering software promptly with a business-oriented approach.
             </span>
           </div>
-          <div className="reserve" id="homeBtn">
-            <button className='reserveButton'>
+            <button
+              className='reserveButton' 
+              id="hBtn"
+              onClick={handleClick}>
                 <span>Book demo</span>
             </button>
-          </div>
+          {/* <div className="reserve" id="homeBtn">
+          </div> */}
           <div className='svg_block'>
-              <img src={featureSVG} alt='feature' />
+              <img src={bannerSVG} alt='feature' />
           </div>
-          <div className="gary">
-            <span>Coming soon...</span>
-          </div>
-        </div>
-        <Divider margin={{margin: '0 100rem'}}/>
-        <div className="container">
           <div className="sec_title">
             <span>Feature</span>
           </div>
-          <div className="sec_svg_block">
-              <img src={zinclSvg} className="zinclabsolution" />
+          <div id="icons">
+            <img src={aiiSvg} alt="AI base" />
+            <img src={modiSvg} alt="Easier use" />
+            <img src={serviSvg} alt="deploy" />
+            <img src={sectiSvg} alt="highly" />
           </div>
           <Paper 
             title={"AI base"} 
             content={"Creating a New Paradigm for Application Development"} 
             ps={{
-              left: '737rem',
-              top: '214rem',
+              left: '395rem',
+              top: '1065rem',
             }}
           />
           <Paper
             title={"Easier-to-use model-driven products"}
             content={"Focus on business, no modeling expertise required"}
             ps={{
-              left: '737rem',
-              top: '346rem',
+              left: '1202rem',
+              top: '1065rem',
             }}
           />
           <Paper
             title={"Application-independent deployment"}
             content={"Support applications to run independently from the platform, one-click rapid deployment"}
             ps={{
-              left: '737rem',
-              top: '477rem',
+              left: '395rem',
+              top: '1269rem',
             }}
           />
           <Paper
             title={"Highly expandable"}
             content={"Support for custom components, pluggable integration"}
             ps={{
-              left: '737rem',
-              top: '644rem',
+              left: '1202rem',
+              top: '1269rem',
             }}
           />
-        </div>
-        <Divider margin={{margin: '0 100rem'}}/>
-        <div className="container">
           <div className="thd_title">
             <span>About us</span>
           </div>
-          <Paper
-              title={"A team of senior technical experts in the low-code field"}
-              ps={{
-                left: '88rem',
-                top: '356rem',
-                width: '592rem',
-                height: '104rem',
-              }}
-            />
-          <Paper
-              content={"Our Vision is to provide development teams with a new development tool that can be used to improve the efficiency of delivering"}
-              ps={{
-                left: '88rem',
-                top: '478rem',
-                width: '823rem',
-                height: '70rem',
-              }}
-            />
           <div className="thd_svg_block">
             <img src={aboutSvg} alt="About" />
+            <span className="thd_dsp_one">
+              A team of senior technical experts 
+              <br />
+              in the low-code field
+            </span>
+            <span className="thd_dsp_two">
+              Our Vision is to provide development teams with a 
+              <br />
+              new development tool that can be used to improve 
+              <br />
+              the efficiency of delivering</span>
           </div>
         </div>
-        <Divider margin={{margin: '0 100rem'}}/>
         <div className="tail">
           <span className="title">
             AI-base, future-oriented,
             <br />
             drag-and-drop  development platform.
           </span>
-          <button className="reserveButton">
+          <button 
+            className="reserveButton"
+            onClick={handleClick}>
             <span>Book demo</span>
           </button>
         </div>
       </main>
       <footer>
         <div className="foot">
-          <span>Copyright © Deamoy Technology</span>
-          <span>浙ICP备2021001545号-4</span>
+          <span className="cpr">Copyright © Deamoy Technology</span>
+          <span className="ba">浙ICP备2021001545号-4</span>
         </div>
       </footer>
     </>
