@@ -1,4 +1,3 @@
-// import "./App.css";
 import zinclSvg from "./assets/zinclabsolution.svg";
 import { Paper } from "./components/Paper";
 import { Divider } from "./components/Divider";
@@ -10,55 +9,7 @@ import logoSvg from './assets/logo.svg'
 import aboutSvg from './assets/aboutushero.svg'
 
 
-function App() {
-
-  const [btnS, setbtnS] = useState({
-    position: 'absolute',
-  });
-
-  const [btnVis, setbtnVis] = useState({
-    visibility: 'hidden',
-  })
-  
-  useEffect(() => {
-    window.addEventListener('resize', resize)
-    resize()
-    scrollDetector()
-  },[])
-
-  const resize = () => {
-    let IwD = window.innerWidth
-    // let InH = window.innerHeight
-    // document.querySelectorAll('.container').forEach(el => {
-    //   el.style.height = `${IwD*(5/8)}px`
-    // })
-    document.documentElement.style.fontSize = IwD/1440 + 'px'
-  }
-  
-  const scrollDetector = () => {
-    window.addEventListener('scroll', () => {
-      let Hbtn = document.querySelector('#homeBtn')
-      let Hbtn_T = Hbtn.offsetTop
-      let Hbtn_H = Hbtn.offsetHeight
-      let tTH = Hbtn_H + Hbtn_T
-      if (window.scrollY >= tTH) {
-        setbtnS({
-          position: 'fixed'
-        })
-        setbtnVis({
-          visibility: 'visible'
-        })
-      } else {
-        setbtnS({
-          position: 'absolute'
-        })
-        setbtnVis({
-          visibility: 'hidden'
-        })
-      }
-    })
-  }
-
+function Main() {
 
   return (
     <>
@@ -66,7 +17,7 @@ function App() {
         <div 
           className='head'>
             <img className='logo' src={logoSvg} alt="Logo" />
-            <div className="reserve" id="headBtn" style={btnVis}>
+            <div className="reserve" id="headBtn">
                 <button className='reserveButton'>
                     <span>Book demo</span>
                 </button>
@@ -191,4 +142,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;

@@ -1,0 +1,129 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+}
+
+header .head {
+  height: 88px;
+  background-color: purple;
+  opacity: 0.3;
+}
+
+main {
+  width: 100%;
+}
+
+main .title {
+  position: absolute;
+  left: 104px;
+  top: 194px;
+  width: 520px;
+  height: 116px;
+  opacity: 1;
+
+  font-family: Source Han Sans;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0em;
+
+  font-feature-settings: "kern" on;
+  color: #6366F1;
+}
+
+main .gary {
+  position: absolute;
+  left: 104px;
+  top: 320px;
+  width: 426px;
+  height: 43px;
+  opacity: 1;
+    
+  font-family: Source Han Sans;
+  font-size: 30px;
+  font-weight: normal;
+  line-height: normal;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+    
+  font-feature-settings: "kern" on;
+  color: #767676;
+	
+}
+
+main .mark {
+
+  position: absolute;
+  left: 106px;
+  top: 388px;
+  width: 204px;
+  height: 52px;
+  opacity: 1;
+    
+  font-family: Source Han Sans;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: normal;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+    
+  font-feature-settings: "kern" on;
+  color: #767676;
+    
+  }
+
+  main .container {
+    height: 100vh;
+    border-bottom: 1px solid #000;
+  }
+
+  main .container .reserveButton {
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 194px;
+    height: 48px;
+    border-radius: 5px;
+    border: 0px;
+    opacity: 1;
+      
+    background: #6366F1;
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.16);
+	
+	 
+}
+
+main .container .reserveButton .text_dsp_block {
+  
+}
+
+main .tail {
+  height: 209px;
+  border-bottom: 1px solid #000;
+}
+
+footer {
+  width: 100%;
+  height: 88px
+}
