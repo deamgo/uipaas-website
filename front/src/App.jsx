@@ -7,8 +7,31 @@ import './App.less'
 import featureSVG from './assets/feature.svg'
 import logoSvg from './assets/logo.svg'
 import { CollectInfo } from "./components/CollectInfo";
+// import "./App.css";
+import zinclSvg from "./assets/zinclabsolution.svg";
+import { Paper } from "./components/Paper";
+
+import { useState, useEffect } from 'react'
+import './App.less'
+import featureSVG from './assets/feature.svg'
+import logoSvg from './assets/logo.svg'
+import { CollectInfo } from "./components/CollectInfo";
 
 function App() {
+
+  // const [__HG, setHG] = useState(1440);
+  
+  useEffect(() => {
+    let WD = window.screen.width
+    let IwD = window.innerWidth
+    let InH = window.innerHeight
+    document.querySelectorAll('.container').forEach(el => {
+      el.style.height = `${InH}px`
+    })
+    document.documentElement.style.fontSize = IwD/1440 + 'px'
+    // setHG(HG)
+  },[])
+
 
   // const [__HG, setHG] = useState(1440);
   
@@ -27,6 +50,10 @@ function App() {
   return (
     <>
       <header>
+        <div 
+          className='head'>
+            <img className='logo' src={logoSvg} alt="Logo" />
+          </div>
         <div 
           className='head'>
             <img className='logo' src={logoSvg} alt="Logo" />
@@ -78,9 +105,12 @@ function App() {
       </main>
       <footer>
         <div className="foot"></div>
+        <div className="foot"></div>
       </footer>
     </>
   );
+  );
 }
 
+export default App;
 export default App;
