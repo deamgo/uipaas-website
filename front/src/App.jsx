@@ -189,8 +189,6 @@ function App() {
       </footer>
     </>
   );
-  );
 }
 
-export default App;
 export default App;

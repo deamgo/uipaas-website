@@ -3,6 +3,7 @@ import { render } from '@testing-library/react'
 import App from '../App.jsx'
 import Err from '../layout/errorPage.jsx'
 import PrivacyP from '../layout/Privacy-policy.jsx'
+import { CollectInfo } from '../components/CollectInfo/index.jsx'
 
 //router
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
@@ -34,4 +35,11 @@ describe('Main', () => {
         const { baseEL } = render(<RouterProvider router={router}><App /></RouterProvider>)
         expect(baseEL).toMatchSnapshot()
     })
+
+
+    test('calls onClick function when clicked', () => {
+        const mockOnClick = jest.fn();
+        const { asFragment } = render(<CollectInfo/>);
+        expect(asFragment()).toMatchSnapshot();
+      });
 })
