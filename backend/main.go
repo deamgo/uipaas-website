@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/deamgo/uipass-waitlist-page/backend/context"
-	formdao "github.com/deamgo/uipass-waitlist-page/backend/dao/companyinfo"
-	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
-	"github.com/deamgo/uipass-waitlist-page/backend/db"
-	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
-	"github.com/deamgo/uipass-waitlist-page/backend/router"
-	"github.com/deamgo/uipass-waitlist-page/backend/service/companyinfo"
-	"github.com/deamgo/uipass-waitlist-page/backend/service/user"
+	"github.com/deamgo/uipaas-home/backend/context"
+	formdao "github.com/deamgo/uipaas-home/backend/dao/companyinfo"
+	dao "github.com/deamgo/uipaas-home/backend/dao/user"
+	"github.com/deamgo/uipaas-home/backend/db"
+	"github.com/deamgo/uipaas-home/backend/pkg/log"
+	"github.com/deamgo/uipaas-home/backend/router"
+	"github.com/deamgo/uipaas-home/backend/service/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/service/user"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -25,7 +25,7 @@ func main() {
 	r := gin.Default()
 	user := router.NewRouter(ctx)
 	r.Any("/*any", gin.WrapH(user))
-	err := r.Run(":8081")
+	err := r.Run(":8080")
 	if err != nil {
 		log.Fatalw("gin run error",
 			zap.Any("error message: ", err.Error()),

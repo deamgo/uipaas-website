@@ -2,13 +2,15 @@ package companyinfo
 
 import (
 	"context"
+	"testing"
+
 	"github.com/DATA-DOG/go-sqlmock"
-	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/companyinfo"
-	mock_test "github.com/deamgo/uipass-waitlist-page/backend/mock"
+	dao "github.com/deamgo/uipaas-home/backend/dao/companyinfo"
+	mock_test "github.com/deamgo/uipaas-home/backend/mock"
+
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
-	"testing"
 )
 
 func setupCompanyInfoServiceTest(t *testing.T) (CompanyInfoService, sqlmock.Sqlmock) {

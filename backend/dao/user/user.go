@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/pkg/errors"
 
-	daolayer "github.com/deamgo/uipass-waitlist-page/backend/dao"
+	daolayer "github.com/deamgo/uipaas-home/backend/dao"
 
 	"gorm.io/gorm"
 )

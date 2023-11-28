@@ -1,11 +1,10 @@
 package router
 
 import (
-	"github.com/deamgo/uipass-waitlist-page/backend/api/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/api/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/api/user"
+	"github.com/deamgo/uipaas-home/backend/context"
 	"net/http"
-
-	"github.com/deamgo/uipass-waitlist-page/backend/api/user"
-	"github.com/deamgo/uipass-waitlist-page/backend/context"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,13 +1,12 @@
 package user
 
 import (
+	"github.com/deamgo/uipaas-home/backend/context"
+	"github.com/deamgo/uipaas-home/backend/dao"
+	"github.com/deamgo/uipaas-home/backend/pkg/log"
+	"github.com/deamgo/uipaas-home/backend/pkg/types"
+	"github.com/deamgo/uipaas-home/backend/service/user"
 	"net/http"
-
-	"github.com/deamgo/uipass-waitlist-page/backend/context"
-	"github.com/deamgo/uipass-waitlist-page/backend/dao"
-	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
-	"github.com/deamgo/uipass-waitlist-page/backend/pkg/types"
-	"github.com/deamgo/uipass-waitlist-page/backend/service/user"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"

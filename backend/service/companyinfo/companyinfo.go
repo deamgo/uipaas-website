@@ -2,8 +2,9 @@ package companyinfo
 
 import (
 	"context"
-	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/companyinfo"
-	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
+	dao "github.com/deamgo/uipaas-home/backend/dao/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/pkg/log"
+
 	"go.uber.org/zap"
 )
 

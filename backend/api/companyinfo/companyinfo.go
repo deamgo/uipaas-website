@@ -1,11 +1,11 @@
 package companyinfo
 
 import (
-	"github.com/deamgo/uipass-waitlist-page/backend/context"
-	"github.com/deamgo/uipass-waitlist-page/backend/dao"
-	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
-	"github.com/deamgo/uipass-waitlist-page/backend/pkg/types"
-	"github.com/deamgo/uipass-waitlist-page/backend/service/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/context"
+	"github.com/deamgo/uipaas-home/backend/dao"
+	"github.com/deamgo/uipaas-home/backend/pkg/log"
+	"github.com/deamgo/uipaas-home/backend/pkg/types"
+	"github.com/deamgo/uipaas-home/backend/service/companyinfo"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
@@ -18,7 +18,6 @@ const (
 )
 
 type CompanyInfoGetReq struct {
-	// 分页参数
 	PageSize string `json:"pageSize"`
 	PageNum  string `json:"pageNum"`
 }
