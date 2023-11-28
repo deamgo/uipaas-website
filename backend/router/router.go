@@ -3,8 +3,8 @@ package router
 import (
 	"net/http"
 
-	"github.com/deamgo/uipass-waitlist-page/backend/api/user"
-	"github.com/deamgo/uipass-waitlist-page/backend/context"
+	"github.com/deamgo/uipaas-home/backend/api/user"
+	"github.com/deamgo/uipaas-home/backend/context"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,6 +26,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 				"message": "success",
 			})
 		})
+		api.POST("/login", user.UserLogin(ctx))
 	}
 
 }
