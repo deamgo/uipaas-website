@@ -2,11 +2,12 @@ package db
 
 import (
 	"fmt"
+	"log"
+	"os"
+
 	"gopkg.in/yaml.v3"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"log"
-	"os"
 )
 
 var DB = InitDB()
