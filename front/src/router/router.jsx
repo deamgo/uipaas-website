@@ -12,5 +12,5 @@ export const router = createBrowserRouter([
     {
         path: '/privacy',
         Component: PriPolicy,
-    }
+    },
 ])
