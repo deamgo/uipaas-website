@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import App from '../App.jsx'
 import Err from '../layout/errorPage.jsx'
-import PrivacyP from '../layout/Privacy-policy.jsx'
+import PrivacyP from '../layout/privacyPolicy.jsx'
 
 //router
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'

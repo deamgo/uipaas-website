@@ -1,5 +1,6 @@
 //components
-import { Paper } from "./components/Paper";
+import { Paper } from './components/Paper'
+import { CollectInfo } from './components/CollectInfo'
 //
 import { useState, useEffect } from 'react'
 //style
@@ -13,6 +14,7 @@ import modiSvg from './assets/ab/model-icon.svg'
 import serviSvg from './assets/ab/server-icon.svg'
 import sectiSvg from './assets/ab/section-icon.svg'
 
+let visAble = false
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
   const [btnVis, setbtnVis] = useState({
     visibility: 'hidden',
   })
+
+  const [tabVis, settabVis] = useState(visAble)
   
   useEffect(() => {
     window.addEventListener('resize', resize)
@@ -60,7 +64,9 @@ function App() {
   }
 
   const handleClick = () => {
-    console.log('open table');
+    visAble = !visAble
+    settabVis(visAble)
+    document.body.style.overflow = visAble ? 'hidden' : 'auto'
   }
 
   return (
@@ -186,6 +192,7 @@ function App() {
           <span className="ba">浙ICP备2021001545号-4</span>
         </div>
       </footer>
+      {tabVis && <CollectInfo onClose={handleClick}/>}
     </>
   );
 }

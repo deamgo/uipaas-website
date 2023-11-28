@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import '../App.less'
 import './pp.less'
-import logoSvg from '../assets/logo.svg'
+import logoSvg from '../assets/logov1.svg'
 import PrivacySvg from '../assets/privacy.svg'
 
 const PriPolicy = () => {
@@ -13,8 +13,9 @@ const PriPolicy = () => {
     
       const resize = () => {
         let IwD = window.innerWidth
-        document.documentElement.style.fontSize = IwD/1440 + 'px'
+        document.documentElement.style.fontSize = IwD/1920 + 'px'
       }
+      document.body.style.height = 'auto'
 
     return (
         <>
