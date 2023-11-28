@@ -1,10 +1,11 @@
 package router
 
 import (
+	"github.com/deamgo/uipass-waitlist-page/backend/api/companyinfo"
 	"net/http"
 
-	"github.com/deamgo/uipaas-home/backend/api/user"
-	"github.com/deamgo/uipaas-home/backend/context"
+	"github.com/deamgo/uipass-waitlist-page/backend/api/user"
+	"github.com/deamgo/uipass-waitlist-page/backend/context"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,12 +22,8 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("api")
 	{
 		api.GET("/user/:id", user.UserGet(ctx))
-		api.GET("/ping", func(c *gin.Context) {
-			c.JSON(http.StatusOK, gin.H{
-				"message": "success",
-			})
-		})
 		api.POST("/login", user.UserLogin(ctx))
+		api.GET("/companyinfo", companyinfo.CompanyInfoGet(ctx))
 	}
 
 }

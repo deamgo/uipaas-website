@@ -2,8 +2,8 @@ package user
 
 import (
 	"context"
-	dao "github.com/deamgo/uipaas-home/backend/dao/user"
-	"github.com/deamgo/uipaas-home/backend/pkg/log"
+	dao "github.com/deamgo/uipass-waitlist-page/backend/dao/user"
+	"github.com/deamgo/uipass-waitlist-page/backend/pkg/log"
 	"go.uber.org/zap"
 )
 
@@ -49,9 +49,6 @@ func (u userService) UserLogin(ctx context.Context, user *User) error {
 		return err
 	}
 
-	if err != nil {
-		return err
-	}
 	return nil
 }
 

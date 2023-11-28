@@ -6,3 +6,12 @@ CREATE TABLE IF NOT EXISTS user (
     email VARCHAR(255),
     password VARCHAR(255)
 );
+
+
+
+
+
+
+
+
+

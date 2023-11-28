@@ -1,4 +1,4 @@
-module github.com/deamgo/uipaas-home/backend
+module github.com/deamgo/uipass-waitlist-page/backend
 
 go 1.21.4
 

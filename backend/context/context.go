@@ -1,7 +1,11 @@
 package context
 
-import "github.com/deamgo/uipaas-home/backend/service/user"
+import (
+	"github.com/deamgo/uipass-waitlist-page/backend/service/companyinfo"
+	"github.com/deamgo/uipass-waitlist-page/backend/service/user"
+)
 
 type ApplicationContext struct {
-	UserService user.UserService
+	UserService        user.UserService
+	CompanyInfoService companyinfo.CompanyInfoService
 }
