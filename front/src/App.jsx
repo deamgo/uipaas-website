@@ -1,13 +1,10 @@
 //components
 import { Paper } from "./components/Paper";
-import { Divider } from "./components/Divider";
 //
 import { useState, useEffect } from 'react'
 //style
 import './App.less'
 //svg
-import featureSVG from './assets/feature.svg'
-import zinclSvg from "./assets/zinclabsolution.svg";
 import logoSvg from './assets/logov1.svg'
 import bannerSVG from './assets/ab/banner-pic.svg'
 import aboutSvg from './assets/ab/aboutus.svg'
