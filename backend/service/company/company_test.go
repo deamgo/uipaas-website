@@ -1,36 +1,36 @@
-package companyinfo
+package company
 
 import (
 	"context"
 	"testing"
 
-	"github.com/DATA-DOG/go-sqlmock"
-	dao "github.com/deamgo/uipaas-home/backend/dao/companyinfo"
+	dao "github.com/deamgo/uipaas-home/backend/dao/company"
 	mock_test "github.com/deamgo/uipaas-home/backend/mock"
 
+	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
 )
 
-func setupCompanyInfoServiceTest(t *testing.T) (CompanyInfoService, sqlmock.Sqlmock) {
+func setupCompanyServiceTest(t *testing.T) (CompanyService, sqlmock.Sqlmock) {
 	mockDB, mock, err := mock_test.GetNewDbMock()
 	assert.NoError(t, err)
 
-	listDao := dao.NewAUseFormDao(mockDB)
-	params := CompanyInfoServiceParams{Dao: listDao}
-	service := NewCompanyInfoService(params)
+	listDao := dao.NewACompanyFormDao(mockDB)
+	params := CompanyServiceParams{Dao: listDao}
+	service := NewcompanyService(params)
 
 	return service, mock
 }
 
-func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
+func TestCompanyService_companyGet(t *testing.T) {
 	tests := []struct {
 		name          string
 		pageNum       int
 		pageSize      int
 		expectedTotal int64
-		expectedList  []*CompanyInfo
+		expectedList  []*Company
 		expectedError error
 	}{
 		{
@@ -38,7 +38,7 @@ func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
 			pageNum:       6,
 			pageSize:      1,
 			expectedTotal: 6,
-			expectedList: []*CompanyInfo{
+			expectedList: []*Company{
 				{ID: 6,
 					CompanyName:            "公司名字1",
 					CompanySize:            "12",
@@ -61,7 +61,7 @@ func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			service, mock := setupCompanyInfoServiceTest(t)
+			service, mock := setupCompanyServiceTest(t)
 
 			rows := mock.NewRows([]string{"id", "company_name", "company_size", "name", "phone", "requirement_description"}).
 				AddRow("6", "公司名字1", "12", "张三", "1231341413", "描述1")
@@ -74,7 +74,7 @@ func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
 				var pageNum = tt.pageNum
 				var pageSize = tt.pageSize
 
-				list, total, err := service.CompanyInfoGet(context.Background(), pageSize, pageNum)
+				list, total, err := service.CompanyGet(context.Background(), pageSize, pageNum)
 				assert.NoError(t, err)
 				for i, index := range list {
 					assert.Equal(t, tt.expectedList[i], index)
@@ -89,7 +89,7 @@ func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
 
 				var pageNum = tt.pageNum
 				var pageSize = tt.pageSize
-				list, total, err := service.CompanyInfoGet(context.Background(), pageSize, pageNum)
+				list, total, err := service.CompanyGet(context.Background(), pageSize, pageNum)
 				assert.EqualError(t, err, tt.expectedError.Error())
 				assert.Equal(t, tt.expectedList, list)
 				assert.Equal(t, tt.expectedTotal, total)

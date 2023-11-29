@@ -1,15 +1,17 @@
-package companyinfo
+package company
 
 import (
+	"strconv"
+
 	"github.com/deamgo/uipaas-home/backend/context"
 	"github.com/deamgo/uipaas-home/backend/dao"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"github.com/deamgo/uipaas-home/backend/pkg/types"
-	"github.com/deamgo/uipaas-home/backend/service/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/service/company"
+
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
-	"strconv"
 )
 
 const (
@@ -17,7 +19,7 @@ const (
 	GetInfoListFailed  = -1
 )
 
-type CompanyInfoGetReq struct {
+type companyGetReq struct {
 	PageSize string `json:"pageSize"`
 	PageNum  string `json:"pageNum"`
 }
@@ -29,15 +31,15 @@ type Resp struct {
 }
 
 type PageResp struct {
-	Items []*companyinfo.CompanyInfo `json:"items"`
-	Total int64                      `json:"total"`
+	Items []*company.Company `json:"items"`
+	Total int64              `json:"total"`
 }
 
-func CompanyInfoGet(ctx context.ApplicationContext) gin.HandlerFunc {
+func CompanyGet(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var (
 			err error
-			req CompanyInfoGetReq
+			req companyGetReq
 		)
 
 		req.PageSize = c.Query("pageSize")
@@ -45,29 +47,29 @@ func CompanyInfoGet(ctx context.ApplicationContext) gin.HandlerFunc {
 		size, _ := strconv.Atoi(req.PageSize)
 		num, _ := strconv.Atoi(req.PageNum)
 
-		list, total, err := ctx.CompanyInfoService.CompanyInfoGet(c, size, num)
+		list, total, err := ctx.CompanyService.CompanyGet(c, size, num)
 
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				log.Errorw("failed to get companyInfoList",
+				log.Errorw("failed to get companyList",
 					zap.Error(err),
-					zap.Any("companyInfoList", list),
+					zap.Any("companyList", list),
 				)
 
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
-				c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 					Code: GetInfoListFailed,
-					Msg:  "failed to get companyInfoList",
+					Msg:  "failed to get companyList",
 					Data: nil,
-				})
+				}))
 			}
 			return
 		}
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: GetInfoListSuccess,
-			Msg:  "get companyInfoList success",
+			Msg:  "get companyList success",
 			Data: PageResp{
 				Items: list,
 				Total: total,

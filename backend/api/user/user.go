@@ -91,11 +91,11 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
-				c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 					Code: LoginFailed,
 					Msg:  "login failed",
 					Data: nil,
-				})
+				}))
 			}
 			return
 		}

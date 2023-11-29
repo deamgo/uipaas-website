@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/deamgo/uipaas-home/backend/api/companyinfo"
+	"github.com/deamgo/uipaas-home/backend/api/company"
 	"github.com/deamgo/uipaas-home/backend/api/user"
 	"github.com/deamgo/uipaas-home/backend/context"
 	"net/http"
@@ -22,7 +22,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	{
 		api.GET("/user/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))
-		api.GET("/companyinfo", companyinfo.CompanyInfoGet(ctx))
+		api.GET("/company", company.CompanyGet(ctx))
 	}
 
 }

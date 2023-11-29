@@ -1,10 +1,10 @@
-package companyinfo
+package company
 
 import (
 	"time"
 )
 
-type CompanyInfoDO struct {
+type CompanyDO struct {
 	ID                     uint      `gorm:"column:id"`
 	CompanyName            string    `gorm:"column:company_name"`
 	CompanySize            string    `gorm:"column:company_size"`
@@ -14,6 +14,6 @@ type CompanyInfoDO struct {
 	Date                   time.Time `gorm:"column:date"`
 }
 
-func (CompanyInfoDO) TableName() string {
+func (CompanyDO) TableName() string {
 	return "company_info"
 }
