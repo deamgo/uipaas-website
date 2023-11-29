@@ -2,9 +2,10 @@ package company
 
 import (
 	"context"
+	"time"
+
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
-	"time"
 )
 
 var CompanyExistError = errors.New("company name is exist")

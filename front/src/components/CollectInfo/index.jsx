@@ -3,7 +3,7 @@ import vectorIcon from "../../assets/Vector.svg";
 import React, { useState, useEffect } from "react";
 import $message from "../Msg";
 import { saveCompInfo } from "../../api/comp_info";
-export function CollectInfo() {
+export function CollectInfo({onClose}) {
   // 状态
   const [formData, setFormData] = useState({
     companyName: "",
@@ -13,14 +13,14 @@ export function CollectInfo() {
     requirementDescription: "",
   });
   //   样式
-  const [isShow, setIsShow] = useState(true);
+  // const [isShow, setIsShow] = useState(true);
   //   消息提醒
   const [messages, setMessages] = useState([]);
 
-  const handleClose = () => {
-    console.log("close");
-    setIsShow(false);
-  };
+  // const handleClose = () => {
+  //   console.log("close");
+  //   setIsShow(false);
+  // };
 
   //   input输入框验证
   const validateInput = () => {
@@ -67,10 +67,10 @@ export function CollectInfo() {
 
   return (
     <>
-      {isShow && (
+      {(
         <div className="info_collect_card">
           <div className="vector_icon">
-            <img src={vectorIcon} onClick={handleClose} />
+            <img src={vectorIcon} onClick={onClose} />
           </div>
           <div className="title">Hello, future partners!</div>
           <form action="" onSubmit={handleSubmit}>
@@ -137,14 +137,17 @@ export function CollectInfo() {
               ></textarea>
             </div>
             <div>
-              <button type="submit" className="sub_btn">
+              <button
+                type="submit" 
+                className="sub_btn"
+                onClick={handleSubmit}>
                 Submit
               </button>
             </div>
           </form>
           <span className="foot_text">
             <span style={{ color: "#ea000" }}>*</span> By submitting, you agree
-            to the <a href="#">privacy policy</a>.
+            to the <a href="privacy">privacy policy</a>.
           </span>
         </div>
       )}

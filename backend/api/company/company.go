@@ -1,6 +1,7 @@
 package company
 
 import (
+	"github.com/deamgo/uipaas-home/backend/pkg/e"
 	"strconv"
 
 	"github.com/deamgo/uipaas-home/backend/context"
@@ -12,11 +13,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
-)
-
-const (
-	GetInfoListSuccess = 0
-	GetInfoListFailed  = -1
 )
 
 type companyGetReq struct {
@@ -60,28 +56,24 @@ func CompanyGet(ctx context.ApplicationContext) gin.HandlerFunc {
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
 				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
-					Code: GetInfoListFailed,
-					Msg:  "failed to get companyList",
+					Code: e.Failed,
+					Msg:  e.GetListFailed,
 					Data: nil,
 				}))
 			}
 			return
 		}
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
-			Code: GetInfoListSuccess,
-			Msg:  "get companyList success",
+			Code: e.Success,
+			Msg:  e.GetListSuccess,
 			Data: PageResp{
 				Items: list,
 				Total: total,
 			},
 		}))
 	}
-}
 
-const (
-	AddSuccess = 0
-	AddFailed  = -1
-)
+}
 
 type CompanyPostReq struct {
 	*company.Company
@@ -109,7 +101,7 @@ func CompanyAdd(ctx context.ApplicationContext) gin.HandlerFunc {
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
 				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
-					Code: AddFailed,
+					Code: e.Failed,
 					Msg:  err.Error(),
 					Data: nil,
 				}))
@@ -117,8 +109,8 @@ func CompanyAdd(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
-			Code: AddSuccess,
-			Msg:  "add info success",
+			Code: e.Success,
+			Msg:  e.AddMsgSuccess,
 			Data: nil,
 		}))
 	}

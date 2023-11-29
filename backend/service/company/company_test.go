@@ -2,15 +2,17 @@ package company
 
 import (
 	"context"
-	"github.com/DATA-DOG/go-sqlmock"
-	dao "github.com/deamgo/uipaas-home/backend/dao/company"
-	mock_test "github.com/deamgo/uipaas-home/backend/mock"
-	"github.com/pkg/errors"
-	"github.com/stretchr/testify/assert"
-	"gorm.io/gorm"
 	"regexp"
 	"testing"
 	"time"
+
+	dao "github.com/deamgo/uipaas-home/backend/dao/company"
+	mock_test "github.com/deamgo/uipaas-home/backend/mock"
+
+	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/pkg/errors"
+	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
 )
 
 func setupCompanyServiceTest(t *testing.T) (CompanyService, sqlmock.Sqlmock) {
@@ -68,7 +70,6 @@ func TestCompanyService_companyGet(t *testing.T) {
 
 			if tt.expectedError == nil {
 				mock.ExpectQuery("SELECT").WithArgs().WillReturnRows(sqlmock.NewRows([]string{"total"}).AddRow(6))
-
 				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`company`\\s+LIMIT\\s+1\\s+OFFSET\\s+5").
 					WillReturnRows(rows)
 				var pageNum = tt.pageNum
