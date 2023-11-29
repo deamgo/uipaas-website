@@ -4,7 +4,6 @@ import (
 	"time"
 )
 
-// string{"id", "companyname", "companysize", "name", "phone", "requirementdescription
 type CompanyInfoDO struct {
 	ID                     uint      `gorm:"column:id"`
 	CompanyName            string    `gorm:"column:company_name"`

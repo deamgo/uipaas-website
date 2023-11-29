@@ -18,12 +18,3 @@ CREATE TABLE IF NOT EXISTS company_info (
 );
 
 insert into user values (1,'admin','','admin');
-
-
-
-
-
-
-
-
-

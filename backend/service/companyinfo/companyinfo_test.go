@@ -45,7 +45,6 @@ func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
 					Name:                   "张三",
 					Phone:                  "1231341413",
 					RequirementDescription: "描述1",
-					//Date:                   time.Date(2023, 11, 24, 13, 50, 18, 528, time.Local)
 				},
 			},
 			expectedError: nil,
@@ -58,7 +57,6 @@ func TestCompanyInfoService_CompanyInfoGet(t *testing.T) {
 			expectedList:  nil,
 			expectedError: errors.New("record not found"),
 		},
-		//Add more test cases as needed
 	}
 
 	for _, tt := range tests {
