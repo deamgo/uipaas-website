@@ -1,7 +1,12 @@
 .info_collect_card {
+  position: fixed;
+  left: 50%;
+  top: 67rem;
+
+  transform: translate(-50%);
+
   width: 480rem;
   height: 560rem;
-  margin: auto;
 
   display: flex;
   flex-direction: column;
@@ -10,28 +15,34 @@
   border-radius: 10rem;
   opacity: 1;
 
+  font-family: Poppins;
+
   background: #ffffff;
 
   box-shadow: 0rem 4rem 10rem 0rem rgba(0, 0, 0, 0.3);
+  z-index: 1002;
   .vector_icon {
     position: relative;
     top: 0rem;
     left: 30rem;
     margin: 0;
-    width: 30rem;
-    height: 30rem;
+    width: 18.67rem;
+    height: 18.67rem;
     display: inline;
     z-index: 0;
     cursor: pointer;
+    img {
+      width: 18.67rem;
+      height: 18.67rem;
+    }
   }
   //   表单标题
   .title {
-    width: 248rem;
+    // width: 248rem
     height: 40rem;
     // margin-top: 13rem;
     margin: -20rem auto 10rem auto;
     /* 样式描述：中文 */
-    font-family: 思源黑体;
     font-size: 24rem;
     font-weight: normal;
     line-height: normal;
@@ -58,7 +69,6 @@
       width: 240rem;
       height: 19rem;
 
-      font-family: 思源黑体;
       font-size: 16rem;
       font-weight: normal;
       line-height: normal;
@@ -98,7 +108,6 @@
       opacity: 1;
       margin: auto;
 
-      font-family: 思源黑体;
       font-size: 24rem;
       font-weight: normal;
       line-height: normal;
@@ -110,7 +119,7 @@
 
 
       border: none;
-      background: #6366f1;
+      background: #0871F0;
 
       //   font-feature-settings: "kern" on;
       color: #ffffff;
@@ -121,7 +130,7 @@
     margin-top: 4rem;
     text-align: center;
     display: block;
-    font-family: 思源黑体;
+
     font-size: 12rem;
     font-weight: normal;
     line-height: normal;
