@@ -23,6 +23,8 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.GET("/user/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))
 		api.GET("/company", company.CompanyGet(ctx))
+		api.POST("/company", company.CompanyAdd(ctx))
+
 	}
 
 }

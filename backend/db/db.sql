@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS user (
     password VARCHAR(255)
 );
 
-CREATE TABLE IF NOT EXISTS company_info (
+
+CREATE TABLE IF NOT EXISTS company (
     id uint primary key,
     company_name varchar(255),
     company_size varchar(255),

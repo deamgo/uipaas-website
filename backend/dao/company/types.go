@@ -15,5 +15,7 @@ type CompanyDO struct {
 }
 
 func (CompanyDO) TableName() string {
-	return "company_info"
+
+	return "company"
+
 }

@@ -2,7 +2,9 @@ package company
 
 import (
 	"context"
+	"regexp"
 	"testing"
+	"time"
 
 	dao "github.com/deamgo/uipaas-home/backend/dao/company"
 	mock_test "github.com/deamgo/uipaas-home/backend/mock"
@@ -68,8 +70,7 @@ func TestCompanyService_companyGet(t *testing.T) {
 
 			if tt.expectedError == nil {
 				mock.ExpectQuery("SELECT").WithArgs().WillReturnRows(sqlmock.NewRows([]string{"total"}).AddRow(6))
-
-				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`company_info`\\s+LIMIT\\s+1\\s+OFFSET\\s+5").
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`company`\\s+LIMIT\\s+1\\s+OFFSET\\s+5").
 					WillReturnRows(rows)
 				var pageNum = tt.pageNum
 				var pageSize = tt.pageSize
@@ -84,7 +85,7 @@ func TestCompanyService_companyGet(t *testing.T) {
 
 				mock.ExpectQuery("SELECT").WithArgs().WillReturnRows(sqlmock.NewRows([]string{"total"}).AddRow(0))
 
-				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`company_info`\\s+OFFSET\\s+1").
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`company`\\s+OFFSET\\s+1").
 					WillReturnError(gorm.ErrRecordNotFound)
 
 				var pageNum = tt.pageNum
@@ -99,4 +100,46 @@ func TestCompanyService_companyGet(t *testing.T) {
 		})
 	}
 
+}
+
+func TestCompanyInfoService_CompanyInfoAdd(t *testing.T) {
+
+	tests := []struct {
+		name          string
+		companyInfo   *Company
+		expectedError error
+	}{
+		{
+			name: "page add1",
+			companyInfo: &Company{
+				ID:                     0,
+				CompanyName:            "这是公司名字",
+				CompanySize:            "规模",
+				Name:                   "王五",
+				Phone:                  "123123123",
+				RequirementDescription: "描述1",
+				Date:                   time.Now(),
+			},
+			expectedError: nil,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			service, mock := setupCompanyServiceTest(t)
+
+			info := tt.companyInfo
+			if tt.expectedError == nil {
+				mock.ExpectQuery("SELECT").WithArgs().WillReturnRows(sqlmock.NewRows([]string{"count"}).AddRow(1))
+
+				mock.ExpectBegin()
+				mock.ExpectExec(regexp.QuoteMeta("INSERT INTO")).
+					//WithArgs(info.CompanyName, info.CompanySize, info.Name, info.Phone, info.RequirementDescription).
+					WillReturnResult(sqlmock.NewResult(1, 1))
+				mock.ExpectCommit()
+				err := service.CompanyAdd(context.Background(), info)
+				assert.Equal(t, tt.expectedError, err)
+			}
+		})
+	}
 }

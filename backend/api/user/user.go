@@ -3,6 +3,7 @@ package user
 import (
 	"github.com/deamgo/uipaas-home/backend/context"
 	"github.com/deamgo/uipaas-home/backend/dao"
+	"github.com/deamgo/uipaas-home/backend/pkg/e"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"github.com/deamgo/uipaas-home/backend/pkg/types"
 	"github.com/deamgo/uipaas-home/backend/service/user"
@@ -45,11 +46,6 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 	}
 }
 
-const (
-	LoginSuccess = 0
-	LoginFailed  = -1
-)
-
 type UserPostReq struct {
 	loginUser *user.User
 }
@@ -74,8 +70,8 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 			)
 
 			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
-				Code: LoginFailed,
-				Msg:  "login format error",
+				Code: e.Failed,
+				Msg:  e.LoginFormatError,
 				Data: nil,
 			})
 		}
@@ -92,8 +88,8 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
 				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
-					Code: LoginFailed,
-					Msg:  "login failed",
+					Code: e.Failed,
+					Msg:  e.LoginFailed,
 					Data: nil,
 				}))
 			}
@@ -101,8 +97,8 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
-			Code: LoginSuccess,
-			Msg:  "login success",
+			Code: e.Success,
+			Msg:  e.LoginSuccess,
 			Data: nil,
 		}))
 	}
