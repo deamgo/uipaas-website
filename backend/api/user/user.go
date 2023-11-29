@@ -1,14 +1,12 @@
 package user
 
 import (
-	"fmt"
-	"net/http"
-
 	"github.com/deamgo/uipaas-home/backend/context"
 	"github.com/deamgo/uipaas-home/backend/dao"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"github.com/deamgo/uipaas-home/backend/pkg/types"
 	"github.com/deamgo/uipaas-home/backend/service/user"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -28,10 +26,8 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 			err error
 		)
 		req.ID = c.Param("id")
-		fmt.Println("#######", req.ID)
 		userService := user.User{UserID: req.ID}
 		userInfo, err := ctx.UserService.UserGet(c, &userService)
-		//fmt.Println("##########", userInfo.UserID)
 		if err != nil {
 			switch err {
 			case dao.DBError:
@@ -95,18 +91,18 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:
-				c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 					Code: LoginFailed,
 					Msg:  "login failed",
 					Data: nil,
-				})
+				}))
 			}
 			return
 		}
 
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: LoginSuccess,
-			Msg:  "login failed",
+			Msg:  "login success",
 			Data: nil,
 		}))
 	}

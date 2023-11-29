@@ -2,10 +2,12 @@ package main
 
 import (
 	"github.com/deamgo/uipaas-home/backend/context"
+	formdao "github.com/deamgo/uipaas-home/backend/dao/company"
 	dao "github.com/deamgo/uipaas-home/backend/dao/user"
 	"github.com/deamgo/uipaas-home/backend/db"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"github.com/deamgo/uipaas-home/backend/router"
+	"github.com/deamgo/uipaas-home/backend/service/company"
 	"github.com/deamgo/uipaas-home/backend/service/user"
 
 	"github.com/gin-gonic/gin"
@@ -14,9 +16,11 @@ import (
 
 func main() {
 	dao := dao.NewAUserDao(db.DB)
+	formdao := formdao.NewACompanyFormDao(db.DB)
 	ctx := context.ApplicationContext{UserService: user.NewUserService(
 		user.UserServiceParams{Dao: dao},
-	)}
+	),
+		CompanyService: company.NewcompanyService(company.CompanyServiceParams{Dao: formdao})}
 
 	r := gin.Default()
 	user := router.NewRouter(ctx)

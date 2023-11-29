@@ -1,10 +1,10 @@
 package router
 
 import (
-	"net/http"
-
+	"github.com/deamgo/uipaas-home/backend/api/company"
 	"github.com/deamgo/uipaas-home/backend/api/user"
 	"github.com/deamgo/uipaas-home/backend/context"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,12 +21,8 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("api")
 	{
 		api.GET("/user/:id", user.UserGet(ctx))
-		api.GET("/ping", func(c *gin.Context) {
-			c.JSON(http.StatusOK, gin.H{
-				"message": "success",
-			})
-		})
 		api.POST("/login", user.UserLogin(ctx))
+		api.GET("/company", company.CompanyGet(ctx))
 	}
 
 }

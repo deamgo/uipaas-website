@@ -49,9 +49,6 @@ func (u userService) UserLogin(ctx context.Context, user *User) error {
 		return err
 	}
 
-	if err != nil {
-		return err
-	}
 	return nil
 }
 
