@@ -2,11 +2,16 @@ package company
 
 import (
 	"context"
+	"github.com/pkg/errors"
 	"gorm.io/gorm"
+	"time"
 )
+
+var CompanyExistError = errors.New("company name is exist")
 
 type CompanyDao interface {
 	CompanyGet(ctx context.Context, pageSize int, pageNum int) (mes []*CompanyDO, total int64, err error)
+	CompanyAdd(ctx context.Context, company *CompanyDO) error
 }
 
 type companyDao struct {
@@ -29,4 +34,17 @@ func (dao *companyDao) CompanyGet(ctx context.Context, pageSize int, pageNum int
 	}
 
 	return mes, total, err
+}
+
+func (dao *companyDao) CompanyAdd(ctx context.Context, company *CompanyDO) error {
+	var count int64
+	company.Date = time.Now()
+	dao.db.Model(&CompanyDO{}).Where("company_name=?", company.CompanyName).Find(&company).Count(&count)
+	if count != 0 {
+		return CompanyExistError
+	}
+	if err := dao.db.Create(&company).Error; err != nil {
+		return err
+	}
+	return nil
 }

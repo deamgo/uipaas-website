@@ -10,6 +10,7 @@ import (
 
 type CompanyService interface {
 	CompanyGet(ctx context.Context, pageSize int, pageNum int) ([]*Company, int64, error)
+	CompanyAdd(ctx context.Context, company *Company) error
 }
 
 type CompanyServiceParams struct {
@@ -37,6 +38,31 @@ func (u companyService) CompanyGet(ctx context.Context, pageSize int, pageNum in
 	}
 
 	return convertCompanyList(list), total, err
+}
+
+func (u companyService) CompanyAdd(ctx context.Context, company *Company) error {
+	info := convertCompanyDao(company)
+	err := u.dao.CompanyAdd(ctx, info)
+	if err != nil {
+		log.Errorw("add companyinfo failed",
+			zap.Error(err),
+			zap.Any("companyInfo", company),
+		)
+		return err
+	}
+	return nil
+}
+
+func convertCompanyDao(info *Company) *dao.CompanyDO {
+	return &dao.CompanyDO{
+		ID:                     info.ID,
+		CompanyName:            info.CompanyName,
+		CompanySize:            info.CompanySize,
+		Name:                   info.Name,
+		Phone:                  info.Phone,
+		RequirementDescription: info.RequirementDescription,
+		Date:                   info.Date,
+	}
 }
 
 func convertCompanyList(companyDao []*dao.CompanyDO) []*Company {

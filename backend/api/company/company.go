@@ -76,5 +76,50 @@ func CompanyGet(ctx context.ApplicationContext) gin.HandlerFunc {
 			},
 		}))
 	}
+}
 
+const (
+	AddSuccess = 0
+	AddFailed  = -1
+)
+
+type CompanyPostReq struct {
+	*company.Company
+}
+
+func CompanyAdd(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var (
+			req CompanyPostReq
+			err error
+		)
+
+		err = c.ShouldBind(&req.Company)
+		if err != nil {
+			log.Errorw("add info format error",
+				zap.Error(err),
+				zap.Any("companyinfo", req),
+			)
+		}
+		err = ctx.CompanyService.CompanyAdd(c, req.Company)
+		if err != nil {
+			switch err {
+			case dao.DBError:
+				log.Errorw("failed to add info")
+				c.AbortWithStatus(http.StatusInternalServerError)
+			default:
+				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+					Code: AddFailed,
+					Msg:  err.Error(),
+					Data: nil,
+				}))
+			}
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+			Code: AddSuccess,
+			Msg:  "add info success",
+			Data: nil,
+		}))
+	}
 }
