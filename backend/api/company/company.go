@@ -1,15 +1,14 @@
 package company
 
 import (
-	"github.com/deamgo/uipaas-home/backend/pkg/e"
 	"strconv"
 
 	"github.com/deamgo/uipaas-home/backend/context"
 	"github.com/deamgo/uipaas-home/backend/dao"
+	"github.com/deamgo/uipaas-home/backend/pkg/e"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"github.com/deamgo/uipaas-home/backend/pkg/types"
 	"github.com/deamgo/uipaas-home/backend/service/company"
-
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"net/http"
