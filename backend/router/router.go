@@ -1,10 +1,11 @@
 package router
 
 import (
+	"net/http"
+
 	"github.com/deamgo/uipaas-home/backend/api/company"
 	"github.com/deamgo/uipaas-home/backend/api/user"
 	"github.com/deamgo/uipaas-home/backend/context"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,7 +19,7 @@ func NewRouter(ctx context.ApplicationContext) http.Handler {
 	return e
 }
 func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
-	api := e.Group("api")
+	api := e.Group("v1")
 	{
 		api.GET("/user/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))

@@ -31,6 +31,8 @@ services:
       - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
     command: 
       [--character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
+    networks:
+      - uipaashome
 
   backend:
     image: ${DOCKER_PREFIX}-backend
@@ -52,10 +54,13 @@ services:
     expose:
       - ${BACKEND_PORT}
     ports:
-      - ${BACKEND_PORT}:${BACKEND_PORT}
-    depends_on:
+      - ${BACKEND_PORT}:8080
+    links:
       - mysql
+    networks:
+      - uipaashome
   
 
 networks:
   uipaashome:
+    external: true

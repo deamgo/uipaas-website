@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const requests = axios.create({
-  baseURL: "uipaashome-backend:3000",
+  baseURL: "/api/v1",
   timeout: 5000,
 });
 

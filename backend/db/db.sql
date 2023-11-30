@@ -1,4 +1,4 @@
-USE `uipass-waitlist-page`;
+USE `uipaas-home`;
 
 CREATE TABLE IF NOT EXISTS user (
     userid VARCHAR(255) PRIMARY KEY,
@@ -9,11 +9,11 @@ CREATE TABLE IF NOT EXISTS user (
 
 
 CREATE TABLE IF NOT EXISTS company (
-    id uint primary key,
+    id int primary key,
     company_name varchar(255),
     company_size varchar(255),
     name varchar(255),
-    phone varchar(255),
+    buiness_email varchar(255),
     requirement_description varchar(255),
     date datetime(3)
 );

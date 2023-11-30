@@ -2,6 +2,7 @@ package company
 
 import (
 	"context"
+
 	dao "github.com/deamgo/uipaas-home/backend/dao/company"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 
@@ -59,7 +60,7 @@ func convertCompanyDao(info *Company) *dao.CompanyDO {
 		CompanyName:            info.CompanyName,
 		CompanySize:            info.CompanySize,
 		Name:                   info.Name,
-		Phone:                  info.Phone,
+		BusinessEmail:          info.BusinessEmail,
 		RequirementDescription: info.RequirementDescription,
 		Date:                   info.Date,
 	}
@@ -73,7 +74,7 @@ func convertCompanyList(companyDao []*dao.CompanyDO) []*Company {
 			CompanyName:            dao.CompanyName,
 			CompanySize:            dao.CompanySize,
 			Name:                   dao.Name,
-			Phone:                  dao.Phone,
+			BusinessEmail:          dao.BusinessEmail,
 			RequirementDescription: dao.RequirementDescription,
 			Date:                   dao.Date,
 		})

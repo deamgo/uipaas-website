@@ -2,15 +2,15 @@ import "./index.less";
 import vectorIcon from "../../assets/Vector.svg";
 import React, { useState, useEffect } from "react";
 import $message from "../Msg";
-import { saveCompInfo, test } from "../../api/comp_info";
+import { saveCompInfo } from "../../api/comp_info";
 export function CollectInfo({onClose}) {
   // 状态
   const [formData, setFormData] = useState({
-    companyName: "",
-    companySize: "",
+    companyname: "",
+    companysize: "",
     name: "",
-    businessEmail: "",
-    requirementDescription: "",
+    businessemail: "",
+    requirementdescription: "",
   });
   //   样式
   // const [isShow, setIsShow] = useState(true);
@@ -27,21 +27,21 @@ export function CollectInfo({onClose}) {
     let error = "";
 
     // 根据字段名进行不同的验证
-    if (!formData.companyName.trim()) {
-      error = "CompanyName cant be empty";
+    if (!formData.companyname.trim()) {
+      error = "companyname cant be empty";
     }
-    if (!formData.companySize.trim()) {
-      error = "CompanySize cant be empty";
+    if (!formData.companysize.trim()) {
+      error = "companysize cant be empty";
     }
     if (!formData.name.trim()) {
       error = "Name cant be empty";
     }
     const emailREG = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if (!emailREG.test(formData.businessEmail)) {
+    if (!emailREG.test(formData.businessemail)) {
       error = "Invalid business email";
     }
-    if (!formData.requirementDescription.trim()) {
-      error = "RequirementDescription cant be empty";
+    if (!formData.requirementdescription.trim()) {
+      error = "requirementdescription cant be empty";
     }
     setMessages(error);
     return error;
@@ -62,8 +62,14 @@ export function CollectInfo({onClose}) {
       $message.error(error);
       return
     }
-    // saveCompInfo(formData);
-    console.log(formData);
+    saveCompInfo(formData).then((res) => {
+      if(res.value.code === 0) {
+        $message.success(res.value.msg);
+      } else if(res.value.code === -1 ) {
+        $message.error(res.value.msg);
+      }
+      onClose();
+    })
   };
 
   return (
@@ -76,26 +82,26 @@ export function CollectInfo({onClose}) {
           <div className="title">Hello, future partners!</div>
           <form action="" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="companyName">
+              <label htmlFor="companyname">
                 <span>Company</span><span>*</span>
               </label>
               <input
                 type="text"
-                name="companyName"
-                id="companyName"
-                value={formData.companyName}
+                name="companyname"
+                id="companyname"
+                value={formData.companyname}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="companySize">
+              <label htmlFor="companysize">
                 <span>Team Size</span><span>*</span>
               </label>
               <input
                 type="text"
-                name="companySize"
-                id="companySize"
-                value={formData.companySize}
+                name="companysize"
+                id="companysize"
+                value={formData.companysize}
                 onChange={handleChange}
               />
             </div>
@@ -112,28 +118,28 @@ export function CollectInfo({onClose}) {
               />
             </div>
             <div>
-              <label htmlFor="businessEmail">
+              <label htmlFor="businessemail">
                 <span>Business email</span><span>*</span>
               </label>
               <input
                 type="text"
-                name="businessEmail"
-                id="businessEmail"
-                value={formData.businessEmail}
+                name="businessemail"
+                id="businessemail"
+                value={formData.businessemail}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="requirementDescription">
+              <label htmlFor="requirementdescription">
                 <span>Description of Requirements</span><span>*</span>
               </label>
               <textarea
-                name="requirementDescription"
-                id="requirementDescription"
+                name="requirementdescription"
+                id="requirementdescription"
                 cols="30"
                 rows="5"
                 className="desc_textarea"
-                value={formData.requirementDescription}
+                value={formData.requirementdescription}
                 onChange={handleChange}
               ></textarea>
             </div>

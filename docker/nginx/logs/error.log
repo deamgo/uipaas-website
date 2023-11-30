@@ -170,3 +170,1489 @@
 2023/11/30 02:24:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
 2023/11/30 02:25:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
 2023/11/30 02:26:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:47 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:51 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:53 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:53:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:54:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:54:16 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:54:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:55:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:56:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:57:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:58:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:59:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:00:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:01:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:02:36 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:03:36 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:03:57 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:03:58 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:03:59 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:03:59 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:04:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:04:02 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:04:06 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:04:13 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:04:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:04:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:05:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:06:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:07:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:46 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:47 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:08:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:09:02 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:09:15 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:09:41 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:10:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:11:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:12:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:46 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:13:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:02 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:16 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:53 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:54 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:14:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:07 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:20 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:36 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:38 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:38 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:39 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:46 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:15:53 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:16:06 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:16:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:01 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:02 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:04 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:05 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:07 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:10 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:17 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:30 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:17:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:18:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:19:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:20:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:21:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:22:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:23:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:24:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:27 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:28 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:29 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:30 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:31 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:36 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:43 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:25:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:26:22 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:27:13 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:36 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:37 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:38 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:39 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:41 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:28:51 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:29:04 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:29:30 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:37 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:41 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:30:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:01 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:27 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:53 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:54 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:55 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:57 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:31:59 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:32:02 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:32:09 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:32:22 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:32:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:33:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:34:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:04 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:05 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:06 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:07 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:08 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:10 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:14 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:20 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:45 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:46 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:47 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:35:53 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:36:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:36:13 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:36:39 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:02 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:04 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:05 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:07 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:11 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:31 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:37:57 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:16 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:19 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:20 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:22 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:50 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:53 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:38:57 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:39:04 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:39:17 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:39:43 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:40:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:41:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:42:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:43:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 03:45:07 [notice] 1#1: using the "epoll" event method
+2023/11/30 03:45:07 [notice] 1#1: nginx/1.24.0
+2023/11/30 03:45:07 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 03:45:07 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 03:45:07 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 03:45:07 [notice] 1#1: start worker processes
+2023/11/30 03:45:07 [notice] 1#1: start worker process 20
+2023/11/30 03:45:07 [notice] 1#1: start worker process 21
+2023/11/30 03:45:07 [notice] 1#1: start worker process 22
+2023/11/30 03:45:07 [notice] 1#1: start worker process 23
+2023/11/30 03:45:07 [notice] 1#1: start worker process 24
+2023/11/30 03:45:07 [notice] 1#1: start worker process 25
+2023/11/30 03:45:07 [notice] 1#1: start worker process 26
+2023/11/30 03:45:07 [notice] 1#1: start worker process 27
+2023/11/30 04:01:05 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 04:01:06 [notice] 1#1: using the "epoll" event method
+2023/11/30 04:01:06 [notice] 1#1: nginx/1.24.0
+2023/11/30 04:01:06 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 04:01:06 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 04:01:06 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 04:01:06 [notice] 1#1: start worker processes
+2023/11/30 04:01:06 [notice] 1#1: start worker process 19
+2023/11/30 04:01:06 [notice] 1#1: start worker process 20
+2023/11/30 04:01:06 [notice] 1#1: start worker process 21
+2023/11/30 04:01:06 [notice] 1#1: start worker process 22
+2023/11/30 04:01:06 [notice] 1#1: start worker process 23
+2023/11/30 04:01:06 [notice] 1#1: start worker process 24
+2023/11/30 04:01:06 [notice] 1#1: start worker process 25
+2023/11/30 04:01:06 [notice] 1#1: start worker process 26
+2023/11/30 04:51:32 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 04:51:32 [notice] 19#19: gracefully shutting down
+2023/11/30 04:51:32 [notice] 25#25: gracefully shutting down
+2023/11/30 04:51:32 [notice] 21#21: gracefully shutting down
+2023/11/30 04:51:32 [notice] 20#20: gracefully shutting down
+2023/11/30 04:51:32 [notice] 23#23: gracefully shutting down
+2023/11/30 04:51:32 [notice] 23#23: exiting
+2023/11/30 04:51:32 [notice] 22#22: gracefully shutting down
+2023/11/30 04:51:32 [notice] 22#22: exiting
+2023/11/30 04:51:32 [notice] 24#24: gracefully shutting down
+2023/11/30 04:51:32 [notice] 24#24: exiting
+2023/11/30 04:51:32 [notice] 26#26: gracefully shutting down
+2023/11/30 04:51:32 [notice] 26#26: exiting
+2023/11/30 04:51:32 [notice] 19#19: exiting
+2023/11/30 04:51:32 [notice] 25#25: exiting
+2023/11/30 04:51:32 [notice] 21#21: exiting
+2023/11/30 04:51:32 [notice] 21#21: exit
+2023/11/30 04:51:32 [notice] 20#20: exiting
+2023/11/30 04:51:32 [notice] 23#23: exit
+2023/11/30 04:51:32 [notice] 22#22: exit
+2023/11/30 04:51:32 [notice] 24#24: exit
+2023/11/30 04:51:32 [notice] 26#26: exit
+2023/11/30 04:51:32 [notice] 19#19: exit
+2023/11/30 04:51:32 [notice] 25#25: exit
+2023/11/30 04:51:32 [notice] 20#20: exit
+2023/11/30 04:51:32 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 04:51:32 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 04:51:32 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 04:51:32 [notice] 1#1: worker process 19 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 04:51:32 [notice] 1#1: exit
+2023/11/30 04:51:33 [notice] 1#1: using the "epoll" event method
+2023/11/30 04:51:33 [notice] 1#1: nginx/1.24.0
+2023/11/30 04:51:33 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 04:51:33 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 04:51:33 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 04:51:33 [notice] 1#1: start worker processes
+2023/11/30 04:51:33 [notice] 1#1: start worker process 19
+2023/11/30 04:51:33 [notice] 1#1: start worker process 20
+2023/11/30 04:51:33 [notice] 1#1: start worker process 21
+2023/11/30 04:51:33 [notice] 1#1: start worker process 22
+2023/11/30 04:51:33 [notice] 1#1: start worker process 23
+2023/11/30 04:51:33 [notice] 1#1: start worker process 24
+2023/11/30 04:51:33 [notice] 1#1: start worker process 25
+2023/11/30 04:51:33 [notice] 1#1: start worker process 26
+2023/11/30 05:06:07 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 05:06:07 [notice] 20#20: gracefully shutting down
+2023/11/30 05:06:07 [notice] 20#20: exiting
+2023/11/30 05:06:07 [notice] 19#19: gracefully shutting down
+2023/11/30 05:06:07 [notice] 19#19: exiting
+2023/11/30 05:06:07 [notice] 21#21: gracefully shutting down
+2023/11/30 05:06:07 [notice] 21#21: exiting
+2023/11/30 05:06:07 [notice] 23#23: gracefully shutting down
+2023/11/30 05:06:07 [notice] 24#24: gracefully shutting down
+2023/11/30 05:06:07 [notice] 24#24: exiting
+2023/11/30 05:06:07 [notice] 22#22: gracefully shutting down
+2023/11/30 05:06:07 [notice] 25#25: gracefully shutting down
+2023/11/30 05:06:07 [notice] 25#25: exiting
+2023/11/30 05:06:07 [notice] 26#26: gracefully shutting down
+2023/11/30 05:06:07 [notice] 20#20: exit
+2023/11/30 05:06:07 [notice] 19#19: exit
+2023/11/30 05:06:07 [notice] 21#21: exit
+2023/11/30 05:06:07 [notice] 23#23: exiting
+2023/11/30 05:06:07 [notice] 24#24: exit
+2023/11/30 05:06:07 [notice] 22#22: exiting
+2023/11/30 05:06:07 [notice] 25#25: exit
+2023/11/30 05:06:07 [notice] 26#26: exiting
+2023/11/30 05:06:07 [notice] 23#23: exit
+2023/11/30 05:06:07 [notice] 22#22: exit
+2023/11/30 05:06:07 [notice] 26#26: exit
+2023/11/30 05:06:07 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 05:06:07 [notice] 1#1: worker process 19 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:06:07 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 05:06:07 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 05:06:07 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 05:06:07 [notice] 1#1: exit
+2023/11/30 05:06:08 [notice] 1#1: using the "epoll" event method
+2023/11/30 05:06:08 [notice] 1#1: nginx/1.24.0
+2023/11/30 05:06:08 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 05:06:08 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 05:06:08 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 05:06:08 [notice] 1#1: start worker processes
+2023/11/30 05:06:08 [notice] 1#1: start worker process 20
+2023/11/30 05:06:08 [notice] 1#1: start worker process 21
+2023/11/30 05:06:08 [notice] 1#1: start worker process 22
+2023/11/30 05:06:08 [notice] 1#1: start worker process 23
+2023/11/30 05:06:08 [notice] 1#1: start worker process 24
+2023/11/30 05:06:08 [notice] 1#1: start worker process 25
+2023/11/30 05:06:08 [notice] 1#1: start worker process 26
+2023/11/30 05:06:08 [notice] 1#1: start worker process 27
+2023/11/30 05:16:54 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 05:16:54 [notice] 20#20: gracefully shutting down
+2023/11/30 05:16:54 [notice] 21#21: gracefully shutting down
+2023/11/30 05:16:54 [notice] 21#21: exiting
+2023/11/30 05:16:54 [notice] 22#22: gracefully shutting down
+2023/11/30 05:16:54 [notice] 22#22: exiting
+2023/11/30 05:16:54 [notice] 26#26: gracefully shutting down
+2023/11/30 05:16:54 [notice] 26#26: exiting
+2023/11/30 05:16:54 [notice] 25#25: gracefully shutting down
+2023/11/30 05:16:54 [notice] 25#25: exiting
+2023/11/30 05:16:54 [notice] 23#23: gracefully shutting down
+2023/11/30 05:16:54 [notice] 23#23: exiting
+2023/11/30 05:16:54 [notice] 27#27: gracefully shutting down
+2023/11/30 05:16:54 [notice] 24#24: gracefully shutting down
+2023/11/30 05:16:54 [notice] 20#20: exiting
+2023/11/30 05:16:54 [notice] 21#21: exit
+2023/11/30 05:16:54 [notice] 22#22: exit
+2023/11/30 05:16:54 [notice] 26#26: exit
+2023/11/30 05:16:54 [notice] 25#25: exit
+2023/11/30 05:16:54 [notice] 23#23: exit
+2023/11/30 05:16:54 [notice] 27#27: exiting
+2023/11/30 05:16:54 [notice] 24#24: exiting
+2023/11/30 05:16:54 [notice] 20#20: exit
+2023/11/30 05:16:54 [notice] 27#27: exit
+2023/11/30 05:16:54 [notice] 24#24: exit
+2023/11/30 05:16:54 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 05:16:54 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:16:54 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 05:16:54 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:16:54 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 05:16:54 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 05:16:54 [notice] 1#1: exit
+2023/11/30 05:19:11 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 05:19:12 [notice] 1#1: using the "epoll" event method
+2023/11/30 05:19:12 [notice] 1#1: nginx/1.24.0
+2023/11/30 05:19:12 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 05:19:12 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 05:19:12 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 05:19:12 [notice] 1#1: start worker processes
+2023/11/30 05:19:12 [notice] 1#1: start worker process 20
+2023/11/30 05:19:12 [notice] 1#1: start worker process 21
+2023/11/30 05:19:12 [notice] 1#1: start worker process 22
+2023/11/30 05:19:12 [notice] 1#1: start worker process 23
+2023/11/30 05:19:12 [notice] 1#1: start worker process 24
+2023/11/30 05:19:12 [notice] 1#1: start worker process 25
+2023/11/30 05:19:12 [notice] 1#1: start worker process 26
+2023/11/30 05:19:12 [notice] 1#1: start worker process 27
+2023/11/30 05:27:46 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 05:27:46 [notice] 20#20: gracefully shutting down
+2023/11/30 05:27:46 [notice] 20#20: exiting
+2023/11/30 05:27:46 [notice] 21#21: gracefully shutting down
+2023/11/30 05:27:46 [notice] 21#21: exiting
+2023/11/30 05:27:46 [notice] 24#24: gracefully shutting down
+2023/11/30 05:27:46 [notice] 24#24: exiting
+2023/11/30 05:27:46 [notice] 22#22: gracefully shutting down
+2023/11/30 05:27:46 [notice] 22#22: exiting
+2023/11/30 05:27:46 [notice] 23#23: gracefully shutting down
+2023/11/30 05:27:46 [notice] 23#23: exiting
+2023/11/30 05:27:46 [notice] 25#25: gracefully shutting down
+2023/11/30 05:27:46 [notice] 25#25: exiting
+2023/11/30 05:27:46 [notice] 26#26: gracefully shutting down
+2023/11/30 05:27:46 [notice] 27#27: gracefully shutting down
+2023/11/30 05:27:46 [notice] 20#20: exit
+2023/11/30 05:27:46 [notice] 21#21: exit
+2023/11/30 05:27:46 [notice] 24#24: exit
+2023/11/30 05:27:46 [notice] 22#22: exit
+2023/11/30 05:27:46 [notice] 23#23: exit
+2023/11/30 05:27:46 [notice] 25#25: exit
+2023/11/30 05:27:46 [notice] 26#26: exiting
+2023/11/30 05:27:46 [notice] 27#27: exiting
+2023/11/30 05:27:46 [notice] 26#26: exit
+2023/11/30 05:27:46 [notice] 27#27: exit
+2023/11/30 05:27:46 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 05:27:46 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:27:46 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 05:27:46 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:27:46 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 05:27:46 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 05:27:46 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 05:27:46 [notice] 1#1: exit
+2023/11/30 05:36:02 [notice] 1#1: using the "epoll" event method
+2023/11/30 05:36:02 [notice] 1#1: nginx/1.24.0
+2023/11/30 05:36:02 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 05:36:02 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 05:36:02 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 05:36:02 [notice] 1#1: start worker processes
+2023/11/30 05:36:02 [notice] 1#1: start worker process 20
+2023/11/30 05:36:02 [notice] 1#1: start worker process 21
+2023/11/30 05:36:02 [notice] 1#1: start worker process 22
+2023/11/30 05:36:02 [notice] 1#1: start worker process 23
+2023/11/30 05:36:02 [notice] 1#1: start worker process 24
+2023/11/30 05:36:02 [notice] 1#1: start worker process 25
+2023/11/30 05:36:02 [notice] 1#1: start worker process 26
+2023/11/30 05:36:02 [notice] 1#1: start worker process 27
+2023/11/30 05:41:38 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 05:41:38 [notice] 20#20: gracefully shutting down
+2023/11/30 05:41:38 [notice] 27#27: gracefully shutting down
+2023/11/30 05:41:38 [notice] 21#21: gracefully shutting down
+2023/11/30 05:41:38 [notice] 21#21: exiting
+2023/11/30 05:41:38 [notice] 22#22: gracefully shutting down
+2023/11/30 05:41:38 [notice] 23#23: gracefully shutting down
+2023/11/30 05:41:38 [notice] 23#23: exiting
+2023/11/30 05:41:38 [notice] 24#24: gracefully shutting down
+2023/11/30 05:41:38 [notice] 25#25: gracefully shutting down
+2023/11/30 05:41:38 [notice] 26#26: gracefully shutting down
+2023/11/30 05:41:38 [notice] 20#20: exiting
+2023/11/30 05:41:38 [notice] 27#27: exiting
+2023/11/30 05:41:38 [notice] 21#21: exit
+2023/11/30 05:41:38 [notice] 22#22: exiting
+2023/11/30 05:41:38 [notice] 23#23: exit
+2023/11/30 05:41:38 [notice] 24#24: exiting
+2023/11/30 05:41:38 [notice] 25#25: exiting
+2023/11/30 05:41:38 [notice] 26#26: exiting
+2023/11/30 05:41:38 [notice] 20#20: exit
+2023/11/30 05:41:38 [notice] 27#27: exit
+2023/11/30 05:41:38 [notice] 22#22: exit
+2023/11/30 05:41:38 [notice] 24#24: exit
+2023/11/30 05:41:38 [notice] 25#25: exit
+2023/11/30 05:41:38 [notice] 26#26: exit
+2023/11/30 05:41:38 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 05:41:38 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:41:38 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 05:41:38 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 05:41:38 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 05:41:38 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 05:41:38 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 05:41:38 [notice] 1#1: exit
+2023/11/30 05:49:36 [notice] 1#1: using the "epoll" event method
+2023/11/30 05:49:36 [notice] 1#1: nginx/1.24.0
+2023/11/30 05:49:36 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 05:49:36 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 05:49:36 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 05:49:36 [notice] 1#1: start worker processes
+2023/11/30 05:49:36 [notice] 1#1: start worker process 20
+2023/11/30 05:49:36 [notice] 1#1: start worker process 21
+2023/11/30 05:49:36 [notice] 1#1: start worker process 22
+2023/11/30 05:49:36 [notice] 1#1: start worker process 23
+2023/11/30 05:49:36 [notice] 1#1: start worker process 24
+2023/11/30 05:49:36 [notice] 1#1: start worker process 25
+2023/11/30 05:49:36 [notice] 1#1: start worker process 26
+2023/11/30 05:49:36 [notice] 1#1: start worker process 27
+2023/11/30 06:36:57 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 06:36:57 [notice] 20#20: gracefully shutting down
+2023/11/30 06:36:57 [notice] 20#20: exiting
+2023/11/30 06:36:57 [notice] 21#21: gracefully shutting down
+2023/11/30 06:36:57 [notice] 23#23: gracefully shutting down
+2023/11/30 06:36:57 [notice] 23#23: exiting
+2023/11/30 06:36:57 [notice] 22#22: gracefully shutting down
+2023/11/30 06:36:57 [notice] 24#24: gracefully shutting down
+2023/11/30 06:36:57 [notice] 25#25: gracefully shutting down
+2023/11/30 06:36:57 [notice] 25#25: exiting
+2023/11/30 06:36:57 [notice] 26#26: gracefully shutting down
+2023/11/30 06:36:57 [notice] 26#26: exiting
+2023/11/30 06:36:57 [notice] 27#27: gracefully shutting down
+2023/11/30 06:36:57 [notice] 20#20: exit
+2023/11/30 06:36:57 [notice] 21#21: exiting
+2023/11/30 06:36:57 [notice] 23#23: exit
+2023/11/30 06:36:57 [notice] 22#22: exiting
+2023/11/30 06:36:57 [notice] 24#24: exiting
+2023/11/30 06:36:57 [notice] 25#25: exit
+2023/11/30 06:36:57 [notice] 26#26: exit
+2023/11/30 06:36:57 [notice] 27#27: exiting
+2023/11/30 06:36:57 [notice] 21#21: exit
+2023/11/30 06:36:57 [notice] 22#22: exit
+2023/11/30 06:36:57 [notice] 24#24: exit
+2023/11/30 06:36:57 [notice] 27#27: exit
+2023/11/30 06:36:57 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 06:36:57 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 06:36:57 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 06:36:57 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 06:36:57 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 06:36:57 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 06:36:57 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 06:36:57 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 06:36:57 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 06:36:57 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 06:36:57 [notice] 1#1: exit
+2023/11/30 06:40:46 [notice] 1#1: using the "epoll" event method
+2023/11/30 06:40:46 [notice] 1#1: nginx/1.24.0
+2023/11/30 06:40:46 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 06:40:46 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 06:40:46 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 06:40:46 [notice] 1#1: start worker processes
+2023/11/30 06:40:46 [notice] 1#1: start worker process 20
+2023/11/30 06:40:46 [notice] 1#1: start worker process 21
+2023/11/30 06:40:46 [notice] 1#1: start worker process 22
+2023/11/30 06:40:46 [notice] 1#1: start worker process 23
+2023/11/30 06:40:46 [notice] 1#1: start worker process 24
+2023/11/30 06:40:46 [notice] 1#1: start worker process 25
+2023/11/30 06:40:46 [notice] 1#1: start worker process 26
+2023/11/30 06:40:46 [notice] 1#1: start worker process 27
+2023/11/30 06:45:02 [notice] 1#1: using the "epoll" event method
+2023/11/30 06:45:02 [notice] 1#1: nginx/1.24.0
+2023/11/30 06:45:02 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 06:45:02 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 06:45:02 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 06:45:02 [notice] 1#1: start worker processes
+2023/11/30 06:45:02 [notice] 1#1: start worker process 20
+2023/11/30 06:45:02 [notice] 1#1: start worker process 21
+2023/11/30 06:45:02 [notice] 1#1: start worker process 22
+2023/11/30 06:45:02 [notice] 1#1: start worker process 23
+2023/11/30 06:45:02 [notice] 1#1: start worker process 24
+2023/11/30 06:45:02 [notice] 1#1: start worker process 25
+2023/11/30 06:45:02 [notice] 1#1: start worker process 26
+2023/11/30 06:45:02 [notice] 1#1: start worker process 27
+2023/11/30 06:55:31 [notice] 1#1: using the "epoll" event method
+2023/11/30 06:55:31 [notice] 1#1: nginx/1.24.0
+2023/11/30 06:55:31 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 06:55:31 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 06:55:31 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 06:55:31 [notice] 1#1: start worker processes
+2023/11/30 06:55:31 [notice] 1#1: start worker process 20
+2023/11/30 06:55:31 [notice] 1#1: start worker process 21
+2023/11/30 06:55:31 [notice] 1#1: start worker process 22
+2023/11/30 06:55:31 [notice] 1#1: start worker process 23
+2023/11/30 06:55:31 [notice] 1#1: start worker process 24
+2023/11/30 06:55:31 [notice] 1#1: start worker process 25
+2023/11/30 06:55:31 [notice] 1#1: start worker process 26
+2023/11/30 06:55:31 [notice] 1#1: start worker process 27
+2023/11/30 07:00:06 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:00:06 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:00:06 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:00:06 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:00:06 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:00:06 [notice] 1#1: start worker processes
+2023/11/30 07:00:06 [notice] 1#1: start worker process 20
+2023/11/30 07:00:06 [notice] 1#1: start worker process 21
+2023/11/30 07:00:06 [notice] 1#1: start worker process 22
+2023/11/30 07:00:06 [notice] 1#1: start worker process 23
+2023/11/30 07:00:06 [notice] 1#1: start worker process 24
+2023/11/30 07:00:06 [notice] 1#1: start worker process 25
+2023/11/30 07:00:06 [notice] 1#1: start worker process 26
+2023/11/30 07:00:06 [notice] 1#1: start worker process 27
+2023/11/30 07:00:43 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:03:04 [error] 22#22: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:03:04 [error] 22#22: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:03:04 [error] 22#22: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:03:05 [error] 22#22: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:03:05 [error] 22#22: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:03:05 [error] 22#22: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:05:36 [error] 23#23: *11 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:05:36 [error] 23#23: *11 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:05:36 [error] 23#23: *11 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:05:54 [error] 23#23: *11 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:08:04 [error] 24#24: *16 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:08:06 [error] 24#24: *16 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:08:10 [error] 24#24: *16 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:08:10 [error] 24#24: *16 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:08:17 [error] 24#24: *16 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:15:35 [error] 25#25: *22 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:22:02 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:22:02 [notice] 21#21: gracefully shutting down
+2023/11/30 07:22:02 [notice] 21#21: exiting
+2023/11/30 07:22:02 [notice] 20#20: gracefully shutting down
+2023/11/30 07:22:02 [notice] 22#22: gracefully shutting down
+2023/11/30 07:22:02 [notice] 23#23: gracefully shutting down
+2023/11/30 07:22:02 [notice] 24#24: gracefully shutting down
+2023/11/30 07:22:02 [notice] 24#24: exiting
+2023/11/30 07:22:02 [notice] 26#26: gracefully shutting down
+2023/11/30 07:22:02 [notice] 27#27: gracefully shutting down
+2023/11/30 07:22:02 [notice] 25#25: gracefully shutting down
+2023/11/30 07:22:02 [notice] 21#21: exit
+2023/11/30 07:22:02 [notice] 20#20: exiting
+2023/11/30 07:22:02 [notice] 22#22: exiting
+2023/11/30 07:22:02 [notice] 23#23: exiting
+2023/11/30 07:22:02 [notice] 24#24: exit
+2023/11/30 07:22:02 [notice] 26#26: exiting
+2023/11/30 07:22:02 [notice] 26#26: exit
+2023/11/30 07:22:02 [notice] 27#27: exiting
+2023/11/30 07:22:02 [notice] 25#25: exiting
+2023/11/30 07:22:02 [notice] 20#20: exit
+2023/11/30 07:22:02 [notice] 22#22: exit
+2023/11/30 07:22:02 [notice] 23#23: exit
+2023/11/30 07:22:02 [notice] 27#27: exit
+2023/11/30 07:22:02 [notice] 25#25: exit
+2023/11/30 07:22:02 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 07:22:02 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:22:02 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 07:22:02 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:22:02 [notice] 1#1: exit
+2023/11/30 07:22:03 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:22:03 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:22:03 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:22:03 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:22:03 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:22:03 [notice] 1#1: start worker processes
+2023/11/30 07:22:03 [notice] 1#1: start worker process 20
+2023/11/30 07:22:03 [notice] 1#1: start worker process 21
+2023/11/30 07:22:03 [notice] 1#1: start worker process 22
+2023/11/30 07:22:03 [notice] 1#1: start worker process 23
+2023/11/30 07:22:03 [notice] 1#1: start worker process 24
+2023/11/30 07:22:03 [notice] 1#1: start worker process 25
+2023/11/30 07:22:03 [notice] 1#1: start worker process 26
+2023/11/30 07:22:03 [notice] 1#1: start worker process 27
+2023/11/30 07:22:55 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:22:55 [notice] 20#20: gracefully shutting down
+2023/11/30 07:22:55 [notice] 20#20: exiting
+2023/11/30 07:22:55 [notice] 21#21: gracefully shutting down
+2023/11/30 07:22:55 [notice] 21#21: exiting
+2023/11/30 07:22:55 [notice] 22#22: gracefully shutting down
+2023/11/30 07:22:55 [notice] 25#25: gracefully shutting down
+2023/11/30 07:22:55 [notice] 24#24: gracefully shutting down
+2023/11/30 07:22:55 [notice] 26#26: gracefully shutting down
+2023/11/30 07:22:55 [notice] 26#26: exiting
+2023/11/30 07:22:55 [notice] 27#27: gracefully shutting down
+2023/11/30 07:22:55 [notice] 27#27: exiting
+2023/11/30 07:22:55 [notice] 23#23: gracefully shutting down
+2023/11/30 07:22:55 [notice] 20#20: exit
+2023/11/30 07:22:55 [notice] 21#21: exit
+2023/11/30 07:22:55 [notice] 22#22: exiting
+2023/11/30 07:22:55 [notice] 25#25: exiting
+2023/11/30 07:22:55 [notice] 24#24: exiting
+2023/11/30 07:22:55 [notice] 26#26: exit
+2023/11/30 07:22:55 [notice] 27#27: exit
+2023/11/30 07:22:55 [notice] 23#23: exiting
+2023/11/30 07:22:55 [notice] 22#22: exit
+2023/11/30 07:22:55 [notice] 25#25: exit
+2023/11/30 07:22:55 [notice] 24#24: exit
+2023/11/30 07:22:55 [notice] 23#23: exit
+2023/11/30 07:22:55 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 07:22:55 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:22:55 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 07:22:55 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:22:55 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 07:22:55 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 07:22:55 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:22:55 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:22:55 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:22:55 [notice] 1#1: exit
+2023/11/30 07:22:55 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:22:55 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:22:55 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:22:55 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:22:55 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:22:55 [notice] 1#1: start worker processes
+2023/11/30 07:22:55 [notice] 1#1: start worker process 20
+2023/11/30 07:22:55 [notice] 1#1: start worker process 21
+2023/11/30 07:22:55 [notice] 1#1: start worker process 22
+2023/11/30 07:22:55 [notice] 1#1: start worker process 23
+2023/11/30 07:22:55 [notice] 1#1: start worker process 24
+2023/11/30 07:22:55 [notice] 1#1: start worker process 25
+2023/11/30 07:22:55 [notice] 1#1: start worker process 26
+2023/11/30 07:22:55 [notice] 1#1: start worker process 27
+2023/11/30 07:23:17 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:23:18 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:23:19 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:23:21 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:24:38 [error] 21#21: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:24:47 [error] 21#21: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:24:48 [error] 21#21: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:24:48 [error] 21#21: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:24:48 [error] 21#21: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:24:49 [error] 21#21: *6 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.3:3000/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:29:42 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:29:42 [notice] 24#24: gracefully shutting down
+2023/11/30 07:29:42 [notice] 24#24: exiting
+2023/11/30 07:29:42 [notice] 20#20: gracefully shutting down
+2023/11/30 07:29:42 [notice] 20#20: exiting
+2023/11/30 07:29:42 [notice] 27#27: gracefully shutting down
+2023/11/30 07:29:42 [notice] 22#22: gracefully shutting down
+2023/11/30 07:29:42 [notice] 23#23: gracefully shutting down
+2023/11/30 07:29:42 [notice] 26#26: gracefully shutting down
+2023/11/30 07:29:42 [notice] 25#25: gracefully shutting down
+2023/11/30 07:29:42 [notice] 25#25: exiting
+2023/11/30 07:29:42 [notice] 21#21: gracefully shutting down
+2023/11/30 07:29:42 [notice] 24#24: exit
+2023/11/30 07:29:42 [notice] 20#20: exit
+2023/11/30 07:29:42 [notice] 27#27: exiting
+2023/11/30 07:29:42 [notice] 22#22: exiting
+2023/11/30 07:29:42 [notice] 23#23: exiting
+2023/11/30 07:29:42 [notice] 26#26: exiting
+2023/11/30 07:29:42 [notice] 25#25: exit
+2023/11/30 07:29:42 [notice] 21#21: exiting
+2023/11/30 07:29:42 [notice] 27#27: exit
+2023/11/30 07:29:42 [notice] 22#22: exit
+2023/11/30 07:29:42 [notice] 23#23: exit
+2023/11/30 07:29:42 [notice] 26#26: exit
+2023/11/30 07:29:42 [notice] 21#21: exit
+2023/11/30 07:29:42 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 07:29:42 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:29:42 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:29:42 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:29:42 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:29:42 [notice] 1#1: exit
+2023/11/30 07:29:43 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:29:43 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:29:44 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:29:45 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:29:46 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:29:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 07:29:51 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:29:58 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:30:11 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:30:37 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:32:57 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.4:3000/api/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:32:57 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.4:3000/api/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:32:58 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/company HTTP/1.1", upstream: "http://172.24.0.4:3000/api/company", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:33:27 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET / HTTP/1.1", upstream: "http://172.24.0.4:3000/", host: "localhost"
+2023/11/30 07:33:28 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:33:37 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas HTTP/1.1", upstream: "http://172.24.0.4:3000/uipaas", host: "localhost"
+2023/11/30 07:33:38 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas"
+2023/11/30 07:33:43 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", upstream: "http://172.24.0.4:3000/index.html", host: "localhost"
+2023/11/30 07:33:44 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/"
+2023/11/30 07:34:00 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/"
+2023/11/30 07:34:12 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas/index.html HTTP/1.1", upstream: "http://172.24.0.4:3000/index.html", host: "localhost"
+2023/11/30 07:34:13 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/index.html"
+2023/11/30 07:35:52 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:35:52 [notice] 20#20: gracefully shutting down
+2023/11/30 07:35:52 [notice] 26#26: gracefully shutting down
+2023/11/30 07:35:52 [notice] 21#21: gracefully shutting down
+2023/11/30 07:35:52 [notice] 21#21: exiting
+2023/11/30 07:35:52 [notice] 22#22: gracefully shutting down
+2023/11/30 07:35:52 [notice] 23#23: gracefully shutting down
+2023/11/30 07:35:52 [notice] 23#23: exiting
+2023/11/30 07:35:52 [notice] 24#24: gracefully shutting down
+2023/11/30 07:35:52 [notice] 24#24: exiting
+2023/11/30 07:35:52 [notice] 25#25: gracefully shutting down
+2023/11/30 07:35:52 [notice] 27#27: gracefully shutting down
+2023/11/30 07:35:52 [notice] 20#20: exiting
+2023/11/30 07:35:52 [notice] 26#26: exiting
+2023/11/30 07:35:52 [notice] 21#21: exit
+2023/11/30 07:35:52 [notice] 22#22: exiting
+2023/11/30 07:35:52 [notice] 23#23: exit
+2023/11/30 07:35:52 [notice] 24#24: exit
+2023/11/30 07:35:52 [notice] 25#25: exiting
+2023/11/30 07:35:52 [notice] 27#27: exiting
+2023/11/30 07:35:52 [notice] 20#20: exit
+2023/11/30 07:35:52 [notice] 26#26: exit
+2023/11/30 07:35:52 [notice] 22#22: exit
+2023/11/30 07:35:52 [notice] 25#25: exit
+2023/11/30 07:35:52 [notice] 27#27: exit
+2023/11/30 07:35:52 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 07:35:52 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:35:52 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 07:35:52 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:35:52 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 07:35:52 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:35:52 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:35:52 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:35:52 [notice] 1#1: exit
+2023/11/30 07:35:52 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:35:52 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:35:52 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:35:52 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:35:52 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:35:52 [notice] 1#1: start worker processes
+2023/11/30 07:35:52 [notice] 1#1: start worker process 20
+2023/11/30 07:35:52 [notice] 1#1: start worker process 21
+2023/11/30 07:35:52 [notice] 1#1: start worker process 22
+2023/11/30 07:35:52 [notice] 1#1: start worker process 23
+2023/11/30 07:35:52 [notice] 1#1: start worker process 24
+2023/11/30 07:35:52 [notice] 1#1: start worker process 25
+2023/11/30 07:35:52 [notice] 1#1: start worker process 26
+2023/11/30 07:35:52 [notice] 1#1: start worker process 27
+2023/11/30 07:36:01 [error] 20#20: *1 open() "/usr/share/nginx/htmlindex.html" failed (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/index.html HTTP/1.1", host: "localhost"
+2023/11/30 07:36:02 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/index.html"
+2023/11/30 07:36:02 [error] 20#20: *1 open() "/usr/share/nginx/htmlindex.html" failed (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/index.html HTTP/1.1", host: "localhost"
+2023/11/30 07:36:03 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/index.html"
+2023/11/30 07:36:07 [error] 20#20: *1 open() "/usr/share/nginx/htmlindex.html" failed (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", host: "localhost"
+2023/11/30 07:36:09 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/"
+2023/11/30 07:36:12 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas HTTP/1.1", upstream: "http://172.24.0.4:3000/uipaas", host: "localhost"
+2023/11/30 07:36:13 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas"
+2023/11/30 07:36:15 [error] 20#20: *1 open() "/usr/share/nginx/htmlindex.html" failed (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", host: "localhost"
+2023/11/30 07:36:16 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/"
+2023/11/30 07:36:49 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:36:49 [notice] 20#20: gracefully shutting down
+2023/11/30 07:36:49 [notice] 21#21: gracefully shutting down
+2023/11/30 07:36:49 [notice] 22#22: gracefully shutting down
+2023/11/30 07:36:49 [notice] 23#23: gracefully shutting down
+2023/11/30 07:36:49 [notice] 23#23: exiting
+2023/11/30 07:36:49 [notice] 25#25: gracefully shutting down
+2023/11/30 07:36:49 [notice] 24#24: gracefully shutting down
+2023/11/30 07:36:49 [notice] 24#24: exiting
+2023/11/30 07:36:49 [notice] 26#26: gracefully shutting down
+2023/11/30 07:36:49 [notice] 27#27: gracefully shutting down
+2023/11/30 07:36:49 [notice] 20#20: exiting
+2023/11/30 07:36:49 [notice] 22#22: exiting
+2023/11/30 07:36:49 [notice] 23#23: exit
+2023/11/30 07:36:49 [notice] 25#25: exiting
+2023/11/30 07:36:49 [notice] 24#24: exit
+2023/11/30 07:36:49 [notice] 26#26: exiting
+2023/11/30 07:36:49 [notice] 27#27: exiting
+2023/11/30 07:36:49 [notice] 20#20: exit
+2023/11/30 07:36:49 [notice] 22#22: exit
+2023/11/30 07:36:49 [notice] 25#25: exit
+2023/11/30 07:36:49 [notice] 26#26: exit
+2023/11/30 07:36:49 [notice] 27#27: exit
+2023/11/30 07:36:49 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 07:36:49 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:36:49 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 07:36:49 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:36:49 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:36:49 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 07:36:59 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:36:59 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:36:59 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:36:59 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:36:59 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:36:59 [notice] 1#1: start worker processes
+2023/11/30 07:36:59 [notice] 1#1: start worker process 19
+2023/11/30 07:36:59 [notice] 1#1: start worker process 20
+2023/11/30 07:36:59 [notice] 1#1: start worker process 21
+2023/11/30 07:36:59 [notice] 1#1: start worker process 22
+2023/11/30 07:36:59 [notice] 1#1: start worker process 23
+2023/11/30 07:36:59 [notice] 1#1: start worker process 24
+2023/11/30 07:36:59 [notice] 1#1: start worker process 25
+2023/11/30 07:36:59 [notice] 1#1: start worker process 26
+2023/11/30 07:37:00 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:37:00 [notice] 20#20: gracefully shutting down
+2023/11/30 07:37:00 [notice] 20#20: exiting
+2023/11/30 07:37:00 [notice] 21#21: gracefully shutting down
+2023/11/30 07:37:00 [notice] 21#21: exiting
+2023/11/30 07:37:00 [notice] 19#19: gracefully shutting down
+2023/11/30 07:37:00 [notice] 19#19: exiting
+2023/11/30 07:37:00 [notice] 25#25: gracefully shutting down
+2023/11/30 07:37:00 [notice] 25#25: exiting
+2023/11/30 07:37:00 [notice] 22#22: gracefully shutting down
+2023/11/30 07:37:00 [notice] 22#22: exiting
+2023/11/30 07:37:00 [notice] 24#24: gracefully shutting down
+2023/11/30 07:37:00 [notice] 24#24: exiting
+2023/11/30 07:37:00 [notice] 23#23: gracefully shutting down
+2023/11/30 07:37:00 [notice] 23#23: exiting
+2023/11/30 07:37:00 [notice] 26#26: gracefully shutting down
+2023/11/30 07:37:00 [notice] 20#20: exit
+2023/11/30 07:37:00 [notice] 21#21: exit
+2023/11/30 07:37:00 [notice] 19#19: exit
+2023/11/30 07:37:00 [notice] 25#25: exit
+2023/11/30 07:37:00 [notice] 22#22: exit
+2023/11/30 07:37:00 [notice] 24#24: exit
+2023/11/30 07:37:00 [notice] 23#23: exit
+2023/11/30 07:37:00 [notice] 26#26: exiting
+2023/11/30 07:37:00 [notice] 26#26: exit
+2023/11/30 07:37:00 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 07:37:00 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:37:00 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:37:00 [notice] 1#1: worker process 19 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:37:00 [notice] 1#1: exit
+2023/11/30 07:37:01 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:37:01 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:37:01 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:37:01 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:37:01 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:37:01 [notice] 1#1: start worker processes
+2023/11/30 07:37:01 [notice] 1#1: start worker process 20
+2023/11/30 07:37:01 [notice] 1#1: start worker process 21
+2023/11/30 07:37:01 [notice] 1#1: start worker process 22
+2023/11/30 07:37:01 [notice] 1#1: start worker process 23
+2023/11/30 07:37:01 [notice] 1#1: start worker process 24
+2023/11/30 07:37:01 [notice] 1#1: start worker process 25
+2023/11/30 07:37:01 [notice] 1#1: start worker process 26
+2023/11/30 07:37:01 [notice] 1#1: start worker process 27
+2023/11/30 07:37:04 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", upstream: "http://172.24.0.4:3000/index.html", host: "localhost"
+2023/11/30 07:37:05 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/"
+2023/11/30 07:37:12 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas/index,html HTTP/1.1", upstream: "http://172.24.0.4:3000/index.html", host: "localhost"
+2023/11/30 07:37:13 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/index,html"
+2023/11/30 07:37:19 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas/index.html HTTP/1.1", upstream: "http://172.24.0.4:3000/index.html", host: "localhost"
+2023/11/30 07:37:20 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas/index.html"
+2023/11/30 07:37:25 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /uipaas HTTP/1.1", upstream: "http://172.24.0.4:3000/index.html", host: "localhost"
+2023/11/30 07:37:26 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/uipaas"
+2023/11/30 07:38:16 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET / HTTP/1.1", upstream: "http://172.24.0.4:3000/", host: "localhost"
+2023/11/30 07:38:18 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://172.24.0.4:3000/favicon.ico", host: "localhost", referrer: "http://localhost/"
+2023/11/30 07:40:32 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:40:32 [notice] 26#26: gracefully shutting down
+2023/11/30 07:40:32 [notice] 26#26: exiting
+2023/11/30 07:40:32 [notice] 24#24: gracefully shutting down
+2023/11/30 07:40:32 [notice] 24#24: exiting
+2023/11/30 07:40:32 [notice] 21#21: gracefully shutting down
+2023/11/30 07:40:32 [notice] 22#22: gracefully shutting down
+2023/11/30 07:40:32 [notice] 23#23: gracefully shutting down
+2023/11/30 07:40:32 [notice] 25#25: gracefully shutting down
+2023/11/30 07:40:32 [notice] 20#20: gracefully shutting down
+2023/11/30 07:40:32 [notice] 20#20: exiting
+2023/11/30 07:40:32 [notice] 27#27: gracefully shutting down
+2023/11/30 07:40:32 [notice] 26#26: exit
+2023/11/30 07:40:32 [notice] 24#24: exit
+2023/11/30 07:40:32 [notice] 21#21: exiting
+2023/11/30 07:40:32 [notice] 22#22: exiting
+2023/11/30 07:40:32 [notice] 23#23: exiting
+2023/11/30 07:40:32 [notice] 25#25: exiting
+2023/11/30 07:40:32 [notice] 20#20: exit
+2023/11/30 07:40:32 [notice] 27#27: exiting
+2023/11/30 07:40:32 [notice] 21#21: exit
+2023/11/30 07:40:32 [notice] 22#22: exit
+2023/11/30 07:40:32 [notice] 23#23: exit
+2023/11/30 07:40:32 [notice] 25#25: exit
+2023/11/30 07:40:32 [notice] 27#27: exit
+2023/11/30 07:40:32 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 07:40:32 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:40:32 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 07:40:32 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:40:32 [notice] 1#1: exit
+2023/11/30 07:40:32 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:40:32 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:40:32 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:40:32 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:40:32 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:40:32 [notice] 1#1: start worker processes
+2023/11/30 07:40:32 [notice] 1#1: start worker process 20
+2023/11/30 07:40:32 [notice] 1#1: start worker process 21
+2023/11/30 07:40:32 [notice] 1#1: start worker process 22
+2023/11/30 07:40:32 [notice] 1#1: start worker process 23
+2023/11/30 07:40:32 [notice] 1#1: start worker process 24
+2023/11/30 07:40:32 [notice] 1#1: start worker process 25
+2023/11/30 07:40:32 [notice] 1#1: start worker process 26
+2023/11/30 07:40:32 [notice] 1#1: start worker process 27
+2023/11/30 07:41:47 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:41:47 [notice] 20#20: gracefully shutting down
+2023/11/30 07:41:47 [notice] 21#21: gracefully shutting down
+2023/11/30 07:41:47 [notice] 22#22: gracefully shutting down
+2023/11/30 07:41:47 [notice] 23#23: gracefully shutting down
+2023/11/30 07:41:47 [notice] 23#23: exiting
+2023/11/30 07:41:47 [notice] 24#24: gracefully shutting down
+2023/11/30 07:41:47 [notice] 24#24: exiting
+2023/11/30 07:41:47 [notice] 26#26: gracefully shutting down
+2023/11/30 07:41:47 [notice] 25#25: gracefully shutting down
+2023/11/30 07:41:47 [notice] 27#27: gracefully shutting down
+2023/11/30 07:41:47 [notice] 20#20: exiting
+2023/11/30 07:41:47 [notice] 21#21: exiting
+2023/11/30 07:41:47 [notice] 22#22: exiting
+2023/11/30 07:41:47 [notice] 23#23: exit
+2023/11/30 07:41:47 [notice] 24#24: exit
+2023/11/30 07:41:47 [notice] 26#26: exiting
+2023/11/30 07:41:47 [notice] 25#25: exiting
+2023/11/30 07:41:47 [notice] 27#27: exiting
+2023/11/30 07:41:47 [notice] 20#20: exit
+2023/11/30 07:41:47 [notice] 21#21: exit
+2023/11/30 07:41:47 [notice] 22#22: exit
+2023/11/30 07:41:47 [notice] 26#26: exit
+2023/11/30 07:41:47 [notice] 25#25: exit
+2023/11/30 07:41:47 [notice] 27#27: exit
+2023/11/30 07:41:47 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 07:41:47 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:41:47 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 07:41:47 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:41:47 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:41:47 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:41:47 [notice] 1#1: exit
+2023/11/30 07:41:47 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:41:47 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:41:47 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:41:47 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:41:47 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:41:47 [notice] 1#1: start worker processes
+2023/11/30 07:41:47 [notice] 1#1: start worker process 20
+2023/11/30 07:41:47 [notice] 1#1: start worker process 21
+2023/11/30 07:41:47 [notice] 1#1: start worker process 22
+2023/11/30 07:41:47 [notice] 1#1: start worker process 23
+2023/11/30 07:41:47 [notice] 1#1: start worker process 24
+2023/11/30 07:41:47 [notice] 1#1: start worker process 25
+2023/11/30 07:41:47 [notice] 1#1: start worker process 26
+2023/11/30 07:41:47 [notice] 1#1: start worker process 27
+2023/11/30 07:43:24 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:43:24 [notice] 20#20: gracefully shutting down
+2023/11/30 07:43:24 [notice] 21#21: gracefully shutting down
+2023/11/30 07:43:24 [notice] 22#22: gracefully shutting down
+2023/11/30 07:43:24 [notice] 23#23: gracefully shutting down
+2023/11/30 07:43:24 [notice] 24#24: gracefully shutting down
+2023/11/30 07:43:24 [notice] 25#25: gracefully shutting down
+2023/11/30 07:43:24 [notice] 27#27: gracefully shutting down
+2023/11/30 07:43:24 [notice] 26#26: gracefully shutting down
+2023/11/30 07:43:24 [notice] 20#20: exiting
+2023/11/30 07:43:24 [notice] 21#21: exiting
+2023/11/30 07:43:24 [notice] 22#22: exiting
+2023/11/30 07:43:24 [notice] 23#23: exiting
+2023/11/30 07:43:24 [notice] 24#24: exiting
+2023/11/30 07:43:24 [notice] 25#25: exiting
+2023/11/30 07:43:24 [notice] 27#27: exiting
+2023/11/30 07:43:24 [notice] 26#26: exiting
+2023/11/30 07:43:24 [notice] 20#20: exit
+2023/11/30 07:43:24 [notice] 21#21: exit
+2023/11/30 07:43:24 [notice] 22#22: exit
+2023/11/30 07:43:24 [notice] 23#23: exit
+2023/11/30 07:43:24 [notice] 24#24: exit
+2023/11/30 07:43:24 [notice] 25#25: exit
+2023/11/30 07:43:24 [notice] 27#27: exit
+2023/11/30 07:43:24 [notice] 26#26: exit
+2023/11/30 07:43:24 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:43:24 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:43:24 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/11/30 07:43:24 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:43:24 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:43:24 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:43:24 [notice] 1#1: exit
+2023/11/30 07:43:24 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:43:24 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:43:24 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:43:24 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:43:24 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:43:24 [notice] 1#1: start worker processes
+2023/11/30 07:43:24 [notice] 1#1: start worker process 20
+2023/11/30 07:43:24 [notice] 1#1: start worker process 21
+2023/11/30 07:43:24 [notice] 1#1: start worker process 22
+2023/11/30 07:43:24 [notice] 1#1: start worker process 23
+2023/11/30 07:43:24 [notice] 1#1: start worker process 24
+2023/11/30 07:43:24 [notice] 1#1: start worker process 25
+2023/11/30 07:43:24 [notice] 1#1: start worker process 26
+2023/11/30 07:43:24 [notice] 1#1: start worker process 27
+2023/11/30 07:49:49 [error] 21#21: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /v1/company HTTP/1.1", upstream: "http://172.24.0.4:3000/company", host: "127.0.0.1"
+2023/11/30 07:50:22 [error] 21#21: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /v1/company HTTP/1.1", upstream: "http://172.24.0.4:3000/company", host: "127.0.0.1"
+2023/11/30 07:50:49 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:50:49 [notice] 20#20: gracefully shutting down
+2023/11/30 07:50:49 [notice] 27#27: gracefully shutting down
+2023/11/30 07:50:49 [notice] 21#21: gracefully shutting down
+2023/11/30 07:50:49 [notice] 22#22: gracefully shutting down
+2023/11/30 07:50:49 [notice] 22#22: exiting
+2023/11/30 07:50:49 [notice] 23#23: gracefully shutting down
+2023/11/30 07:50:49 [notice] 23#23: exiting
+2023/11/30 07:50:49 [notice] 23#23: exit
+2023/11/30 07:50:49 [notice] 24#24: gracefully shutting down
+2023/11/30 07:50:49 [notice] 26#26: gracefully shutting down
+2023/11/30 07:50:49 [notice] 26#26: exiting
+2023/11/30 07:50:49 [notice] 25#25: gracefully shutting down
+2023/11/30 07:50:49 [notice] 25#25: exiting
+2023/11/30 07:50:49 [notice] 20#20: exiting
+2023/11/30 07:50:49 [notice] 27#27: exiting
+2023/11/30 07:50:49 [notice] 21#21: exiting
+2023/11/30 07:50:49 [notice] 22#22: exit
+2023/11/30 07:50:49 [notice] 24#24: exiting
+2023/11/30 07:50:49 [notice] 26#26: exit
+2023/11/30 07:50:49 [notice] 25#25: exit
+2023/11/30 07:50:49 [notice] 20#20: exit
+2023/11/30 07:50:49 [notice] 27#27: exit
+2023/11/30 07:50:49 [notice] 21#21: exit
+2023/11/30 07:50:49 [notice] 24#24: exit
+2023/11/30 07:50:49 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:50:49 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:50:49 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:50:49 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:50:49 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 07:50:49 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:50:49 [notice] 1#1: exit
+2023/11/30 07:50:49 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:50:49 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:50:49 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:50:49 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:50:49 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:50:49 [notice] 1#1: start worker processes
+2023/11/30 07:50:49 [notice] 1#1: start worker process 20
+2023/11/30 07:50:49 [notice] 1#1: start worker process 21
+2023/11/30 07:50:49 [notice] 1#1: start worker process 22
+2023/11/30 07:50:49 [notice] 1#1: start worker process 23
+2023/11/30 07:50:49 [notice] 1#1: start worker process 24
+2023/11/30 07:50:49 [notice] 1#1: start worker process 25
+2023/11/30 07:50:49 [notice] 1#1: start worker process 26
+2023/11/30 07:50:49 [notice] 1#1: start worker process 27
+2023/11/30 07:50:53 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/v1/company HTTP/1.1", upstream: "http://172.24.0.4:3000/company", host: "127.0.0.1"
+2023/11/30 07:50:57 [error] 20#20: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "POST /api/v1/company HTTP/1.1", upstream: "http://172.24.0.4:3000/company", host: "127.0.0.1"
+2023/11/30 07:53:26 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:53:26 [notice] 22#22: gracefully shutting down
+2023/11/30 07:53:26 [notice] 22#22: exiting
+2023/11/30 07:53:26 [notice] 26#26: gracefully shutting down
+2023/11/30 07:53:26 [notice] 20#20: gracefully shutting down
+2023/11/30 07:53:26 [notice] 21#21: gracefully shutting down
+2023/11/30 07:53:26 [notice] 27#27: gracefully shutting down
+2023/11/30 07:53:26 [notice] 24#24: gracefully shutting down
+2023/11/30 07:53:26 [notice] 23#23: gracefully shutting down
+2023/11/30 07:53:26 [notice] 25#25: gracefully shutting down
+2023/11/30 07:53:26 [notice] 22#22: exit
+2023/11/30 07:53:26 [notice] 26#26: exiting
+2023/11/30 07:53:26 [notice] 20#20: exiting
+2023/11/30 07:53:26 [notice] 21#21: exiting
+2023/11/30 07:53:26 [notice] 27#27: exiting
+2023/11/30 07:53:26 [notice] 24#24: exiting
+2023/11/30 07:53:26 [notice] 23#23: exiting
+2023/11/30 07:53:26 [notice] 25#25: exiting
+2023/11/30 07:53:26 [notice] 26#26: exit
+2023/11/30 07:53:26 [notice] 20#20: exit
+2023/11/30 07:53:26 [notice] 21#21: exit
+2023/11/30 07:53:26 [notice] 27#27: exit
+2023/11/30 07:53:26 [notice] 24#24: exit
+2023/11/30 07:53:26 [notice] 23#23: exit
+2023/11/30 07:53:26 [notice] 25#25: exit
+2023/11/30 07:53:26 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 07:53:26 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:53:26 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:53:26 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:53:26 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 07:53:26 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:53:26 [notice] 1#1: exit
+2023/11/30 07:53:27 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:53:27 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:53:27 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:53:27 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:53:27 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:53:27 [notice] 1#1: start worker processes
+2023/11/30 07:53:27 [notice] 1#1: start worker process 20
+2023/11/30 07:53:27 [notice] 1#1: start worker process 21
+2023/11/30 07:53:27 [notice] 1#1: start worker process 22
+2023/11/30 07:53:27 [notice] 1#1: start worker process 23
+2023/11/30 07:53:27 [notice] 1#1: start worker process 24
+2023/11/30 07:53:27 [notice] 1#1: start worker process 25
+2023/11/30 07:53:27 [notice] 1#1: start worker process 26
+2023/11/30 07:53:27 [notice] 1#1: start worker process 27
+2023/11/30 07:54:54 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:54:54 [notice] 20#20: gracefully shutting down
+2023/11/30 07:54:54 [notice] 21#21: gracefully shutting down
+2023/11/30 07:54:54 [notice] 21#21: exiting
+2023/11/30 07:54:54 [notice] 22#22: gracefully shutting down
+2023/11/30 07:54:54 [notice] 22#22: exiting
+2023/11/30 07:54:54 [notice] 23#23: gracefully shutting down
+2023/11/30 07:54:54 [notice] 24#24: gracefully shutting down
+2023/11/30 07:54:54 [notice] 24#24: exiting
+2023/11/30 07:54:54 [notice] 26#26: gracefully shutting down
+2023/11/30 07:54:54 [notice] 26#26: exiting
+2023/11/30 07:54:54 [notice] 27#27: gracefully shutting down
+2023/11/30 07:54:54 [notice] 25#25: gracefully shutting down
+2023/11/30 07:54:54 [notice] 20#20: exiting
+2023/11/30 07:54:54 [notice] 21#21: exit
+2023/11/30 07:54:54 [notice] 22#22: exit
+2023/11/30 07:54:54 [notice] 23#23: exiting
+2023/11/30 07:54:54 [notice] 24#24: exit
+2023/11/30 07:54:54 [notice] 26#26: exit
+2023/11/30 07:54:54 [notice] 27#27: exiting
+2023/11/30 07:54:54 [notice] 25#25: exiting
+2023/11/30 07:54:54 [notice] 20#20: exit
+2023/11/30 07:54:54 [notice] 23#23: exit
+2023/11/30 07:54:54 [notice] 27#27: exit
+2023/11/30 07:54:54 [notice] 25#25: exit
+2023/11/30 07:54:54 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 07:54:54 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:54:54 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/30 07:54:54 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:54:54 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 07:54:54 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:54:54 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:54:54 [notice] 1#1: exit
+2023/11/30 07:54:55 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:54:55 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:54:55 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:54:55 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:54:55 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:54:55 [notice] 1#1: start worker processes
+2023/11/30 07:54:55 [notice] 1#1: start worker process 20
+2023/11/30 07:54:55 [notice] 1#1: start worker process 21
+2023/11/30 07:54:55 [notice] 1#1: start worker process 22
+2023/11/30 07:54:55 [notice] 1#1: start worker process 23
+2023/11/30 07:54:55 [notice] 1#1: start worker process 24
+2023/11/30 07:54:55 [notice] 1#1: start worker process 25
+2023/11/30 07:54:55 [notice] 1#1: start worker process 26
+2023/11/30 07:54:55 [notice] 1#1: start worker process 27
+2023/11/30 07:55:15 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:55:15 [notice] 20#20: gracefully shutting down
+2023/11/30 07:55:15 [notice] 26#26: gracefully shutting down
+2023/11/30 07:55:15 [notice] 21#21: gracefully shutting down
+2023/11/30 07:55:15 [notice] 21#21: exiting
+2023/11/30 07:55:15 [notice] 23#23: gracefully shutting down
+2023/11/30 07:55:15 [notice] 23#23: exiting
+2023/11/30 07:55:15 [notice] 24#24: gracefully shutting down
+2023/11/30 07:55:15 [notice] 27#27: gracefully shutting down
+2023/11/30 07:55:15 [notice] 27#27: exiting
+2023/11/30 07:55:15 [notice] 25#25: gracefully shutting down
+2023/11/30 07:55:15 [notice] 22#22: gracefully shutting down
+2023/11/30 07:55:15 [notice] 20#20: exiting
+2023/11/30 07:55:15 [notice] 26#26: exiting
+2023/11/30 07:55:15 [notice] 21#21: exit
+2023/11/30 07:55:15 [notice] 23#23: exit
+2023/11/30 07:55:15 [notice] 24#24: exiting
+2023/11/30 07:55:15 [notice] 27#27: exit
+2023/11/30 07:55:15 [notice] 25#25: exiting
+2023/11/30 07:55:15 [notice] 22#22: exiting
+2023/11/30 07:55:15 [notice] 20#20: exit
+2023/11/30 07:55:15 [notice] 26#26: exit
+2023/11/30 07:55:15 [notice] 24#24: exit
+2023/11/30 07:55:15 [notice] 25#25: exit
+2023/11/30 07:55:15 [notice] 22#22: exit
+2023/11/30 07:55:15 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 07:55:15 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:55:15 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/30 07:55:15 [notice] 1#1: signal 17 (SIGCHLD) received from 27
+2023/11/30 07:55:15 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:55:15 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 07:55:15 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:55:15 [notice] 1#1: exit
+2023/11/30 07:55:15 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:16 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:17 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:17 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:18 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:20 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:24 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:30 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:55:43 [emerg] 1#1: duplicate location "/" in /etc/nginx/conf.d/nginx.conf:17
+2023/11/30 07:56:01 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:56:01 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:56:01 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:56:01 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:56:01 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:56:01 [notice] 1#1: start worker processes
+2023/11/30 07:56:01 [notice] 1#1: start worker process 20
+2023/11/30 07:56:01 [notice] 1#1: start worker process 21
+2023/11/30 07:56:01 [notice] 1#1: start worker process 22
+2023/11/30 07:56:01 [notice] 1#1: start worker process 23
+2023/11/30 07:56:01 [notice] 1#1: start worker process 24
+2023/11/30 07:56:01 [notice] 1#1: start worker process 25
+2023/11/30 07:56:01 [notice] 1#1: start worker process 26
+2023/11/30 07:56:01 [notice] 1#1: start worker process 27
+2023/11/30 07:57:24 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 07:57:24 [notice] 20#20: gracefully shutting down
+2023/11/30 07:57:24 [notice] 20#20: exiting
+2023/11/30 07:57:24 [notice] 21#21: gracefully shutting down
+2023/11/30 07:57:24 [notice] 22#22: gracefully shutting down
+2023/11/30 07:57:24 [notice] 23#23: gracefully shutting down
+2023/11/30 07:57:24 [notice] 23#23: exiting
+2023/11/30 07:57:24 [notice] 24#24: gracefully shutting down
+2023/11/30 07:57:24 [notice] 24#24: exiting
+2023/11/30 07:57:24 [notice] 25#25: gracefully shutting down
+2023/11/30 07:57:24 [notice] 25#25: exiting
+2023/11/30 07:57:24 [notice] 26#26: gracefully shutting down
+2023/11/30 07:57:24 [notice] 27#27: gracefully shutting down
+2023/11/30 07:57:24 [notice] 27#27: exiting
+2023/11/30 07:57:24 [notice] 20#20: exit
+2023/11/30 07:57:24 [notice] 22#22: exiting
+2023/11/30 07:57:24 [notice] 23#23: exit
+2023/11/30 07:57:24 [notice] 24#24: exit
+2023/11/30 07:57:24 [notice] 25#25: exit
+2023/11/30 07:57:24 [notice] 26#26: exiting
+2023/11/30 07:57:24 [notice] 27#27: exit
+2023/11/30 07:57:24 [notice] 22#22: exit
+2023/11/30 07:57:24 [notice] 26#26: exit
+2023/11/30 07:57:24 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/11/30 07:57:24 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:57:24 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 07:57:24 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:57:24 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 07:57:24 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 07:57:24 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 07:57:32 [notice] 21#21: exiting
+2023/11/30 07:57:32 [notice] 21#21: exit
+2023/11/30 07:57:32 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/11/30 07:57:32 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 07:57:32 [notice] 1#1: exit
+2023/11/30 07:57:33 [notice] 1#1: using the "epoll" event method
+2023/11/30 07:57:33 [notice] 1#1: nginx/1.24.0
+2023/11/30 07:57:33 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 07:57:33 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 07:57:33 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 07:57:33 [notice] 1#1: start worker processes
+2023/11/30 07:57:33 [notice] 1#1: start worker process 20
+2023/11/30 07:57:33 [notice] 1#1: start worker process 21
+2023/11/30 07:57:33 [notice] 1#1: start worker process 22
+2023/11/30 07:57:33 [notice] 1#1: start worker process 23
+2023/11/30 07:57:33 [notice] 1#1: start worker process 24
+2023/11/30 07:57:33 [notice] 1#1: start worker process 25
+2023/11/30 07:57:33 [notice] 1#1: start worker process 26
+2023/11/30 07:57:33 [notice] 1#1: start worker process 27
+2023/11/30 07:57:39 [error] 21#21: *1 "/usr/share/nginx/html/uipaas/index.html" is not found (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", host: "localhost"
+2023/11/30 07:57:44 [error] 21#21: *1 "/usr/share/nginx/html/uipaas/index.html" is not found (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", host: "localhost"
+2023/11/30 07:57:50 [error] 21#21: *1 open() "/usr/share/nginx/html/uipaas/index.html" failed (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/index.html HTTP/1.1", host: "localhost"
+2023/11/30 08:00:56 [error] 22#22: *4 open() "/usr/share/nginx/html/uipaas/index.html" failed (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/index.html HTTP/1.1", host: "localhost"
+2023/11/30 08:00:59 [error] 22#22: *4 "/usr/share/nginx/html/uipaas/index.html" is not found (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", host: "localhost"
+2023/11/30 08:01:00 [error] 22#22: *4 "/usr/share/nginx/html/uipaas/index.html" is not found (2: No such file or directory), client: 192.168.65.1, server: , request: "GET /uipaas/ HTTP/1.1", host: "localhost"
+2023/11/30 08:01:31 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 08:01:31 [notice] 20#20: gracefully shutting down
+2023/11/30 08:01:31 [notice] 21#21: gracefully shutting down
+2023/11/30 08:01:31 [notice] 21#21: exiting
+2023/11/30 08:01:31 [notice] 22#22: gracefully shutting down
+2023/11/30 08:01:31 [notice] 23#23: gracefully shutting down
+2023/11/30 08:01:31 [notice] 25#25: gracefully shutting down
+2023/11/30 08:01:31 [notice] 25#25: exiting
+2023/11/30 08:01:31 [notice] 24#24: gracefully shutting down
+2023/11/30 08:01:31 [notice] 24#24: exiting
+2023/11/30 08:01:31 [notice] 27#27: gracefully shutting down
+2023/11/30 08:01:31 [notice] 27#27: exiting
+2023/11/30 08:01:31 [notice] 26#26: gracefully shutting down
+2023/11/30 08:01:31 [notice] 20#20: exiting
+2023/11/30 08:01:31 [notice] 21#21: exit
+2023/11/30 08:01:31 [notice] 23#23: exiting
+2023/11/30 08:01:31 [notice] 25#25: exit
+2023/11/30 08:01:31 [notice] 24#24: exit
+2023/11/30 08:01:31 [notice] 27#27: exit
+2023/11/30 08:01:31 [notice] 26#26: exiting
+2023/11/30 08:01:31 [notice] 20#20: exit
+2023/11/30 08:01:31 [notice] 23#23: exit
+2023/11/30 08:01:31 [notice] 26#26: exit
+2023/11/30 08:01:31 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/30 08:01:31 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 08:01:31 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/30 08:01:31 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 08:01:41 [notice] 1#1: using the "epoll" event method
+2023/11/30 08:01:41 [notice] 1#1: nginx/1.24.0
+2023/11/30 08:01:41 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 08:01:41 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 08:01:41 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 08:01:41 [notice] 1#1: start worker processes
+2023/11/30 08:01:41 [notice] 1#1: start worker process 20
+2023/11/30 08:01:41 [notice] 1#1: start worker process 21
+2023/11/30 08:01:41 [notice] 1#1: start worker process 22
+2023/11/30 08:01:41 [notice] 1#1: start worker process 23
+2023/11/30 08:01:41 [notice] 1#1: start worker process 24
+2023/11/30 08:01:41 [notice] 1#1: start worker process 25
+2023/11/30 08:01:41 [notice] 1#1: start worker process 26
+2023/11/30 08:01:41 [notice] 1#1: start worker process 27
+2023/11/30 08:05:19 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/30 08:05:19 [notice] 20#20: gracefully shutting down
+2023/11/30 08:05:19 [notice] 21#21: gracefully shutting down
+2023/11/30 08:05:19 [notice] 22#22: gracefully shutting down
+2023/11/30 08:05:19 [notice] 22#22: exiting
+2023/11/30 08:05:19 [notice] 23#23: gracefully shutting down
+2023/11/30 08:05:19 [notice] 24#24: gracefully shutting down
+2023/11/30 08:05:19 [notice] 24#24: exiting
+2023/11/30 08:05:19 [notice] 25#25: gracefully shutting down
+2023/11/30 08:05:19 [notice] 25#25: exiting
+2023/11/30 08:05:19 [notice] 26#26: gracefully shutting down
+2023/11/30 08:05:19 [notice] 27#27: gracefully shutting down
+2023/11/30 08:05:19 [notice] 20#20: exiting
+2023/11/30 08:05:19 [notice] 21#21: exiting
+2023/11/30 08:05:19 [notice] 22#22: exit
+2023/11/30 08:05:19 [notice] 23#23: exiting
+2023/11/30 08:05:19 [notice] 24#24: exit
+2023/11/30 08:05:19 [notice] 25#25: exit
+2023/11/30 08:05:19 [notice] 26#26: exiting
+2023/11/30 08:05:19 [notice] 27#27: exiting
+2023/11/30 08:05:19 [notice] 20#20: exit
+2023/11/30 08:05:19 [notice] 21#21: exit
+2023/11/30 08:05:19 [notice] 23#23: exit
+2023/11/30 08:05:19 [notice] 26#26: exit
+2023/11/30 08:05:19 [notice] 27#27: exit
+2023/11/30 08:05:19 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/11/30 08:05:19 [notice] 1#1: worker process 20 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 21 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 22 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 23 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 25 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 26 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 27 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: worker process 24 exited with code 0
+2023/11/30 08:05:19 [notice] 1#1: exit
+2023/11/30 08:05:20 [notice] 1#1: using the "epoll" event method
+2023/11/30 08:05:20 [notice] 1#1: nginx/1.24.0
+2023/11/30 08:05:20 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/30 08:05:20 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/30 08:05:20 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/30 08:05:20 [notice] 1#1: start worker processes
+2023/11/30 08:05:20 [notice] 1#1: start worker process 20
+2023/11/30 08:05:20 [notice] 1#1: start worker process 21
+2023/11/30 08:05:20 [notice] 1#1: start worker process 22
+2023/11/30 08:05:20 [notice] 1#1: start worker process 23
+2023/11/30 08:05:20 [notice] 1#1: start worker process 24
+2023/11/30 08:05:20 [notice] 1#1: start worker process 25
+2023/11/30 08:05:20 [notice] 1#1: start worker process 26
+2023/11/30 08:05:20 [notice] 1#1: start worker process 27
