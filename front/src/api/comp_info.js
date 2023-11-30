@@ -9,4 +9,15 @@ function saveCompInfo(data){
     })
 }
 
-export   {saveCompInfo}
+function test() {
+    return request({
+        url: '/',
+        method: 'get',
+        Headers: {'Content-Type': 'application'}
+    })
+}
+
+export {
+    saveCompInfo,
+    test,
+}

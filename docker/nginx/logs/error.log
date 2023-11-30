@@ -1,0 +1,172 @@
+2023/11/29 05:44:11 [notice] 1#1: using the "epoll" event method
+2023/11/29 05:44:11 [notice] 1#1: nginx/1.24.0
+2023/11/29 05:44:11 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/29 05:44:11 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/29 05:44:11 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/29 05:44:11 [notice] 1#1: start worker processes
+2023/11/29 05:44:11 [notice] 1#1: start worker process 20
+2023/11/29 05:44:11 [notice] 1#1: start worker process 21
+2023/11/29 05:44:11 [notice] 1#1: start worker process 22
+2023/11/29 05:44:11 [notice] 1#1: start worker process 23
+2023/11/29 05:44:11 [notice] 1#1: start worker process 24
+2023/11/29 05:44:11 [notice] 1#1: start worker process 25
+2023/11/29 05:44:11 [notice] 1#1: start worker process 26
+2023/11/29 05:44:11 [notice] 1#1: start worker process 27
+2023/11/29 05:50:57 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/11/29 05:50:57 [notice] 20#20: gracefully shutting down
+2023/11/29 05:50:57 [notice] 27#27: gracefully shutting down
+2023/11/29 05:50:57 [notice] 21#21: gracefully shutting down
+2023/11/29 05:50:57 [notice] 21#21: exiting
+2023/11/29 05:50:57 [notice] 22#22: gracefully shutting down
+2023/11/29 05:50:57 [notice] 22#22: exiting
+2023/11/29 05:50:57 [notice] 23#23: gracefully shutting down
+2023/11/29 05:50:57 [notice] 24#24: gracefully shutting down
+2023/11/29 05:50:57 [notice] 25#25: gracefully shutting down
+2023/11/29 05:50:57 [notice] 25#25: exiting
+2023/11/29 05:50:57 [notice] 26#26: gracefully shutting down
+2023/11/29 05:50:57 [notice] 26#26: exiting
+2023/11/29 05:50:57 [notice] 20#20: exiting
+2023/11/29 05:50:57 [notice] 27#27: exiting
+2023/11/29 05:50:57 [notice] 21#21: exit
+2023/11/29 05:50:57 [notice] 22#22: exit
+2023/11/29 05:50:57 [notice] 23#23: exiting
+2023/11/29 05:50:57 [notice] 23#23: exit
+2023/11/29 05:50:57 [notice] 24#24: exiting
+2023/11/29 05:50:57 [notice] 25#25: exit
+2023/11/29 05:50:57 [notice] 26#26: exit
+2023/11/29 05:50:57 [notice] 20#20: exit
+2023/11/29 05:50:57 [notice] 27#27: exit
+2023/11/29 05:50:57 [notice] 24#24: exit
+2023/11/29 05:50:57 [notice] 1#1: signal 17 (SIGCHLD) received from 26
+2023/11/29 05:50:57 [notice] 1#1: worker process 21 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: worker process 24 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: worker process 26 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: signal 29 (SIGIO) received
+2023/11/29 05:50:57 [notice] 1#1: signal 17 (SIGCHLD) received from 24
+2023/11/29 05:50:57 [notice] 1#1: signal 17 (SIGCHLD) received from 25
+2023/11/29 05:50:57 [notice] 1#1: worker process 20 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: worker process 22 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: worker process 23 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: worker process 25 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: worker process 27 exited with code 0
+2023/11/29 05:50:57 [notice] 1#1: exit
+2023/11/29 05:50:58 [notice] 1#1: using the "epoll" event method
+2023/11/29 05:50:58 [notice] 1#1: nginx/1.24.0
+2023/11/29 05:50:58 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/11/29 05:50:58 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/11/29 05:50:58 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/11/29 05:50:58 [notice] 1#1: start worker processes
+2023/11/29 05:50:58 [notice] 1#1: start worker process 20
+2023/11/29 05:50:58 [notice] 1#1: start worker process 21
+2023/11/29 05:50:58 [notice] 1#1: start worker process 22
+2023/11/29 05:50:58 [notice] 1#1: start worker process 23
+2023/11/29 05:50:58 [notice] 1#1: start worker process 24
+2023/11/29 05:50:58 [notice] 1#1: start worker process 25
+2023/11/29 05:50:58 [notice] 1#1: start worker process 26
+2023/11/29 05:50:58 [notice] 1#1: start worker process 27
+2023/11/30 01:37:19 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:19 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:20 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:21 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:22 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:24 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:28 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:37:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:38:14 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:39:05 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:40:06 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:06 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:38 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:39 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:41 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:48 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:41:54 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:42:07 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:42:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:43:25 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:44:25 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:45:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:46:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 01:47:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:41 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:43 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:44 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:46 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:49 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:01:56 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:37 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:38 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:38 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:39 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:46 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:05:52 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:06:06 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:06:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:23 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:34 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:37 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:07:47 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:08:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:08:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:09:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:27 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:28 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:28 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:29 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:42 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:10:55 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:11:21 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:14 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:14 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:15 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:16 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:17 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:19 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:23 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:29 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:12:43 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:13:08 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:14:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:33 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:35 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:37 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:40 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:15:47 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:16:00 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:16:26 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:17:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:18:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:14 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:16 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:17 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:18 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:19 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:21 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:25 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:32 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:22:45 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:23:11 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:24:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:25:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25
+2023/11/30 02:26:03 [emerg] 1#1: host not found in upstream "uipaashome-backend" in /etc/nginx/conf.d/nginx.conf:25

@@ -17,19 +17,19 @@ describe("CollectInfo Component", () => {
 
   it("submits the form with valid data", () => {
     render(<CollectInfo />);
-    fireEvent.change(screen.getByRole('textbox', { name: '* Company' }), {
+    fireEvent.change(screen.getByRole('textbox', { name: 'Company *' }), {
       target: { value: "Test Company" },
     });
-    fireEvent.change(screen.getByRole('textbox', { name: '* Company Size' }), {
+    fireEvent.change(screen.getByRole('textbox', { name: 'Team Size *' }), {
       target: { value: "Test Size" },
     });
-    fireEvent.change(screen.getByRole('textbox', { name: '* Name' }), {
+    fireEvent.change(screen.getByRole('textbox', { name: 'Name *' }), {
       target: { value: "Test Name" },
     });
-    fireEvent.change(screen.getByRole('textbox', { name: '* Business email' }), {
+    fireEvent.change(screen.getByRole('textbox', { name: 'Business email *' }), {
       target: { value: "test@example.com" },
     });
-    fireEvent.change(screen.getByRole('textbox', { name: '* Requirement description' }), {
+    fireEvent.change(screen.getByRole('textbox', { name: 'Description of Requirements *' }), {
       target: { value: "Test Description" },
     });
 

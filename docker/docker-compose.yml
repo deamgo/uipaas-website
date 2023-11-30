@@ -1,0 +1,61 @@
+services:
+  
+  nginx:
+    image: uipaasnginx
+    build:
+      dockerfile: ${FRONTEND_HOME}/Dockerfile
+      context: .
+    container_name: ${DOCKER_PREFIX}-nginx
+    restart: always
+    volumes:
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/logs:/var/log/nginx
+    ports:
+      - ${NGINX_PORT}:${NGINX_PORT}
+    networks:
+      - uipaashome
+    depends_on:
+      - backend
+  
+  mysql:
+    image: mysql:8.0.29
+    container_name: ${DOCKER_PREFIX}-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootroot
+      MYSQL_DATABASE: uipaas-home
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: 
+      [--character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
+
+  backend:
+    image: ${DOCKER_PREFIX}-backend
+    env_file:
+      - .env
+    build:
+      dockerfile: ${BACKEND_HOME}/Dockerfile
+      context: .
+      args:
+         APP_HOME: ${APP_HOME}
+    container_name: ${DOCKER_PREFIX}-backend
+    restart: on-failure
+    environment:
+      - SERVER_PORT=${BACKEND_PORT}
+    volumes:
+      - ${BACKEND_HOME}:${APP_HOME}
+      - ${BACKEND_HOME}/config.yaml:${APP_HOME}/config.yaml
+      - /etc/localtime:/etc/localtime
+    expose:
+      - ${BACKEND_PORT}
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    depends_on:
+      - mysql
+  
+
+networks:
+  uipaashome:

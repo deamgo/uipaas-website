@@ -67,6 +67,7 @@ function App() {
     visAble = !visAble
     settabVis(visAble)
     document.body.style.overflow = visAble ? 'hidden' : 'auto'
+    document.body.style.position = visAble ? 'fixed' : ''
   }
 
   return (
@@ -194,7 +195,7 @@ function App() {
       </footer>
       {tabVis && <CollectInfo onClose={handleClick}/>}
     </>
-  );
+  ); 
 }
 
 export default App;
