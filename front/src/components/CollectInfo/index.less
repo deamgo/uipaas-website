@@ -1,0 +1,139 @@
+.info_collect_card {
+  position: fixed;
+  left: 50%;
+  top: 67rem;
+
+  transform: translate(-50%);
+
+  width: 480rem;
+  height: 560rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 10rem;
+  opacity: 1;
+
+  font-family: Poppins;
+
+  background: #ffffff;
+
+  box-shadow: 0rem 4rem 10rem 0rem rgba(0, 0, 0, 0.3);
+  z-index: 1002;
+  .vector_icon {
+    position: relative;
+    top: 0rem;
+    left: 30rem;
+    margin: 0;
+    width: 18.67rem;
+    height: 18.67rem;
+    display: inline;
+    z-index: 0;
+    cursor: pointer;
+    img {
+      width: 18.67rem;
+      height: 18.67rem;
+    }
+  }
+  //   表单标题
+  .title {
+    // width: 248rem
+    height: 40rem;
+    // margin-top: 13rem;
+    margin: -20rem auto 10rem auto;
+    /* 样式描述：中文 */
+    font-size: 24rem;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 0rem;
+
+    color: #3d3d3d;
+  }
+  form {
+    margin: 0rem auto ;
+    height: 80%;
+    width: 70%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    margin: 10rem auto;
+    align-items: center;
+
+    label {
+      text-align: left;
+      margin-left: -60rem;
+      margin-bottom: 3rem;
+      width: 240rem;
+      height: 19rem;
+
+      font-size: 16rem;
+      font-weight: normal;
+      line-height: normal;
+      letter-spacing: 0rem;
+
+      /* 企业规模 */
+      color: #1a1a1a;
+      span {
+        color: #ea0000;
+      }
+    }
+    // 输入框
+    input,
+    textarea {
+      width: 300rem;
+      height: 39rem;
+      border-radius: 8rem;
+      padding: 5rem 20rem;
+
+
+      /* 纯白 */
+      background: #ffffff;
+
+      box-sizing: border-box;
+      border: 1rem solid #bfbfbf;
+    //   text-indent: 10rem;
+    }
+    .desc_textarea {
+      height: 70rem;
+      resize: none;
+    }
+    // 提交按钮
+    .sub_btn {
+      width: 194rem;
+      height: 48rem;
+      border-radius: 5rem;
+      opacity: 1;
+      margin: auto;
+
+      font-size: 24rem;
+      font-weight: normal;
+      line-height: normal;
+      text-align: center;
+      display: block;
+      align-items: center;
+      letter-spacing: 0em;
+      cursor: pointer;
+
+
+      border: none;
+      background: #0871F0;
+
+      //   font-feature-settings: "kern" on;
+      color: #ffffff;
+    }
+  }
+
+  .foot_text {
+    margin-top: 4rem;
+    text-align: center;
+    display: block;
+
+    font-size: 12rem;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 0rem;
+  }
+}

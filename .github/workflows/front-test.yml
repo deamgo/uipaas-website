@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 1127/feat-frontnd
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ci:
+    name: check version ,test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: yarn version
+        run: yarn -v
+
+      - name: node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node -v
+
+      - name: install dependencies & test
+        working-directory: ./front
+        run: |
+          yarn
+          yarn test -u
