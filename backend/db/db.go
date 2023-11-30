@@ -27,6 +27,10 @@ type Config struct {
 
 var dbConfigPath = flag.String("dbConfig", "", "db config path")
 
+func init() {
+	flag.Parse()
+}
+
 func InitDB() *gorm.DB {
 	path, err := os.Getwd()
 	if err != nil {
