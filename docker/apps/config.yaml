@@ -1,5 +1,5 @@
 database:
-  host: host.docker.internal
+  host: uipaashome-mysql
   port: 3306
   user: root
   password: "rootroot"

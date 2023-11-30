@@ -55,6 +55,8 @@ services:
       - ${BACKEND_PORT}
     ports:
       - ${BACKEND_PORT}:8080
+    extra_hosts:
+      - host.docker.internal:host-gateway
     links:
       - mysql
     networks:
