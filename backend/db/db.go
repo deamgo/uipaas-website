@@ -1,6 +1,7 @@
 package db
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -25,13 +26,22 @@ type Config struct {
 	Database DBConfig `yaml:"database"`
 }
 
+var dbConfigPath = flag.String("dbConfig", "", "db config path")
+
 func InitDB() *gorm.DB {
 	path, err := os.Getwd()
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
 	}
+	var (
+		configFile []byte
+	)
+	if *dbConfigPath == "" {
+		configFile, err = os.ReadFile(path + "/db/config.yaml")
+	} else {
+		configFile, err = os.ReadFile(*dbConfigPath)
+	}
 
-	configFile, err := os.ReadFile(path + "/db/config.yaml")
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
 	}
