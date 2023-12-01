@@ -45,7 +45,7 @@ func TestCompanyService_companyGet(t *testing.T) {
 					CompanyName:            "公司名字1",
 					CompanySize:            "12",
 					Name:                   "张三",
-					Phone:                  "1231341413",
+					BusinessEmail:          "1231341413@qq.com",
 					RequirementDescription: "描述1",
 				},
 			},
@@ -65,7 +65,7 @@ func TestCompanyService_companyGet(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			service, mock := setupCompanyServiceTest(t)
 
-			rows := mock.NewRows([]string{"id", "company_name", "company_size", "name", "phone", "requirement_description"}).
+			rows := mock.NewRows([]string{"id", "company_name", "company_size", "name", "business_email", "requirement_description"}).
 				AddRow("6", "公司名字1", "12", "张三", "1231341413", "描述1")
 
 			if tt.expectedError == nil {
@@ -116,7 +116,7 @@ func TestCompanyInfoService_CompanyInfoAdd(t *testing.T) {
 				CompanyName:            "这是公司名字",
 				CompanySize:            "规模",
 				Name:                   "王五",
-				Phone:                  "123123123",
+				BusinessEmail:          "123123123",
 				RequirementDescription: "描述1",
 				Date:                   time.Now(),
 			},
@@ -134,7 +134,6 @@ func TestCompanyInfoService_CompanyInfoAdd(t *testing.T) {
 
 				mock.ExpectBegin()
 				mock.ExpectExec(regexp.QuoteMeta("INSERT INTO")).
-					//WithArgs(info.CompanyName, info.CompanySize, info.Name, info.Phone, info.RequirementDescription).
 					WillReturnResult(sqlmock.NewResult(1, 1))
 				mock.ExpectCommit()
 				err := service.CompanyAdd(context.Background(), info)

@@ -11,14 +11,13 @@ import (
 
 func NewRouter(ctx context.ApplicationContext) http.Handler {
 	e := gin.New()
-	// add middleware
 	e.Use(gin.Recovery())
 	mountAPIs(e, ctx)
 
 	return e
 }
 func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
-	api := e.Group("api")
+	api := e.Group("api/v1")
 	{
 		api.GET("/user/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))

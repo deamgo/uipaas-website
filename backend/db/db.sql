@@ -9,12 +9,12 @@ CREATE TABLE IF NOT EXISTS user (
 
 
 CREATE TABLE IF NOT EXISTS company (
-    id uint primary key,
-    company_name varchar(255),
-    company_size varchar(255),
-    name varchar(255),
-    phone varchar(255),
-    requirement_description varchar(255),
+    id int PRIMARY KEY AUTO_INCREMENT ,
+    company_name varchar(255) NOT NULL,
+    company_size varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+    business_email  varchar(255) NOT NULL,
+    requirement_description varchar(255) NOT NULL,
     date datetime(3)
 );
 

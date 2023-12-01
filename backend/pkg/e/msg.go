@@ -4,7 +4,7 @@ const (
 	GetListFailed  = "failed to get companyList"
 	GetListSuccess = "get companyList success"
 	AddMsgSuccess  = "add info success"
-	AddMsgFailed   = "add info failed"
+	AddFormatError = "add info format error"
 
 	LoginFormatError = "login format error"
 	LoginSuccess     = "login success"

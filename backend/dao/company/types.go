@@ -9,7 +9,7 @@ type CompanyDO struct {
 	CompanyName            string    `gorm:"column:company_name"`
 	CompanySize            string    `gorm:"column:company_size"`
 	Name                   string    `gorm:"column:name"`
-	Phone                  string    `gorm:"column:phone"`
+	BusinessEmail          string    `gorm:"column:business_email"`
 	RequirementDescription string    `gorm:"column:requirement_description"`
 	Date                   time.Time `gorm:"column:date"`
 }
