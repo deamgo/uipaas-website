@@ -2,7 +2,7 @@ version: "3.3"
 services:
   
   nginx:
-    image: uipaasnginx
+    image: uipaas-nginx
     build:
       dockerfile: ${FRONTEND_HOME}/Dockerfile
       context: .
@@ -56,10 +56,6 @@ services:
       - ${BACKEND_PORT}
     ports:
       - ${BACKEND_PORT}:8080
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    links:
-      - mysql
     networks:
       - uipaashome
   

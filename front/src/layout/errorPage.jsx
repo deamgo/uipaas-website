@@ -1,8 +1,20 @@
 import './err.less'
 
-import { useRouteError, createBrowserRouter } from 'react-router-dom'
+import { useEffect } from 'react'
+
+import { useRouteError } from 'react-router-dom'
 
 export default function ErrorPage() {
+
+  useEffect(() => {
+    window.addEventListener('resize', resize)
+    resize()
+  },[])
+
+  const resize = () => {
+    let IwD = window.innerWidth
+    document.documentElement.style.fontSize = IwD/1920 + 'px'
+  }
     // const error = useRouteError();
     const err = useRouteError()
   
