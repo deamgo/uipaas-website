@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS company (
     date datetime(3)
 );
 
-insert into user values (1,'admin','','admin');
+insert into user values (1,'admin','','SGaws123');
