@@ -1,4 +1,5 @@
-@import url('http://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-/* html {
-    font-size: 10px;
-} */
+/* @import url('http://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@1,500&display=swap'); */
+* {
+  font-family: Helvetica;
+}

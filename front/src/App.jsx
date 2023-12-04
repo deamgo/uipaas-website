@@ -1,6 +1,8 @@
 //components
 import { Paper } from './components/Paper'
 import { CollectInfo } from './components/CollectInfo'
+import { Mask } from './components/Mask'
+import { Divider } from './components/Divider'
 //
 import { useState, useEffect } from 'react'
 //style
@@ -25,6 +27,8 @@ function App() {
   const [btnVis, setbtnVis] = useState({
     visibility: 'hidden',
   })
+
+  const [borderb, setborderB] = useState('head')
 
   const [tabVis, settabVis] = useState(visAble)
   
@@ -52,6 +56,7 @@ function App() {
         setbtnVis({
           display: 'block'
         })
+        setborderB('head'+ ' ' +'head-fixed-top')
       } else {
         setbtnS({
           position: 'absolute'
@@ -59,6 +64,7 @@ function App() {
         setbtnVis({
           display: 'none'
         })
+        setborderB('head')
       }
     })
   }
@@ -71,9 +77,9 @@ function App() {
 
   return (
     <>
-      <header  style={btnS}>
+      <header style={btnS}>
         <div 
-          className='head'>
+          className={borderb}>
             <img className='logo' src={logoSvg} alt="Logo" />
               <button 
                 className='reserveButton' 
@@ -189,12 +195,18 @@ function App() {
       <footer>
         <div className="foot">
           <span className="cpr">Copyright © Deamoy Technology</span>
-          <span className="ba">浙ICP备2021001545号-4</span>
+          <Divider margin={{
+            position: 'absolute',
+            left: '240rem',
+            top: '2404rem',
+            width: '1440rem'
+          }}/>
         </div>
       </footer>
       {tabVis && <CollectInfo onClose={handleClick}/>}
+      {tabVis && <Mask />}
     </>
-  );
+  ); 
 }
 
 export default App;

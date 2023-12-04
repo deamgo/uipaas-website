@@ -6,11 +6,11 @@ import { saveCompInfo } from "../../api/comp_info";
 export function CollectInfo({onClose}) {
   // 状态
   const [formData, setFormData] = useState({
-    companyName: "",
-    companySize: "",
+    companyname: "",
+    companysize: "",
     name: "",
-    businessEmail: "",
-    requirementDescription: "",
+    businessemail: "",
+    requirementdescription: "",
   });
   //   样式
   // const [isShow, setIsShow] = useState(true);
@@ -27,21 +27,21 @@ export function CollectInfo({onClose}) {
     let error = "";
 
     // 根据字段名进行不同的验证
-    if (!formData.companyName.trim()) {
-      error = "公司名称不能为空";
+    if (!formData.companyname.trim()) {
+      error = "companyname cant be empty";
     }
-    if (!formData.companySize.trim()) {
-      error = "公司规模不能为空";
+    if (!formData.companysize.trim()) {
+      error = "companysize cant be empty";
     }
     if (!formData.name.trim()) {
-      error = "姓名不能为空";
+      error = "Name cant be empty";
     }
     const emailREG = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if (!emailREG.test(formData.businessEmail)) {
-      error = "邮箱不合法";
+    if (!emailREG.test(formData.businessemail)) {
+      error = "Invalid business email";
     }
-    if (!formData.requirementDescription.trim()) {
-      error = "需求描述不能为空";
+    if (!formData.requirementdescription.trim()) {
+      error = "requirementdescription cant be empty";
     }
     setMessages(error);
     return error;
@@ -60,47 +60,54 @@ export function CollectInfo({onClose}) {
     const error = validateInput();
     if (error) {
       $message.error(error);
-      return;
+      return
     }
-    saveCompInfo(formData);
+    saveCompInfo(formData).then((res) => {
+      if(res.value.code === 0) {
+        $message.success(res.value.msg);
+      } else if(res.value.code === -1 ) {
+        $message.error(res.value.msg);
+      }
+      onClose();
+    })
   };
 
   return (
     <>
       {(
         <div className="info_collect_card">
-          <div className="vector_icon">
-            <img src={vectorIcon} onClick={onClose} />
+          <div className="vector_icon" onClick={onClose} >
+            <img src={vectorIcon} />
           </div>
           <div className="title">Hello, future partners!</div>
           <form action="" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="companyName">
-                <span>*</span>Company
+              <label htmlFor="companyname">
+                <span>Company</span><span>*</span>
               </label>
               <input
                 type="text"
-                name="companyName"
-                id="companyName"
-                value={formData.companyName}
+                name="companyname"
+                id="companyname"
+                value={formData.companyname}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="companySize">
-                <span>*</span>Company Size
+              <label htmlFor="companysize">
+                <span>Team Size</span><span>*</span>
               </label>
               <input
                 type="text"
-                name="companySize"
-                id="companySize"
-                value={formData.companySize}
+                name="companysize"
+                id="companysize"
+                value={formData.companysize}
                 onChange={handleChange}
               />
             </div>
             <div>
               <label htmlFor="name">
-                <span>*</span>Name
+                <span>Name</span><span>*</span>
               </label>
               <input
                 type="text"
@@ -111,28 +118,28 @@ export function CollectInfo({onClose}) {
               />
             </div>
             <div>
-              <label htmlFor="businessEmail">
-                <span>*</span>Business email
+              <label htmlFor="businessemail">
+                <span>Business email</span><span>*</span>
               </label>
               <input
                 type="text"
-                name="businessEmail"
-                id="businessEmail"
-                value={formData.businessEmail}
+                name="businessemail"
+                id="businessemail"
+                value={formData.businessemail}
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label htmlFor="requirementDescription">
-                <span>*</span>Requirement description
+              <label htmlFor="requirementdescription">
+                <span>Description of Requirements</span><span>*</span>
               </label>
               <textarea
-                name="requirementDescription"
-                id="requirementDescription"
+                name="requirementdescription"
+                id="requirementdescription"
                 cols="30"
                 rows="5"
                 className="desc_textarea"
-                value={formData.requirementDescription}
+                value={formData.requirementdescription}
                 onChange={handleChange}
               ></textarea>
             </div>
@@ -146,7 +153,7 @@ export function CollectInfo({onClose}) {
             </div>
           </form>
           <span className="foot_text">
-            <span style={{ color: "#ea000" }}>*</span> By submitting, you agree
+            By submitting, you agree
             to the <a href="privacy">privacy policy</a>.
           </span>
         </div>

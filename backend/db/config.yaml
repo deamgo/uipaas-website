@@ -3,5 +3,5 @@ database:
   port: 3306
   user: root
   password: "rootroot"
-  dbname: uipass-waitlist-page
+  dbname: uipaas-home
   charset: utf8mb4
