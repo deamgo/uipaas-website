@@ -2,12 +2,12 @@ package company
 
 import (
 	"context"
-	"github.com/deamgo/uipaas-home/backend/pkg/e"
-	"github.com/pkg/errors"
 	"regexp"
 
 	dao "github.com/deamgo/uipaas-home/backend/dao/company"
+	"github.com/deamgo/uipaas-home/backend/pkg/e"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
+	"github.com/pkg/errors"
 
 	"go.uber.org/zap"
 )

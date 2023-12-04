@@ -50,8 +50,12 @@ func (u userService) UserLogin(ctx context.Context, user *User) (string, error) 
 		return "", err
 	}
 	// generate token
-	token, _ := middleware.GenToken()
-	return token, nil
+	token, tokenerr := middleware.GenToken()
+	if tokenerr != nil {
+		return "", tokenerr
+	}
+
+	return token, tokenerr
 }
 
 func convertUserDao(user *User) *dao.UserDO {

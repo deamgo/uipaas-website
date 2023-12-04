@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"reflect"
 	"testing"
 
 	dao "github.com/deamgo/uipaas-home/backend/dao/user"
@@ -85,18 +86,19 @@ func TestUserService_UserGet(t *testing.T) {
 
 func TestUserService_UserLogin(t *testing.T) {
 	tests := []struct {
-		name     string
-		UserName string
-		Password string
-
+		name           string
+		UserName       string
+		Password       string
 		expectedError  error
 		expectedErrMsg string
+		expectedToken  string
 	}{
 		{
 			name:          "User login success",
 			UserName:      "zhangsan",
 			Password:      "1234",
 			expectedError: nil,
+			expectedToken: "",
 		},
 		{
 			name:           "User login failed",
@@ -121,8 +123,9 @@ func TestUserService_UserLogin(t *testing.T) {
 					WillReturnRows(rows)
 				user := User{UserName: tt.UserName,
 					Password: tt.Password}
-				_, err := userservice.UserLogin(context.Background(), &user)
+				token, err := userservice.UserLogin(context.Background(), &user)
 				assert.NoError(t, err)
+				assert.Equal(t, reflect.TypeOf(token).Kind(), reflect.TypeOf(tt.expectedToken).Kind())
 				assert.Equal(t, tt.expectedError, err)
 			} else {
 				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
@@ -130,8 +133,9 @@ func TestUserService_UserLogin(t *testing.T) {
 					WillReturnError(gorm.ErrRecordNotFound)
 				user := User{UserName: tt.UserName,
 					Password: tt.Password}
-				_, err := userservice.UserLogin(context.Background(), &user)
+				token, err := userservice.UserLogin(context.Background(), &user)
 				assert.EqualError(t, err, tt.expectedError.Error())
+				assert.Equal(t, reflect.TypeOf(token).Kind(), reflect.TypeOf(tt.expectedToken).Kind())
 				assert.Equal(t, tt.expectedError, err)
 			}
 
