@@ -109,23 +109,23 @@ export default function StickyHeadTable() {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    getComponyList({
-      pageSize: 800,
-      pageNum: 1,
-    }).then(res => {
-      setRows(res.value.data.items)
-    })
+    // getComponyList({
+    //   pageSize: 800,
+    //   pageNum: 1,
+    // }).then(res => {
+    //   setRows(res.value.data.items)
+    // })
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
-    getComponyList({
-      pageSize: 800,
-      pageNum: 1,
-    }).then(res => {
-      setRows(res.value.data.items)
-    })
+    // getComponyList({
+    //   pageSize: 800,
+    //   pageNum: 1,
+    // }).then(res => {
+    //   setRows(res.value.data.items)
+    // })
   };
 
   return (

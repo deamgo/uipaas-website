@@ -168,3 +168,21 @@
 2023/12/04 11:59:14 [warn] 29#29: *2 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
 2023/12/04 11:59:14 [error] 29#29: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
 2023/12/04 11:59:14 [warn] 29#29: *2 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/04 13:37:22 [notice] 1#1: using the "epoll" event method
+2023/12/04 13:37:22 [notice] 1#1: nginx/1.24.0
+2023/12/04 13:37:22 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 13:37:22 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/12/04 13:37:22 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 13:37:22 [notice] 1#1: start worker processes
+2023/12/04 13:37:22 [notice] 1#1: start worker process 28
+2023/12/04 13:37:22 [notice] 1#1: start worker process 29
+2023/12/04 13:37:22 [notice] 1#1: start worker process 30
+2023/12/04 13:37:22 [notice] 1#1: start worker process 31
+2023/12/04 13:37:22 [notice] 1#1: start worker process 32
+2023/12/04 13:37:22 [notice] 1#1: start worker process 33
+2023/12/04 13:37:22 [notice] 1#1: start worker process 34
+2023/12/04 13:37:22 [notice] 1#1: start worker process 35
+2023/12/04 13:37:39 [error] 28#28: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/04 13:37:39 [warn] 28#28: *3 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/04 13:37:39 [error] 28#28: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/04 13:37:39 [warn] 28#28: *3 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
