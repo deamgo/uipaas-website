@@ -121,7 +121,7 @@ func TestUserService_UserLogin(t *testing.T) {
 					WillReturnRows(rows)
 				user := User{UserName: tt.UserName,
 					Password: tt.Password}
-				err := userservice.UserLogin(context.Background(), &user)
+				_, err := userservice.UserLogin(context.Background(), &user)
 				assert.NoError(t, err)
 				assert.Equal(t, tt.expectedError, err)
 			} else {
@@ -130,7 +130,7 @@ func TestUserService_UserLogin(t *testing.T) {
 					WillReturnError(gorm.ErrRecordNotFound)
 				user := User{UserName: tt.UserName,
 					Password: tt.Password}
-				err := userservice.UserLogin(context.Background(), &user)
+				_, err := userservice.UserLogin(context.Background(), &user)
 				assert.EqualError(t, err, tt.expectedError.Error())
 				assert.Equal(t, tt.expectedError, err)
 			}

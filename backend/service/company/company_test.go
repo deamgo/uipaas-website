@@ -45,7 +45,7 @@ func TestCompanyService_companyGet(t *testing.T) {
 					CompanyName:            "公司名字1",
 					CompanySize:            "12",
 					Name:                   "张三",
-					BusinessEmail:          "1231341413",
+					BusinessEmail:          "1231341413@qq.com",
 					RequirementDescription: "描述1",
 				},
 			},
@@ -66,7 +66,7 @@ func TestCompanyService_companyGet(t *testing.T) {
 			service, mock := setupCompanyServiceTest(t)
 
 			rows := mock.NewRows([]string{"id", "company_name", "company_size", "name", "business_email", "requirement_description"}).
-				AddRow("6", "公司名字1", "12", "张三", "1231341413", "描述1")
+				AddRow("6", "公司名字1", "12", "张三", "1231341413@qq.com", "描述1")
 
 			if tt.expectedError == nil {
 				mock.ExpectQuery("SELECT").WithArgs().WillReturnRows(sqlmock.NewRows([]string{"total"}).AddRow(6))
@@ -114,9 +114,9 @@ func TestCompanyInfoService_CompanyInfoAdd(t *testing.T) {
 			companyInfo: &Company{
 				ID:                     0,
 				CompanyName:            "这是公司名字",
-				CompanySize:            "规模",
+				CompanySize:            "12",
 				Name:                   "王五",
-				BusinessEmail:          "123123123",
+				BusinessEmail:          "123123123@qq.com",
 				RequirementDescription: "描述1",
 				Date:                   time.Now(),
 			},

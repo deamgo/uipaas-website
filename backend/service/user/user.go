@@ -3,13 +3,14 @@ package user
 import (
 	"context"
 	dao "github.com/deamgo/uipaas-home/backend/dao/user"
+	"github.com/deamgo/uipaas-home/backend/middleware"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"go.uber.org/zap"
 )
 
 type UserService interface {
 	UserGet(ctx context.Context, user *User) (*User, error)
-	UserLogin(ctx context.Context, user *User) error
+	UserLogin(ctx context.Context, user *User) (string, error)
 }
 
 type UserServiceParams struct {
@@ -36,7 +37,7 @@ func (u userService) UserGet(ctx context.Context, user *User) (*User, error) {
 	return convertUser(userDO), nil
 }
 
-func (u userService) UserLogin(ctx context.Context, user *User) error {
+func (u userService) UserLogin(ctx context.Context, user *User) (string, error) {
 
 	userdao := convertUserDao(user)
 
@@ -46,10 +47,11 @@ func (u userService) UserLogin(ctx context.Context, user *User) error {
 			zap.Error(err),
 			zap.Any("userlogin", user),
 		)
-		return err
+		return "", err
 	}
-
-	return nil
+	// generate token
+	token, _ := middleware.GenToken()
+	return token, nil
 }
 
 func convertUserDao(user *User) *dao.UserDO {
