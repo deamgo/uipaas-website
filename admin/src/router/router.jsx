@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import App from '../App.jsx'
-import PriPolicy from '../layout/privacyPolicy.jsx'
-// import ErrorPage from '../layout/errorPage.jsx'
+import Signin from '../layout/Signin'
 
 export const router = createBrowserRouter([
     {
@@ -10,7 +9,7 @@ export const router = createBrowserRouter([
         errorElement: <Navigate to="/" />,
     },
     {
-        path: '/privacy',
-        Component: PriPolicy,
+        path: '/logo',
+        Component: Signin,
     },
 ])

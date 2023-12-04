@@ -1,4 +1,6 @@
 import { useEffect } from "react"
+import { BrowserRouter as Routes, Route } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import './App.less'
 import { getComponyList } from './api/comp_info'
 
@@ -29,6 +31,8 @@ const Admin = () => {
   //   document.documentElement.style.fontSize = IwD/1440 + 'px'
   // }
 
+  const isAuthenticated = localStorage.getItem('jwtToken') !== null
+
   return (
     <>
       <div className="siderbar">
@@ -49,6 +53,7 @@ const Admin = () => {
         <StickyHeadTable />
       </div>
       {/* <button onClick={getCompanys}>BUTTON</button> */}
+      {!isAuthenticated && <Navigate to="/logo" />}
     </>
   )
 }

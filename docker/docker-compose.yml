@@ -1,25 +1,6 @@
 version: "3.3"
 services:
-  
-  nginx:
-    image: uipaasnginx
-    build:
-      dockerfile: ${FRONTEND_HOME}/Dockerfile
-      context: .
-    container_name: ${DOCKER_PREFIX}-nginx
-    restart: always
-    volumes:     
-      - ./nginx/conf/conf.d:/etc/nginx/conf.d
-      - ./nginx/html:/usr/share/nginx/html
-      - ./nginx/logs:/var/log/nginx
-    ports:
-      - ${NGINX_PORT}:${NGINX_PORT}
-      - "443:443"
-    networks:
-      - uipaashome
-    depends_on:
-      - backend
-  
+
   mysql:
     image: mysql:8.0.29
     container_name: ${DOCKER_PREFIX}-mysql
@@ -35,27 +16,29 @@ services:
       [--character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
     networks:
       - uipaashome
-
-  backend:
-    image: ${DOCKER_PREFIX}-backend
-    env_file:
+  
+  nginx:
+    image: uipaas
+    env_file: 
       - .env
     build:
       dockerfile: ${BACKEND_HOME}/Dockerfile
       context: .
       args:
-         APP_HOME: ${APP_HOME}
-    container_name: ${DOCKER_PREFIX}-backend
-    restart: on-failure
-    environment:
-      - SERVER_PORT=${BACKEND_PORT}
-    volumes:
+        - APP_HOME=${APP_HOME}
+    container_name: ${DOCKER_PREFIX}-uipaas
+    restart: always
+    volumes:     
       - ${BACKEND_HOME}:${APP_HOME}
       - ${BACKEND_HOME}/config.yaml:${APP_HOME}/config.yaml
       - /etc/localtime:/etc/localtime
-    expose:
-      - ${BACKEND_PORT}
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/logs:/var/log/nginx
     ports:
+      - ${NGINX_PORT}:${NGINX_PORT}
+      - "443:443"
+      - "5000:5000"
       - ${BACKEND_PORT}:8080
     extra_hosts:
       - host.docker.internal:host-gateway
@@ -63,6 +46,36 @@ services:
       - mysql
     networks:
       - uipaashome
+    depends_on:
+      - mysql
+
+  # backend:
+  #   image: ${DOCKER_PREFIX}-backend
+  #   env_file:
+  #     - .env
+  #   build:
+  #     dockerfile: ${BACKEND_HOME}/Dockerfile
+  #     context: .
+  #     args:
+  #        APP_HOME: ${APP_HOME}
+  #   container_name: ${DOCKER_PREFIX}-backend
+  #   restart: on-failure
+  #   environment:
+  #     - SERVER_PORT=${BACKEND_PORT}
+  #   volumes:
+  #     - ${BACKEND_HOME}:${APP_HOME}
+  #     - ${BACKEND_HOME}/config.yaml:${APP_HOME}/config.yaml
+  #     - /etc/localtime:/etc/localtime
+  #   expose:
+  #     - ${BACKEND_PORT}
+  #   ports:
+  #     - ${BACKEND_PORT}:8080
+  #   extra_hosts:
+  #     - host.docker.internal:host-gateway
+  #   links:
+  #     - mysql
+  #   networks:
+  #     - uipaashome
   
 
 networks:
