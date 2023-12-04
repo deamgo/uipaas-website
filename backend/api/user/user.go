@@ -56,6 +56,10 @@ type Resp struct {
 	Data interface{} `json:"data"`
 }
 
+type UserLoginResp struct {
+	Token string `json:"token"`
+}
+
 func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var (
@@ -63,6 +67,7 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 			req UserPostReq
 		)
 		err = c.ShouldBind(&req.loginUser)
+
 		if err != nil {
 			log.Errorw("login format error",
 				zap.Error(err),
@@ -75,7 +80,7 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 				Data: nil,
 			})
 		}
-		err = ctx.UserService.UserLogin(c, req.loginUser)
+		token, err := ctx.UserService.UserLogin(c, req.loginUser)
 
 		if err != nil {
 			switch err {
@@ -99,7 +104,7 @@ func UserLogin(ctx context.ApplicationContext) gin.HandlerFunc {
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  e.LoginSuccess,
-			Data: nil,
+			Data: UserLoginResp{Token: token},
 		}))
 	}
 }

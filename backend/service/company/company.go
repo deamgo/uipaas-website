@@ -45,21 +45,17 @@ func (u companyService) CompanyGet(ctx context.Context, pageSize int, pageNum in
 }
 
 func (u companyService) CompanyAdd(ctx context.Context, company *Company) error {
-	match1, _ := regexp.MatchString(`^\d{1,10}$`, company.CompanySize)                                      // Company size (number: 1-10 digits)
+	re := regexp.MustCompile(`^[\p{L}\p{N}]+$`) // (Chinese and English numerals but excluding special characters)
+	match1 := re.MatchString(company.CompanySize)
 	match2, _ := regexp.MatchString(`^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$`, company.BusinessEmail) // Email (email format)
-
-	re := regexp.MustCompile(`^[\p{L}\p{N}]+$`) //Company Name (Chinese and English numerals but excluding special characters)
 	match3 := re.MatchString(company.CompanyName)
-
-	re1 := regexp.MustCompile(`^[\p{L}\p{N}]+$`) //Name (Chinese and English numerals but excluding special characters)
-	match4 := re1.MatchString(company.Name)
-
-	re2 := regexp.MustCompile(`^[\p{L}\p{N}]+$`) //RequirementDescription (Chinese and English numerals but excluding special characters)
-	match5 := re2.MatchString(company.RequirementDescription)
+	match4 := re.MatchString(company.Name)
+	match5 := re.MatchString(company.RequirementDescription)
 
 	if !match1 || !match2 || !match3 || !match4 || !match5 {
 		return errors.New(e.AddFormatError)
 	}
+
 	info := convertCompanyDao(company)
 	err := u.dao.CompanyAdd(ctx, info)
 	if err != nil {
