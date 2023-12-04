@@ -41,6 +41,6 @@ describe("CollectInfo Component", () => {
     render(<CollectInfo />);
     fireEvent.submit(screen.getByRole("button", { name: "Submit" }));
 
-    expect($message.error).toHaveBeenCalledWith("需求描述不能为空");
+    expect($message.error).toHaveBeenCalledWith("requirementdescription cant be empty");
   });
 });
