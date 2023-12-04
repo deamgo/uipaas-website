@@ -5,6 +5,7 @@ import (
 	formdao "github.com/deamgo/uipaas-home/backend/dao/company"
 	dao "github.com/deamgo/uipaas-home/backend/dao/user"
 	"github.com/deamgo/uipaas-home/backend/db"
+	"github.com/deamgo/uipaas-home/backend/middleware"
 	"github.com/deamgo/uipaas-home/backend/pkg/log"
 	"github.com/deamgo/uipaas-home/backend/router"
 	"github.com/deamgo/uipaas-home/backend/service/company"
@@ -23,6 +24,7 @@ func main() {
 		CompanyService: company.NewcompanyService(company.CompanyServiceParams{Dao: formdao})}
 
 	r := gin.Default()
+	r.Use(middleware.Cors())
 	user := router.NewRouter(ctx)
 	r.Any("/*any", gin.WrapH(user))
 	err := r.Run(":8080")

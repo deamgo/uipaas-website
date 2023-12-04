@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/deamgo/uipaas-home/backend/middleware"
 	"net/http"
 
 	"github.com/deamgo/uipaas-home/backend/api/company"
@@ -12,7 +13,6 @@ import (
 
 func NewRouter(ctx context.ApplicationContext) http.Handler {
 	e := gin.New()
-	// add middleware
 	e.Use(gin.Recovery())
 	mountAPIs(e, ctx)
 
@@ -23,8 +23,8 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	{
 		api.GET("/user/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))
-		api.GET("/company", company.CompanyGet(ctx))
-		api.POST("/company", company.CompanyAdd(ctx))
+		api.GET("/company", middleware.JWTAuthMiddleware(), company.CompanyGet(ctx))
+		api.POST("/company", middleware.JWTAuthMiddleware(), company.CompanyAdd(ctx))
 
 	}
 
