@@ -3,7 +3,7 @@ import vectorIcon from "../../assets/Vector.svg";
 import React, { useState, useEffect } from "react";
 import $message from "../Msg";
 import { saveCompInfo } from "../../api/comp_info";
-export function CollectInfo({onClose}) {
+export function CollectInfo({ onClose }) {
   // 状态
   const [formData, setFormData] = useState({
     companyname: "",
@@ -30,11 +30,26 @@ export function CollectInfo({onClose}) {
     if (!formData.companyname.trim()) {
       error = "companyname cant be empty";
     }
+    const cnREG = /^[\u4e00-\u9fa5a-zA-Z0-9]{1,30}$/;
+    if (!cnREG.test(formData.companyname)) {
+      error = 'Invalid company name'
+    }
     if (!formData.companysize.trim()) {
       error = "companysize cant be empty";
     }
+    const csREG = /^[0-9]+([.][0-9]{1,10})?$/;
+    if (!csREG.test(formData.companysize)) {
+      error = 'Invalid company size'
+    }
     if (!formData.name.trim()) {
       error = "Name cant be empty";
+    }
+    const nREG = /^[\u4e00-\u9fa5a-zA-Z0-9]{1,30}$/;
+    if (!nREG.test(formData.name)) {
+      error = 'Invalid name'
+    }
+    if (!formData.businessemail.trim()) {
+      error = 'businessemail cant be empty'
     }
     const emailREG = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     if (!emailREG.test(formData.businessemail)) {
@@ -42,6 +57,10 @@ export function CollectInfo({onClose}) {
     }
     if (!formData.requirementdescription.trim()) {
       error = "requirementdescription cant be empty";
+    }
+    const rdREG = /^[\u4e00-\u9fa5a-zA-Z0-9]{1,200}$/;
+    if (!rdREG.test(formData.requirementdescription)) {
+      error = 'Invalid requirement description';
     }
     setMessages(error);
     return error;
@@ -63,9 +82,10 @@ export function CollectInfo({onClose}) {
       return
     }
     saveCompInfo(formData).then((res) => {
-      if(res.value.code === 0) {
+      console.log(res);
+      if (res.value.code === 0) {
         $message.success(res.value.msg);
-      } else if(res.value.code === -1 ) {
+      } else if (res.value.code === -1) {
         $message.error(res.value.msg);
       }
       onClose();
@@ -145,7 +165,7 @@ export function CollectInfo({onClose}) {
             </div>
             <div>
               <button
-                type="submit" 
+                type="submit"
                 className="sub_btn"
                 onClick={handleSubmit}>
                 Submit

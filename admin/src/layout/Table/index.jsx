@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
-import { getComponyList } from '../../api/comp_info.js'
+import { getComponyList, getToken } from '../../api/comp_info.js'
 import dayjs, { Dayjs } from "dayjs"
 
 

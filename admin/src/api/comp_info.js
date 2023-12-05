@@ -9,9 +9,9 @@ function getComponyList(params) {
         url: '/company',
         method: 'get',
         params: params,
-        Headers: {
+        headers: {
             'Content-Type': 'application',
-            'Authorization': `Bearer ${getToken()}`
+            'Authorization': 'Bearer ' + getToken()
         }
     })
 }
@@ -22,5 +22,6 @@ const updateToken = (newToken) => {
 
 export {
     getComponyList,
-    updateToken
+    updateToken,
+    getToken,
 }

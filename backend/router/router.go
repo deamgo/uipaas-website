@@ -1,8 +1,9 @@
 package router
 
 import (
-	"github.com/deamgo/uipaas-home/backend/middleware"
 	"net/http"
+
+	"github.com/deamgo/uipaas-home/backend/middleware"
 
 	"github.com/deamgo/uipaas-home/backend/api/company"
 	"github.com/deamgo/uipaas-home/backend/api/user"
@@ -24,7 +25,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.GET("/user/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))
 		api.GET("/company", middleware.JWTAuthMiddleware(), company.CompanyGet(ctx))
-		api.POST("/company", middleware.JWTAuthMiddleware(), company.CompanyAdd(ctx))
+		api.POST("/company", company.CompanyAdd(ctx))
 
 	}
 
