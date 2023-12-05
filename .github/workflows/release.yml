@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '^1.21.4'
+          cache: false
       - run: go version
 
       - name: Install front Dep & build
