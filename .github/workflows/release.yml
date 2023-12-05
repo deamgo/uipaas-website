@@ -73,6 +73,7 @@ jobs:
           generate_release_notes: true
           files: |
             **/uihome-*
+      - run: pwd
       
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.0
