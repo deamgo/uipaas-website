@@ -83,9 +83,9 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            rm -f uihome.zip
-            curl -o uihome.zip https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
-            unzip uihome.zip
+            rm -f uihome*.zip
+            wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
+            unzip uihome-${{ github.ref_name }}.zip
             cd ./docker
             docker stop uipaashome-uipaas
             docker rm uipaashome-uipaas
