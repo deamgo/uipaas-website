@@ -16,6 +16,10 @@ requests.interceptors.request.use(
 
 requests.interceptors.response.use(
   (response) => {
+    // return response.data;
+    if (response.status >= 400) {
+      return response.data;
+    }
     return response.data;
   },
   (error) => {
@@ -23,4 +27,4 @@ requests.interceptors.response.use(
   }
 );
 
-export  { requests  as request};
+export { requests as request };

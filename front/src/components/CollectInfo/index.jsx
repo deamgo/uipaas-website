@@ -3,8 +3,10 @@ import vectorIcon from "../../assets/Vector.svg";
 import React, { useState, useEffect } from "react";
 import $message from "../Msg";
 import { saveCompInfo } from "../../api/comp_info";
-export function CollectInfo({onClose}) {
-  // 状态
+import { validate } from "./validator";
+
+export function CollectInfo({ onClose }) {
+
   const [formData, setFormData] = useState({
     companyname: "",
     companysize: "",
@@ -12,37 +14,11 @@ export function CollectInfo({onClose}) {
     businessemail: "",
     requirementdescription: "",
   });
-  //   样式
-  // const [isShow, setIsShow] = useState(true);
-  //   消息提醒
-  const [messages, setMessages] = useState([]);
 
-  // const handleClose = () => {
-  //   console.log("close");
-  //   setIsShow(false);
-  // };
+  const [messages, setMessages] = useState('');
 
-  //   input输入框验证
   const validateInput = () => {
-    let error = "";
-
-    // 根据字段名进行不同的验证
-    if (!formData.companyname.trim()) {
-      error = "companyname cant be empty";
-    }
-    if (!formData.companysize.trim()) {
-      error = "companysize cant be empty";
-    }
-    if (!formData.name.trim()) {
-      error = "Name cant be empty";
-    }
-    const emailREG = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    if (!emailREG.test(formData.businessemail)) {
-      error = "Invalid business email";
-    }
-    if (!formData.requirementdescription.trim()) {
-      error = "requirementdescription cant be empty";
-    }
+    let error = validate(formData);
     setMessages(error);
     return error;
   };
@@ -63,13 +39,21 @@ export function CollectInfo({onClose}) {
       return
     }
     saveCompInfo(formData).then((res) => {
-      if(res.value.code === 0) {
+      console.log(res);
+      if (res.value.code === 0) {
+        onClose();
         $message.success(res.value.msg);
-      } else if(res.value.code === -1 ) {
+      } else if (res.value.code === -1) {
         $message.error(res.value.msg);
       }
-      onClose();
     })
+      .catch((err) => {
+        $message.error(
+          err.response.data.value
+            ? err.response.data.value.msg
+            : 'System Error, please contact the backend'
+        );
+      })
   };
 
   return (
@@ -145,7 +129,7 @@ export function CollectInfo({onClose}) {
             </div>
             <div>
               <button
-                type="submit" 
+                type="submit"
                 className="sub_btn"
                 onClick={handleSubmit}>
                 Submit

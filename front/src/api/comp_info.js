@@ -1,11 +1,11 @@
-import {request }from '../util/request'
+import { request } from '../util/request'
 
-function saveCompInfo(data){
+function saveCompInfo(data) {
     return request({
         url: '/company',
         method: 'post',
-        data:data,
-        Headers: {'Content-Type': 'application'}
+        data: data,
+        headers: { 'Content-Type': 'application/json' }
     })
 }
 

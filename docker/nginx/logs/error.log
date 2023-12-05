@@ -186,3 +186,489 @@
 2023/12/04 13:37:39 [warn] 28#28: *3 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
 2023/12/04 13:37:39 [error] 28#28: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
 2023/12/04 13:37:39 [warn] 28#28: *3 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: , request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/04 15:10:58 [notice] 21#21: using the "epoll" event method
+2023/12/04 15:10:58 [notice] 21#21: nginx/1.24.0
+2023/12/04 15:10:58 [notice] 21#21: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 15:10:58 [notice] 21#21: OS: Linux 6.4.16-linuxkit
+2023/12/04 15:10:58 [notice] 21#21: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 15:10:58 [notice] 22#22: start worker processes
+2023/12/04 15:10:58 [notice] 22#22: start worker process 23
+2023/12/04 15:10:58 [notice] 22#22: start worker process 24
+2023/12/04 15:10:58 [notice] 22#22: start worker process 25
+2023/12/04 15:10:58 [notice] 22#22: start worker process 26
+2023/12/04 15:10:58 [notice] 22#22: start worker process 27
+2023/12/04 15:10:58 [notice] 22#22: start worker process 28
+2023/12/04 15:10:58 [notice] 22#22: start worker process 29
+2023/12/04 15:10:58 [notice] 22#22: start worker process 30
+2023/12/04 15:16:34 [notice] 19#19: using the "epoll" event method
+2023/12/04 15:16:34 [notice] 19#19: nginx/1.24.0
+2023/12/04 15:16:34 [notice] 19#19: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 15:16:34 [notice] 19#19: OS: Linux 6.4.16-linuxkit
+2023/12/04 15:16:34 [notice] 19#19: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 15:16:34 [notice] 20#20: start worker processes
+2023/12/04 15:16:34 [notice] 20#20: start worker process 21
+2023/12/04 15:16:34 [notice] 20#20: start worker process 22
+2023/12/04 15:16:34 [notice] 20#20: start worker process 23
+2023/12/04 15:16:34 [notice] 20#20: start worker process 24
+2023/12/04 15:16:34 [notice] 20#20: start worker process 25
+2023/12/04 15:16:34 [notice] 20#20: start worker process 26
+2023/12/04 15:16:34 [notice] 20#20: start worker process 27
+2023/12/04 15:16:34 [notice] 20#20: start worker process 28
+2023/12/04 15:55:42 [notice] 20#20: using the "epoll" event method
+2023/12/04 15:55:42 [notice] 20#20: nginx/1.24.0
+2023/12/04 15:55:42 [notice] 20#20: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 15:55:42 [notice] 20#20: OS: Linux 6.4.16-linuxkit
+2023/12/04 15:55:42 [notice] 20#20: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 15:55:42 [notice] 21#21: start worker processes
+2023/12/04 15:55:42 [notice] 21#21: start worker process 22
+2023/12/04 15:55:42 [notice] 21#21: start worker process 23
+2023/12/04 15:55:42 [notice] 21#21: start worker process 24
+2023/12/04 15:55:42 [notice] 21#21: start worker process 25
+2023/12/04 15:55:42 [notice] 21#21: start worker process 26
+2023/12/04 15:55:42 [notice] 21#21: start worker process 27
+2023/12/04 15:55:42 [notice] 21#21: start worker process 28
+2023/12/04 15:55:42 [notice] 21#21: start worker process 29
+2023/12/04 15:55:58 [emerg] 31#31: unexpected end of parameter, expecting ";" in command line
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/04 15:56:11 [notice] 33#33: try again to bind() after 500ms
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/04 15:56:11 [notice] 33#33: try again to bind() after 500ms
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/04 15:56:11 [notice] 33#33: try again to bind() after 500ms
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/04 15:56:11 [notice] 33#33: try again to bind() after 500ms
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/04 15:56:11 [emerg] 33#33: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/04 15:56:11 [notice] 33#33: try again to bind() after 500ms
+2023/12/04 15:56:11 [emerg] 33#33: still could not bind()
+2023/12/04 16:18:15 [notice] 20#20: using the "epoll" event method
+2023/12/04 16:18:15 [notice] 20#20: nginx/1.24.0
+2023/12/04 16:18:15 [notice] 20#20: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 16:18:15 [notice] 20#20: OS: Linux 6.4.16-linuxkit
+2023/12/04 16:18:15 [notice] 20#20: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 16:18:15 [notice] 20#20: start worker processes
+2023/12/04 16:18:15 [notice] 20#20: start worker process 21
+2023/12/04 16:18:15 [notice] 20#20: start worker process 22
+2023/12/04 16:18:15 [notice] 20#20: start worker process 23
+2023/12/04 16:18:15 [notice] 20#20: start worker process 24
+2023/12/04 16:18:15 [notice] 20#20: start worker process 25
+2023/12/04 16:18:15 [notice] 20#20: start worker process 26
+2023/12/04 16:18:15 [notice] 20#20: start worker process 27
+2023/12/04 16:18:15 [notice] 20#20: start worker process 28
+2023/12/04 16:29:10 [notice] 21#21: using the "epoll" event method
+2023/12/04 16:29:10 [notice] 21#21: nginx/1.24.0
+2023/12/04 16:29:10 [notice] 21#21: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 16:29:10 [notice] 21#21: OS: Linux 6.4.16-linuxkit
+2023/12/04 16:29:10 [notice] 21#21: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 16:29:10 [notice] 21#21: start worker processes
+2023/12/04 16:29:10 [notice] 21#21: start worker process 22
+2023/12/04 16:29:10 [notice] 21#21: start worker process 23
+2023/12/04 16:29:10 [notice] 21#21: start worker process 24
+2023/12/04 16:29:10 [notice] 21#21: start worker process 25
+2023/12/04 16:29:10 [notice] 21#21: start worker process 26
+2023/12/04 16:29:10 [notice] 21#21: start worker process 27
+2023/12/04 16:29:10 [notice] 21#21: start worker process 28
+2023/12/04 16:29:10 [notice] 21#21: start worker process 29
+2023/12/04 16:32:05 [notice] 20#20: using the "epoll" event method
+2023/12/04 16:32:05 [notice] 20#20: nginx/1.24.0
+2023/12/04 16:32:05 [notice] 20#20: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 16:32:05 [notice] 20#20: OS: Linux 6.4.16-linuxkit
+2023/12/04 16:32:05 [notice] 20#20: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 16:32:05 [notice] 20#20: start worker processes
+2023/12/04 16:32:05 [notice] 20#20: start worker process 21
+2023/12/04 16:32:05 [notice] 20#20: start worker process 22
+2023/12/04 16:32:05 [notice] 20#20: start worker process 23
+2023/12/04 16:32:05 [notice] 20#20: start worker process 24
+2023/12/04 16:32:05 [notice] 20#20: start worker process 25
+2023/12/04 16:32:05 [notice] 20#20: start worker process 26
+2023/12/04 16:32:05 [notice] 20#20: start worker process 27
+2023/12/04 16:32:05 [notice] 20#20: start worker process 28
+2023/12/04 16:35:28 [notice] 21#21: using the "epoll" event method
+2023/12/04 16:35:28 [notice] 21#21: nginx/1.24.0
+2023/12/04 16:35:28 [notice] 21#21: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 16:35:28 [notice] 21#21: OS: Linux 6.4.16-linuxkit
+2023/12/04 16:35:28 [notice] 21#21: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 16:35:28 [notice] 21#21: start worker processes
+2023/12/04 16:35:28 [notice] 21#21: start worker process 22
+2023/12/04 16:35:28 [notice] 21#21: start worker process 23
+2023/12/04 16:35:28 [notice] 21#21: start worker process 24
+2023/12/04 16:35:28 [notice] 21#21: start worker process 25
+2023/12/04 16:35:28 [notice] 21#21: start worker process 26
+2023/12/04 16:35:28 [notice] 21#21: start worker process 27
+2023/12/04 16:35:28 [notice] 21#21: start worker process 28
+2023/12/04 16:35:28 [notice] 21#21: start worker process 29
+2023/12/04 16:54:16 [notice] 28#28: signal 1 (SIGHUP) received, ignoring
+2023/12/04 16:54:16 [notice] 27#27: signal 1 (SIGHUP) received, ignoring
+2023/12/04 16:54:16 [notice] 29#29: signal 1 (SIGHUP) received, ignoring
+2023/12/04 16:56:04 [notice] 20#20: using the "epoll" event method
+2023/12/04 16:56:04 [notice] 20#20: nginx/1.24.0
+2023/12/04 16:56:04 [notice] 20#20: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 16:56:04 [notice] 20#20: OS: Linux 6.4.16-linuxkit
+2023/12/04 16:56:04 [notice] 20#20: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 16:56:04 [notice] 21#21: start worker processes
+2023/12/04 16:56:04 [notice] 21#21: start worker process 22
+2023/12/04 16:56:04 [notice] 21#21: start worker process 23
+2023/12/04 16:56:04 [notice] 21#21: start worker process 24
+2023/12/04 16:56:04 [notice] 21#21: start worker process 25
+2023/12/04 16:56:04 [notice] 21#21: start worker process 26
+2023/12/04 16:56:04 [notice] 21#21: start worker process 27
+2023/12/04 16:56:04 [notice] 21#21: start worker process 28
+2023/12/04 16:56:04 [notice] 21#21: start worker process 29
+2023/12/04 17:07:56 [notice] 21#21: using the "epoll" event method
+2023/12/04 17:07:56 [notice] 21#21: nginx/1.24.0
+2023/12/04 17:07:56 [notice] 21#21: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 17:07:56 [notice] 21#21: OS: Linux 6.4.16-linuxkit
+2023/12/04 17:07:56 [notice] 21#21: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 17:07:56 [notice] 21#21: start worker processes
+2023/12/04 17:07:56 [notice] 21#21: start worker process 22
+2023/12/04 17:07:56 [notice] 21#21: start worker process 23
+2023/12/04 17:07:56 [notice] 21#21: start worker process 24
+2023/12/04 17:07:56 [notice] 21#21: start worker process 25
+2023/12/04 17:07:56 [notice] 21#21: start worker process 26
+2023/12/04 17:07:56 [notice] 21#21: start worker process 27
+2023/12/04 17:07:56 [notice] 21#21: start worker process 28
+2023/12/04 17:07:56 [notice] 21#21: start worker process 29
+2023/12/04 17:40:41 [notice] 21#21: using the "epoll" event method
+2023/12/04 17:40:41 [notice] 21#21: nginx/1.24.0
+2023/12/04 17:40:41 [notice] 21#21: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 17:40:41 [notice] 21#21: OS: Linux 6.4.16-linuxkit
+2023/12/04 17:40:41 [notice] 21#21: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 17:40:41 [notice] 21#21: start worker processes
+2023/12/04 17:40:41 [notice] 21#21: start worker process 22
+2023/12/04 17:40:41 [notice] 21#21: start worker process 23
+2023/12/04 17:40:41 [notice] 21#21: start worker process 24
+2023/12/04 17:40:41 [notice] 21#21: start worker process 25
+2023/12/04 17:40:41 [notice] 21#21: start worker process 26
+2023/12/04 17:40:41 [notice] 21#21: start worker process 27
+2023/12/04 17:40:41 [notice] 21#21: start worker process 28
+2023/12/04 17:40:41 [notice] 21#21: start worker process 29
+2023/12/04 18:29:58 [notice] 20#20: using the "epoll" event method
+2023/12/04 18:29:58 [notice] 20#20: nginx/1.24.0
+2023/12/04 18:29:58 [notice] 20#20: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/04 18:29:58 [notice] 20#20: OS: Linux 6.4.16-linuxkit
+2023/12/04 18:29:58 [notice] 20#20: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/04 18:29:58 [notice] 20#20: start worker processes
+2023/12/04 18:29:58 [notice] 20#20: start worker process 21
+2023/12/04 18:29:58 [notice] 20#20: start worker process 22
+2023/12/04 18:29:58 [notice] 20#20: start worker process 23
+2023/12/04 18:29:58 [notice] 20#20: start worker process 24
+2023/12/04 18:29:58 [notice] 20#20: start worker process 25
+2023/12/04 18:29:58 [notice] 20#20: start worker process 26
+2023/12/04 18:29:58 [notice] 20#20: start worker process 27
+2023/12/04 18:29:58 [notice] 20#20: start worker process 28
+2023/12/05 11:48:21 [notice] 1#1: using the "epoll" event method
+2023/12/05 11:48:21 [notice] 1#1: nginx/1.24.0
+2023/12/05 11:48:21 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 11:48:21 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/12/05 11:48:21 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 11:48:21 [notice] 1#1: start worker processes
+2023/12/05 11:48:21 [notice] 1#1: start worker process 28
+2023/12/05 11:48:21 [notice] 1#1: start worker process 29
+2023/12/05 11:48:21 [notice] 1#1: start worker process 30
+2023/12/05 11:48:21 [notice] 1#1: start worker process 31
+2023/12/05 11:48:21 [notice] 1#1: start worker process 32
+2023/12/05 11:48:21 [notice] 1#1: start worker process 33
+2023/12/05 11:48:21 [notice] 1#1: start worker process 34
+2023/12/05 11:48:21 [notice] 1#1: start worker process 35
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/05 11:49:18 [notice] 43#43: try again to bind() after 500ms
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/05 11:49:18 [notice] 43#43: try again to bind() after 500ms
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/05 11:49:18 [notice] 43#43: try again to bind() after 500ms
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/05 11:49:18 [notice] 43#43: try again to bind() after 500ms
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:5000 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:80 failed (98: Address already in use)
+2023/12/05 11:49:18 [emerg] 43#43: bind() to 0.0.0.0:443 failed (98: Address already in use)
+2023/12/05 11:49:18 [notice] 43#43: try again to bind() after 500ms
+2023/12/05 11:49:18 [emerg] 43#43: still could not bind()
+2023/12/05 11:51:35 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/12/05 11:51:35 [notice] 28#28: gracefully shutting down
+2023/12/05 11:51:35 [notice] 29#29: gracefully shutting down
+2023/12/05 11:51:35 [notice] 31#31: gracefully shutting down
+2023/12/05 11:51:35 [notice] 31#31: exiting
+2023/12/05 11:51:35 [notice] 30#30: gracefully shutting down
+2023/12/05 11:51:35 [notice] 30#30: exiting
+2023/12/05 11:51:35 [notice] 32#32: gracefully shutting down
+2023/12/05 11:51:35 [notice] 32#32: exiting
+2023/12/05 11:51:35 [notice] 34#34: gracefully shutting down
+2023/12/05 11:51:35 [notice] 34#34: exiting
+2023/12/05 11:51:35 [notice] 33#33: gracefully shutting down
+2023/12/05 11:51:35 [notice] 35#35: gracefully shutting down
+2023/12/05 11:51:35 [notice] 35#35: exiting
+2023/12/05 11:51:35 [notice] 28#28: exiting
+2023/12/05 11:51:35 [notice] 29#29: exiting
+2023/12/05 11:51:35 [notice] 31#31: exit
+2023/12/05 11:51:35 [notice] 30#30: exit
+2023/12/05 11:51:35 [notice] 32#32: exit
+2023/12/05 11:51:35 [notice] 34#34: exit
+2023/12/05 11:51:35 [notice] 33#33: exiting
+2023/12/05 11:51:35 [notice] 35#35: exit
+2023/12/05 11:51:35 [notice] 28#28: exit
+2023/12/05 11:51:35 [notice] 29#29: exit
+2023/12/05 11:51:35 [notice] 33#33: exit
+2023/12/05 11:51:35 [notice] 1#1: signal 17 (SIGCHLD) received from 30
+2023/12/05 11:51:35 [notice] 1#1: worker process 30 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: signal 29 (SIGIO) received
+2023/12/05 11:51:35 [notice] 1#1: signal 17 (SIGCHLD) received from 34
+2023/12/05 11:51:35 [notice] 1#1: worker process 28 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: worker process 29 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: worker process 31 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: worker process 32 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: worker process 33 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: worker process 34 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: worker process 35 exited with code 0
+2023/12/05 11:51:35 [notice] 1#1: exit
+2023/12/05 12:10:56 [notice] 21#21: signal process started
+2023/12/05 12:10:56 [error] 21#21: open() "/var/run/nginx.pid" failed (2: No such file or directory)
+2023/12/05 12:11:33 [notice] 23#23: signal process started
+2023/12/05 12:11:33 [error] 23#23: invalid PID number "" in "/var/run/nginx.pid"
+2023/12/05 12:15:41 [notice] 19#19: using the "epoll" event method
+2023/12/05 12:15:41 [notice] 19#19: nginx/1.24.0
+2023/12/05 12:15:41 [notice] 19#19: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 12:15:41 [notice] 19#19: OS: Linux 6.4.16-linuxkit
+2023/12/05 12:15:41 [notice] 19#19: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 12:15:41 [notice] 19#19: start worker processes
+2023/12/05 12:15:41 [notice] 19#19: start worker process 20
+2023/12/05 12:15:41 [notice] 19#19: start worker process 21
+2023/12/05 12:15:41 [notice] 19#19: start worker process 22
+2023/12/05 12:15:41 [notice] 19#19: start worker process 23
+2023/12/05 12:15:41 [notice] 19#19: start worker process 24
+2023/12/05 12:15:41 [notice] 19#19: start worker process 25
+2023/12/05 12:15:41 [notice] 19#19: start worker process 26
+2023/12/05 12:15:41 [notice] 19#19: start worker process 27
+2023/12/05 12:20:12 [notice] 1#1: using the "epoll" event method
+2023/12/05 12:20:12 [notice] 1#1: nginx/1.24.0
+2023/12/05 12:20:12 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 12:20:12 [notice] 1#1: OS: Linux 6.4.16-linuxkit
+2023/12/05 12:20:12 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 12:20:12 [notice] 1#1: start worker processes
+2023/12/05 12:20:12 [notice] 1#1: start worker process 7
+2023/12/05 12:20:12 [notice] 1#1: start worker process 8
+2023/12/05 12:20:12 [notice] 1#1: start worker process 9
+2023/12/05 12:20:12 [notice] 1#1: start worker process 10
+2023/12/05 12:20:12 [notice] 1#1: start worker process 11
+2023/12/05 12:20:12 [notice] 1#1: start worker process 12
+2023/12/05 12:20:12 [notice] 1#1: start worker process 13
+2023/12/05 12:20:12 [notice] 1#1: start worker process 14
+2023/12/05 12:21:07 [error] 7#7: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 12:21:07 [warn] 7#7: *3 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 12:21:07 [error] 7#7: *3 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 12:21:07 [warn] 7#7: *3 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 12:21:16 [error] 7#7: *3 no live upstreams while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://localhost/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 12:25:47 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/12/05 12:25:47 [notice] 7#7: gracefully shutting down
+2023/12/05 12:25:47 [notice] 8#8: gracefully shutting down
+2023/12/05 12:25:47 [notice] 8#8: exiting
+2023/12/05 12:25:47 [notice] 14#14: gracefully shutting down
+2023/12/05 12:25:47 [notice] 14#14: exiting
+2023/12/05 12:25:47 [notice] 11#11: gracefully shutting down
+2023/12/05 12:25:47 [notice] 11#11: exiting
+2023/12/05 12:25:47 [notice] 13#13: gracefully shutting down
+2023/12/05 12:25:47 [notice] 13#13: exiting
+2023/12/05 12:25:47 [notice] 12#12: gracefully shutting down
+2023/12/05 12:25:47 [notice] 12#12: exiting
+2023/12/05 12:25:47 [notice] 10#10: gracefully shutting down
+2023/12/05 12:25:47 [notice] 10#10: exiting
+2023/12/05 12:25:47 [notice] 9#9: gracefully shutting down
+2023/12/05 12:25:47 [notice] 7#7: exiting
+2023/12/05 12:25:47 [notice] 8#8: exit
+2023/12/05 12:25:47 [notice] 14#14: exit
+2023/12/05 12:25:47 [notice] 11#11: exit
+2023/12/05 12:25:47 [notice] 13#13: exit
+2023/12/05 12:25:47 [notice] 12#12: exit
+2023/12/05 12:25:47 [notice] 10#10: exit
+2023/12/05 12:25:47 [notice] 9#9: exiting
+2023/12/05 12:25:47 [notice] 7#7: exit
+2023/12/05 12:25:47 [notice] 9#9: exit
+2023/12/05 12:25:47 [notice] 1#1: signal 17 (SIGCHLD) received from 10
+2023/12/05 12:25:47 [notice] 1#1: worker process 7 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: worker process 10 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: signal 29 (SIGIO) received
+2023/12/05 12:25:47 [notice] 1#1: signal 17 (SIGCHLD) received from 14
+2023/12/05 12:25:47 [notice] 1#1: worker process 8 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: worker process 14 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: signal 29 (SIGIO) received
+2023/12/05 12:25:47 [notice] 1#1: signal 17 (SIGCHLD) received from 12
+2023/12/05 12:25:47 [notice] 1#1: worker process 9 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: worker process 11 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: worker process 12 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: worker process 13 exited with code 0
+2023/12/05 12:25:47 [notice] 1#1: exit
+2023/12/05 12:26:54 [notice] 8#8: using the "epoll" event method
+2023/12/05 12:26:54 [notice] 8#8: nginx/1.24.0
+2023/12/05 12:26:54 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 12:26:54 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 12:26:54 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 12:26:54 [notice] 8#8: start worker processes
+2023/12/05 12:26:54 [notice] 8#8: start worker process 13
+2023/12/05 12:26:54 [notice] 8#8: start worker process 14
+2023/12/05 12:26:54 [notice] 8#8: start worker process 15
+2023/12/05 12:26:54 [notice] 8#8: start worker process 16
+2023/12/05 12:26:54 [notice] 8#8: start worker process 17
+2023/12/05 12:26:54 [notice] 8#8: start worker process 18
+2023/12/05 12:26:54 [notice] 8#8: start worker process 19
+2023/12/05 12:26:54 [notice] 8#8: start worker process 20
+2023/12/05 13:42:47 [notice] 8#8: using the "epoll" event method
+2023/12/05 13:42:47 [notice] 8#8: nginx/1.24.0
+2023/12/05 13:42:47 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 13:42:47 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 13:42:47 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 13:42:47 [notice] 8#8: start worker processes
+2023/12/05 13:42:47 [notice] 8#8: start worker process 13
+2023/12/05 13:42:47 [notice] 8#8: start worker process 14
+2023/12/05 13:42:47 [notice] 8#8: start worker process 15
+2023/12/05 13:42:47 [notice] 8#8: start worker process 16
+2023/12/05 13:42:47 [notice] 8#8: start worker process 17
+2023/12/05 13:42:47 [notice] 8#8: start worker process 18
+2023/12/05 13:42:47 [notice] 8#8: start worker process 19
+2023/12/05 13:42:47 [notice] 8#8: start worker process 20
+2023/12/05 13:42:59 [error] 14#14: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 13:42:59 [warn] 14#14: *2 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 13:42:59 [error] 14#14: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 13:42:59 [warn] 14#14: *2 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/05 13:43:14 [error] 14#14: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/05 13:43:14 [warn] 14#14: *2 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/05 13:43:14 [error] 14#14: *2 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/05 13:43:14 [warn] 14#14: *2 upstream server temporarily disabled while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/05 14:00:02 [notice] 8#8: using the "epoll" event method
+2023/12/05 14:00:02 [notice] 8#8: nginx/1.24.0
+2023/12/05 14:00:02 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 14:00:02 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 14:00:02 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 14:00:02 [notice] 8#8: start worker processes
+2023/12/05 14:00:02 [notice] 8#8: start worker process 13
+2023/12/05 14:00:02 [notice] 8#8: start worker process 14
+2023/12/05 14:00:02 [notice] 8#8: start worker process 15
+2023/12/05 14:00:02 [notice] 8#8: start worker process 16
+2023/12/05 14:00:02 [notice] 8#8: start worker process 17
+2023/12/05 14:00:02 [notice] 8#8: start worker process 18
+2023/12/05 14:00:02 [notice] 8#8: start worker process 19
+2023/12/05 14:00:02 [notice] 8#8: start worker process 20
+2023/12/05 14:02:01 [notice] 8#8: using the "epoll" event method
+2023/12/05 14:02:01 [notice] 8#8: nginx/1.24.0
+2023/12/05 14:02:01 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 14:02:01 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 14:02:01 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 14:02:01 [notice] 8#8: start worker processes
+2023/12/05 14:02:01 [notice] 8#8: start worker process 13
+2023/12/05 14:02:01 [notice] 8#8: start worker process 14
+2023/12/05 14:02:01 [notice] 8#8: start worker process 15
+2023/12/05 14:02:01 [notice] 8#8: start worker process 16
+2023/12/05 14:02:01 [notice] 8#8: start worker process 17
+2023/12/05 14:02:01 [notice] 8#8: start worker process 18
+2023/12/05 14:02:01 [notice] 8#8: start worker process 19
+2023/12/05 14:02:01 [notice] 8#8: start worker process 20
+2023/12/05 14:23:19 [notice] 8#8: using the "epoll" event method
+2023/12/05 14:23:19 [notice] 8#8: nginx/1.24.0
+2023/12/05 14:23:19 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 14:23:19 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 14:23:19 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 14:23:19 [notice] 8#8: start worker processes
+2023/12/05 14:23:19 [notice] 8#8: start worker process 13
+2023/12/05 14:23:19 [notice] 8#8: start worker process 14
+2023/12/05 14:23:19 [notice] 8#8: start worker process 15
+2023/12/05 14:23:19 [notice] 8#8: start worker process 16
+2023/12/05 14:23:19 [notice] 8#8: start worker process 17
+2023/12/05 14:23:19 [notice] 8#8: start worker process 18
+2023/12/05 14:23:19 [notice] 8#8: start worker process 19
+2023/12/05 14:23:19 [notice] 8#8: start worker process 20
+2023/12/05 14:27:49 [notice] 8#8: using the "epoll" event method
+2023/12/05 14:27:49 [notice] 8#8: nginx/1.24.0
+2023/12/05 14:27:49 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 14:27:49 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 14:27:49 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 14:27:49 [notice] 8#8: start worker processes
+2023/12/05 14:27:49 [notice] 8#8: start worker process 13
+2023/12/05 14:27:49 [notice] 8#8: start worker process 14
+2023/12/05 14:27:49 [notice] 8#8: start worker process 15
+2023/12/05 14:27:49 [notice] 8#8: start worker process 16
+2023/12/05 14:27:49 [notice] 8#8: start worker process 17
+2023/12/05 14:27:49 [notice] 8#8: start worker process 18
+2023/12/05 14:27:49 [notice] 8#8: start worker process 19
+2023/12/05 14:27:49 [notice] 8#8: start worker process 20
+2023/12/05 15:07:37 [notice] 8#8: using the "epoll" event method
+2023/12/05 15:07:37 [notice] 8#8: nginx/1.24.0
+2023/12/05 15:07:37 [notice] 8#8: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/12/05 15:07:37 [notice] 8#8: OS: Linux 6.4.16-linuxkit
+2023/12/05 15:07:37 [notice] 8#8: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/12/05 15:07:37 [notice] 8#8: start worker processes
+2023/12/05 15:07:37 [notice] 8#8: start worker process 13
+2023/12/05 15:07:37 [notice] 8#8: start worker process 14
+2023/12/05 15:07:37 [notice] 8#8: start worker process 15
+2023/12/05 15:07:37 [notice] 8#8: start worker process 16
+2023/12/05 15:07:37 [notice] 8#8: start worker process 17
+2023/12/05 15:07:37 [notice] 8#8: start worker process 18
+2023/12/05 15:07:37 [notice] 8#8: start worker process 19
+2023/12/05 15:07:37 [notice] 8#8: start worker process 20
+2023/12/06 10:55:30 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 10:55:30 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 10:55:55 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:55:55 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:56:07 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:56:07 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: still could not bind()
+2023/12/06 11:10:53 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:10:53 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:10:57 [error] 16#16: *2 no live upstreams while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://localhost/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:11:07 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:11:07 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: still could not bind()

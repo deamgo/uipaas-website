@@ -1,17 +1,11 @@
-FROM centos:7
+FROM arm64v8/ubuntu:22.04
 
-FROM nginx:stable
+# FROM nginx:stable
 
-RUN apt-get update && apt-get -y install vim
+RUN apt-get update --fix-missing && apt-get install -y nginx && apt-get -y install vim && apt-get install -y golang
 
 ARG APP_HOME
 
-# RUN mkdir "/home/uipaashome/backend"
-
-# VOLUME /home/uipaashome/backend
 VOLUME ${APP_HOME}
-# WORKDIR /home/uipaashome/backend
 WORKDIR ${APP_HOME}
-
-ENTRYPOINT [ "./backend","-dbConfig","./config.yaml" ]
 
