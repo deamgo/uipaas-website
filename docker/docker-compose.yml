@@ -12,9 +12,9 @@ services:
     #   - ${MYSQL_PORT}:3306
     volumes:
       - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./mysql/log:/var/log/mysql
-      - ./mysql/data:/var/lib/mysql
-      - ./mysql/conf:/etc/mysql/conf.d
+      # - ./mysql/log:/var/log/mysql
+      # - ./mysql/data:/var/lib/mysql
+      # - ./mysql/conf:/etc/mysql/conf.d
     # command: 
     #   [--character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
     healthcheck:
