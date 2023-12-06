@@ -83,15 +83,15 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: |
-            wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
-            rm -f uihome*.zip
-            rm -rf ./docker
-            unzip uihome-${{ github.ref_name }}.zip
-            cd ./docker
+          script: |  
             docker stop uipaashome-uipaas uipaashome-mysql
             docker rm uipaashome-uipaas uipaashome-mysql
             docker rmi uihome
+            rm -f uihome*.zip
+            rm -rf ./docker
+            wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
+            unzip uihome-${{ github.ref_name }}.zip
+            cd ./docker
             docker-compose up --build -d
           
 
