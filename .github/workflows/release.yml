@@ -39,7 +39,8 @@ jobs:
       - name: Backend build
         working-directory: ./backend
         run: |
-          CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
+          go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"' main.go
+    # CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
     # go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"' main.go
     # CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
     # CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
