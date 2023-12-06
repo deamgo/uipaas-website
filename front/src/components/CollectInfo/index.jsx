@@ -83,10 +83,10 @@ export function CollectInfo({ onClose }) {
     }
     saveCompInfo(formData).then((res) => {
       console.log(res);
-      if (res.value.code === 0) {
-        $message.success(res.value.msg);
-      } else if (res.value.code === -1) {
-        $message.error(res.value.msg);
+      if (res.data.value.code === 0) {
+        $message.success(res.data.value.msg);
+      } else if (res.data.value.code === -1) {
+        $message.error(res.data.value.msg);
       }
       onClose();
     })

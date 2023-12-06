@@ -10,9 +10,9 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ~/uipaas/${DOCKER_PREFIX}-mysql/log:/var/log/mysql
-      - ~/uipaas/${DOCKER_PREFIX}-mysql/data:/var/lib/mysql
-      - ~/uipaas/${DOCKER_PREFIX}-mysql/conf:/etc/mysql/conf.d
+      - ../uipaas/${DOCKER_PREFIX}-mysql/log:/var/log/mysql
+      - ../uipaas/${DOCKER_PREFIX}-mysql/data:/var/lib/mysql
+      - ../uipaas/${DOCKER_PREFIX}-mysql/conf:/etc/mysql/conf.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}" ]
       interval: 10s
