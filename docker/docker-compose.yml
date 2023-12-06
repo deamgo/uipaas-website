@@ -7,22 +7,17 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: uipaas-home
-    # ports:
-    #   - ${MYSQL_PORT}:3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
-      # - ./mysql/log:/var/log/mysql
-      # - ./mysql/data:/var/lib/mysql
-      # - ./mysql/conf:/etc/mysql/conf.d
-    # command: 
-    #   [--character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
+      - ./mysql/log:/var/log/mysql
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}" ]
       interval: 10s
       timeout: 5s
       retries: 5
-      # start_period: 30s
     networks:
       - uipaashome
   
@@ -45,10 +40,8 @@ services:
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/logs:/var/log/nginx
     ports:
-      - 9000:9000
-      # - "443:443"
-      - 5000:5000
-      # - ${BACKEND_PORT}:8080
+      - ${NGINX_PORT}:${NGINX_PORT}
+      - ${ADMIN_PORT}:${ADMIN_PORT}
     command: [ "/home/uipaashome/backend/banlaunch.sh" ]
     extra_hosts:
       - host.docker.internal:host-gateway
@@ -57,10 +50,8 @@ services:
     networks:
       - uipaashome
     depends_on:
-      # - mysql
       mysql:
         condition: service_healthy
 
 networks:
   uipaashome:
-    # external: true

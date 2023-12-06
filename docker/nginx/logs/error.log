@@ -619,3 +619,56 @@
 2023/12/05 15:07:37 [notice] 8#8: start worker process 18
 2023/12/05 15:07:37 [notice] 8#8: start worker process 19
 2023/12/05 15:07:37 [notice] 8#8: start worker process 20
+2023/12/06 10:55:30 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 10:55:30 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 10:55:55 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:55:55 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:56:07 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:56:07 [error] 15#15: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "POST /api/v1/login HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/login", host: "localhost:5000", referrer: "http://localhost:5000/logo"
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 10:57:33 [emerg] 36#36: still could not bind()
+2023/12/06 11:10:53 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:10:53 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:10:57 [error] 16#16: *2 no live upstreams while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://localhost/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:11:07 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:11:07 [error] 16#16: *2 connect() failed (111: Unknown error) while connecting to upstream, client: 192.168.65.1, server: localhost, request: "GET /api/v1/company?pageSize=800&pageNum=1 HTTP/1.1", upstream: "http://127.0.0.1:8080/v1/company?pageSize=800&pageNum=1", host: "localhost:5000", referrer: "http://localhost:5000/"
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:5000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:9000 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to 0.0.0.0:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: bind() to [::]:80 failed (98: Unknown error)
+2023/12/06 11:13:24 [emerg] 50#50: still could not bind()
