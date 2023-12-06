@@ -6,7 +6,7 @@ name: Release
 jobs:
   build:
     name: docekr pkg
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout sources
         uses: actions/checkout@v4
@@ -39,8 +39,7 @@ jobs:
       - name: Backend build
         working-directory: ./backend
         run: |
-          go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"' main.go
-    # CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
+          CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend
     # go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"' main.go
     # CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
     # CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
