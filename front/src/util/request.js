@@ -16,11 +16,12 @@ requests.interceptors.request.use(
 
 requests.interceptors.response.use(
   (response) => {
-    return response.data;
+    // return response.data;
+    return response;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
 
-export  { requests  as request};
+export { requests as request };

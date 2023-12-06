@@ -3,16 +3,16 @@ services:
 
   mysql:
     image: mysql:8.0.29
-    container_name: ${DOCKER_PREFIX}-mysql
+    container_name: ${DOCKER_PREFIX}-mysql  
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./mysql/log:/var/log/mysql
-      - ./mysql/data:/var/lib/mysql
-      - ./mysql/conf:/etc/mysql/conf.d
+      - ~/uipaas/${DOCKER_PREFIX}-mysql/log:/var/log/mysql
+      - ~/uipaas/${DOCKER_PREFIX}-mysql/data:/var/lib/mysql
+      - ~/uipaas/${DOCKER_PREFIX}-mysql/conf:/etc/mysql/conf.d
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}" ]
       interval: 10s

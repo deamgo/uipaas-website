@@ -61,7 +61,7 @@ jobs:
       name: uihome_deploy
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 
 
       - name: Download artifacts
         uses: actions/download-artifact@v3
@@ -86,9 +86,9 @@ jobs:
             wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
             unzip uihome-${{ github.ref_name }}.zip
             cd ./docker
-            docker stop uipaashome-uipaas
-            docker rm uipaashome-uipaas
+            docker stop uipaashome-uipaas uipaashome-mysql
+            docker rm uipaashome-uipaas uipaashome-mysql
             docker rmi uihome
-            docker-compose up -d
+            docker-compose up --build -d
           
 
