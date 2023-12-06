@@ -84,8 +84,9 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            rm -f uihome*.zip
             wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
+            rm -f uihome*.zip
+            rm -rf ./docker
             unzip uihome-${{ github.ref_name }}.zip
             cd ./docker
             docker stop uipaashome-uipaas uipaashome-mysql
