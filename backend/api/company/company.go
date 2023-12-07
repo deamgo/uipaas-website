@@ -1,7 +1,6 @@
 package company
 
 import (
-	"github.com/go-playground/validator/v10"
 	"strconv"
 
 	"github.com/deamgo/uipaas-home/backend/context"
@@ -11,6 +10,7 @@ import (
 	"github.com/deamgo/uipaas-home/backend/pkg/types"
 	"github.com/deamgo/uipaas-home/backend/service/company"
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 	"net/http"
 )
