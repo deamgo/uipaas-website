@@ -18,7 +18,7 @@ const LoginForm = () => {
       });
 
       // 从响应中获取 JWT 令牌
-      const jwtToken = response.data.token;
+      const jwtToken = response.value.data.token;
 
       // 将 JWT 令牌保存到本地存储或者其他地方（例如，Cookie）
       if (localStorage.getItem('jwtToken') !== jwtToken) {
@@ -27,6 +27,7 @@ const LoginForm = () => {
       localStorage.setItem('jwtToken', jwtToken);
 
       console.log('Login successful');
+      window.location.pathname = '/'
     } catch (error) {
       console.error('Login failed', error);
       alert('logo failed')
@@ -39,13 +40,13 @@ const LoginForm = () => {
     <>
       <div className='logoCard'>
         <label>
-          <span>Username:</span>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" placeholder='   ' value={username} onChange={(e) => setUsername(e.target.value)} />
+          <span className='ulabel'>Username</span>
         </label>
         <br />
         <label>
-          <span>Password:</span>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" placeholder='   ' value={password} onChange={(e) => setPassword(e.target.value)} />
+          <span className='plabel'>Password</span>
         </label>
         <br />
         <button onClick={handleLogin}>Login</button>

@@ -31,18 +31,18 @@ function App() {
   const [borderb, setborderB] = useState('head')
 
   const [tabVis, settabVis] = useState(visAble)
-  
+
   useEffect(() => {
     window.addEventListener('resize', resize)
     resize()
     scrollDetector()
-  },[])
+  }, [])
 
   const resize = () => {
     let IwD = window.innerWidth
-    document.documentElement.style.fontSize = IwD/1920 + 'px'
+    document.documentElement.style.fontSize = IwD / 1920 + 'px'
   }
-  
+
   const scrollDetector = () => {
     window.addEventListener('scroll', () => {
       let Hbtn = document.querySelector('#hBtn')
@@ -56,7 +56,7 @@ function App() {
         setbtnVis({
           display: 'block'
         })
-        setborderB('head'+ ' ' +'head-fixed-top')
+        setborderB('head' + ' ' + 'head-fixed-top')
       } else {
         setbtnS({
           position: 'absolute'
@@ -78,24 +78,22 @@ function App() {
   return (
     <>
       <header style={btnS}>
-        <div 
+        <div
           className={borderb}>
-            <img className='logo' src={logoSvg} alt="Logo" />
-              <button 
-                className='reserveButton' 
-                style={btnVis}
-                onClick={handleClick}>
-                  <span>Book demo</span>
-              </button>
-            {/* <div className="reserve" id="headBtn" style={btnVis}>
-            </div> */}
+          <img className='logo' src={logoSvg} alt="Logo" />
+          <button
+            className='reserveButton'
+            style={btnVis}
+            onClick={handleClick}>
+            <span>Book demo</span>
+          </button>
         </div>
       </header>
       <main>
         <div className="container">
           <div className="title">
             <span>
-              AI-base, future-oriented, 
+              AI-base, future-oriented,
               <br />
               drag-and-drop
               <br />
@@ -105,20 +103,20 @@ function App() {
           <div className="dsp">
             <span>
               The agile delivery tool for software development teams.
-              <br/>
+              <br />
               Delivering software promptly with a business-oriented approach.
             </span>
           </div>
-            <button
-              className='reserveButton' 
-              id="hBtn"
-              onClick={handleClick}>
-                <span>Book demo</span>
-            </button>
+          <button
+            className='reserveButton'
+            id="hBtn"
+            onClick={handleClick}>
+            <span>Book demo</span>
+          </button>
           {/* <div className="reserve" id="homeBtn">
           </div> */}
           <div className='svg_block'>
-              <img src={bannerSVG} alt='feature' />
+            <img src={bannerSVG} alt='feature' />
           </div>
           <div className="sec_title">
             <span>Feature</span>
@@ -129,9 +127,9 @@ function App() {
             <img src={serviSvg} alt="deploy" />
             <img src={sectiSvg} alt="highly" />
           </div>
-          <Paper 
-            title={"AI base"} 
-            content={"Creating a New Paradigm for Application Development"} 
+          <Paper
+            title={"AI base"}
+            content={"Creating a New Paradigm for Application Development"}
             ps={{
               left: '395rem',
               top: '1065rem',
@@ -167,14 +165,14 @@ function App() {
           <div className="thd_svg_block">
             <img src={aboutSvg} alt="About" />
             <span className="thd_dsp_one">
-              A team of senior technical experts 
+              A team of senior technical experts
               <br />
               in the low-code field
             </span>
             <span className="thd_dsp_two">
-              Our Vision is to provide development teams with a 
+              Our Vision is to provide development teams with a
               <br />
-              new development tool that can be used to improve 
+              new development tool that can be used to improve
               <br />
               the efficiency of delivering</span>
           </div>
@@ -185,7 +183,7 @@ function App() {
             <br />
             drag-and-drop  development platform.
           </span>
-          <button 
+          <button
             className="reserveButton"
             onClick={handleClick}>
             <span>Book demo</span>
@@ -194,19 +192,19 @@ function App() {
       </main>
       <footer>
         <div className="foot">
-          <span className="cpr">Copyright © Deamoy Technology</span>
+          <span className="cpr">Copyright © Deamgo Technology</span>
           <Divider margin={{
             position: 'absolute',
             left: '240rem',
             top: '2404rem',
             width: '1440rem'
-          }}/>
+          }} />
         </div>
       </footer>
-      {tabVis && <CollectInfo onClose={handleClick}/>}
+      {tabVis && <CollectInfo onClose={handleClick} />}
       {tabVis && <Mask />}
     </>
-  ); 
+  );
 }
 
 export default App;

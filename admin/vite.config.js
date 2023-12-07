@@ -18,6 +18,6 @@ export default defineConfig({
   },
 
   build: {
-    outDir: './docker/nginx/html/ad/'
+    outDir: '../docker/nginx/html/ad/'
   }
 })
