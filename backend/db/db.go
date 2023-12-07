@@ -31,7 +31,6 @@ var dbConfigPath = flag.String("dbConfig", "", "db config path")
 func InitDB() *gorm.DB {
 
 	flag.Parse()
-	fmt.Println("dajwdkawnkjfkwjafbakjw")
 	path, err := os.Getwd()
 	if err != nil {
 		log.Fatalf("Cannot open config file: %v", err)
@@ -40,15 +39,9 @@ func InitDB() *gorm.DB {
 		configFile []byte
 	)
 	if *dbConfigPath == "" {
-		fmt.Println("&&&&&&&&&&&&&&&&&")
 		configFile, err = os.ReadFile(path + "/db/config.yaml")
-		fmt.Println(string(*dbConfigPath))
-		fmt.Println(string(configFile))
 	} else {
 		configFile, err = os.ReadFile(*dbConfigPath)
-		fmt.Println("****************")
-		fmt.Println(string(*dbConfigPath))
-		fmt.Println(string(configFile))
 	}
 
 	if err != nil {
@@ -67,7 +60,6 @@ func InitDB() *gorm.DB {
 		config.Database.Port,
 		config.Database.DBName,
 		config.Database.Charset)
-	fmt.Println("dns########", dsn)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("failed to connect to database: %v", err)
