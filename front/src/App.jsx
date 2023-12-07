@@ -87,8 +87,6 @@ function App() {
             onClick={handleClick}>
             <span>Book demo</span>
           </button>
-          {/* <div className="reserve" id="headBtn" style={btnVis}>
-            </div> */}
         </div>
       </header>
       <main>

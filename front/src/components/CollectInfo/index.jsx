@@ -38,7 +38,6 @@ export function CollectInfo({ onClose }) {
       return
     }
     saveCompInfo(formData).then((res) => {
-      console.log(res);
       if (res.value.code === 0) {
         onClose();
         $message.success(res.value.msg);
