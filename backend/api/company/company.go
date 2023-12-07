@@ -10,6 +10,7 @@ import (
 	"github.com/deamgo/uipaas-home/backend/pkg/types"
 	"github.com/deamgo/uipaas-home/backend/service/company"
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 	"net/http"
 )
@@ -91,7 +92,24 @@ func CompanyAdd(ctx context.ApplicationContext) gin.HandlerFunc {
 				zap.Error(err),
 				zap.Any("companyinfo", req),
 			)
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+				Data: nil,
+			}))
+			return
 		}
+		validate := validator.New()
+		err = validate.Struct(req.Company)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+				Data: nil,
+			}))
+			return
+		}
+
 		err = ctx.CompanyService.CompanyAdd(c, req.Company)
 		if err != nil {
 			switch err {

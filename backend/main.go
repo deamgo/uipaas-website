@@ -18,10 +18,10 @@ import (
 func main() {
 	dao := dao.NewAUserDao(db.DB)
 	formdao := formdao.NewACompanyFormDao(db.DB)
-	ctx := context.ApplicationContext{UserService: user.NewUserService(
-		user.UserServiceParams{Dao: dao},
-	),
-		CompanyService: company.NewcompanyService(company.CompanyServiceParams{Dao: formdao})}
+	ctx := context.ApplicationContext{
+		UserService:    user.NewUserService(user.UserServiceParams{Dao: dao}),
+		CompanyService: company.NewcompanyService(company.CompanyServiceParams{Dao: formdao}),
+	}
 
 	r := gin.Default()
 	r.Use(middleware.Cors())

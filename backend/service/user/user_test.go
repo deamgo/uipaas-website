@@ -107,7 +107,6 @@ func TestUserService_UserLogin(t *testing.T) {
 			expectedError:  dao.UserLoginError,
 			expectedErrMsg: "incorrect username or password",
 		},
-		// Add more test cases as needed
 	}
 
 	for _, tt := range tests {
