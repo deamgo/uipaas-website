@@ -6,7 +6,6 @@ import { saveCompInfo } from "../../api/comp_info";
 import { validate } from "./validator";
 
 export function CollectInfo({ onClose }) {
-
   const [formData, setFormData] = useState({
     companyname: "",
     companysize: "",
