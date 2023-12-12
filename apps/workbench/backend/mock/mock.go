@@ -1,9 +1,10 @@
 package mock
 
 import (
-	"github.com/DATA-DOG/go-sqlmock"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+
+	"github.com/DATA-DOG/go-sqlmock"
 )
 
 func GetNewDbMock() (*gorm.DB, sqlmock.Sqlmock, error) {

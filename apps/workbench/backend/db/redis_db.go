@@ -2,9 +2,10 @@ package db
 
 import (
 	"fmt"
-	"github.com/go-redis/redis"
 	"gopkg.in/yaml.v3"
 	"log"
+
+	"github.com/go-redis/redis"
 )
 
 var RedisDB *redis.Client
@@ -34,6 +35,6 @@ func InitRedis() {
 	if err != nil {
 		fmt.Println(pong, err)
 	}
-	fmt.Println("redis 连接成功")
+	fmt.Println("redis connection success")
 
 }

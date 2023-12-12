@@ -2,12 +2,14 @@ package user
 
 import (
 	"context"
-	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/stretchr/testify/assert"
 	"regexp"
 	"testing"
-	dao "workbench/dao/user"
-	mockTest "workbench/mock"
+
+	dao "github.com/deamgo/workbench/dao/user"
+	mockTest "github.com/deamgo/workbench/mock"
+
+	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/stretchr/testify/assert"
 )
 
 func setupUserServiceTest(t *testing.T) (UserService, sqlmock.Sqlmock) {

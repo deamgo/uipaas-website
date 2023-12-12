@@ -3,21 +3,14 @@ package mail
 import (
 	"context"
 	"fmt"
-	"github.com/jordan-wright/email"
 	"log"
 	"math/rand"
 	"net/smtp"
 	"time"
+
+	"github.com/jordan-wright/email"
 )
 
-// 1.邮件说明
-// Subject line(主题)：UIPaaS Email verification code
-// Addresser（发件人）：notify@mail.uipaas.com
-// Receiver（收件人）：-
-// Salutation（问候语）：-
-// Main point（正文）：UIPaaS Email verification code
-// Closing（收尾）：If you didn't try to sign in or change email,please ignore this email.
-// Sign off（签名）：logo+website
 var (
 	SUBJECT_LINE = "UIPaaS Email verification code"
 	ADDRESSER    = "uipaas@tests.run"
@@ -26,18 +19,18 @@ var (
 
 func SendMail(ctx context.Context, emailStr string) int {
 
-	// 设置随机种子
+	// Set up a random seed
 	rand.Seed(time.Now().UnixNano())
-	// 生成四位随机数
+	// Generate a four-digit random number
 	randomNumber := rand.Intn(9000) + 1000
 	e := email.NewEmail()
-	//设置发送方的邮箱
+	// Set the sender's mailbox
 	e.From = fmt.Sprintf("UIPaaS <%v>", ADDRESSER)
-	// 设置接收方的邮箱
+	// Set up the recipient's mailbox
 	e.To = []string{emailStr}
-	//设置主题
+	// Set up a subject
 	e.Subject = SUBJECT_LINE
-	//设置文件发送的内容
+	// Set the content of the file to be sent
 	html := fmt.Sprintf(`
 		<h1>UIPaaS Email verification code</h1>
 		<br/>
@@ -49,7 +42,7 @@ func SendMail(ctx context.Context, emailStr string) int {
 		<a href ="https://uipaas.com">https://www.uipaas.com</a>
 	`, randomNumber)
 	e.HTML = []byte(html)
-	//设置服务器相关的配置
+	// Set the server-related configurations
 	err := e.Send("smtp.feishu.cn:25", smtp.PlainAuth("", "uipaas@tests.run", "rR9rJvSiXkfAm44h", "smtp.feishu.cn"))
 	if err != nil {
 		log.Fatal(err)

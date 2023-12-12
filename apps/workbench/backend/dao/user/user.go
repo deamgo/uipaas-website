@@ -5,8 +5,9 @@ import (
 	"context"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
-	daolayer "workbench/dao"
-	"workbench/db"
+
+	daolayer "github.com/deamgo/workbench/dao"
+	"github.com/deamgo/workbench/db"
 )
 
 var UserNotExistError = errors.New("user not exist")

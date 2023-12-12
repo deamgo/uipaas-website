@@ -1,20 +1,22 @@
 package middleware
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
-	"workbench/auth/jwt"
+
+	"github.com/gin-gonic/gin"
+
+	"github.com/deamgo/workbench/auth/jwt"
 )
 
-// 基于JWT认证中间件
+// JWTAuthMiddleware based On JWT Certified Middleware
 func JWTAuthMiddleware() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		authHeader := c.Request.Header.Get("Authorization")
 		if authHeader == "" {
 			c.JSON(http.StatusOK, gin.H{
 				"code": 2003,
-				"msg":  "请求头中的auth为空",
+				"msg":  "the Auth In The RequestHeader Is Empty",
 			})
 			c.Abort()
 			return
@@ -24,9 +26,9 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 		if !(len(parts) == 2 && parts[0] == "Bearer") {
 			c.JSON(http.StatusOK, gin.H{
 				"code": 2004,
-				"msg":  "请求头中的auth格式错误",
+				"msg":  "the Auth Format In The RequestHeader Is Incorrect",
 			})
-			//阻止调用后续的函数
+			// prevent Subsequent Functions From Being Called
 			c.Abort()
 			return
 		}
@@ -34,14 +36,14 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 		if err != nil {
 			c.JSON(http.StatusOK, gin.H{
 				"code": 2005,
-				"msg":  "无效的token",
+				"msg":  "invalid Token",
 			})
 			c.Abort()
 			return
 		}
-		//将当前请求的username信息保存到请求的上下文c上
+		// Save the username information of the current request to the context C of the request
 		c.Set("username", mc.Username)
-		//后续的处理函数可以通过c.Get("username")来获取请求的用户信息
+		// Subsequent processing functions can be handled by c. Get("username") to get the requested user information
 		c.Next()
 	}
 

@@ -11,13 +11,10 @@ const (
 	LoginFormatError      = "Login format error"
 	LoginSuccess          = "Login success"
 	LoginFailed           = "Login failed"
-
-	SignUpError = "User registration failed"
-
-	VerifyCodeExpired = "VerificationCode has expired"
-	InvalidVerifyCode = "Invalid VerificationCode"
-
-	EmptyToken       = "The token in the request header is empty"
-	TokenFormatError = "The auth format in the request header is incorrect"
-	TokenInvalid     = "Invalid Token"
+	SignUpError           = "User registration failed"
+	VerifyCodeExpired     = "VerificationCode has expired"
+	InvalidVerifyCode     = "Invalid VerificationCode"
+	EmptyToken            = "The token in the request header is empty"
+	TokenFormatError      = "The auth format in the request header is incorrect"
+	TokenInvalid          = "Invalid Token"
 )

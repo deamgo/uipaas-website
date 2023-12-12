@@ -3,20 +3,20 @@ package user
 import "time"
 
 type UserDO struct {
-	UID            uint      `gorm:"primaryKey" json:"uid"`
-	Username       string    `gorm:"unique" json:"username"`
+	UID            uint      `json:"uid" gorm:"primaryKey" `
+	Username       string    `json:"username" gorm:"unique" `
 	Avatar         string    `json:"avatar"`
-	Email          string    `gorm:"unique;not null" json:"email"`
-	Password       string    `gorm:"not null" json:"-"`
-	InvitationCode string    `gorm:"unique;not null" json:"invitation_code"`
-	CreateDate     time.Time `gorm:"autoCreateTime" json:"create_date"`
-	UpdateDate     time.Time `gorm:"autoUpdateTime" json:"update_date"`
-	//账号是否停用
-	Deactivate bool   `gorm:"default:false" json:"deactivate"`
+	Email          string    `json:"email" gorm:"unique;not null" `
+	Password       string    `json:"password" gorm:"not null"`
+	InvitationCode string    `json:"invitation_code" gorm:"unique;not null" `
+	CreateDate     time.Time `json:"create_date" gorm:"autoCreateTime" `
+	UpdateDate     time.Time ` json:"update_date" gorm:"autoUpdateTime" `
+	//whether The Account Is Deactivated
+	Deactivate bool   `json:"deactivate" gorm:"default:false" `
 	Status     string `json:"status"`
 }
 
-// TableName 设置表名，如果没有这个方法，表名默认是结构体的复数形式（UserProfiles）
+// TableName
 func (UserDO) TableName() string {
 	return "user"
 }

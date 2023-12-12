@@ -6,10 +6,11 @@ import (
 	"encoding/hex"
 	"fmt"
 	"time"
-	"workbench/dao/user"
-	"workbench/db"
-	"workbench/pkg/logger"
-	"workbench/service/mail"
+
+	"github.com/deamgo/workbench/dao/user"
+	"github.com/deamgo/workbench/db"
+	"github.com/deamgo/workbench/pkg/logger"
+	"github.com/deamgo/workbench/service/mail"
 )
 
 type UserService interface {

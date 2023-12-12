@@ -2,12 +2,13 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"workbench/context"
-	user2 "workbench/dao/user"
-	"workbench/db"
-	"workbench/pkg/logger"
-	routes "workbench/router"
-	"workbench/service/user"
+
+	"github.com/deamgo/workbench/context"
+	user2 "github.com/deamgo/workbench/dao/user"
+	"github.com/deamgo/workbench/db"
+	"github.com/deamgo/workbench/pkg/logger"
+	routes "github.com/deamgo/workbench/router"
+	"github.com/deamgo/workbench/service/user"
 )
 
 func main() {

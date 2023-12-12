@@ -2,20 +2,22 @@ package user
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-	"golang.org/x/crypto/bcrypt"
 	"log"
 	"math/rand"
 	"net/http"
 	"regexp"
-	"workbench/auth/jwt"
-	"workbench/context"
-	"workbench/dao"
-	"workbench/db"
-	"workbench/pkg/e"
-	"workbench/pkg/types"
-	"workbench/service/user"
+
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+	"golang.org/x/crypto/bcrypt"
+
+	"github.com/deamgo/workbench/auth/jwt"
+	"github.com/deamgo/workbench/context"
+	"github.com/deamgo/workbench/dao"
+	"github.com/deamgo/workbench/db"
+	"github.com/deamgo/workbench/pkg/e"
+	"github.com/deamgo/workbench/pkg/types"
+	"github.com/deamgo/workbench/service/user"
 )
 
 type Resp struct {
@@ -47,27 +49,27 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			req UserPostReq
 			err error
 		)
-		//拿到参数
+		// get The Parameters
 		err = c.ShouldBind(&req.User)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
-		//verifyTheParameterFormat
+		// verify The Parameter Format
 		validate := validator.New()
 		err = validate.RegisterValidation("verifyPwd", verifyPwd)
 		err = validate.Struct(req.User)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  err.Error(),
+				Msg:  "theParametersAreNotFormattedCorrectly",
 				Data: nil,
 			}))
 			return
 		}
 
 		var u *user.User
-		// 校验邀请码是否存在
+		// verifyWhether The InvitationCode Exists
 		u, err = ctx.UserService.UserGetByInvitationCode(c, req.User)
 		if u == nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
@@ -77,7 +79,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
-		//校验邮箱是否被占用
+		// check Whether The Mailbox Is Occupied
 		u, err = ctx.UserService.UserGetByEmail(c, req.User)
 		if u != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
@@ -88,12 +90,12 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		//生成邀请码
+		// generate An Invitation Code
 		req.InvitationCode = GenerateInviteCode()
 		//PasswordEncryption
 		password, _ := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.MinCost)
 		req.Password = string(password)
-		//添加
+		// add
 		var codeHash string
 		codeHash, err = ctx.UserService.UserAdd(c, req.User)
 		if err != nil {
@@ -144,7 +146,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
-		//Modify user deactivate
+		// Modify user deactivate
 		err = ctx.UserService.UserDeactivateModifyByEmail(c, req.User)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
@@ -179,9 +181,9 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 			//	doesNotExist
 			log.Fatal(err)
 		}
-		//	对密码进行解密校验
+		//	decrypt The Password
 		_ = bcrypt.CompareHashAndPassword([]byte(req.Password), []byte(findUser.Password))
-		//	生成token，并返回
+		//	generate A Token And Return It
 		var t string
 		t, err = jwt.GenToken(findUser.Username)
 		fmt.Println(t)
@@ -194,16 +196,16 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 }
 
 func GenerateInviteCode() string {
-	// 定义字符集
+	// define The Character Set
 	alphabets := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
 
-	// 生成随机字符串
+	// generate Random Strings
 	inviteCode := make([]rune, 6)
 	for i := 0; i < len(inviteCode); i++ {
 		inviteCode[i] = alphabets[rand.Intn(len(alphabets))]
 	}
 
-	// 返回邀请码
+	// return The Invitation Code
 	return string(inviteCode)
 }
 

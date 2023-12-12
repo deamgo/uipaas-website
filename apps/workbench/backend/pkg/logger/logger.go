@@ -6,7 +6,7 @@ import (
 	"path"
 	"time"
 
-	"workbench/pkg/consts"
+	"github.com/deamgo/workbench/pkg/consts"
 
 	"github.com/sirupsen/logrus"
 )
