@@ -25,19 +25,19 @@ jobs:
       - run: go version
 
       - name: Install front Dep & build
-        working-directory: ./front
+        working-directory: ./apps/home/front
         run: |
           yarn
           yarn build
       
       - name: Install admin Dep & build
-        working-directory: ./admin
+        working-directory: ./apps/home/admin
         run: |
           yarn
           yarn build
 
       - name: Backend build
-        working-directory: ./backend
+        working-directory: ./apps/home/backend
         run: |
           CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend
     # go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"' main.go
@@ -45,7 +45,7 @@ jobs:
     # CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend -ldflags '-linkmode=external -extldflags "-static"'
     
       - name: zip Docker pkg
-        working-directory: ./
+        working-directory: ./apps/home
         run: |
           zip -r uihome-${{ github.ref_name }}.zip ./docker
 
@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: uihome-${{ github.ref_name }}.zip
-          path: ./uihome-${{ github.ref_name }}.zip
+          path: ./apps/home/uihome-${{ github.ref_name }}.zip
   release:
     name: Release artifacts
     needs: [build]

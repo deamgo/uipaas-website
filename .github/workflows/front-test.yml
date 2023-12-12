@@ -26,7 +26,7 @@ jobs:
       - run: node -v
 
       - name: install dependencies & test
-        working-directory: ./front
+        working-directory: ./apps/home/front
         run: |
           yarn
           yarn test -u
