@@ -1,0 +1,60 @@
+.__mcontent {
+  display: flex;
+  align-items: center;
+  padding-left: 16rem;
+
+  width: 200rem;
+  height: 40rem;
+
+  font-size: 14rem;
+  font-weight: 400;
+
+  &_son {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+
+      .__mcontent_son_svg {
+        svg {
+          fill: #165DFF;
+          stroke: #165DFF;
+        }
+      }
+
+      span {
+        color: #165DFF;
+      }
+    }
+
+    &_svg {
+      width: 18rem;
+      height: 18rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        fill: #4E5969;
+        width: 12.75rem;
+        height: 12.75rem;
+        stroke: #4E5969;
+      }
+    }
+
+    span:nth-child(1) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    span:nth-child(2) {
+      margin-left: 16rem;
+      height: 22rem;
+
+      line-height: 22rem;
+    }
+  }
+}

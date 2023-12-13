@@ -1,0 +1,20 @@
+{
+  "baseUrl": "src",
+  "paths": {
+    "@/*": [
+      "./*"
+    ],
+    "@assets/*": [
+      "assets/*"
+    ],
+    "@components/*": [
+      "components/*"
+    ],
+    "@views/*": [
+      "views/*"
+    ],
+    "@utils/*": [
+      "utils/*"
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+.__ryp {
+
+  &_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 83rem;
+
+    span {
+      &:nth-child(1) {
+        font-size: 24rem;
+        font-weight: normal;
+        line-height: 28rem;
+      }
+    }
+
+    &_row {
+      position: absolute;
+      left: 0rem;
+      top: 0rem;
+      width: 24rem;
+      height: 24rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+
+      img {
+        width: 71.88%;
+        height: 69.53%;
+      }
+    }
+  }
+
+  &_form {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+
+    &_input {
+      position: relative;
+      margin-bottom: 26rem;
+      width: 350rem;
+      height: 60rem;
+
+      &_send {
+        position: absolute;
+        right: 0;
+        top: 28rem;
+
+        width: 84rem;
+        height: 32rem;
+
+        cursor: pointer;
+
+        button {
+          color: #FFFFFF;
+          background-color: #165DFF;
+        }
+      }
+    }
+  }
+
+  &_continue {
+    margin-top: 14rem;
+    width: 350rem;
+    height: 32rem;
+
+    button {
+      background-color: #165DFF;
+      color: #FFFFFF;
+
+      &:disabled {
+        background-color: rgba(22, 93, 255, 0.5);
+      }
+    }
+  }
+
+
+}
