@@ -9,7 +9,6 @@
 *.dylib
 .idea
 .git
-conf/
 logs/
 # Test binary, built with `go test_demo -c`
 *.test
