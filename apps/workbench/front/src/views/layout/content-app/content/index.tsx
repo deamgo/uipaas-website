@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom'
 //style
 import './index.less'
 //
@@ -10,7 +11,7 @@ const Content: React.FC = () => {
   return (
     <>
       <div className="__content">
-        {isEmpty && (
+        {isEmpty ? (
           <>
             <div className="__content_empty_svg">
               <EmptyApp />
@@ -18,6 +19,10 @@ const Content: React.FC = () => {
             <span className="__content_empty_span">
               Nothing here.
             </span>
+          </>
+        ) : (
+          <>
+            <Outlet />
           </>
         )}
       </div>

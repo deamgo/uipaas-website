@@ -41,6 +41,9 @@
       ],
       "@constants/*": [
         "./constants/*"
+      ],
+      "@api/*": [
+        "./api/*"
       ]
     },
     "types": [
@@ -50,7 +53,9 @@
     ]
   },
   "include": [
-    "src"
+    "src/**/*",
+    "tests/**/*",
+    "tests",
   ],
   "references": [
     {

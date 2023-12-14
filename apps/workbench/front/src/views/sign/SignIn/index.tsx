@@ -6,6 +6,7 @@ import Input from '@/components/Input'
 import Button from '@/components/Button'
 //
 import { emailReg, passwordReg } from '@constants/regexp'
+import { usrSignIn } from '@api/sign_in'
 
 const SignIn: React.FC = () => {
 
@@ -26,14 +27,22 @@ const SignIn: React.FC = () => {
   //   return regex.test(value)
   // }
 
+  //impl api/sign_in.ts > usrSignIn
   const handleContinue = () => {
-    console.log('Continue');
+    console.log('SignIn');
     const usrinfo = {
       email,
       pwd
     }
     console.log(usrinfo);
+    usrSignIn({
+      email,
+      password: pwd
+    }).then(res => {
 
+    }).catch(err => {
+
+    })
   }
 
   return (

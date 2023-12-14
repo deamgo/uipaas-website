@@ -7,12 +7,13 @@ import Button from '@/components/Button'
 //
 import { codeReg, usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
 import $message from '@/components/Message'
+import { usrSignUp } from '@api/sign_up'
 
-interface UsrInfo {
-  code?: string
-  name?: string
+type IUsrAccount = {
+  invitation_code?: string
+  username?: string
   email: string
-  pwd: string
+  password: string
 }
 
 const SignUp: React.FC = () => {
@@ -38,16 +39,24 @@ const SignUp: React.FC = () => {
   //   return regex.test(value)
   // }
 
+
+  //impl api/sign_up.tx > usrSignUp
   const handleContinue = () => {
-    console.log('Continue');
-    const usr: UsrInfo = {
-      code,
-      name,
+    console.log('SignUp');
+    const usr: IUsrAccount = {
+      invitation_code: code,
+      username: name,
       email,
-      pwd,
+      password: pwd,
     }
-    console.log(usr);
-    $message.info(usr.email)
+    usrSignUp(usr).then(res => {
+      if (res.code === 0) {
+        window.location.pathname = '/s/ev'
+      }
+    }).catch(err => {
+      console.log(err);
+
+    })
   }
 
   return (

@@ -1,12 +1,24 @@
 import axios from "axios"
 
 
-const requests = axios.create({
-  baseURL: "/api",
+const request = axios.create({
+  baseURL: "/api/v1",
   timeout: 5000,
 });
 
-requests.interceptors.request.use(
+interface IResp {
+  value: {
+    code: number
+    msg: string
+    data: {
+      Token: string
+    } | {
+      CodeKey: string
+    } | string | null
+  }
+}
+
+request.interceptors.request.use(
   (config) => {
     return config;
   },
@@ -15,7 +27,7 @@ requests.interceptors.request.use(
   }
 );
 
-requests.interceptors.response.use(
+request.interceptors.response.use(
   (response) => {
     return response.data;
   },
@@ -24,4 +36,4 @@ requests.interceptors.response.use(
   }
 );
 
-export default requests
+export default request

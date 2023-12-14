@@ -61,8 +61,8 @@ const Input: React.FC<InputProps> = (props) => {
             name=""
             id={props.id}
             placeholder={props.placeholder}
-            onChange={handleChange}
-            onFocus={handleChange} />
+            onChange={(e) => props.outputChange(e.target.value)}
+            onBlur={handleChange} />
           {
             props.type === 'password'
             && (
@@ -70,7 +70,7 @@ const Input: React.FC<InputProps> = (props) => {
                 <div className="__input_wrapper_main_show" onClick={handleShowPwd}>
                   <img
                     src={Eye_open} />
-                  {eyev && (<div className="__show_closed"></div>)}
+                  {!eyev && (<div className="__show_closed"></div>)}
                 </div>
               </>
             )

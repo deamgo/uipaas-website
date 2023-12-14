@@ -1,5 +1,6 @@
 import React from "react"
-import { createPortal } from 'react-dom'
+import { createRoot } from 'react-dom/client'
+import { v1 } from 'uuid'
 //style 
 import './index.less'
 //
@@ -22,13 +23,13 @@ const Message: React.FC = () => {
       const obj = [...pre, option];
       setTimeout(() => {
         remove(option);
-      }, 3000);
+      }, 2000);
       return obj;
     });
   };
 
   React.useEffect(() => {
-    if (msgList.length > 10) {
+    if (msgList.length > 2) {
       msgList.shift();
     }
   }, [msgList]);
@@ -43,7 +44,7 @@ const Message: React.FC = () => {
 }
 
 const getId = (): string => {
-  return ((Math.random() * 1000).toFixed());
+  return v1();
 }
 
 const createMessage = () => {
@@ -54,7 +55,8 @@ const createMessage = () => {
     el.id = 'message-wrap';
     document.body.append(el);
   }
-  createPortal(<Message />, el);
+  const root = createRoot(el);
+  root.render(<Message />);
 };
 
 createMessage();
