@@ -85,7 +85,3 @@ func TestUserService_UserPasswordModifyByEmail(t *testing.T) {
 
 	assert.NoError(t, err)
 }
-
-func TestUserService_UserAdd(t *testing.T) {
-
-}
