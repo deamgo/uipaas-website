@@ -61,7 +61,7 @@ func TestUserService_UserGet(t *testing.T) {
 				AddRow("1", "tomoki", "123", "example@gmail.com")
 
 			if tt.expectedError == nil {
-				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+id\\s+=\\s+\\?\\s+ORDER\\s+BY\\s+`user`.`userid`\\s+LIMIT\\s+1").
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`users`\\s+WHERE\\s+id\\s+=\\s+\\?\\s+ORDER\\s+BY\\s+`users`.`userid`\\s+LIMIT\\s+1").
 					WithArgs(tt.userID).
 					WillReturnRows(rows)
 				user := User{UserID: tt.userID}
@@ -69,7 +69,7 @@ func TestUserService_UserGet(t *testing.T) {
 				assert.NoError(t, err)
 				assert.Equal(t, tt.expectedUser, userGet)
 			} else {
-				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+id\\s+=\\s+\\?\\s+ORDER\\s+BY\\s+`user`.`userid`\\s+LIMIT\\s+1").
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`users`\\s+WHERE\\s+id\\s+=\\s+\\?\\s+ORDER\\s+BY\\s+`users`.`userid`\\s+LIMIT\\s+1").
 					WithArgs(tt.userID).
 					WillReturnError(gorm.ErrRecordNotFound)
 				user := User{UserID: tt.userID}
@@ -117,7 +117,7 @@ func TestUserService_UserLogin(t *testing.T) {
 				AddRow("1", "zhangsan", "1234")
 
 			if tt.expectedError == nil {
-				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`users`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
 					WithArgs(tt.UserName, tt.Password).
 					WillReturnRows(rows)
 				user := User{UserName: tt.UserName,
@@ -127,7 +127,7 @@ func TestUserService_UserLogin(t *testing.T) {
 				assert.Equal(t, reflect.TypeOf(token).Kind(), reflect.TypeOf(tt.expectedToken).Kind())
 				assert.Equal(t, tt.expectedError, err)
 			} else {
-				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`user`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
+				mock.ExpectQuery("(?i)SELECT\\s+\\*\\s+FROM\\s+`users`\\s+WHERE\\s+username\\s+=\\s+\\?\\s+AND\\s+password\\s+=\\s+\\?").
 					WithArgs(tt.UserName, tt.Password).
 					WillReturnError(gorm.ErrRecordNotFound)
 				user := User{UserName: tt.UserName,

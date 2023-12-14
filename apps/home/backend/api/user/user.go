@@ -32,9 +32,9 @@ func UserGet(ctx context.ApplicationContext) gin.HandlerFunc {
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				log.Errorw("failed to get user",
+				log.Errorw("failed to get users",
 					zap.Error(err),
-					zap.Any("user", req),
+					zap.Any("users", req),
 				)
 				c.AbortWithStatus(http.StatusInternalServerError)
 			default:

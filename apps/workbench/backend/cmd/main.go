@@ -1,6 +1,8 @@
 package main
 
 import (
+	"github.com/deamgo/workbench/initialize"
+	"github.com/deamgo/workbench/service/mail"
 	"github.com/gin-gonic/gin"
 
 	"github.com/deamgo/workbench/context"
@@ -8,15 +10,18 @@ import (
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/logger"
 	routes "github.com/deamgo/workbench/router"
-	"github.com/deamgo/workbench/service/user"
+	"github.com/deamgo/workbench/service/users"
 )
 
 func main() {
 
+	initialize.InitConfig()
+	db.InitDB()
 	db.InitRedis()
 	dao := user2.NewAUserDao(db.DB)
 	ctx := context.ApplicationContext{
-		UserService: user.NewUserService(user.UserServiceParams{Dao: dao}),
+		UserService: users.NewUserService(users.UserServiceParams{Dao: dao, MailService: mail.NewMailService()}),
+		MailService: mail.NewMailService(),
 	}
 
 	r := gin.Default()
@@ -27,6 +32,6 @@ func main() {
 	err := r.Run(":8989")
 
 	if err != nil {
-		logger.LoggersObj.Error("Start failed!")
+		logger.Error("Start failed!")
 	}
 }

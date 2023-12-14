@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var UserNotExistError = errors.New("user not exist")
+var UserNotExistError = errors.New("users not exist")
 var UserLoginError = errors.New("incorrect username or password")
 
 type UserDao interface {

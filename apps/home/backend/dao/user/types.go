@@ -8,5 +8,5 @@ type UserDO struct {
 }
 
 func (UserDO) TableName() string {
-	return "user"
+	return "users"
 }

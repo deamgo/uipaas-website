@@ -19,10 +19,13 @@ func NewRouter(ctx context.ApplicationContext) http.Handler {
 }
 func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("v1")
+	// api.Any("/*", middleware.JWTAuthMiddleware())
 	{
 		api.POST("/signup", user.SignUp(ctx))
 		api.POST("/signup_verify", user.SignUpVerify(ctx))
 		api.POST("/signin", user.SignIn(ctx))
+		api.POST("/forgot_verify", user.ForgotVerifySend(ctx))
+		api.POST("/reset_password", user.ResetPassword(ctx))
 	}
 
 }

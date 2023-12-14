@@ -1,7 +1,11 @@
 package context
 
-import "github.com/deamgo/workbench/service/user"
+import (
+	"github.com/deamgo/workbench/service/mail"
+	"github.com/deamgo/workbench/service/users"
+)
 
 type ApplicationContext struct {
-	UserService user.UserService
+	UserService users.UserService
+	MailService mail.MailService
 }

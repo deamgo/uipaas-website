@@ -3,12 +3,11 @@ package mail
 import (
 	"context"
 	"fmt"
+	"github.com/jordan-wright/email"
 	"log"
 	"math/rand"
 	"net/smtp"
 	"time"
-
-	"github.com/jordan-wright/email"
 )
 
 var (
@@ -17,10 +16,21 @@ var (
 	CLOSING      = "If you didn't try to sign in or change email,please ignore this email."
 )
 
-func SendMail(ctx context.Context, emailStr string) int {
+type MailService interface {
+	SendMail(ctx context.Context, emailStr string) int
+}
+
+type mailService struct {
+}
+
+func NewMailService() MailService {
+	return &mailService{}
+}
+
+func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 
 	// Set up a random seed
-	rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
 	// Generate a four-digit random number
 	randomNumber := rand.Intn(9000) + 1000
 	e := email.NewEmail()

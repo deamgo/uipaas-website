@@ -1,9 +1,11 @@
 package user
 
 import (
+	"errors"
 	"fmt"
-	"log"
-	"math/rand"
+	"github.com/deamgo/workbench/dao/user"
+	"github.com/deamgo/workbench/pkg/logger"
+	"gorm.io/gorm"
 	"net/http"
 	"regexp"
 
@@ -17,7 +19,7 @@ import (
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/e"
 	"github.com/deamgo/workbench/pkg/types"
-	"github.com/deamgo/workbench/service/user"
+	"github.com/deamgo/workbench/service/users"
 )
 
 type Resp struct {
@@ -27,16 +29,20 @@ type Resp struct {
 }
 
 type UserPostReq struct {
-	*user.User
+	*users.User
 }
 
 type SignUpSuccessResp struct {
 	CodeKey string
 }
 type VerifyReq struct {
-	*user.User
-	CodeKey string
-	Code    int
+	*users.User
+	CodeKey string `json:"code_key"`
+	Code    int    `json:"code"`
+}
+
+type ForgotReq struct {
+	Email string `json:"email" validate:"email"`
 }
 
 type LSR struct {
@@ -58,6 +64,14 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		// verify The Parameter Format
 		validate := validator.New()
 		err = validate.RegisterValidation("verifyPwd", verifyPwd)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+				Data: nil,
+			}))
+			return
+		}
 		err = validate.Struct(req.User)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
@@ -68,19 +82,15 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		var u *user.User
-		// verifyWhether The InvitationCode Exists
-		u, err = ctx.UserService.UserGetByInvitationCode(c, req.User)
-		if u == nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
-				Code: e.Failed,
-				Msg:  e.InvalidInvitationCode,
-				Data: nil,
-			}))
-			return
-		}
+		var u *user.DeveloperDO
 		// check Whether The Mailbox Is Occupied
 		u, err = ctx.UserService.UserGetByEmail(c, req.User)
+		if err != nil {
+			if !errors.Is(err, gorm.ErrRecordNotFound) {
+				c.AbortWithStatus(http.StatusInternalServerError)
+				return
+			}
+		}
 		if u != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
@@ -90,8 +100,6 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		// generate An Invitation Code
-		req.InvitationCode = GenerateInviteCode()
 		//PasswordEncryption
 		password, _ := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.MinCost)
 		req.Password = string(password)
@@ -101,7 +109,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewErrorResponse("failed to add user"))
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewErrorResponse("failed to add users"))
 			default:
 				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 					Code: e.Failed,
@@ -119,7 +127,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 	}
 }
 
-// verify
+// SignUpVerify Verify the email verification code at the time of registration
 func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req VerifyReq
@@ -129,7 +137,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		isExists := db.RedisDB.HExists(req.CodeKey, "code").Val()
-		if isExists {
+		if !isExists {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
 				Msg:  e.VerifyCodeExpired,
@@ -146,8 +154,8 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
-		// Modify user deactivate
-		err = ctx.UserService.UserDeactivateModifyByEmail(c, req.User)
+		// Modify users deactivate
+		err = ctx.UserService.UserStatusModifyByEmail(c, req.User)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
@@ -177,15 +185,38 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		//	Check if the username exists
 		findUser, err := ctx.UserService.UserGetByEmail(c, req.User)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+				Data: nil,
+			}))
+			logger.Error(err)
+			return
+		}
 		if findUser == nil {
 			//	doesNotExist
-			log.Fatal(err)
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The user does not exist",
+				Data: nil,
+			}))
+			return
 		}
 		//	decrypt The Password
-		_ = bcrypt.CompareHashAndPassword([]byte(req.Password), []byte(findUser.Password))
+		err = bcrypt.CompareHashAndPassword([]byte(req.Password), []byte(findUser.Password))
+
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "Wrong password",
+				Data: nil,
+			}))
+			return
+		}
 		//	generate A Token And Return It
 		var t string
-		t, err = jwt.GenToken(findUser.Username)
+		t, _ = jwt.GenToken(findUser.ID)
 		fmt.Println(t)
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
@@ -195,18 +226,151 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 	}
 }
 
-func GenerateInviteCode() string {
-	// define The Character Set
-	alphabets := []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
+func ForgotVerifySend(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var (
+			req ForgotReq
+			err error
+		)
+		// get The Parameters
+		err = c.ShouldBind(&req)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		// verify The Parameter Format
+		validate := validator.New()
+		err = validate.Struct(req)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The parameters are not formatted correctly",
+				Data: nil,
+			}))
+			return
+		}
 
-	// generate Random Strings
-	inviteCode := make([]rune, 6)
-	for i := 0; i < len(inviteCode); i++ {
-		inviteCode[i] = alphabets[rand.Intn(len(alphabets))]
+		var u *user.DeveloperDO
+		u, err = ctx.UserService.UserGetByEmail(c, &users.User{Email: req.Email})
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
+
+		if u == nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The users does not exist",
+				Data: nil,
+			}))
+			return
+		}
+
+		var codeHash string
+		codeHash, err = ctx.UserService.ForgotVerifySend(c, &users.User{Email: req.Email})
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+			Code: e.Success,
+			Msg:  "The email has been sent, please pay attention to check",
+			Data: codeHash,
+		}))
 	}
+}
 
-	// return The Invitation Code
-	return string(inviteCode)
+func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var req VerifyReq
+		err := c.ShouldBind(&req)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		var u *user.DeveloperDO
+		// check Whether The Mailbox Is Occupied
+		u, err = ctx.UserService.UserGetByEmail(c, req.User)
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
+		if u != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.EmailHasBeenOccupied,
+				Data: nil,
+			}))
+			return
+		}
+		pwdPattern := `^[a-zA-Z0-9]{8,20}$`
+		reg, err := regexp.Compile(pwdPattern) // filter exclude chars
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+				Data: nil,
+			}))
+			return
+		}
+		match := reg.MatchString(req.Password)
+		if !match {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "theParametersAreNotFormattedCorrectly",
+				Data: nil,
+			}))
+			return
+		}
+
+		isExists := db.RedisDB.HExists(req.CodeKey, "code")
+		if !isExists.Val() {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.VerifyCodeExpired,
+				Data: nil,
+			}))
+			return
+		}
+
+		getCode, _ := db.RedisDB.HGet(req.CodeKey, "code").Int()
+		if getCode != req.Code {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.InvalidVerifyCode,
+				Data: nil,
+			}))
+			return
+		}
+		// Password encryption
+		password, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.MinCost)
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
+		req.Password = string(password)
+		err = ctx.UserService.UserPasswordModifyByEmail(c, req.User)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+				Data: nil,
+			}))
+			return
+		}
+
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+			Code: e.Success,
+			Msg:  "Success",
+			Data: nil,
+		}))
+
+	}
 }
 
 // validator password

@@ -22,7 +22,7 @@ func NewRouter(ctx context.ApplicationContext) http.Handler {
 func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("v1")
 	{
-		api.GET("/user/:id", user.UserGet(ctx))
+		api.GET("/users/:id", user.UserGet(ctx))
 		api.POST("/login", user.UserLogin(ctx))
 		api.GET("/company", middleware.JWTAuthMiddleware(), company.CompanyGet(ctx))
 		api.POST("/company", company.CompanyAdd(ctx))

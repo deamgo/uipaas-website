@@ -43,7 +43,7 @@ func (u userService) UserLogin(ctx context.Context, user *User) (string, error) 
 
 	err := u.dao.UserLogin(ctx, userdao)
 	if err != nil {
-		log.Errorw("user login failed",
+		log.Errorw("users login failed",
 			zap.Error(err),
 			zap.Any("userlogin", user),
 		)
