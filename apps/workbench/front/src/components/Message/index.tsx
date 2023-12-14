@@ -1,6 +1,7 @@
 import React from "react"
 import { createRoot } from 'react-dom/client'
 import { v1 } from 'uuid'
+
 //style 
 import './index.less'
 //
@@ -24,6 +25,7 @@ const Message: React.FC = () => {
       setTimeout(() => {
         remove(option);
       }, 2000);
+
       return obj;
     });
   };

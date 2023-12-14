@@ -26,7 +26,6 @@ const SignIn: React.FC = () => {
   // const validator = (value: string, regex: RegExp) => {
   //   return regex.test(value)
   // }
-
   //impl api/sign_in.ts > usrSignIn
   const handleContinue = () => {
     console.log('SignIn');

@@ -9,7 +9,6 @@ import { Outlet } from 'react-router-dom';
 
 
 const Layout: React.FC = () => {
-
   React.useEffect(() => {
     window.addEventListener('resize', resize)
     resize()

@@ -23,7 +23,6 @@ const EmailVerif: React.FC = () => {
       setBtnAbled(true)
     }
   }, [emailVerification])
-
   //impl api/sign_up.ts > usrSignUpVerify
   const handleContinue = () => {
     console.log('EmailVerification');

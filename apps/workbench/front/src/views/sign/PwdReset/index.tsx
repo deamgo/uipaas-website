@@ -114,7 +114,6 @@ const PwdReset: React.FC = () => {
           method={handleContinue}
           disabled={btnAbled} />
       </div>
-
     </>
   )
 }
