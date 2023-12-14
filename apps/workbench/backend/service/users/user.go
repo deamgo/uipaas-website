@@ -142,7 +142,7 @@ func convertUser(u *user.DeveloperDO) *User {
 
 func SaveCode(email string, code int) (string, error) {
 
-	codeHash := getEmailHashStr(email)
+	codeHash := GetEmailHashStr(email)
 
 	err := db.RedisDB.HSet(codeHash, "code", code).Err()
 	if err != nil {
@@ -158,10 +158,8 @@ func SaveCode(email string, code int) (string, error) {
 
 	return codeHash, nil
 }
-func getEmailHashStr(email string) string {
-	timestamp := time.Now().Unix()
-	data := fmt.Sprintf("%s%d", email, timestamp)
-	hash := sha1.Sum([]byte(data))
+func GetEmailHashStr(email string) string {
+	hash := sha1.Sum([]byte(email))
 	hashString := fmt.Sprintf("%x", hash)
 	return hashString
 }

@@ -22,6 +22,7 @@ const TokenExpireDuration = time.Hour * 2
 // generate jwt
 func GenToken(id string) (string, error) {
 	c := MyClaims{
+
 		id,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(TokenExpireDuration).Unix(),
@@ -49,7 +50,7 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 	}
 	return nil, errors.New("invalid token")
 }
-func getSecret() string {
+func getSecret() []byte {
 	// set The Name And Path Of The Profile
 	viper.SetConfigName("conf")
 	viper.AddConfigPath("./auth/jwt")
@@ -60,5 +61,5 @@ func getSecret() string {
 		panic(fmt.Errorf("failed to read config file: %s", err))
 	}
 	MySecret := viper.GetString("jwt_secret")
-	return MySecret
+	return []byte(MySecret)
 }

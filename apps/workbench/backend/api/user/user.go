@@ -1,6 +1,8 @@
 package user
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"github.com/deamgo/workbench/dao/user"
@@ -9,10 +11,6 @@ import (
 	"net/http"
 	"regexp"
 
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
-	"golang.org/x/crypto/bcrypt"
-
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/dao"
@@ -20,6 +18,8 @@ import (
 	"github.com/deamgo/workbench/pkg/e"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/users"
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 )
 
 type Resp struct {
@@ -33,7 +33,10 @@ type UserPostReq struct {
 }
 
 type SignUpSuccessResp struct {
-	CodeKey string
+	CodeKey string `json:"code_key"`
+}
+type SendMailResp struct {
+	CodeKey string `json:"code_key"`
 }
 type VerifyReq struct {
 	*users.User
@@ -46,7 +49,7 @@ type ForgotReq struct {
 }
 
 type LSR struct {
-	Token string
+	Token string `json:"token"`
 }
 
 func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
@@ -101,8 +104,12 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 
 		//PasswordEncryption
-		password, _ := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.MinCost)
-		req.Password = string(password)
+		hash := sha256.New()
+		hash.Write([]byte(req.Password))
+		hashBytes := hash.Sum(nil)
+		password := hex.EncodeToString(hashBytes)
+
+		req.Password = password
 		// add
 		var codeHash string
 		codeHash, err = ctx.UserService.UserAdd(c, req.User)
@@ -186,13 +193,15 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		//	Check if the username exists
 		findUser, err := ctx.UserService.UserGetByEmail(c, req.User)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
-				Code: e.Failed,
-				Msg:  err.Error(),
-				Data: nil,
-			}))
-			logger.Error(err)
-			return
+			if !errors.Is(err, gorm.ErrRecordNotFound) {
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+					Code: e.Failed,
+					Msg:  err.Error(),
+					Data: nil,
+				}))
+				logger.Error(err)
+				return
+			}
 		}
 		if findUser == nil {
 			//	doesNotExist
@@ -204,9 +213,14 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		//	decrypt The Password
-		err = bcrypt.CompareHashAndPassword([]byte(req.Password), []byte(findUser.Password))
 
-		if err != nil {
+		//PasswordEncryption
+		hash := sha256.New()
+		hash.Write([]byte(req.Password))
+		hashBytes := hash.Sum(nil)
+		password := hex.EncodeToString(hashBytes)
+
+		if password != findUser.Password {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
 				Msg:  "Wrong password",
@@ -253,9 +267,15 @@ func ForgotVerifySend(ctx context.ApplicationContext) gin.HandlerFunc {
 		var u *user.DeveloperDO
 		u, err = ctx.UserService.UserGetByEmail(c, &users.User{Email: req.Email})
 		if err != nil {
-			logger.Error(err)
-			c.AbortWithStatus(http.StatusInternalServerError)
-			return
+			if !errors.Is(err, gorm.ErrRecordNotFound) {
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+					Code: e.Failed,
+					Msg:  err.Error(),
+					Data: nil,
+				}))
+				logger.Error(err)
+				return
+			}
 		}
 
 		if u == nil {
@@ -277,7 +297,7 @@ func ForgotVerifySend(ctx context.ApplicationContext) gin.HandlerFunc {
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  "The email has been sent, please pay attention to check",
-			Data: codeHash,
+			Data: SendMailResp{CodeKey: codeHash},
 		}))
 	}
 }
@@ -292,21 +312,37 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 
 		var u *user.DeveloperDO
-		// check Whether The Mailbox Is Occupied
+		// check Whether The Mailbox Is exist
 		u, err = ctx.UserService.UserGetByEmail(c, req.User)
 		if err != nil {
-			logger.Error(err)
-			c.AbortWithStatus(http.StatusInternalServerError)
-			return
+			if !errors.Is(err, gorm.ErrRecordNotFound) {
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+					Code: e.Failed,
+					Msg:  err.Error(),
+					Data: nil,
+				}))
+				logger.Error(err)
+			}
 		}
-		if u != nil {
+		if u == nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  e.EmailHasBeenOccupied,
+				Msg:  "The user does not exist",
 				Data: nil,
 			}))
 			return
 		}
+		// Verify that the mailbox has not been maliciously altered
+		emailHashStr := users.GetEmailHashStr(u.Email)
+		if req.CodeKey != emailHashStr {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The email address was entered incorrectly",
+				Data: nil,
+			}))
+			return
+		}
+
 		pwdPattern := `^[a-zA-Z0-9]{8,20}$`
 		reg, err := regexp.Compile(pwdPattern) // filter exclude chars
 		if err != nil {
@@ -347,7 +383,11 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		// Password encryption
-		password, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.MinCost)
+		//PasswordEncryption
+		hash := sha256.New()
+		hash.Write([]byte(req.Password))
+		hashBytes := hash.Sum(nil)
+		password := hex.EncodeToString(hashBytes)
 		if err != nil {
 			logger.Error(err)
 			c.AbortWithStatus(http.StatusInternalServerError)

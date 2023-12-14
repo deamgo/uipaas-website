@@ -58,7 +58,7 @@ func (u userDao) UserPasswordModifyByEmail(ctx context.Context, user *DeveloperD
 // Search by email
 func (u userDao) UserGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
 	email := user.Email
-	err := u.db.WithContext(ctx).Model(&user).Where("email=?", email).First(&user).Error
+	err := u.db.WithContext(ctx).Model(&user).Where("email=? and status=?", email, 1).First(&user).Error
 	if err != nil {
 		return nil, err
 	}

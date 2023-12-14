@@ -25,7 +25,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/signup_verify", user.SignUpVerify(ctx))
 		api.POST("/signin", user.SignIn(ctx))
 		api.POST("/forgot_verify", user.ForgotVerifySend(ctx))
-		api.POST("/reset_password", user.ResetPassword(ctx))
+		api.PATCH("/reset_password", user.ResetPassword(ctx))
 	}
 
 }
