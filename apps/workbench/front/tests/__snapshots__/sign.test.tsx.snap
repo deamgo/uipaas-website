@@ -1,13 +1,1048 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Sign page Test 1`] = `
+exports[`Sign Emial verifi page Test 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
+    <div>
+      <div
+        class="__sign"
+      >
+        <div
+          class="__sign_logo"
+        >
+          <img
+            alt="UIPaaS"
+            src=""
+          />
+        </div>
+        <div
+          class="__sign_container"
+        >
+          <div
+            class="__ev_title"
+          >
+            <span>
+              Email Verification
+            </span>
+            <span>
+              Please check your email for the verification code and enter it below
+            </span>
+            <div
+              class="__ev_title_row"
+            >
+              <a
+                href="/s/up"
+              >
+                <img
+                  alt=""
+                  src=""
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            class="__ev_form"
+          >
+            <div
+              class="__ev_form_input"
+            >
+              <div
+                class="__input_wrapper"
+              >
+                <div
+                  class="__input_wrapper_title"
+                >
+                  Email verification code
+                  <span>
+                    *
+                  </span>
+                </div>
+                <div
+                  class="__input_wrapper_main"
+                >
+                  <input
+                    id="1"
+                    name=""
+                    placeholder="Enter your email verification code"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="__input_wrapper_invalid"
+                >
+                  Please enter your email verification code
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="__ev_btnbox"
+          >
+            <div
+              class="__ev_btnbox_tip"
+            >
+              <span>
+                Already have an account?
+              </span>
+              <span>
+                <a
+                  href="/s/in"
+                >
+                  Sign in
+                </a>
+              </span>
+            </div>
+            <button
+              class="__button_wrapper"
+              disabled=""
+              type="button"
+            >
+              Sign up
+            </button>
+            <div
+              class="__ev_btnbox_privacy"
+            >
+              <span>
+                By using UIPaaS, you are agreeing to the
+              </span>
+              <span>
+                <a
+                  href="/privacy"
+                  target="_blank"
+                >
+                  Privacy Policy.
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
     <div
-      class="message-wrap"
-      id="message-wrap"
-    />
+      class="__sign"
+    >
+      <div
+        class="__sign_logo"
+      >
+        <img
+          alt="UIPaaS"
+          src=""
+        />
+      </div>
+      <div
+        class="__sign_container"
+      >
+        <div
+          class="__ev_title"
+        >
+          <span>
+            Email Verification
+          </span>
+          <span>
+            Please check your email for the verification code and enter it below
+          </span>
+          <div
+            class="__ev_title_row"
+          >
+            <a
+              href="/s/up"
+            >
+              <img
+                alt=""
+                src=""
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="__ev_form"
+        >
+          <div
+            class="__ev_form_input"
+          >
+            <div
+              class="__input_wrapper"
+            >
+              <div
+                class="__input_wrapper_title"
+              >
+                Email verification code
+                <span>
+                  *
+                </span>
+              </div>
+              <div
+                class="__input_wrapper_main"
+              >
+                <input
+                  id="1"
+                  name=""
+                  placeholder="Enter your email verification code"
+                  type="text"
+                />
+              </div>
+              <div
+                class="__input_wrapper_invalid"
+              >
+                Please enter your email verification code
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="__ev_btnbox"
+        >
+          <div
+            class="__ev_btnbox_tip"
+          >
+            <span>
+              Already have an account?
+            </span>
+            <span>
+              <a
+                href="/s/in"
+              >
+                Sign in
+              </a>
+            </span>
+          </div>
+          <button
+            class="__button_wrapper"
+            disabled=""
+            type="button"
+          >
+            Sign up
+          </button>
+          <div
+            class="__ev_btnbox_privacy"
+          >
+            <span>
+              By using UIPaaS, you are agreeing to the
+            </span>
+            <span>
+              <a
+                href="/privacy"
+                target="_blank"
+              >
+                Privacy Policy.
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Sign In page Test 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="__sign"
+      >
+        <div
+          class="__sign_logo"
+        >
+          <img
+            alt="UIPaaS"
+            src=""
+          />
+        </div>
+        <div
+          class="__sign_container"
+        >
+          <div
+            class="__signin_title"
+          >
+            <span>
+              Sign in
+            </span>
+          </div>
+          <div
+            class="__signin_form"
+          >
+            <div
+              class="__signin_form_input"
+            >
+              <div
+                class="__input_wrapper"
+              >
+                <div
+                  class="__input_wrapper_title"
+                >
+                  Email
+                  <span>
+                    *
+                  </span>
+                </div>
+                <div
+                  class="__input_wrapper_main"
+                >
+                  <input
+                    id="1"
+                    name=""
+                    placeholder="Enter your email address"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="__input_wrapper_invalid"
+                >
+                  Please enter the email address
+                </div>
+              </div>
+            </div>
+            <div
+              class="__signin_form_input"
+            >
+              <div
+                class="__input_wrapper"
+              >
+                <div
+                  class="__input_wrapper_title"
+                >
+                  Password
+                  <span>
+                    *
+                  </span>
+                </div>
+                <div
+                  class="__input_wrapper_main"
+                >
+                  <input
+                    id="2"
+                    name=""
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <div
+                    class="__input_wrapper_main_show"
+                  >
+                    <img
+                      src=""
+                    />
+                    <div
+                      class="__show_closed"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="__input_wrapper_invalid"
+                >
+                  Please enter the password
+                </div>
+              </div>
+              <div
+                class="__signin_form_input_forgot"
+              >
+                <a
+                  href="/s/ryp"
+                >
+                  Forgot?
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="__signin_continue"
+          >
+            <div
+              class="__signin_continue_tip"
+            >
+              <span>
+                New to UIPaaS?
+              </span>
+              <span>
+                <a
+                  href="/s/up"
+                >
+                  Sign up
+                </a>
+              </span>
+            </div>
+            <button
+              class="__button_wrapper"
+              disabled=""
+              type="button"
+            >
+              Sign in
+            </button>
+            <div
+              class="__signin_continue_privacy"
+            >
+              <span>
+                By using UIPaaS, you are agreeing to the
+              </span>
+              <span>
+                <a
+                  href="/privacy"
+                  target="_blank"
+                >
+                  Privacy Policy.
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="__sign"
+    >
+      <div
+        class="__sign_logo"
+      >
+        <img
+          alt="UIPaaS"
+          src=""
+        />
+      </div>
+      <div
+        class="__sign_container"
+      >
+        <div
+          class="__signin_title"
+        >
+          <span>
+            Sign in
+          </span>
+        </div>
+        <div
+          class="__signin_form"
+        >
+          <div
+            class="__signin_form_input"
+          >
+            <div
+              class="__input_wrapper"
+            >
+              <div
+                class="__input_wrapper_title"
+              >
+                Email
+                <span>
+                  *
+                </span>
+              </div>
+              <div
+                class="__input_wrapper_main"
+              >
+                <input
+                  id="1"
+                  name=""
+                  placeholder="Enter your email address"
+                  type="text"
+                />
+              </div>
+              <div
+                class="__input_wrapper_invalid"
+              >
+                Please enter the email address
+              </div>
+            </div>
+          </div>
+          <div
+            class="__signin_form_input"
+          >
+            <div
+              class="__input_wrapper"
+            >
+              <div
+                class="__input_wrapper_title"
+              >
+                Password
+                <span>
+                  *
+                </span>
+              </div>
+              <div
+                class="__input_wrapper_main"
+              >
+                <input
+                  id="2"
+                  name=""
+                  placeholder="Enter your password"
+                  type="password"
+                />
+                <div
+                  class="__input_wrapper_main_show"
+                >
+                  <img
+                    src=""
+                  />
+                  <div
+                    class="__show_closed"
+                  />
+                </div>
+              </div>
+              <div
+                class="__input_wrapper_invalid"
+              >
+                Please enter the password
+              </div>
+            </div>
+            <div
+              class="__signin_form_input_forgot"
+            >
+              <a
+                href="/s/ryp"
+              >
+                Forgot?
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="__signin_continue"
+        >
+          <div
+            class="__signin_continue_tip"
+          >
+            <span>
+              New to UIPaaS?
+            </span>
+            <span>
+              <a
+                href="/s/up"
+              >
+                Sign up
+              </a>
+            </span>
+          </div>
+          <button
+            class="__button_wrapper"
+            disabled=""
+            type="button"
+          >
+            Sign in
+          </button>
+          <div
+            class="__signin_continue_privacy"
+          >
+            <span>
+              By using UIPaaS, you are agreeing to the
+            </span>
+            <span>
+              <a
+                href="/privacy"
+                target="_blank"
+              >
+                Privacy Policy.
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Sign Reset pwd page Test 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="__sign"
+      >
+        <div
+          class="__sign_logo"
+        >
+          <img
+            alt="UIPaaS"
+            src=""
+          />
+        </div>
+        <div
+          class="__sign_container"
+        >
+          <div
+            class="__ryp_title"
+          >
+            <span>
+              Reset your Password
+            </span>
+            <div
+              class="__ryp_title_row"
+            >
+              <a
+                href="/s/in"
+              >
+                <img
+                  alt=""
+                  src=""
+                />
+              </a>
+            </div>
+          </div>
+          <div
+            class="__ryp_form"
+          >
+            <div
+              class="__ryp_form_input"
+            >
+              <div
+                class="__input_wrapper"
+              >
+                <div
+                  class="__input_wrapper_title"
+                >
+                  Email
+                  <span>
+                    *
+                  </span>
+                </div>
+                <div
+                  class="__input_wrapper_main"
+                >
+                  <input
+                    id="1"
+                    name=""
+                    placeholder="Enter your email address"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="__input_wrapper_invalid"
+                >
+                  Please enter the email address
+                </div>
+              </div>
+            </div>
+            <div
+              class="__ryp_form_input"
+            >
+              <div
+                class="__input_wrapper"
+              >
+                <div
+                  class="__input_wrapper_title"
+                >
+                  Email verification code
+                  <span>
+                    *
+                  </span>
+                </div>
+                <div
+                  class="__input_wrapper_main"
+                >
+                  <input
+                    id="2"
+                    name=""
+                    placeholder="Enter your email verification code"
+                    type="text"
+                  />
+                </div>
+                <div
+                  class="__input_wrapper_invalid"
+                >
+                  Please enter the email verification code
+                </div>
+              </div>
+              <div
+                class="__ryp_form_input_send"
+              >
+                <button
+                  class="__button_wrapper"
+                  disabled=""
+                  type="button"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+            <div
+              class="__ryp_form_input"
+            >
+              <div
+                class="__input_wrapper"
+              >
+                <div
+                  class="__input_wrapper_title"
+                >
+                  Password
+                  <span>
+                    *
+                  </span>
+                </div>
+                <div
+                  class="__input_wrapper_main"
+                >
+                  <input
+                    id="3"
+                    name=""
+                    placeholder="Enter your password"
+                    type="password"
+                  />
+                  <div
+                    class="__input_wrapper_main_show"
+                  >
+                    <img
+                      src=""
+                    />
+                    <div
+                      class="__show_closed"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="__input_wrapper_invalid"
+                >
+                  Please enter the password
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="__ryp_continue"
+          >
+            <button
+              class="__button_wrapper"
+              disabled=""
+              type="button"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="__sign"
+    >
+      <div
+        class="__sign_logo"
+      >
+        <img
+          alt="UIPaaS"
+          src=""
+        />
+      </div>
+      <div
+        class="__sign_container"
+      >
+        <div
+          class="__ryp_title"
+        >
+          <span>
+            Reset your Password
+          </span>
+          <div
+            class="__ryp_title_row"
+          >
+            <a
+              href="/s/in"
+            >
+              <img
+                alt=""
+                src=""
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="__ryp_form"
+        >
+          <div
+            class="__ryp_form_input"
+          >
+            <div
+              class="__input_wrapper"
+            >
+              <div
+                class="__input_wrapper_title"
+              >
+                Email
+                <span>
+                  *
+                </span>
+              </div>
+              <div
+                class="__input_wrapper_main"
+              >
+                <input
+                  id="1"
+                  name=""
+                  placeholder="Enter your email address"
+                  type="text"
+                />
+              </div>
+              <div
+                class="__input_wrapper_invalid"
+              >
+                Please enter the email address
+              </div>
+            </div>
+          </div>
+          <div
+            class="__ryp_form_input"
+          >
+            <div
+              class="__input_wrapper"
+            >
+              <div
+                class="__input_wrapper_title"
+              >
+                Email verification code
+                <span>
+                  *
+                </span>
+              </div>
+              <div
+                class="__input_wrapper_main"
+              >
+                <input
+                  id="2"
+                  name=""
+                  placeholder="Enter your email verification code"
+                  type="text"
+                />
+              </div>
+              <div
+                class="__input_wrapper_invalid"
+              >
+                Please enter the email verification code
+              </div>
+            </div>
+            <div
+              class="__ryp_form_input_send"
+            >
+              <button
+                class="__button_wrapper"
+                disabled=""
+                type="button"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+          <div
+            class="__ryp_form_input"
+          >
+            <div
+              class="__input_wrapper"
+            >
+              <div
+                class="__input_wrapper_title"
+              >
+                Password
+                <span>
+                  *
+                </span>
+              </div>
+              <div
+                class="__input_wrapper_main"
+              >
+                <input
+                  id="3"
+                  name=""
+                  placeholder="Enter your password"
+                  type="password"
+                />
+                <div
+                  class="__input_wrapper_main_show"
+                >
+                  <img
+                    src=""
+                  />
+                  <div
+                    class="__show_closed"
+                  />
+                </div>
+              </div>
+              <div
+                class="__input_wrapper_invalid"
+              >
+                Please enter the password
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="__ryp_continue"
+        >
+          <button
+            class="__button_wrapper"
+            disabled=""
+            type="button"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Sign Up page Test 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
     <div>
       <div
         class="__sign"

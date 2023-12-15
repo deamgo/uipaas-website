@@ -18,6 +18,8 @@ const PwdReset: React.FC = () => {
   const [emailVerification, setEmailVerification] = React.useState('')
   const [pwd, setPwd] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
+  const [bsendAbled, setBsendAbled] = React.useState(true)
+
 
   React.useEffect(() => {
     if (emailReg.test(email)
@@ -26,6 +28,12 @@ const PwdReset: React.FC = () => {
       setBtnAbled(false)
     } else {
       setBtnAbled(true)
+    }
+
+    if (emailReg.test(email)) {
+      setBsendAbled(false)
+    } else {
+      setBsendAbled(true)
     }
   }, [email, emailVerification, pwd])
 
@@ -53,6 +61,10 @@ const PwdReset: React.FC = () => {
   //impl api/sign_in.ts > forgotVerify
   const handleSend = () => {
     console.log('Send');
+    setBsendAbled(false)
+    setInterval(() => {
+      setBsendAbled(true)
+    }, 10000)
     forgotVerify({
       email
     }).then(res => {
@@ -94,7 +106,7 @@ const PwdReset: React.FC = () => {
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
           <div className="__ryp_form_input_send">
-            <Button context='Send' method={handleSend} />
+            <Button context='Send' method={handleSend} disabled={bsendAbled} />
           </div>
         </div>
         <div className="__ryp_form_input">

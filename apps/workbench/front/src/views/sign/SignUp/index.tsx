@@ -1,4 +1,5 @@
 import React from 'react'
+import { useObserver } from 'mobx-react'
 //style
 import './index.less'
 //
@@ -8,13 +9,9 @@ import Button from '@/components/Button'
 import { codeReg, usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
 import $message from '@/components/Message'
 import { usrSignUp } from '@api/sign_up'
+import { IUsrAccount } from '@api/account'
+import appStore from '@store/store'
 
-type IUsrAccount = {
-  invitation_code?: string
-  username?: string
-  email: string
-  password: string
-}
 
 const SignUp: React.FC = () => {
 
@@ -49,6 +46,7 @@ const SignUp: React.FC = () => {
       email,
       password: pwd,
     }
+    appStore.setUserInfo(usr)
     usrSignUp(usr).then(res => {
       if (res.code === 0) {
         window.location.pathname = '/s/ev'

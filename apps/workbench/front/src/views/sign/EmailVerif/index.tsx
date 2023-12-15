@@ -8,6 +8,7 @@ import Mask from '@/components/Mask'
 //
 import { emailVerificationReg } from '@constants/regexp'
 import { usrSignUpVerify } from '@api/sign_up'
+import appStore from '@/store/store'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 
@@ -27,7 +28,9 @@ const EmailVerif: React.FC = () => {
   //impl api/sign_up.ts > usrSignUpVerify
   const handleContinue = () => {
     console.log('EmailVerification');
+    let usrInfo = appStore.userInfo
     const usr = {
+      ...usrInfo,
       emailVerification,
     }
     console.log(usr);
