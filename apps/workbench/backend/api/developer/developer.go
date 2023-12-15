@@ -1,25 +1,26 @@
-package user
+package developer
 
 import (
 	"crypto/sha256"
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/deamgo/workbench/dao/user"
-	"github.com/deamgo/workbench/pkg/logger"
 	"gorm.io/gorm"
 	"net/http"
 	"regexp"
 
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/dao"
+	developerDO "github.com/deamgo/workbench/dao/developer"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/e"
+	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/pkg/types"
-	"github.com/deamgo/workbench/service/users"
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
+	"github.com/deamgo/workbench/service/developer"
 )
 
 type Resp struct {
@@ -29,7 +30,7 @@ type Resp struct {
 }
 
 type UserPostReq struct {
-	*users.User
+	*developer.Developer
 }
 
 type SignUpSuccessResp struct {
@@ -39,7 +40,7 @@ type SendMailResp struct {
 	CodeKey string `json:"code_key"`
 }
 type VerifyReq struct {
-	*users.User
+	*developer.Developer
 	CodeKey string `json:"code_key"`
 	Code    int    `json:"code"`
 }
@@ -59,7 +60,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			err error
 		)
 		// get The Parameters
-		err = c.ShouldBind(&req.User)
+		err = c.ShouldBind(&req.Developer)
 		if err != nil {
 			fmt.Println(err)
 			return
@@ -75,7 +76,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
-		err = validate.Struct(req.User)
+		err = validate.Struct(req.Developer)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
@@ -85,9 +86,9 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		var u *user.DeveloperDO
+		var u *developerDO.DeveloperDO
 		// check Whether The Mailbox Is Occupied
-		u, err = ctx.UserService.UserGetByEmail(c, req.User)
+		u, err = ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatus(http.StatusInternalServerError)
@@ -108,15 +109,14 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		hash.Write([]byte(req.Password))
 		hashBytes := hash.Sum(nil)
 		password := hex.EncodeToString(hashBytes)
-
 		req.Password = password
 		// add
 		var codeHash string
-		codeHash, err = ctx.UserService.UserAdd(c, req.User)
+		codeHash, err = ctx.UserService.DeveloperAdd(c, req.Developer)
 		if err != nil {
 			switch err {
 			case dao.DBError:
-				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewErrorResponse("failed to add users"))
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewErrorResponse("failed to add developer"))
 			default:
 				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 					Code: e.Failed,
@@ -161,8 +161,8 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
-		// Modify users deactivate
-		err = ctx.UserService.UserStatusModifyByEmail(c, req.User)
+		// Modify developer deactivate
+		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
@@ -172,12 +172,32 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
+		//PasswordEncryption
+		hash := sha256.New()
+		hash.Write([]byte(req.Password))
+		hashBytes := hash.Sum(nil)
+		password := hex.EncodeToString(hashBytes)
+
+		if password != req.Password {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "Wrong password",
+				Data: nil,
+			}))
+			return
+		}
+		//	generate A Token And Return It
+		dpl, _ := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
+		var t string
+		t, _ = jwt.GenToken(dpl.ID)
+		fmt.Println(t)
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
-			Msg:  "Success",
-			Data: nil,
+			Msg:  "Registration Successful, signing in...",
+			Data: LSR{Token: t},
 		}))
 	}
+
 }
 
 func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
@@ -191,7 +211,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		//	Check if the username exists
-		findUser, err := ctx.UserService.UserGetByEmail(c, req.User)
+		findUser, err := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
@@ -207,7 +227,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 			//	doesNotExist
 			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "The user does not exist",
+				Msg:  "The developer does not exist",
 				Data: nil,
 			}))
 			return
@@ -264,8 +284,8 @@ func ForgotVerifySend(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		var u *user.DeveloperDO
-		u, err = ctx.UserService.UserGetByEmail(c, &users.User{Email: req.Email})
+		var u *developerDO.DeveloperDO
+		u, err = ctx.UserService.DeveloperGetByEmail(c, &developer.Developer{Email: req.Email})
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
@@ -281,14 +301,14 @@ func ForgotVerifySend(ctx context.ApplicationContext) gin.HandlerFunc {
 		if u == nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "The users does not exist",
+				Msg:  "The developer does not exist",
 				Data: nil,
 			}))
 			return
 		}
 
 		var codeHash string
-		codeHash, err = ctx.UserService.ForgotVerifySend(c, &users.User{Email: req.Email})
+		codeHash, err = ctx.UserService.ForgotVerifySend(c, &developer.Developer{Email: req.Email})
 		if err != nil {
 			logger.Error(err)
 			c.AbortWithStatus(http.StatusInternalServerError)
@@ -311,9 +331,9 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		var u *user.DeveloperDO
+		var u *developerDO.DeveloperDO
 		// check Whether The Mailbox Is exist
-		u, err = ctx.UserService.UserGetByEmail(c, req.User)
+		u, err = ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
@@ -327,13 +347,13 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		if u == nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "The user does not exist",
+				Msg:  "The developer does not exist",
 				Data: nil,
 			}))
 			return
 		}
 		// Verify that the mailbox has not been maliciously altered
-		emailHashStr := users.GetEmailHashStr(u.Email)
+		emailHashStr := developer.GetEmailHashStr(u.Email)
 		if req.CodeKey != emailHashStr {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
@@ -394,7 +414,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		req.Password = string(password)
-		err = ctx.UserService.UserPasswordModifyByEmail(c, req.User)
+		err = ctx.UserService.DeveloperPasswordModifyByEmail(c, req.Developer)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
 				Code: e.Failed,
@@ -406,7 +426,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
-			Msg:  "Success",
+			Msg:  "Password successfully reset, redirecting to login page.",
 			Data: nil,
 		}))
 

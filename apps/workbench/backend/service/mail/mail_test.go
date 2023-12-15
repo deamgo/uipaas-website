@@ -9,7 +9,7 @@ import (
 func TestMailService_SendMail(t *testing.T) {
 	ctx := context.Background()
 	ms := mailService{}
-	email := "2734170020@qq.com"
+	email := "zhaokang@deamgo.com"
 	number := ms.SendMail(ctx, email)
 	fmt.Println(number)
 }

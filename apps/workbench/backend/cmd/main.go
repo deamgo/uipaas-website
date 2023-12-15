@@ -6,11 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/deamgo/workbench/context"
-	user2 "github.com/deamgo/workbench/dao/user"
+	user2 "github.com/deamgo/workbench/dao/developer"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/logger"
 	routes "github.com/deamgo/workbench/router"
-	"github.com/deamgo/workbench/service/users"
+	"github.com/deamgo/workbench/service/developer"
 )
 
 func main() {
@@ -18,9 +18,9 @@ func main() {
 	initialize.InitConfig()
 	db.InitDB()
 	db.InitRedis()
-	dao := user2.NewAUserDao(db.DB)
+	dao := user2.NewADeveloperDao(db.DB)
 	ctx := context.ApplicationContext{
-		UserService: users.NewUserService(users.UserServiceParams{Dao: dao, MailService: mail.NewMailService()}),
+		UserService: developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
 		MailService: mail.NewMailService(),
 	}
 

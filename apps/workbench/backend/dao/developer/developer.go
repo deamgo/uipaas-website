@@ -1,5 +1,5 @@
-// Package users provides data access objects for the application.
-package user
+// Package developer provides data access objects for the application.
+package developer
 
 import (
 	"context"
@@ -9,31 +9,31 @@ import (
 	daolayer "github.com/deamgo/workbench/dao"
 )
 
-type UserDao interface {
-	UserAdd(ctx context.Context, user *DeveloperDO) error
-	UserGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
-	UserGetByUserName(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
-	UserStatusModifyByEmail(ctx context.Context, user *DeveloperDO) error
-	UserPasswordModifyByEmail(ctx context.Context, user *DeveloperDO) error
+type DeveloperDao interface {
+	DeveloperAdd(ctx context.Context, user *DeveloperDO) error
+	DeveloperGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
+	DeveloperGetByUserName(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
+	DeveloperStatusModifyByEmail(ctx context.Context, user *DeveloperDO) error
+	DeveloperPasswordModifyByEmail(ctx context.Context, user *DeveloperDO) error
 }
 
-type userDao struct {
+type developerDao struct {
 	db *gorm.DB
 }
 
-func NewAUserDao(db *gorm.DB) UserDao {
-	return &userDao{
+func NewADeveloperDao(db *gorm.DB) DeveloperDao {
+	return &developerDao{
 		db: db,
 	}
 }
 
-func (u userDao) UserAdd(ctx context.Context, user *DeveloperDO) error {
+func (u developerDao) DeveloperAdd(ctx context.Context, user *DeveloperDO) error {
 	err := u.db.WithContext(ctx).Model(&DeveloperDO{}).Create(&user).Error
 	return err
 }
 
 // Update deactivate
-func (u userDao) UserStatusModifyByEmail(ctx context.Context, user *DeveloperDO) error {
+func (u developerDao) DeveloperStatusModifyByEmail(ctx context.Context, user *DeveloperDO) error {
 	email := user.Email
 	status := user.Status
 	err := u.db.WithContext(ctx).Model(&user).
@@ -44,7 +44,7 @@ func (u userDao) UserStatusModifyByEmail(ctx context.Context, user *DeveloperDO)
 	return nil
 }
 
-func (u userDao) UserPasswordModifyByEmail(ctx context.Context, user *DeveloperDO) error {
+func (u developerDao) DeveloperPasswordModifyByEmail(ctx context.Context, user *DeveloperDO) error {
 	email := user.Email
 	pwd := user.Password
 	err := u.db.WithContext(ctx).Model(&user).
@@ -56,7 +56,7 @@ func (u userDao) UserPasswordModifyByEmail(ctx context.Context, user *DeveloperD
 }
 
 // Search by email
-func (u userDao) UserGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
+func (u developerDao) DeveloperGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
 	email := user.Email
 	err := u.db.WithContext(ctx).Model(&user).Where("email=? and status=1", email).First(&user).Error
 	if err != nil {
@@ -66,7 +66,7 @@ func (u userDao) UserGetByEmail(ctx context.Context, user *DeveloperDO) (*Develo
 }
 
 // Search by username
-func (u userDao) UserGetByUserName(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
+func (u developerDao) DeveloperGetByUserName(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
 	uname := user.Username
 	err := u.db.WithContext(ctx).Model(&user).Where("username=?", uname).First(&user).Error
 	if err != nil {

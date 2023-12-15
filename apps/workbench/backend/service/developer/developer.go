@@ -1,4 +1,4 @@
-package users
+package developer
 
 import (
 	"context"
@@ -7,46 +7,46 @@ import (
 	"github.com/bwmarrin/snowflake"
 	"time"
 
-	"github.com/deamgo/workbench/dao/user"
+	"github.com/deamgo/workbench/dao/developer"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/service/mail"
 )
 
 type UserService interface {
-	UserAdd(ctx context.Context, user *User) (string, error)
-	UserGetByEmail(ctx context.Context, u *User) (*user.DeveloperDO, error)
-	ForgotVerifySend(ctx context.Context, u *User) (string, error)
-	UserGetByUserName(ctx context.Context, u *User) (*User, error)
-	UserStatusModifyByEmail(ctx context.Context, u *User) error
-	UserPasswordModifyByEmail(ctx context.Context, u *User) error
+	DeveloperAdd(ctx context.Context, user *Developer) (string, error)
+	DeveloperGetByEmail(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
+	ForgotVerifySend(ctx context.Context, u *Developer) (string, error)
+	DeveloperGetByUserName(ctx context.Context, u *Developer) (*Developer, error)
+	DeveloperStatusModifyByEmail(ctx context.Context, u *Developer) error
+	DeveloperPasswordModifyByEmail(ctx context.Context, u *Developer) error
 }
 
-type UserServiceParams struct {
-	Dao         user.UserDao
+type DeveloperServiceParams struct {
+	Dao         developer.DeveloperDao
 	MailService mail.MailService
 }
 
-type userService struct {
-	dao  user.UserDao
+type developerService struct {
+	dao  developer.DeveloperDao
 	mail mail.MailService
 }
 
-func NewUserService(params UserServiceParams) UserService {
-	return &userService{
+func NewDeveloperService(params DeveloperServiceParams) UserService {
+	return &developerService{
 		dao:  params.Dao,
 		mail: params.MailService,
 	}
 }
 
-func (us userService) UserAdd(ctx context.Context, u *User) (string, error) {
+func (us developerService) DeveloperAdd(ctx context.Context, u *Developer) (string, error) {
 	node, err := snowflake.NewNode(1)
 	if err != nil {
 		logger.Error(err)
 	}
 	generateID := node.Generate().String()
 
-	ud := convertUserDao(u)
+	ud := convertDeveloperDO(u)
 	//send email and get  code
 	code := us.mail.SendMail(ctx, u.Email)
 	codeHash, err := SaveCode(u.Email, code)
@@ -56,7 +56,7 @@ func (us userService) UserAdd(ctx context.Context, u *User) (string, error) {
 	}
 	fmt.Println(code)
 	ud.ID = generateID
-	err = us.dao.UserAdd(ctx, ud)
+	err = us.dao.DeveloperAdd(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 
@@ -65,10 +65,10 @@ func (us userService) UserAdd(ctx context.Context, u *User) (string, error) {
 	return codeHash, nil
 }
 
-func (us userService) UserStatusModifyByEmail(ctx context.Context, u *User) error {
-	ud := convertUserDao(u)
+func (us developerService) DeveloperStatusModifyByEmail(ctx context.Context, u *Developer) error {
+	ud := convertDeveloperDO(u)
 	ud.Status = 1
-	err := us.dao.UserStatusModifyByEmail(ctx, ud)
+	err := us.dao.DeveloperStatusModifyByEmail(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 
@@ -77,7 +77,7 @@ func (us userService) UserStatusModifyByEmail(ctx context.Context, u *User) erro
 	return nil
 }
 
-func (us userService) ForgotVerifySend(ctx context.Context, u *User) (string, error) {
+func (us developerService) ForgotVerifySend(ctx context.Context, u *Developer) (string, error) {
 	code := mail.MailService.SendMail(mail.NewMailService(), ctx, "2734170020@qq.com")
 	codeHash, err := SaveCode(u.Email, code)
 	if err != nil {
@@ -87,9 +87,9 @@ func (us userService) ForgotVerifySend(ctx context.Context, u *User) (string, er
 	return codeHash, nil
 }
 
-func (us userService) UserPasswordModifyByEmail(ctx context.Context, u *User) error {
-	ud := convertUserDao(u)
-	err := us.dao.UserPasswordModifyByEmail(ctx, ud)
+func (us developerService) DeveloperPasswordModifyByEmail(ctx context.Context, u *Developer) error {
+	ud := convertDeveloperDO(u)
+	err := us.dao.DeveloperPasswordModifyByEmail(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 		return err
@@ -97,22 +97,22 @@ func (us userService) UserPasswordModifyByEmail(ctx context.Context, u *User) er
 	return nil
 }
 
-func (us userService) UserGetByUserName(ctx context.Context, u *User) (*User, error) {
+func (us developerService) DeveloperGetByUserName(ctx context.Context, u *Developer) (*Developer, error) {
 	var err error
-	ud := convertUserDao(u)
-	ud, err = us.dao.UserGetByUserName(ctx, ud)
+	ud := convertDeveloperDO(u)
+	ud, err = us.dao.DeveloperGetByUserName(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 
 		return nil, err
 	}
-	return convertUser(ud), err
+	return convertDeveloper(ud), err
 }
 
-func (us userService) UserGetByEmail(ctx context.Context, u *User) (*user.DeveloperDO, error) {
+func (us developerService) DeveloperGetByEmail(ctx context.Context, u *Developer) (*developer.DeveloperDO, error) {
 	var err error
-	ud := convertUserDao(u)
-	ud, err = us.dao.UserGetByEmail(ctx, ud)
+	ud := convertDeveloperDO(u)
+	ud, err = us.dao.DeveloperGetByEmail(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 
@@ -120,8 +120,8 @@ func (us userService) UserGetByEmail(ctx context.Context, u *User) (*user.Develo
 	}
 	return ud, err
 }
-func convertUserDao(u *User) *user.DeveloperDO {
-	return &user.DeveloperDO{
+func convertDeveloperDO(u *Developer) *developer.DeveloperDO {
+	return &developer.DeveloperDO{
 		ID:       u.ID,
 		Username: u.Username,
 		Email:    u.Email,
@@ -130,8 +130,8 @@ func convertUserDao(u *User) *user.DeveloperDO {
 	}
 }
 
-func convertUser(u *user.DeveloperDO) *User {
-	return &User{
+func convertDeveloper(u *developer.DeveloperDO) *Developer {
+	return &Developer{
 		ID:       u.ID,
 		Username: u.Username,
 		Email:    u.Email,
