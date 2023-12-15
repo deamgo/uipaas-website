@@ -4,8 +4,10 @@ import './index.less'
 //
 import Input from '@/components/Input'
 import Button from '@/components/Button'
+import Mask from '@/components/Mask'
 //
 import { emailVerificationReg } from '@constants/regexp'
+import { usrSignUpVerify } from '@api/sign_up'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 
@@ -21,13 +23,20 @@ const EmailVerif: React.FC = () => {
       setBtnAbled(true)
     }
   }, [emailVerification])
-
+  //impl api/sign_up.ts > usrSignUpVerify
   const handleContinue = () => {
-    console.log('Continue');
+    console.log('EmailVerification');
     const usr = {
       emailVerification,
     }
     console.log(usr);
+    usrSignUpVerify({
+
+    }).then(res => {
+
+    }).catch(err => {
+
+    })
 
   }
 

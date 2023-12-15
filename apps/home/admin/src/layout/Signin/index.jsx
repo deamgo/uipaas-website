@@ -11,16 +11,12 @@ const LoginForm = () => {
 
   const handleLogin = async () => {
     try {
-      // 发送登录请求，获取 JWT 令牌
       const response = await login({
         username: username,
         password: password
       });
-
-      // 从响应中获取 JWT 令牌
       const jwtToken = response.value.data.token;
 
-      // 将 JWT 令牌保存到本地存储或者其他地方（例如，Cookie）
       if (localStorage.getItem('jwtToken') !== jwtToken) {
         updateToken(jwtToken);
       }

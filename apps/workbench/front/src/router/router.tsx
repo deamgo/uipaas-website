@@ -1,4 +1,5 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { RouteObject, createBrowserRouter } from 'react-router-dom'
+
 //layout
 import Layout from '@/views/layout'
 import Sign from '@views/sign'
@@ -7,12 +8,33 @@ import EmailVerif from '@/views/sign/EmailVerif'
 import SignIn from '@/views/sign/SignIn'
 import PwdReset from '@/views/sign/PwdReset'
 import Privacy from '@/views/privacy'
+import ContentApp from '@/views/layout/content-app'
+import ContentUsr from '@/views/layout/content-usr'
 
-
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     path: '/',
-    Component: Layout
+    Component: Layout,
+    children: [
+      {
+        path: '/apps',
+        Component: ContentApp,
+      },
+      {
+        path: '/u',
+        Component: ContentUsr,
+        children: [
+          {
+            path: '/u/profile',
+            element: <h1>Profile</h1>
+          },
+          {
+            path: '/u/invite',
+            element: <h1>Invite</h1>
+          },
+        ]
+      },
+    ]
   },
   {
     path: '/s',
@@ -40,4 +62,7 @@ export const router = createBrowserRouter([
     path: '/privacy',
     Component: Privacy
   }
-])
+]
+
+
+export const router = createBrowserRouter(routes)
