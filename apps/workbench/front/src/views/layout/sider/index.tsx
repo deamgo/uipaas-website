@@ -52,6 +52,31 @@ const list_ms: IMultiplySelectorPropsItem[] = [
   }
 ]
 
+interface IMultiplySelectorPropsItem {
+  id: number
+  text: string
+  method: MouseEventHandler<HTMLDivElement>
+  type: 'normal' | 'error'
+}
+
+const list_ms: IMultiplySelectorPropsItem[] = [
+  {
+    id: 3,
+    text: 'Profile',
+    method: () => {
+      window.location.pathname = '/u'
+    },
+    type: "normal"
+  },
+  {
+    id: 4,
+    text: 'Logout',
+    method: () => {
+      window.location.pathname = '/s/in'
+    },
+    type: "error"
+  }
+]
 type SiderProps = {
   children?: React.ReactNode
 }
