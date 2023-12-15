@@ -1,0 +1,44 @@
+.__mulselector {
+  &_wrapper {
+    width: max-content;
+    height: max-content;
+
+    border-radius: 4rem;
+
+    background: #FFFFFF;
+
+    border: 1rem solid #E5E8EF;
+
+    box-shadow: 0rem 0rem 10rem 0rem rgba(0, 0, 0, 0.3);
+    background-color: #FFFFFF;
+
+    user-select: none;
+
+    &_item {
+      margin: 10rem 2rem;
+      padding: 4rem 16rem 3rem 15rem;
+      width: max-content;
+      height: 27rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 2rem;
+
+      font-size: 12rem;
+      font-weight: normal;
+      line-height: 20rem;
+
+      cursor: pointer;
+
+      &.normal {
+        background: rgba(20, 118, 255, 0.1)
+      }
+
+      &.error {
+        color: #FF7875;
+      }
+    }
+  }
+}

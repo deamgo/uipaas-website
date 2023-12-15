@@ -4,8 +4,10 @@ import './index.less'
 //
 import Input from '@/components/Input'
 import Button from '@/components/Button'
+import Mask from '@/components/Mask'
 //
 import { emailReg, emailVerificationReg, passwordReg } from '@constants/regexp'
+import { ResetPwd, forgotVerify } from '@api/reset_pwd'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 
@@ -27,18 +29,37 @@ const PwdReset: React.FC = () => {
     }
   }, [email, emailVerification, pwd])
 
+  //impl api/reset_pwd.ts > ResetPwd
   const handleContinue = () => {
-    console.log('Continue');
+    console.log('PwdReset');
     const usr = {
       email,
       emailVerification,
       pwd,
     }
     console.log(usr);
+    ResetPwd({
+      email,
+      code_key: '123',
+      code: 1233,
+      password: pwd
+    }).then(res => {
 
+    }).catch(err => {
+
+    })
   }
+
+  //impl api/sign_in.ts > forgotVerify
   const handleSend = () => {
     console.log('Send');
+    forgotVerify({
+      email
+    }).then(res => {
+
+    }).catch(err => {
+
+    })
 
   }
 
