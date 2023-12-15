@@ -23,14 +23,9 @@ const SignIn: React.FC = () => {
     }
   }, [email, pwd])
 
-    // const validator = (value: string, regex: RegExp) => {
-    //   return regex.test(value)
-    // }
-
-    <<<<<<<< < Temporary merge branch 1
-  const handleContinue = () => {
-    console.log('Continue');
-=========
+  // const validator = (value: string, regex: RegExp) => {
+  //   return regex.test(value)
+  // }
   //impl api/sign_in.ts > usrSignIn
   const handleContinue = () => {
     console.log('SignIn');

@@ -25,10 +25,6 @@ const EmailVerif: React.FC = () => {
     }
   }, [emailVerification])
 
-    <<<<<<<< < Temporary merge branch 1
-  const handleContinue = () => {
-    console.log('Continue');
-=========
   //impl api/sign_up.ts > usrSignUpVerify
   const handleContinue = () => {
     console.log('EmailVerification');
