@@ -65,3 +65,4 @@ export const routes: RouteObject[] = [
 
 
 export const router = createBrowserRouter(routes)
+  >>>>>>>>> Temporary merge branch 2

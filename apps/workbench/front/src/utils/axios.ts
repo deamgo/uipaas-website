@@ -1,6 +1,14 @@
 import axios from "axios"
 
 
+<<<<<<<< <Temporary merge branch 1
+const requests = axios.create({
+  baseURL: "/api",
+  timeout: 5000,
+});
+
+requests.interceptors.request.use(
+=========
 const request = axios.create({
   baseURL: "/api/v1",
   timeout: 5000,
