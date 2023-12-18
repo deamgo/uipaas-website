@@ -39,7 +39,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			workspaceservice, mock := setupWorkspaceServiceTest(t)
+			//workspaceservice, mock := setupWorkspaceServiceTest(t)
 
 		})
 	}

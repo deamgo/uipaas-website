@@ -25,7 +25,7 @@ func main() {
 	ctx := context.ApplicationContext{
 		UserService:      developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
 		MailService:      mail.NewMailService(),
-		WorkspaceSerivce: workspace.NewWorkspaceService(workspace.WorkspaceServiceParams{Dao: workspaceDao}),
+		WorkspaceService: workspace.NewWorkspaceService(workspace.WorkspaceServiceParams{Dao: workspaceDao}),
 	}
 
 	r := gin.Default()
