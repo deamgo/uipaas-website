@@ -9,5 +9,5 @@ import (
 type ApplicationContext struct {
 	UserService      developer.UserService
 	MailService      mail.MailService
-	WorkspaceSerivce workspace.WorkspaceService
+	WorkspaceService workspace.WorkspaceService
 }
