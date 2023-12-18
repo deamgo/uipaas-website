@@ -42,8 +42,8 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			return
 		}
 		// Save the username information of the current request to the context C of the request
-		c.Set("username", mc.Username)
-		// Subsequent processing functions can be handled by c. Get("username") to get the requested user information
+		c.Set("username", mc.ID)
+		// Subsequent processing functions can be handled by c. Get("username") to get the requested developer information
 		c.Next()
 	}
 

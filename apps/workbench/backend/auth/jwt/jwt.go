@@ -12,7 +12,7 @@ import (
 var MySecret = getSecret()
 
 type MyClaims struct {
-	Username string `json:"username"`
+	ID string `json:"id"`
 	jwt.StandardClaims
 }
 
@@ -20,9 +20,10 @@ type MyClaims struct {
 const TokenExpireDuration = time.Hour * 2
 
 // generate jwt
-func GenToken(username string) (string, error) {
+func GenToken(id string) (string, error) {
 	c := MyClaims{
-		username,
+
+		id,
 		jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(TokenExpireDuration).Unix(),
 			Issuer:    "my-project",
@@ -49,10 +50,10 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 	}
 	return nil, errors.New("invalid token")
 }
-func getSecret() string {
+func getSecret() []byte {
 	// set The Name And Path Of The Profile
 	viper.SetConfigName("conf")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath("./auth/jwt")
 
 	// read The Configuration File
 	err := viper.ReadInConfig()
@@ -60,5 +61,5 @@ func getSecret() string {
 		panic(fmt.Errorf("failed to read config file: %s", err))
 	}
 	MySecret := viper.GetString("jwt_secret")
-	return MySecret
+	return []byte(MySecret)
 }

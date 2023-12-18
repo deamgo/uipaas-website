@@ -1,64 +1,130 @@
 package logger
 
 import (
-	"log"
 	"os"
-	"path"
-	"time"
+	"sync"
 
-	"github.com/deamgo/workbench/pkg/consts"
-
-	"github.com/sirupsen/logrus"
+	grpcZap "github.com/grpc-ecosystem/go-grpc-middleware/logging/zap"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
-var LoggersObj *logrus.Logger
+var (
+	mutex   = &sync.Mutex{}
+	hasInit = false
+	encoder = zapcore.NewConsoleEncoder(
+		zapcore.EncoderConfig{
+			MessageKey:     "msg",
+			LevelKey:       "level",
+			TimeKey:        "time",
+			CallerKey:      "line",
+			NameKey:        "logger",
+			FunctionKey:    "func",
+			StacktraceKey:  "stacktrace",
+			EncodeLevel:    zapcore.CapitalLevelEncoder,
+			EncodeTime:     zapcore.TimeEncoderOfLayout("2006-01-02 15:04:05.0000"),
+			EncodeCaller:   zapcore.ShortCallerEncoder,
+			EncodeDuration: zapcore.SecondsDurationEncoder,
+		})
+	logger    *zap.Logger
+	sugar     *zap.SugaredLogger
+	cmdLogger *zap.Logger
+	cmdSugar  *CmdSugarLogger
+)
 
-func init() {
-	if LoggersObj != nil {
-		src, _ := setOutputFile()
-		LoggersObj.Out = src
-		return
-	}
-	logger := logrus.New()
-	src, _ := setOutputFile()
-	logger.Out = src
-	logger.SetLevel(logrus.DebugLevel)
-	logger.SetFormatter(&logrus.TextFormatter{
-		TimestampFormat: "2006-01-02 15:04:05",
-	})
-	LoggersObj = logger
+// CmdSugarLogger wraps zap.SugaredLogger and zapcore.WriteSyncer in order to use Sugar
+// while being able to use low-level writers.
+type CmdSugarLogger struct {
+	*zap.SugaredLogger
+	// wrap ws to print directly
+	ws zapcore.WriteSyncer
 }
 
-func setOutputFile() (*os.File, error) {
+func (log *CmdSugarLogger) Print(s string) {
+	_, _ = log.ws.Write([]byte(s))
+}
 
-	now := time.Now()
-
-	wd, err := os.Getwd()
-	if err != nil {
-		LoggersObj.Errorf("Get wd failed, err: %v", err)
+func Init() {
+	mutex.Lock()
+	defer mutex.Unlock()
+	if hasInit {
+		return
 	}
+	hasInit = true
 
-	logFilePath := path.Join(wd, consts.LoggerFilePath)
-	_, err = os.Stat(logFilePath)
+	core := zapcore.NewCore(getEncoder(), getLogWriter(), zapcore.DebugLevel)
+	logger = zap.New(core)
 
-	if os.IsNotExist(err) {
-		if err := os.MkdirAll(logFilePath, 0777); err != nil {
-			log.Println(err.Error())
-			return nil, err
+	// flushes buffer, if any
+	defer func(logger *zap.Logger) {
+		err := logger.Sync()
+		if err != nil {
+			panic(err)
 		}
-	}
-	logFileName := now.Format(consts.TimeFormatToDate) + consts.LoggerFileSuffix
-	fileName := path.Join(logFilePath, logFileName)
-	if _, err := os.Stat(fileName); err != nil {
-		if _, err := os.Create(fileName); err != nil {
-			log.Println(err.Error())
-			return nil, err
+	}(logger)
+
+	sugar = logger.Sugar()
+
+	// Make sure that logger statements internal to gRPC library are logged using the zapLogger as well.
+	grpcZap.ReplaceGrpcLoggerV2(logger)
+}
+
+func InitCmdSugar(ws zapcore.WriteSyncer) {
+	mutex.Lock()
+	defer mutex.Unlock()
+
+	core := zapcore.NewCore(encoder, ws, zap.DebugLevel)
+	cmdLogger = zap.New(core)
+	defer func(cmdLogger *zap.Logger) {
+		err := cmdLogger.Sync()
+		if err != nil {
+			logger.Error(err.Error())
 		}
+	}(cmdLogger) // flushes buffer, if any
+	cmdSugar = &CmdSugarLogger{
+		SugaredLogger: cmdLogger.Sugar(),
+		ws:            ws,
 	}
-	src, err := os.OpenFile(fileName, os.O_APPEND|os.O_WRONLY, os.ModeAppend)
-	if err != nil {
-		log.Println(err)
-		return nil, err
+}
+
+func Sugar() *zap.SugaredLogger {
+	if sugar == nil {
+		Init()
 	}
-	return src, nil
+	return sugar
+}
+
+func Logger() *zap.Logger {
+	if logger == nil {
+		Init()
+	}
+	return logger
+}
+
+func CmdSugar() *CmdSugarLogger {
+	if cmdSugar == nil {
+		InitCmdSugar(os.Stdout)
+	}
+	return cmdSugar
+}
+
+func getEncoder() zapcore.Encoder {
+	encoderConfig := zap.NewProductionEncoderConfig()
+	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder
+	return zapcore.NewConsoleEncoder(encoderConfig)
+}
+
+func getLogWriter() zapcore.WriteSyncer {
+
+	lumberJackLogger := &lumberjack.Logger{
+		Filename:   "./installer.log",
+		MaxSize:    1,
+		MaxBackups: 5,
+		MaxAge:     30,
+		Compress:   false,
+	}
+
+	return zapcore.AddSync(lumberJackLogger)
 }

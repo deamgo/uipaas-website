@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "1b806360-c89a-4597-b108-3b89c34fb6f1",
+		"name": "Workbench",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27637326"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"2734170020@qq.com\",\n    \"password\":\"2j532lj5k32\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"signin"
+					]
+				},
+				"description": "登录接口"
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"zjdisaisdf\",\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forgot_verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"email\":\"2734170020@qq.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/forgot_verify",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"forgot_verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset_password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"email\":\"2734170020@qq.com\",\n    \"code_key\":\"b5b3daeea698996132db725d02a4cb302e07d378\",\n    \"code\":5363,\n    \"password\":\"admin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/reset_password",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"reset_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup_verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"zjdisaisdf\",\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\",\n    \"code_key\": \"98f7d2685668fd406bc603926db312e25b01f534\",\n    \"code\": 6524\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/signup_verify",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"signup_verify"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "uipaas.com",
+			"type": "string"
+		}
+	]
+}
