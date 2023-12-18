@@ -39,7 +39,12 @@ jobs:
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.55.2
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
-      - name: Run Unit Test Suites
+      - name: Run Home Unit Test Suites
         working-directory: ./apps/home/backend
+        run: |
+          make test
+
+      - name: RUN Workbench Unit Test Suites
+        working-directory: ./apps/workbench/backend
         run: |
           make test
