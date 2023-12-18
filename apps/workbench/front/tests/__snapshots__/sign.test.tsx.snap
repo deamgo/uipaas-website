@@ -1,9 +1,172 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Apps page Test 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
+    <div>
+      <h2>
+        Unexpected Application Error!
+      </h2>
+      <h3
+        style="font-style: italic;"
+      >
+        Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of \`Content\`.
+      </h3>
+      <pre
+        style="padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of \`Content\`.
+    at createFiberFromTypeAndProps (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28439:17)
+    at createFiberFromElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28465:15)
+    at reconcileSingleElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15750:23)
+    at reconcileChildFibers (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15808:35)
+    at reconcileChildren (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19167:28)
+    at updateHostComponent (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19924:3)
+    at beginWork (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:21618:14)
+    at HTMLUnknownElement.callCallback (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/event/EventTarget.ts:203:42)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/nodes/element/Element.ts:923:29)
+      </pre>
+      <p>
+        💿 Hey developer 👋
+      </p>
+      <p>
+        You can provide a way better UX than this when your app throws errors by providing your own 
+        <code
+          style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+        >
+          ErrorBoundary
+        </code>
+         or
+         
+        <code
+          style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+        >
+          errorElement
+        </code>
+         prop on your route.
+      </p>
+    </div>
+  </body>,
+  "container": <div>
+    <h2>
+      Unexpected Application Error!
+    </h2>
+    <h3
+      style="font-style: italic;"
+    >
+      Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of \`Content\`.
+    </h3>
+    <pre
+      style="padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);"
+    >
+      Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of \`Content\`.
+    at createFiberFromTypeAndProps (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28439:17)
+    at createFiberFromElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28465:15)
+    at reconcileSingleElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15750:23)
+    at reconcileChildFibers (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15808:35)
+    at reconcileChildren (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19167:28)
+    at updateHostComponent (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19924:3)
+    at beginWork (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:21618:14)
+    at HTMLUnknownElement.callCallback (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/event/EventTarget.ts:203:42)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/nodes/element/Element.ts:923:29)
+    </pre>
+    <p>
+      💿 Hey developer 👋
+    </p>
+    <p>
+      You can provide a way better UX than this when your app throws errors by providing your own 
+      <code
+        style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        ErrorBoundary
+      </code>
+       or
+       
+      <code
+        style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        errorElement
+      </code>
+       prop on your route.
+    </p>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`Sign Emial verifi page Test 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
     <div>
       <div
         class="__sign"
@@ -293,6 +456,10 @@ exports[`Sign In page Test 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
     <div>
       <div
         class="__sign"
@@ -652,6 +819,10 @@ exports[`Sign Reset pwd page Test 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
     <div>
       <div
         class="__sign"
@@ -1039,10 +1210,313 @@ Object {
 }
 `;
 
+exports[`Sign Reset pwd page Test 2`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
+    <div>
+      <div
+        class="__privacy"
+      >
+        <div
+          class="__privacy_logo"
+        >
+          <img
+            alt="UIPaaS"
+            src=""
+          />
+        </div>
+        <div
+          class="__privacy_context"
+        >
+          <h1
+            class="__privacy_context_title"
+          >
+            Privacy Policy
+          </h1>
+          <span
+            class="__privacy_context_date"
+          >
+            Last Modified: February 27, 2023
+          </span>
+          <p
+            class="__privacy_context_abstract"
+          >
+            This Privacy Agreement ("Agreement") governs the use of our websites, mobile applications and other services. Please read the following carefully to understand how we collect, use, protect and disclose your personal information.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Information Collection
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            We may collect personal information that you provide, including, but not limited to, name, email address, contact information, geographic location, IP address and device information. We will take reasonable steps to protect the security of the personal information you provide.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Use of Information
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            We will use your personal information to provide and improve our services and to send you relevant notices. We may use your personal information for marketing and promotional activities, but we will respect your privacy and you have the right to opt out of receiving these notices.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Disclosure of Information
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            We may share your personal information with third party partners to provide better services. We will take reasonable steps to protect your personal information and require third party partners to similarly comply with this agreement.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Cookies and Other Technologies
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            We may use cookies and other similar technologies to collect and store information about you. These technologies help us provide a better user experience and are used to analyze and improve our services.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Privacy
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            We will take reasonable steps to protect the security of your personal information from unauthorized access, use or disclosure. However, due to the open nature of the Internet, we cannot fully guarantee the absolute security of information.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Protection of Minors
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            Our services do not apply to minors. If you are under the legal age, please use our services under the guidance of a parent or guardian.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Changes to our Privacy Policy
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            We may modify this Privacy Policy from time to time and will post the updated version on our website or mobile application. Please check back periodically to keep up to date with the latest Privacy Policy.
+          </p>
+          <h2
+            class="__privacy_context_title_sec"
+          >
+            Contact Us
+          </h2>
+          <p
+            class="__privacy_context_detail"
+          >
+            If you have any questions or comments about our Privacy Policy, please contact us via our website or mobile application.
+          </p>
+          <p
+            class="__privacy_context_tail"
+          >
+            Please read and understand this Privacy Agreement carefully before using our services. By continuing to use our services, you agree to all the terms and conditions of this agreement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="__privacy"
+    >
+      <div
+        class="__privacy_logo"
+      >
+        <img
+          alt="UIPaaS"
+          src=""
+        />
+      </div>
+      <div
+        class="__privacy_context"
+      >
+        <h1
+          class="__privacy_context_title"
+        >
+          Privacy Policy
+        </h1>
+        <span
+          class="__privacy_context_date"
+        >
+          Last Modified: February 27, 2023
+        </span>
+        <p
+          class="__privacy_context_abstract"
+        >
+          This Privacy Agreement ("Agreement") governs the use of our websites, mobile applications and other services. Please read the following carefully to understand how we collect, use, protect and disclose your personal information.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Information Collection
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          We may collect personal information that you provide, including, but not limited to, name, email address, contact information, geographic location, IP address and device information. We will take reasonable steps to protect the security of the personal information you provide.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Use of Information
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          We will use your personal information to provide and improve our services and to send you relevant notices. We may use your personal information for marketing and promotional activities, but we will respect your privacy and you have the right to opt out of receiving these notices.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Disclosure of Information
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          We may share your personal information with third party partners to provide better services. We will take reasonable steps to protect your personal information and require third party partners to similarly comply with this agreement.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Cookies and Other Technologies
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          We may use cookies and other similar technologies to collect and store information about you. These technologies help us provide a better user experience and are used to analyze and improve our services.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Privacy
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          We will take reasonable steps to protect the security of your personal information from unauthorized access, use or disclosure. However, due to the open nature of the Internet, we cannot fully guarantee the absolute security of information.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Protection of Minors
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          Our services do not apply to minors. If you are under the legal age, please use our services under the guidance of a parent or guardian.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Changes to our Privacy Policy
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          We may modify this Privacy Policy from time to time and will post the updated version on our website or mobile application. Please check back periodically to keep up to date with the latest Privacy Policy.
+        </p>
+        <h2
+          class="__privacy_context_title_sec"
+        >
+          Contact Us
+        </h2>
+        <p
+          class="__privacy_context_detail"
+        >
+          If you have any questions or comments about our Privacy Policy, please contact us via our website or mobile application.
+        </p>
+        <p
+          class="__privacy_context_tail"
+        >
+          Please read and understand this Privacy Agreement carefully before using our services. By continuing to use our services, you agree to all the terms and conditions of this agreement.
+        </p>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`Sign Up page Test 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
     <div>
       <div
         class="__sign"
@@ -1071,37 +1545,6 @@ Object {
           <div
             class="__sign_form"
           >
-            <div
-              class="__sign_form_input"
-            >
-              <div
-                class="__input_wrapper"
-              >
-                <div
-                  class="__input_wrapper_title"
-                >
-                  Invitation code
-                  <span>
-                    *
-                  </span>
-                </div>
-                <div
-                  class="__input_wrapper_main"
-                >
-                  <input
-                    id="1"
-                    name=""
-                    placeholder="Enter your invitation code"
-                    type="text"
-                  />
-                </div>
-                <div
-                  class="__input_wrapper_invalid"
-                >
-                  Please enter the invitation code
-                </div>
-              </div>
-            </div>
             <div
               class="__sign_form_input"
             >
@@ -1287,37 +1730,6 @@ Object {
               <div
                 class="__input_wrapper_title"
               >
-                Invitation code
-                <span>
-                  *
-                </span>
-              </div>
-              <div
-                class="__input_wrapper_main"
-              >
-                <input
-                  id="1"
-                  name=""
-                  placeholder="Enter your invitation code"
-                  type="text"
-                />
-              </div>
-              <div
-                class="__input_wrapper_invalid"
-              >
-                Please enter the invitation code
-              </div>
-            </div>
-          </div>
-          <div
-            class="__sign_form_input"
-          >
-            <div
-              class="__input_wrapper"
-            >
-              <div
-                class="__input_wrapper_title"
-              >
                 Name
                 <span>
                   *
@@ -1455,6 +1867,157 @@ Object {
         </div>
       </div>
     </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`User page Test 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div
+      class="message-wrap"
+      id="message-wrap"
+    />
+    <div>
+      <h2>
+        Unexpected Application Error!
+      </h2>
+      <h3
+        style="font-style: italic;"
+      >
+        Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+      </h3>
+      <pre
+        style="padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+    at createFiberFromTypeAndProps (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28439:17)
+    at createFiberFromElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28465:15)
+    at reconcileSingleElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15750:23)
+    at reconcileChildFibers (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15808:35)
+    at reconcileChildren (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19167:28)
+    at updateHostComponent (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19924:3)
+    at beginWork (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:21618:14)
+    at HTMLUnknownElement.callCallback (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/event/EventTarget.ts:203:42)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/nodes/element/Element.ts:923:29)
+      </pre>
+      <p>
+        💿 Hey developer 👋
+      </p>
+      <p>
+        You can provide a way better UX than this when your app throws errors by providing your own 
+        <code
+          style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+        >
+          ErrorBoundary
+        </code>
+         or
+         
+        <code
+          style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+        >
+          errorElement
+        </code>
+         prop on your route.
+      </p>
+    </div>
+  </body>,
+  "container": <div>
+    <h2>
+      Unexpected Application Error!
+    </h2>
+    <h3
+      style="font-style: italic;"
+    >
+      Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+    </h3>
+    <pre
+      style="padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);"
+    >
+      Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+    at createFiberFromTypeAndProps (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28439:17)
+    at createFiberFromElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:28465:15)
+    at reconcileSingleElement (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15750:23)
+    at reconcileChildFibers (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:15808:35)
+    at reconcileChildren (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19167:28)
+    at updateHostComponent (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:19924:3)
+    at beginWork (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:21618:14)
+    at HTMLUnknownElement.callCallback (/Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/event/EventTarget.ts:203:42)
+    at HTMLUnknownElement.dispatchEvent (file:///Users/ileecury/MyCode/uipaas-home/apps/workbench/front/node_modules/happy-dom/src/nodes/element/Element.ts:923:29)
+    </pre>
+    <p>
+      💿 Hey developer 👋
+    </p>
+    <p>
+      You can provide a way better UX than this when your app throws errors by providing your own 
+      <code
+        style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        ErrorBoundary
+      </code>
+       or
+       
+      <code
+        style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        errorElement
+      </code>
+       prop on your route.
+    </p>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
