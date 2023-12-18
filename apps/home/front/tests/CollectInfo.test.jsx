@@ -1,12 +1,10 @@
 import React from "react";
+import { vi } from 'vitest';
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { CollectInfo } from "../components/CollectInfo";
-import $message from "../components/Msg";
+import { CollectInfo } from "../src/components/CollectInfo";
+import $message from "../src/components/Msg";
 
-jest.mock("../components/Msg", () => ({
-  error: jest.fn(),
-}));
 
 describe("CollectInfo Component", () => {
   it("renders the component", () => {
@@ -38,6 +36,7 @@ describe("CollectInfo Component", () => {
   });
 
   it("displays error message on form submission with invalid data", () => {
+    vi.spyOn($message, 'error')
     render(<CollectInfo />);
     fireEvent.submit(screen.getByRole("button", { name: "Submit" }));
 

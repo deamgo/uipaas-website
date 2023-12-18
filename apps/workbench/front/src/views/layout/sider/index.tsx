@@ -51,6 +51,7 @@ const list_ms: IMultiplySelectorPropsItem[] = [
     type: "error"
   }
 ]
+
 type SiderProps = {
   children?: React.ReactNode
 }

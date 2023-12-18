@@ -85,3 +85,19 @@ func TestDeveloperService_DeveloperPasswordModifyByEmail(t *testing.T) {
 
 	assert.NoError(t, err)
 }
+
+func TestDeveloperService_DeveloperGetByUserName(t *testing.T) {
+
+	us, mock := setupDeveloperServiceTest(t)
+
+	mock.ExpectBegin()
+	mock.ExpectExec("UPDATE `developer`").WithArgs("crfillee", "1735589460680118272").
+		WillReturnResult(sqlmock.NewResult(1, 1))
+	mock.ExpectCommit()
+
+	u := &Developer{ID: "1735589460680118272", Username: "crfillee"}
+
+	err := us.DeveloperNameModifyByID(context.Background(), u)
+
+	assert.NoError(t, err)
+}

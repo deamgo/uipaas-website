@@ -5,12 +5,10 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
 	"net/http"
 	"regexp"
-
-	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
@@ -21,6 +19,7 @@ import (
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
+	"github.com/gin-gonic/gin"
 )
 
 type Resp struct {
@@ -41,8 +40,8 @@ type SendMailResp struct {
 }
 type VerifyReq struct {
 	*developer.Developer
-	CodeKey string `json:"code_key"`
-	Code    int    `json:"code"`
+	CodeKey string `json:"code_key" validate:"required"`
+	Code    int    `json:"code" validate:"required"`
 }
 
 type ForgotReq struct {
@@ -80,7 +79,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "theParametersAreNotFormattedCorrectly",
+				Msg:  "The parameters do not match",
 				Data: nil,
 			}))
 			return
@@ -161,6 +160,8 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+		// Delete the verification code that has already been used
+		db.RedisDB.HDel(req.CodeKey, "code")
 		// Modify developer deactivate
 		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
 		if err != nil {
@@ -172,22 +173,23 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
+		dpl, _ := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
+
 		//PasswordEncryption
 		hash := sha256.New()
 		hash.Write([]byte(req.Password))
 		hashBytes := hash.Sum(nil)
 		password := hex.EncodeToString(hashBytes)
 
-		if password != req.Password {
+		if password != dpl.Password {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "Wrong password",
+				Msg:  "The account or password is incorrect",
 				Data: nil,
 			}))
 			return
 		}
 		//	generate A Token And Return It
-		dpl, _ := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 		var t string
 		t, _ = jwt.GenToken(dpl.ID)
 		fmt.Println(t)
@@ -227,7 +229,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 			//	doesNotExist
 			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "The developer does not exist",
+				Msg:  "The account or password is incorrect",
 				Data: nil,
 			}))
 			return
@@ -243,7 +245,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		if password != findUser.Password {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "Wrong password",
+				Msg:  "The account or password is incorrect",
 				Data: nil,
 			}))
 			return
@@ -330,6 +332,15 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			fmt.Println(err)
 			return
 		}
+		validate := validator.New()
+		err = validate.Var(req.CodeKey, "required")
+		if err != nil {
+			c.AbortWithStatus(http.StatusBadRequest)
+		}
+		err = validate.Var(req.Code, "required")
+		if err != nil {
+			c.AbortWithStatus(http.StatusBadRequest)
+		}
 
 		var u *developerDO.DeveloperDO
 		// check Whether The Mailbox Is exist
@@ -357,7 +368,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		if req.CodeKey != emailHashStr {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "The email address was entered incorrectly",
+				Msg:  "The email address is incorrect",
 				Data: nil,
 			}))
 			return
@@ -377,7 +388,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		if !match {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
-				Msg:  "theParametersAreNotFormattedCorrectly",
+				Msg:  "The password is not formatted correctly",
 				Data: nil,
 			}))
 			return
@@ -402,8 +413,10 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+
+		// Delete the verification code that has already been used
+		db.RedisDB.HDel(req.CodeKey, "code")
 		// Password encryption
-		//PasswordEncryption
 		hash := sha256.New()
 		hash.Write([]byte(req.Password))
 		hashBytes := hash.Sum(nil)

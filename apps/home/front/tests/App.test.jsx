@@ -1,10 +1,8 @@
 import { render } from '@testing-library/react'
-import App from '../App.jsx'
-import PrivacyP from '../layout/privacyPolicy.jsx'
+import App from '../src/App.jsx'
+import PrivacyP from '../src/layout/privacyPolicy.jsx'
 
 //router
-import { createMemoryRouter, RouterProvider, Navigate } from 'react-router-dom'
-
 
 describe('Main', () => {
     it('App correct render', () => {
