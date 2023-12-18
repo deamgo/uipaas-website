@@ -15,9 +15,11 @@ import (
 
 type UserService interface {
 	DeveloperAdd(ctx context.Context, user *Developer) (string, error)
+	DeveloperGetByID(ctx context.Context, id string) (*Developer, error)
 	DeveloperGetByEmail(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
 	ForgotVerifySend(ctx context.Context, u *Developer) (string, error)
 	DeveloperGetByUserName(ctx context.Context, u *Developer) (*Developer, error)
+	DeveloperNameModifyByID(ctx context.Context, u *Developer) error
 	DeveloperStatusModifyByEmail(ctx context.Context, u *Developer) error
 	DeveloperPasswordModifyByEmail(ctx context.Context, u *Developer) error
 }
@@ -76,9 +78,18 @@ func (us developerService) DeveloperStatusModifyByEmail(ctx context.Context, u *
 	}
 	return nil
 }
+func (us developerService) DeveloperNameModifyByID(ctx context.Context, u *Developer) error {
+	ud := convertDeveloperDO(u)
+	err := us.dao.DeveloperNameModifyByID(ctx, ud)
+	if err != nil {
+		logger.Error(err)
+		return err
+	}
+	return nil
+}
 
 func (us developerService) ForgotVerifySend(ctx context.Context, u *Developer) (string, error) {
-	code := mail.MailService.SendMail(mail.NewMailService(), ctx, "2734170020@qq.com")
+	code := mail.MailService.SendMail(mail.NewMailService(), ctx, u.Email)
 	codeHash, err := SaveCode(u.Email, code)
 	if err != nil {
 		logger.Error(err)
@@ -99,6 +110,20 @@ func (us developerService) DeveloperPasswordModifyByEmail(ctx context.Context, u
 
 func (us developerService) DeveloperGetByUserName(ctx context.Context, u *Developer) (*Developer, error) {
 	var err error
+	ud := convertDeveloperDO(u)
+	ud, err = us.dao.DeveloperGetByUserName(ctx, ud)
+	if err != nil {
+		logger.Error(err)
+
+		return nil, err
+	}
+	return convertDeveloper(ud), err
+}
+func (us developerService) DeveloperGetByID(ctx context.Context, id string) (*Developer, error) {
+	var err error
+	u := &Developer{
+		ID: id,
+	}
 	ud := convertDeveloperDO(u)
 	ud, err = us.dao.DeveloperGetByUserName(ctx, ud)
 	if err != nil {

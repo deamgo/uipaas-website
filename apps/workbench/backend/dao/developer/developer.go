@@ -11,9 +11,11 @@ import (
 
 type DeveloperDao interface {
 	DeveloperAdd(ctx context.Context, user *DeveloperDO) error
+	DeveloperGetByID(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
 	DeveloperGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
 	DeveloperGetByUserName(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
 	DeveloperStatusModifyByEmail(ctx context.Context, user *DeveloperDO) error
+	DeveloperNameModifyByID(ctx context.Context, user *DeveloperDO) error
 	DeveloperPasswordModifyByEmail(ctx context.Context, user *DeveloperDO) error
 }
 
@@ -54,6 +56,16 @@ func (u developerDao) DeveloperPasswordModifyByEmail(ctx context.Context, user *
 	}
 	return nil
 }
+func (u developerDao) DeveloperNameModifyByID(ctx context.Context, user *DeveloperDO) error {
+	//id := user.ID
+	uname := user.Username
+	err := u.db.WithContext(ctx).Model(&user).
+		UpdateColumn("username", uname).Error
+	if err != nil {
+		return errors.Wrap(daolayer.DBError, err.Error())
+	}
+	return nil
+}
 
 // Search by email
 func (u developerDao) DeveloperGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
@@ -73,5 +85,13 @@ func (u developerDao) DeveloperGetByUserName(ctx context.Context, user *Develope
 		return nil, err
 	}
 	return user, nil
+}
 
+func (u developerDao) DeveloperGetByID(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
+	id := user.ID
+	err := u.db.WithContext(ctx).Model(&DeveloperDO{}).Where("id =", id).Find(&user).Error
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
 }
