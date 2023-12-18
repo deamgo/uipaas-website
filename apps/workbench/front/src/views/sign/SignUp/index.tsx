@@ -1,4 +1,5 @@
 import React from 'react'
+import { useObserver } from 'mobx-react'
 //style
 import './index.less'
 //
@@ -8,32 +9,27 @@ import Button from '@/components/Button'
 import { codeReg, usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
 import $message from '@/components/Message'
 import { usrSignUp } from '@api/sign_up'
+import { IUsrAccount } from '@api/account'
+import appStore from '@store/store'
 
-type IUsrAccount = {
-  invitation_code?: string
-  username?: string
-  email: string
-  password: string
-}
 
 const SignUp: React.FC = () => {
 
-  const [code, setCode] = React.useState('')
+  // const [code, setCode] = React.useState('')
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [pwd, setPwd] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
 
   React.useEffect(() => {
-    if (codeReg.test(code)
-      && usernameReg.test(name)
+    if (usernameReg.test(name)
       && emailReg.test(email)
       && passwordReg.test(pwd)) {
       setBtnAbled(false)
     } else {
       setBtnAbled(true)
     }
-  }, [code, name, email, pwd])
+  }, [name, email, pwd])
 
   // const validator = (value: string, regex: RegExp) => {
   //   return regex.test(value)
@@ -44,18 +40,27 @@ const SignUp: React.FC = () => {
   const handleContinue = () => {
     console.log('SignUp');
     const usr: IUsrAccount = {
-      invitation_code: code,
+      // invitation_code: code,
       username: name,
       email,
       password: pwd,
     }
+    sessionStorage.setItem('username', name)
+    sessionStorage.setItem('email', email)
+    sessionStorage.setItem('password', pwd)
+    appStore.setUserInfo(usr)
+    console.log(appStore.userInfo);
+
     usrSignUp(usr).then(res => {
-      if (res.code === 0) {
+      if (res.value.code === 0) {
+        sessionStorage.setItem('codeKey', res.value.data.code_key)
         window.location.pathname = '/s/ev'
+      } else {
+        $message.error(res.value.msg)
       }
     }).catch(err => {
       console.log(err);
-
+      $message.error(err.response.data.value.msg)
     })
   }
 
@@ -66,7 +71,7 @@ const SignUp: React.FC = () => {
         <span>Complete the Information for Account Registration</span>
       </div>
       <div className="__sign_form">
-        <div className="__sign_form_input">
+        {/* <div className="__sign_form_input">
           <Input
             id='1'
             title='Invitation code'
@@ -75,7 +80,7 @@ const SignUp: React.FC = () => {
             valid='Please enter the invitation code'
             outputChange={setCode}
             reg={codeReg} />
-        </div>
+        </div> */}
         <div className="__sign_form_input">
           <Input
             id='2'

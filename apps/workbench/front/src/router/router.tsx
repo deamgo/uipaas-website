@@ -1,5 +1,4 @@
 import { RouteObject, createBrowserRouter } from 'react-router-dom'
-
 //layout
 import Layout from '@/views/layout'
 import Sign from '@views/sign'
