@@ -1,8 +1,10 @@
 package main
 
 import (
+	workspace2 "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/initialize"
 	"github.com/deamgo/workbench/service/mail"
+	"github.com/deamgo/workbench/service/workspace"
 	"github.com/gin-gonic/gin"
 
 	"github.com/deamgo/workbench/context"
@@ -19,9 +21,11 @@ func main() {
 	db.InitDB()
 	db.InitRedis()
 	dao := user2.NewADeveloperDao(db.DB)
+	workspaceDao := workspace2.NewWorkspaceDao(db.DB)
 	ctx := context.ApplicationContext{
-		UserService: developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
-		MailService: mail.NewMailService(),
+		UserService:      developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
+		MailService:      mail.NewMailService(),
+		WorkspaceSerivce: workspace.NewWorkspaceService(workspace.WorkspaceServiceParams{Dao: workspaceDao}),
 	}
 
 	r := gin.Default()
