@@ -1,9 +1,9 @@
 package router
 
 import (
-	"net/http"
-
+	"github.com/deamgo/workbench/api/workspace"
 	"github.com/gin-gonic/gin"
+	"net/http"
 
 	"github.com/deamgo/workbench/api/user"
 	"github.com/deamgo/workbench/context"
@@ -23,6 +23,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/signup", user.SignUp(ctx))
 		api.POST("/signup_verify", user.SignUpVerify(ctx))
 		api.POST("/signin", user.SignIn(ctx))
+		api.POST("/workspace/create", workspace.WorkspaceCreate(ctx))
 	}
 
 }
