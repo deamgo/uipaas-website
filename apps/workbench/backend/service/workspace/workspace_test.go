@@ -23,7 +23,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 	tests := []struct {
 		name          string
 		expectedError error
-		workspace     *Workspac
+		workspace     *Workspace
 	}{
 		{
 			name:          "page add 1",
