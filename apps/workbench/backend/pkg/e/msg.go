@@ -13,7 +13,7 @@ const (
 	LoginFailed           = "Login failed"
 	SignUpError           = "User registration failed"
 	VerifyCodeExpired     = "VerificationCode has expired"
-	InvalidVerifyCode     = "Invalid VerificationCode"
+	InvalidVerifyCode     = "Invalid verification code"
 	EmptyToken            = "The token in the request header is empty"
 	TokenFormatError      = "The auth format in the request header is incorrect"
 	TokenInvalid          = "Invalid Token"

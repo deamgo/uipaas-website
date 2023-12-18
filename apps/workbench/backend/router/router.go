@@ -28,6 +28,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/forgot_verify", developer.ForgotVerifySend(ctx))
 		api.PATCH("/reset_password", developer.ResetPassword(ctx))
 		api.POST("/workspace/create", workspace.WorkspaceCreate(ctx))
+		api.PUT("/reset_password", developer.ResetPassword(ctx))
 	}
 
 }

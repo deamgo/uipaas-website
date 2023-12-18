@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/deamgo/workbench/context"
-	user2 "github.com/deamgo/workbench/dao/developer"
+	developerDO "github.com/deamgo/workbench/dao/developer"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/logger"
 	routes "github.com/deamgo/workbench/router"
@@ -20,8 +20,10 @@ func main() {
 	initialize.InitConfig()
 	db.InitDB()
 	db.InitRedis()
+
 	dao := user2.NewADeveloperDao(db.DB)
 	workspaceDao := workspace2.NewWorkspaceDao(db.DB)
+
 	ctx := context.ApplicationContext{
 		UserService:      developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
 		MailService:      mail.NewMailService(),

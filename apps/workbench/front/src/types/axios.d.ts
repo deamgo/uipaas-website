@@ -2,12 +2,13 @@ import 'axios'
 
 declare module 'axios' {
   interface AxiosResponse<T = any> extends Promise<T> {
-    code: number;
-    msg: string
-    data: {
-      Token: string
-    } | {
-      CodeKey: string
-    } | string | null
+    value: {
+      code: number;
+      msg: string
+      data: {
+        token: string
+        code_key: string
+      }
+    }
   }
 }

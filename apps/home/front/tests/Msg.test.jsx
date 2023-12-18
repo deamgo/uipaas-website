@@ -1,10 +1,10 @@
 // index.test.js
 import { render, act, getByTitle } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { MessageContainer } from "../components/Msg";
-import $message from "../components/Msg";
-import { MessageApi } from "../components/Msg/config";
-import Msg from "../components/Msg/Msg";
+import { MessageContainer } from "../src/components/Msg";
+import $message from "../src/components/Msg";
+import { MessageApi } from "../src/components/Msg/config";
+import Msg from "../src/components/Msg/Msg";
 
 test("renders messages correctly", () => {
   const { getByText } = render(<MessageContainer />);
@@ -28,15 +28,15 @@ test("handles multiple messages correctly", () => {
 });
 
 test("message api", () => {
-expect(MessageApi.info())
-expect(MessageApi.success())
-expect(MessageApi.error())
-expect(MessageApi.warning())
+  expect(MessageApi.info())
+  expect(MessageApi.success())
+  expect(MessageApi.error())
+  expect(MessageApi.warning())
 })
 
 describe('Msg', () => {
-    it('renders correctly', () => {
-      const { container } = render(<Msg type="success" text="This is a success message." />);
-      expect(container.firstChild).toMatchSnapshot();
-    });
+  it('renders correctly', () => {
+    const { container } = render(<Msg type="success" text="This is a success message." />);
+    expect(container.firstChild).toMatchSnapshot();
   });
+});

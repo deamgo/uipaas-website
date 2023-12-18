@@ -44,13 +44,18 @@
       ],
       "@api/*": [
         "./api/*"
+      ],
+      "@store/*": [
+        "./store/*"
       ]
     },
     "types": [
       "node",
       "vitest/globals",
       "@svgr/rollup"
-    ]
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
   "include": [
     "src/**/*",
