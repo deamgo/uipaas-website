@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/deamgo/workbench/api/workspace"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,6 +28,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/forgot_verify", developer.ForgotVerifySend(ctx))
 		api.PUT("/reset_password", developer.ResetPassword(ctx))
 		//api.PUT("/developer/username/:id")
+		api.POST("/workspace/create", workspace.WorkspaceCreate(ctx))
 	}
 
 }
