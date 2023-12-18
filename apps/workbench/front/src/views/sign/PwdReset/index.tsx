@@ -10,7 +10,7 @@ import { emailReg, emailVerificationReg, passwordReg } from '@constants/regexp'
 import { ResetPwd, forgotVerify } from '@api/reset_pwd'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
-
+import $message from '@/components/Message'
 
 const PwdReset: React.FC = () => {
 
@@ -19,6 +19,7 @@ const PwdReset: React.FC = () => {
   const [pwd, setPwd] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
   const [bsendAbled, setBsendAbled] = React.useState(true)
+  const [sendText, setSendText] = React.useState('Send')
 
 
   React.useEffect(() => {
@@ -48,29 +49,45 @@ const PwdReset: React.FC = () => {
     console.log(usr);
     ResetPwd({
       email,
-      code_key: '123',
-      code: 1233,
+      code_key: sessionStorage.getItem('codeKey'),
+      code: parseInt(emailVerification),
       password: pwd
     }).then(res => {
+      console.log(res);
 
+      if (res.value.code === 0) {
+        $message.success(res.value.msg)
+        window.location.href = '/s/in'
+      } else {
+        $message.error(res.value.msg)
+      }
     }).catch(err => {
+      console.log(err)
 
+      $message.error(err.response.data.value.msg)
     })
   }
 
   //impl api/sign_in.ts > forgotVerify
   const handleSend = () => {
     console.log('Send');
-    setBsendAbled(false)
-    setInterval(() => {
-      setBsendAbled(true)
+    setBsendAbled(true)
+    setSendText('Sent')
+    setTimeout(() => {
+      setBsendAbled(false)
+      setSendText('Send')
     }, 10000)
     forgotVerify({
       email
     }).then(res => {
-
+      if (res.value.code === 0) {
+        $message.success(res.value.msg)
+        sessionStorage.setItem('codeKey', res.value.data.code_key)
+      } else {
+        $message.error(res.value.msg)
+      }
     }).catch(err => {
-
+      $message.error(err.response.data.value.msg)
     })
 
   }
@@ -106,7 +123,7 @@ const PwdReset: React.FC = () => {
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
           <div className="__ryp_form_input_send">
-            <Button context='Send' method={handleSend} disabled={bsendAbled} />
+            <Button context={sendText} method={handleSend} disabled={bsendAbled} />
           </div>
         </div>
         <div className="__ryp_form_input">

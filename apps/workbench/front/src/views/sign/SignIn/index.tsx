@@ -7,6 +7,7 @@ import Button from '@/components/Button'
 //
 import { emailReg, passwordReg } from '@constants/regexp'
 import { usrSignIn } from '@api/sign_in'
+import $message from '@/components/Message'
 
 const SignIn: React.FC = () => {
 
@@ -38,9 +39,16 @@ const SignIn: React.FC = () => {
       email,
       password: pwd
     }).then(res => {
-
+      if (res.value.code === 0) {
+        sessionStorage.setItem('token', res.value?.data.token)
+        $message.success(res.value.msg)
+        window.location.href = '/apps'
+      } else {
+        $message.error(res.value.msg)
+      }
     }).catch(err => {
-
+      console.log(err);
+      $message.error(err.response.data.value.msg)
     })
   }
 

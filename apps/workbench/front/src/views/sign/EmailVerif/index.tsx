@@ -11,6 +11,7 @@ import { usrSignUpVerify } from '@api/sign_up'
 import appStore from '@/store/store'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
+import $message from '@/components/Message'
 
 const EmailVerif: React.FC = () => {
 
@@ -29,17 +30,38 @@ const EmailVerif: React.FC = () => {
   const handleContinue = () => {
     console.log('EmailVerification');
     let usrInfo = appStore.userInfo
+    console.log('appStore:' + appStore.userInfo);
+
+    const username = sessionStorage.getItem('username')
+    const email = sessionStorage.getItem('email')
+    const password = sessionStorage.getItem('password')
+
     const usr = {
       ...usrInfo,
       emailVerification,
     }
     console.log(usr);
     usrSignUpVerify({
-
+      username,
+      email,
+      password,
+      code_key: sessionStorage.getItem('codeKey'),
+      code: parseInt(emailVerification),
     }).then(res => {
+      if (res.value.code === 0) {
+        sessionStorage.setItem('token', res.value?.data.token)
+        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('codeKey')
+        sessionStorage.removeItem('email')
+        sessionStorage.removeItem('password')
 
+        $message.success(res.value.msg)
+        window.location.href = '/apps'
+      } else {
+        $message.error(res.value.msg)
+      }
     }).catch(err => {
-
+      $message.error(err.response.data.value.msg)
     })
 
   }

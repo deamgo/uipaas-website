@@ -1,15 +1,16 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, observable, configure, runInAction } from 'mobx'
 import { IUsrAccount } from '@api/account'
 
 class AppStore {
-  userInfo: IUsrAccount | null = null;
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  setUserInfo(userInfo: typeof this.userInfo) {
-    this.userInfo = userInfo
+  userInfo: IUsrAccount | null = null
+
+  setUserInfo(user: typeof this.userInfo) {
+    this.userInfo = user
   }
 }
 

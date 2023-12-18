@@ -18,7 +18,6 @@ const Message: React.FC = () => {
   }
 
   add = (option: IMsgList) => {
-    console.log(option);
     setMsgList((pre) => {
       const obj = [...pre, option];
       setTimeout(() => {

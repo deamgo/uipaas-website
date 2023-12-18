@@ -52,7 +52,6 @@ const list_ms: IMultiplySelectorPropsItem[] = [
   }
 ]
 
-  >>>>>>>>> Temporary merge branch 2
 type SiderProps = {
   children?: React.ReactNode
 }
