@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
-	"strconv"
 	"strings"
 
 	dao "github.com/deamgo/workbench/dao/workspace"
@@ -59,14 +58,6 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 
 	workspaceDo := convertWorkspaceDao(workspace)
 
-	developIdStr := ctx.Value("username").(string)
-	i, err := strconv.ParseInt(developIdStr, 10, 64)
-	if err != nil {
-		return nil, err
-	}
-	workspaceDo.CreatedBy = uint64(i)
-	workspaceDo.UpdatedBy = uint64(i)
-
 	newWorkspaceDO, err := w.dao.WorkspaceCreate(ctx, workspaceDo)
 	if err != nil {
 		logger.Error(err)
@@ -83,6 +74,8 @@ func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 		Logo:        workspace.Logo,
 		Lable:       workspace.Lable,
 		Description: workspace.Description,
+		CreatedBy:   workspace.CreatedBy,
+		UpdatedBy:   workspace.UpdateBy,
 	}
 }
 
@@ -93,6 +86,8 @@ func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 		Lable:       workspaceDao.Lable,
 		Description: workspaceDao.Description,
 		Logo:        workspaceDao.Logo,
+		CreatedBy:   workspaceDao.CreatedBy,
+		UpdateBy:    workspaceDao.UpdatedBy,
 	}
 }
 

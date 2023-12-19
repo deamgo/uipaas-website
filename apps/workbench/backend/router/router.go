@@ -1,13 +1,14 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
 
 	"github.com/deamgo/workbench/api/developer"
 	"github.com/deamgo/workbench/api/workspace"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/middleware"
+
+	"github.com/gin-gonic/gin"
 )
 
 func NewRouter(ctx context.ApplicationContext) http.Handler {

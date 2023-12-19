@@ -6,4 +6,7 @@ type Workspace struct {
 	Lable       string `json:"lable"`
 	Description string `json:"description"`
 	Logo        string `json:"logo"`
+
+	CreatedBy uint64
+	UpdateBy  uint64
 }

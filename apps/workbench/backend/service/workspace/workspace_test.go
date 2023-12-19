@@ -38,6 +38,8 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 				Logo:        "/public/head.jpg",
 				Lable:       "短描述",
 				Description: "这是测试偷偷编写的workspace的长描述",
+				CreatedBy:   1,
+				UpdateBy:    1,
 			},
 		},
 	}
@@ -54,10 +56,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectCommit()
 
-			ctx := context.Background()
-			ctx = context.WithValue(ctx, "username", "1")
-
-			newWorkspace, err := workspaceservice.WorkspaceCreate(ctx, workspace)
+			newWorkspace, err := workspaceservice.WorkspaceCreate(context.Background(), workspace)
 
 			assert.NoError(t, err)
 			assert.NotNil(t, newWorkspace)

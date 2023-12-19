@@ -2,12 +2,13 @@ package workspace
 
 import (
 	"fmt"
-	"net/http"
-
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/pkg/e"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/workspace"
+	"log"
+	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -41,7 +42,7 @@ func WorkspaceCreate(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		data, err := ctx.WorkspaceService.WorkspaceCreate(c, convertWorkspace(req))
+		data, err := ctx.WorkspaceService.WorkspaceCreate(c, convertWorkspace(req, c))
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
 				Code: e.Failed,
@@ -60,11 +61,19 @@ func WorkspaceCreate(ctx context.ApplicationContext) gin.HandlerFunc {
 	}
 }
 
-func convertWorkspace(req WorkspaceCreateReq) *workspace.Workspace {
+func convertWorkspace(req WorkspaceCreateReq, c *gin.Context) *workspace.Workspace {
+	developIdStr := c.Value("username").(string)
+	i, err := strconv.ParseInt(developIdStr, 10, 64)
+	if err != nil {
+		log.Println("developId data exception")
+		return nil
+	}
 	return &workspace.Workspace{
 		Name:        req.Name,
 		Lable:       req.Lable,
 		Description: req.Description,
 		Logo:        req.Logo,
+		CreatedBy:   uint64(i),
+		UpdateBy:    uint64(i),
 	}
 }
