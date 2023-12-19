@@ -16,6 +16,8 @@ type MyClaims struct {
 	jwt.StandardClaims
 }
 
+var TokenBlacklist = make(map[string]bool)
+
 // defineTheExpirationTime
 const TokenExpireDuration = time.Hour * 2
 
@@ -50,6 +52,24 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 	}
 	return nil, errors.New("invalid token")
 }
+
+func ExtractIDFromToken(tokenString string) (string, error) {
+	token, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return getSecret(), nil
+	})
+
+	if err != nil {
+		return "", fmt.Errorf("failed to parse token: %v", err)
+	}
+
+	claims, ok := token.Claims.(*MyClaims)
+	if !ok || !token.Valid {
+		return "", fmt.Errorf("invalid token")
+	}
+
+	return claims.ID, nil
+}
+
 func getSecret() []byte {
 	// set The Name And Path Of The Profile
 	viper.SetConfigName("conf")
@@ -62,4 +82,9 @@ func getSecret() []byte {
 	}
 	MySecret := viper.GetString("jwt_secret")
 	return []byte(MySecret)
+}
+
+// Log out of the token
+func RevokeToken(tokenString string) {
+	TokenBlacklist[tokenString] = true
 }

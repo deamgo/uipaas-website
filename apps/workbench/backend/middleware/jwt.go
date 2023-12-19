@@ -32,6 +32,17 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			c.Abort()
 			return
 		}
+		// Check if the token is on the blacklist
+
+		if jwt.TokenBlacklist[authHeader] {
+			c.JSON(http.StatusOK, gin.H{
+				"code": 2004,
+				"msg":  "The login is invalid, please log in again",
+			})
+			c.Abort()
+			return
+		}
+
 		mc, err := jwt.ParseToken(parts[1])
 		if err != nil {
 			c.JSON(http.StatusOK, gin.H{

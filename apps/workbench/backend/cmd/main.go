@@ -1,16 +1,16 @@
 package main
 
 import (
-	"github.com/deamgo/workbench/initialize"
-	"github.com/deamgo/workbench/service/mail"
-	"github.com/gin-gonic/gin"
-
 	"github.com/deamgo/workbench/context"
 	developerDO "github.com/deamgo/workbench/dao/developer"
 	"github.com/deamgo/workbench/db"
+	"github.com/deamgo/workbench/initialize"
 	"github.com/deamgo/workbench/pkg/logger"
 	routes "github.com/deamgo/workbench/router"
 	"github.com/deamgo/workbench/service/developer"
+	"github.com/deamgo/workbench/service/mail"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
