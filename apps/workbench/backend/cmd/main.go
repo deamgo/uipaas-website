@@ -1,8 +1,6 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-
 	"github.com/deamgo/workbench/context"
 	user2 "github.com/deamgo/workbench/dao/developer"
 	workspace2 "github.com/deamgo/workbench/dao/workspace"
@@ -13,6 +11,8 @@ import (
 	"github.com/deamgo/workbench/service/developer"
 	"github.com/deamgo/workbench/service/mail"
 	"github.com/deamgo/workbench/service/workspace"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {

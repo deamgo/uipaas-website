@@ -4,10 +4,11 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
+	"strings"
+
 	dao "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/pkg/errors"
-	"strings"
 )
 
 type WorkspaceService interface {
@@ -56,6 +57,8 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	}
 
 	workspaceDo := convertWorkspaceDao(workspace)
+	workspaceDo.CreatedBy = ctx.Value("username").(uint64)
+	workspaceDo.UpdatedBy = ctx.Value("username").(uint64)
 
 	newWorkspaceDO, err := w.dao.WorkspaceCreate(ctx, workspaceDo)
 	if err != nil {
