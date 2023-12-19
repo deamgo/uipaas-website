@@ -1,18 +1,18 @@
 package main
 
 import (
-	workspace2 "github.com/deamgo/workbench/dao/workspace"
-	"github.com/deamgo/workbench/initialize"
-	"github.com/deamgo/workbench/service/mail"
-	"github.com/deamgo/workbench/service/workspace"
 	"github.com/gin-gonic/gin"
 
 	"github.com/deamgo/workbench/context"
 	user2 "github.com/deamgo/workbench/dao/developer"
+	workspace2 "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/db"
+	"github.com/deamgo/workbench/initialize"
 	"github.com/deamgo/workbench/pkg/logger"
 	routes "github.com/deamgo/workbench/router"
 	"github.com/deamgo/workbench/service/developer"
+	"github.com/deamgo/workbench/service/mail"
+	"github.com/deamgo/workbench/service/workspace"
 )
 
 func main() {
