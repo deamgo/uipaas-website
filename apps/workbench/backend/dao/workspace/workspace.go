@@ -2,7 +2,6 @@ package workspace
 
 import (
 	"context"
-	"github.com/deamgo/workbench/db"
 	"gorm.io/gorm"
 )
 
@@ -21,6 +20,6 @@ func NewWorkspaceDao(db *gorm.DB) WorkspaceDao {
 }
 
 func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error) {
-	err := db.DB.WithContext(ctx).Model(&WorkspaceDO{}).Create(&workspace).Error
+	err := dao.db.WithContext(ctx).Model(&WorkspaceDO{}).Create(&workspace).Error
 	return workspace, err
 }
