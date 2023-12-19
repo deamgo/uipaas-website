@@ -50,11 +50,14 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 
 			mock.ExpectBegin()
 			mock.ExpectExec("INSERT INTO `workspace`").
-				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Lable, workspace.Description, 0, AnyTime{}, 0, AnyTime{}, 0, 0).
+				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Lable, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectCommit()
 
-			newWorkspace, err := workspaceservice.WorkspaceCreate(context.Background(), workspace)
+			ctx := context.Background()
+			ctx = context.WithValue(ctx, "username", "1")
+
+			newWorkspace, err := workspaceservice.WorkspaceCreate(ctx, workspace)
 
 			assert.NoError(t, err)
 			assert.NotNil(t, newWorkspace)
