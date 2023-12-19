@@ -3,7 +3,7 @@ import { IUsrAccount } from "./account"
 
 function forgotVerify(data: IUsrAccount) {
   return request({
-    url: '/forgotVerify',
+    url: '/forgot_verify',
     method: 'post',
     data: data,
     headers: { 'Content-Type': 'application/json' }

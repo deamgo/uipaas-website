@@ -5,18 +5,6 @@ const request = axios.create({
   timeout: 5000,
 });
 
-interface IResp {
-  value: {
-    code: number
-    msg: string
-    data: {
-      Token: string
-    } | {
-      CodeKey: string
-    } | string | null
-  }
-}
-
 request.interceptors.request.use(
   (config) => {
     return config;

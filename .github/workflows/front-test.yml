@@ -1,15 +1,13 @@
-name: ci
+name: Front vitest
 
 on:
   push:
-    branches:
-      - 1127/feat-frontnd
-  pull_request:
-    branches:
-      - main
+    paths:
+      - '**.test.tsx'
+      - '**.test.jsx'
 
 jobs:
-  ci:
+  home-ci:
     name: check version ,test
     runs-on: ubuntu-latest
     steps:
@@ -29,4 +27,28 @@ jobs:
         working-directory: ./apps/home/front
         run: |
           yarn
-          yarn test -u
+          yarn test:snapshot
+          yarn coverage
+
+  workbench-ci:
+    name: check version,test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: yarn version
+        run: yarn -v
+
+      - name: node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node -v
+      
+      - name: install dependencies & test
+        working-directory: ./apps/workbench/front
+        run: |
+          yarn
+          yarn test:snapshot
+          yarn coverage
