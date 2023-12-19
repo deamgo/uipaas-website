@@ -3,11 +3,12 @@ package router
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
-
 	"github.com/deamgo/workbench/api/developer"
+	"github.com/deamgo/workbench/api/workspace"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/middleware"
+
+	"github.com/gin-gonic/gin"
 )
 
 func NewRouter(ctx context.ApplicationContext) http.Handler {
@@ -27,6 +28,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/forgot_verify", developer.ForgotVerifySend(ctx))
 		api.PUT("/reset_password", developer.ResetPassword(ctx))
 		//api.PUT("/developer/username/:id")
+		api.POST("/workspace/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
 	}
 
 }

@@ -2,7 +2,6 @@ package developer
 
 import (
 	"context"
-	"github.com/deamgo/workbench/service/mail"
 	"testing"
 
 	"github.com/DATA-DOG/go-sqlmock"
@@ -10,6 +9,7 @@ import (
 
 	dao "github.com/deamgo/workbench/dao/developer"
 	mockTest "github.com/deamgo/workbench/mock"
+	"github.com/deamgo/workbench/service/mail"
 )
 
 func setupDeveloperServiceTest(t *testing.T) (UserService, sqlmock.Sqlmock) {
