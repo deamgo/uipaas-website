@@ -14,10 +14,13 @@
   }
 
   &_main {
+    position: relative;
+
     input {
       padding: 0 12rem;
 
-      width: 350rem;
+      width: 100%;
+      // width: 350rem;
       height: 32rem;
 
       font-size: 14rem;
@@ -29,12 +32,16 @@
       border-radius: 5rem;
       outline: none;
       border: 1rem solid #D8D8D8;
+
+      &:disabled {
+        background-color: #FFFFFF;
+      }
     }
 
     &_show {
       position: absolute;
       right: 11rem;
-      top: 36rem;
+      top: 9rem;
       display: flex;
       align-items: center;
       justify-content: center;

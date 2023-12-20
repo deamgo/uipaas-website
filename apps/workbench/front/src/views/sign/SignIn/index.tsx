@@ -8,12 +8,15 @@ import Button from '@/components/Button'
 import { emailReg, passwordReg } from '@constants/regexp'
 import { usrSignIn } from '@api/sign_in'
 import $message from '@/components/Message'
+import { Link, useNavigate } from 'react-router-dom'
 
 const SignIn: React.FC = () => {
 
   const [email, setEmail] = React.useState('')
   const [pwd, setPwd] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
+
+  const navigate = useNavigate()
 
   React.useEffect(() => {
     if (emailReg.test(email)
@@ -42,7 +45,7 @@ const SignIn: React.FC = () => {
       if (res.value.code === 0) {
         sessionStorage.setItem('token', res.value?.data.token)
         $message.success(res.value.msg)
-        window.location.href = '/apps'
+        navigate('/apps')
       } else {
         $message.error(res.value.msg)
       }
@@ -65,6 +68,7 @@ const SignIn: React.FC = () => {
             type='text'
             placeholder='Enter your email address'
             valid='Please enter the email address'
+            isNeed={true}
             reg={emailReg}
             outputChange={setEmail} />
         </div>
@@ -75,10 +79,12 @@ const SignIn: React.FC = () => {
             type='password'
             placeholder='Enter your password'
             valid='Please enter the password'
+            isNeed={true}
+            isShowPwd={true}
             reg={passwordReg}
             outputChange={setPwd} />
           <div className="__signin_form_input_forgot">
-            <a href="/s/ryp">Forgot?</a>
+            <Link to='/s/ryp'>Forgot?</Link>
           </div>
         </div>
       </div>
@@ -86,7 +92,7 @@ const SignIn: React.FC = () => {
         <div className="__signin_continue_tip">
           <span>New to UIPaaS?</span>
           <span>
-            <a href="/s/up">Sign up</a>
+            <Link to='/s/up'>Sign up</Link>
           </span>
         </div>
         <Button

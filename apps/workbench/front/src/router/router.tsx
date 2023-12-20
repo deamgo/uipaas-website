@@ -1,4 +1,4 @@
-import { RouteObject, createBrowserRouter } from 'react-router-dom'
+import { RouteObject, createBrowserRouter, redirect } from 'react-router-dom'
 //layout
 import Layout from '@/views/layout'
 import Sign from '@views/sign'
@@ -9,14 +9,27 @@ import PwdReset from '@/views/sign/PwdReset'
 import Privacy from '@/views/privacy'
 import ContentApp from '@/views/layout/content-app'
 import ContentUsr from '@/views/layout/content-usr'
+import UserProfile from '@/views/layout/content-usr/content/profile'
+import ContentWorkSpace from '@/views/layout/content-ws-sys'
+import WSDevelopers from '@/views/layout/content-ws-sys/content/developers'
+import WSSettings from '@/views/layout/content-ws-sys/content/settings'
+
+const tokenLoader = async () => {
+  const token = sessionStorage.getItem('token')
+  if (!token) {
+    return redirect('/s')
+  }
+  return null
+}
 
 export const routes: RouteObject[] = [
   {
     path: '/',
     Component: Layout,
+    loader: tokenLoader,
     children: [
       {
-        path: '/apps',
+        index: true,
         Component: ContentApp,
       },
       {
@@ -24,13 +37,23 @@ export const routes: RouteObject[] = [
         Component: ContentUsr,
         children: [
           {
-            path: '/u/profile',
-            element: <h1>Profile</h1>
+            index: true,
+            Component: UserProfile,
+          }
+        ]
+      },
+      {
+        path: '/workspace',
+        Component: ContentWorkSpace,
+        children: [
+          {
+            index: true,
+            Component: WSDevelopers,
           },
           {
-            path: '/u/invite',
-            element: <h1>Invite</h1>
-          },
+            path: '/workspace/settings',
+            Component: WSSettings,
+          }
         ]
       },
     ]
@@ -41,14 +64,14 @@ export const routes: RouteObject[] = [
     children: [
       {
         path: '/s/up',
-        Component: SignUp
+        Component: SignUp,
       },
       {
         path: '/s/ev',
         Component: EmailVerif
       },
       {
-        path: '/s/in',
+        index: true,
         Component: SignIn
       },
       {

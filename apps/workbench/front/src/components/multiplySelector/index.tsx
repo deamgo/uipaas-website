@@ -1,12 +1,13 @@
 import React, { MouseEventHandler } from "react"
 //
 import './index.less'
+import { Link } from "react-router-dom"
 //
 
 interface IMultiplySelectorPropsItem {
   id: number
   text: string
-  method: MouseEventHandler<HTMLDivElement>
+  path: string
   type: 'normal' | 'error'
 }
 
@@ -21,8 +22,8 @@ const MultiplySelector: React.FC<MultiplySelectorProps> = (props) => {
         {
           props.list[0] !== null && props.list.map(item => (
             <>
-              <div key={item.id} className={`__mulselector_wrapper_item ${item.type}`} onClick={item.method}>
-                {item.text}
+              <div key={item.id} className={`__mulselector_wrapper_item ${item.type}`} >
+                <Link to={item.path}>{item.text}</Link>
               </div>
             </>
           ))

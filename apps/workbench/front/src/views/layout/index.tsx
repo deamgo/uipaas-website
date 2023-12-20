@@ -1,4 +1,5 @@
 import React from 'react';
+import { redirect } from 'react-router-dom';
 import { resize } from '@utils/adapt'
 //style
 import './index.less'
@@ -6,6 +7,8 @@ import './index.less'
 import Sider from '@views/layout/sider'
 import { Outlet } from 'react-router-dom';
 //
+
+
 
 
 const Layout: React.FC = () => {

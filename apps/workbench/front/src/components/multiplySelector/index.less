@@ -32,12 +32,18 @@
 
       cursor: pointer;
 
-      &.normal {
-        background: rgba(20, 118, 255, 0.1)
+      &.normal:hover {
+        background: rgba(20, 118, 255, 0.1);
       }
 
       &.error {
-        color: #FF7875;
+        a {
+          color: #FF7875 !important;
+        }
+
+        &:hover {
+          background: rgba(20, 118, 255, 0.1);
+        }
       }
     }
   }

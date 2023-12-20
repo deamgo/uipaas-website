@@ -1,5 +1,6 @@
 import React from 'react'
 import { useObserver } from 'mobx-react'
+import { useNavigate } from 'react-router-dom'
 //style
 import './index.less'
 //
@@ -11,6 +12,7 @@ import $message from '@/components/Message'
 import { usrSignUp } from '@api/sign_up'
 import { IUsrAccount } from '@api/account'
 import appStore from '@store/store'
+import { Link } from 'react-router-dom'
 
 
 const SignUp: React.FC = () => {
@@ -20,6 +22,8 @@ const SignUp: React.FC = () => {
   const [email, setEmail] = React.useState('')
   const [pwd, setPwd] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
+
+  const navigate = useNavigate()
 
   React.useEffect(() => {
     if (usernameReg.test(name)
@@ -54,7 +58,7 @@ const SignUp: React.FC = () => {
     usrSignUp(usr).then(res => {
       if (res.value.code === 0) {
         sessionStorage.setItem('codeKey', res.value.data.code_key)
-        window.location.pathname = '/s/ev'
+        navigate('/s/ev')
       } else {
         $message.error(res.value.msg)
       }
@@ -88,6 +92,7 @@ const SignUp: React.FC = () => {
             type='text'
             placeholder='Enter your name'
             valid='Please enter your name'
+            isNeed={true}
             outputChange={setName}
             reg={usernameReg} />
         </div>
@@ -98,6 +103,7 @@ const SignUp: React.FC = () => {
             type='text'
             placeholder='Enter your email address'
             valid='Please enter your email address'
+            isNeed={true}
             outputChange={setEmail}
             reg={emailReg} />
         </div>
@@ -108,6 +114,8 @@ const SignUp: React.FC = () => {
             type='password'
             placeholder='Enter new password'
             valid='Please enter your password'
+            isNeed={true}
+            isShowPwd={true}
             outputChange={setPwd}
             reg={passwordReg} />
         </div>
@@ -116,7 +124,7 @@ const SignUp: React.FC = () => {
         <div className="__sign_continue_tip">
           <span>Already have an account?</span>
           <span>
-            <a href="/s/in">Sign in</a>
+            <Link to='/s'>Sign in</Link>
           </span>
         </div>
         <Button

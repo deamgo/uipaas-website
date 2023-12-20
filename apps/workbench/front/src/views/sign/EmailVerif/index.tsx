@@ -12,11 +12,14 @@ import appStore from '@/store/store'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'
+import { Link, useNavigate } from 'react-router-dom'
 
 const EmailVerif: React.FC = () => {
 
   const [emailVerification, setEmailVerification] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
+
+  const navigate = useNavigate()
 
   React.useEffect(() => {
     if (emailVerificationReg.test(emailVerification)) {
@@ -56,7 +59,7 @@ const EmailVerif: React.FC = () => {
         sessionStorage.removeItem('password')
 
         $message.success(res.value.msg)
-        window.location.href = '/apps'
+        navigate('/apps')
       } else {
         $message.error(res.value.msg)
       }
@@ -72,9 +75,9 @@ const EmailVerif: React.FC = () => {
         <span>Email Verification</span>
         <span>Please check your email for the verification code and enter it below</span>
         <div className="__ev_title_row">
-          <a href="/s/up">
+          <Link to='/s/up'>
             <img src={ArrowLeft} alt="" />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="__ev_form">
@@ -85,6 +88,7 @@ const EmailVerif: React.FC = () => {
             type='text'
             placeholder='Enter your email verification code'
             valid='Please enter your email verification code'
+            isNeed={true}
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
         </div>
@@ -93,7 +97,7 @@ const EmailVerif: React.FC = () => {
         <div className="__ev_btnbox_tip">
           <span>Already have an account?</span>
           <span>
-            <a href="/s/in">Sign in</a>
+            <Link to='s/in'>Sign in</Link>
           </span>
         </div>
         <Button

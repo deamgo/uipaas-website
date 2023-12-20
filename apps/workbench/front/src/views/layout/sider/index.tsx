@@ -1,4 +1,5 @@
 import React, { MouseEventHandler } from 'react';
+import { redirect, useNavigate } from 'react-router-dom'
 //style
 import './index.less'
 //
@@ -14,6 +15,7 @@ const list_c = [
   {
     id: 1,
     title: 'Applications',
+    path: '/',
     icon: (<Application />)
   },
 ]
@@ -22,6 +24,7 @@ const list_f = [
   {
     id: 2,
     title: 'workspace Settings',
+    path: 'workspace/',
     icon: (<SettingTwo theme="outline" size="18" fill="#333" />)
   },
 ]
@@ -29,25 +32,22 @@ const list_f = [
 interface IMultiplySelectorPropsItem {
   id: number
   text: string
-  method: MouseEventHandler<HTMLDivElement>
+  path: string
   type: 'normal' | 'error'
 }
 
+
 const list_ms: IMultiplySelectorPropsItem[] = [
   {
-    id: 3,
+    id: 101,
     text: 'Profile',
-    method: () => {
-      window.location.pathname = '/u'
-    },
+    path: '/u',
     type: "normal"
   },
   {
-    id: 4,
+    id: 99,
     text: 'Logout',
-    method: () => {
-      window.location.pathname = '/s/in'
-    },
+    path: '/s',
     type: "error"
   }
 ]
