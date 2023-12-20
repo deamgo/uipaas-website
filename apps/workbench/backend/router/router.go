@@ -5,6 +5,7 @@ import (
 
 	"github.com/deamgo/workbench/api/account"
 	"github.com/deamgo/workbench/api/developer"
+	"github.com/deamgo/workbench/api/workspace"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/middleware"
 
@@ -39,6 +40,9 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		// Modify the password
 		api.POST("/developer/password/firststep", middleware.JWTAuthMiddleware(), developer.SendModifyPwdVerify(ctx))
 		api.POST("/developer/password/secondstep", middleware.JWTAuthMiddleware(), developer.VerifyPwdVerificationCode(ctx))
+
+		api.POST("/workspace/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
+
 	}
 
 }
