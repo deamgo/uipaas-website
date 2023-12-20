@@ -19,7 +19,7 @@ it('Sign In page Test', () => {
   const router = createMemoryRouter(
     routes,
     {
-      initialEntries: ['/s/in'],
+      initialEntries: ['/s'],
       initialIndex: 1,
     }
   )
@@ -68,7 +68,7 @@ it('Apps page Test', () => {
   const router = createMemoryRouter(
     routes,
     {
-      initialEntries: ['/apps'],
+      initialEntries: ['/'],
       initialIndex: 1,
     }
   )

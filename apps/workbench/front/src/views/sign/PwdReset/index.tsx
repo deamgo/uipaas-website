@@ -11,6 +11,8 @@ import { ResetPwd, forgotVerify } from '@api/reset_pwd'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'
+import { Link, useNavigate } from 'react-router-dom'
+import { set } from 'mobx'
 
 const PwdReset: React.FC = () => {
 
@@ -19,7 +21,9 @@ const PwdReset: React.FC = () => {
   const [pwd, setPwd] = React.useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
   const [bsendAbled, setBsendAbled] = React.useState(true)
-  const [sendText, setSendText] = React.useState('Send')
+  const [sendText, setSendText] = React.useState('Get')
+
+  const navigate = useNavigate()
 
 
   React.useEffect(() => {
@@ -57,7 +61,7 @@ const PwdReset: React.FC = () => {
 
       if (res.value.code === 0) {
         $message.success(res.value.msg)
-        window.location.href = '/s/in'
+        navigate('/s')
       } else {
         $message.error(res.value.msg)
       }
@@ -68,15 +72,23 @@ const PwdReset: React.FC = () => {
     })
   }
 
+  let timer: NodeJS.Timeout
+
   //impl api/sign_in.ts > forgotVerify
   const handleSend = () => {
     console.log('Send');
     setBsendAbled(true)
-    setSendText('Sent')
-    setTimeout(() => {
-      setBsendAbled(false)
-      setSendText('Send')
-    }, 10000)
+    let count = 60
+    timer = setInterval(() => {
+      setSendText('Got(' + count + 's)')
+      if (count === -1) {
+        clearInterval(timer)
+        setSendText('Get')
+        setBsendAbled(false)
+      }
+      count--
+    }, 1000)
+
     forgotVerify({
       email
     }).then(res => {
@@ -97,9 +109,9 @@ const PwdReset: React.FC = () => {
       <div className="__ryp_title">
         <span>Reset your Password</span>
         <div className="__ryp_title_row">
-          <a href="/s/in">
+          <Link to='/s'>
             <img src={ArrowLeft} alt="" />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="__ryp_form">
@@ -110,6 +122,7 @@ const PwdReset: React.FC = () => {
             type='text'
             placeholder='Enter your email address'
             valid='Please enter the email address'
+            isNeed={true}
             reg={emailReg}
             outputChange={setEmail} />
         </div>
@@ -120,6 +133,7 @@ const PwdReset: React.FC = () => {
             type='text'
             placeholder='Enter your email verification code'
             valid='Please enter the email verification code'
+            isNeed={true}
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
           <div className="__ryp_form_input_send">
@@ -133,6 +147,8 @@ const PwdReset: React.FC = () => {
             type='password'
             placeholder='Enter your password'
             valid='Please enter the password'
+            isNeed={true}
+            isShowPwd={true}
             reg={passwordReg}
             outputChange={setPwd} />
         </div>

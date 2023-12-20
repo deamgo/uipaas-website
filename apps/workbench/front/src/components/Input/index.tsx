@@ -8,13 +8,17 @@ import Eye_open from '@assets/sign/eye-open.svg'
 
 interface InputProps {
   id: string
-  title: string
-  placeholder: string
-  type: 'password' | 'text'
-  valid: string
-  outputChange: (value: string) => void
-  reg: RegExp
+  title?: string
+  placeholder?: string
+  type?: 'password' | 'text'
+  valid?: string
+  isNeed?: boolean
+  isShowPwd?: boolean
+  outputChange?: (value: string) => void
+  reg?: RegExp
   validate?: (value: string, regex: RegExp) => boolean
+  typeAble?: boolean
+  value?: string
 }
 
 const validator = (value: string, regex: RegExp) => {
@@ -28,15 +32,12 @@ const Input: React.FC<InputProps> = (props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    // if (value === '' && value === undefined) {
-    //   setShowV(false)
-    // }
-    if (validator(value, props.reg)) {
+    if (props.reg && validator(value, props.reg)) {
       setShowV(false)
     } else {
       setShowV(true)
     }
-    props.outputChange(e.target.value)
+    props.outputChange && props.outputChange(e.target.value)
   }
 
   // const formatEmpty = (value: string): string => {
@@ -51,20 +52,24 @@ const Input: React.FC<InputProps> = (props) => {
   return (
     <>
       <div className="__input_wrapper">
-        <div className="__input_wrapper_title">
-          {props.title}
-          <span>*</span>
-        </div>
+        {props.title && (
+          <div className="__input_wrapper_title">
+            {props.title}
+            {props.isNeed && <span>*</span>}
+          </div>
+        )}
         <div className="__input_wrapper_main">
           <input
             type={eyev ? 'text' : props.type}
             name=""
             id={props.id}
             placeholder={props.placeholder}
-            onChange={(e) => props.outputChange(e.target.value)}
-            onBlur={handleChange} />
+            value={props.value}
+            onChange={(e) => props.outputChange && props.outputChange(e.target.value)}
+            onBlur={handleChange}
+            disabled={props.typeAble ? true : false} />
           {
-            props.type === 'password'
+            props.isShowPwd
             && (
               <>
                 <div className="__input_wrapper_main_show" onClick={handleShowPwd}>

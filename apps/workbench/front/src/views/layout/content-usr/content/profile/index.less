@@ -1,0 +1,153 @@
+.__user_profile_account {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &_title {
+    position: absolute;
+    left: 47rem;
+    top: 43rem;
+    font-size: 18rem;
+    font-weight: normal;
+    line-height: 22rem;
+    letter-spacing: 0em;
+    color: #1A1A1A;
+  }
+
+  &_container {
+    position: absolute;
+    left: 47rem;
+    top: 83rem;
+
+    &_wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &_input {
+        margin-bottom: 19rem;
+        width: 353rem;
+
+        &._sp_withAvatar {
+          display: flex;
+        }
+
+        &_besideAvatar {
+          width: 289rem;
+          margin-left: 16rem;
+        }
+      }
+
+      &_edit {}
+    }
+  }
+}
+
+._edit_name_input {
+  position: absolute;
+  left: 31rem;
+  top: 121rem;
+
+  width: 439rem;
+  height: 32rem;
+}
+
+._edit_name_btn {
+  position: absolute;
+  right: 27rem;
+  bottom: 37rem;
+
+  width: 106rem;
+  height: 32rem;
+
+  button {
+    &:disabled {
+      background: rgba(22, 93, 255, 0.5);
+    }
+  }
+}
+
+._current {
+  position: absolute;
+  left: 29rem;
+  top: 77rem;
+
+  &_wrapper {
+    width: 483rem;
+    height: 80rem;
+
+    &_title {
+      margin-bottom: 10rem;
+      width: fit-content;
+      height: 28rem;
+
+      span {
+        display: inline-block;
+        font-size: 14rem;
+        font-weight: normal;
+        line-height: 28rem;
+        letter-spacing: 0rem;
+
+        font-feature-settings: "kern" on;
+        color: #3D3D3D;
+      }
+    }
+
+    &_content {
+      position: relative;
+      width: 439rem;
+      height: 32rem;
+
+      &_send {
+        position: absolute;
+        top: 0rem;
+        right: 0rem;
+
+        width: 94rem;
+        height: 32rem;
+
+        button {
+          &:disabled {
+            background: rgba(22, 93, 255, 0.5);
+          }
+        }
+      }
+
+      span {
+        display: inline-block;
+        font-size: 14rem;
+        font-weight: normal;
+        line-height: 22rem;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0rem;
+
+        color: #979797;
+      }
+    }
+  }
+}
+
+._edit_email_btn {
+  position: absolute;
+  right: 16rem;
+  bottom: 14rem;
+
+  width: 123rem;
+  height: 32rem;
+
+  button {
+    &:disabled {
+      background: rgba(22, 93, 255, 0.5);
+    }
+  }
+}
+
+._edit_pwd_btn {
+  position: absolute;
+  right: 27rem;
+  bottom: 37rem;
+
+  width: 106rem;
+  height: 32rem;
+}

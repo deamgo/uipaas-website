@@ -1,0 +1,61 @@
+.__popup_wrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  background: #FFFFFF;
+  z-index: 1010;
+
+  border: 1rem solid #E5E8EF;
+
+  box-shadow: 0rem 0rem 10rem 0rem rgba(0, 0, 0, 0.3);
+
+  &_title {
+    position: absolute;
+    left: 26rem;
+    top: 26rem;
+
+    font-size: 24rem;
+    font-weight: normal;
+    line-height: 28rem;
+    letter-spacing: 0rem;
+
+    color: #1D2129;
+  }
+
+  &_close {
+    position: absolute;
+    right: 12rem;
+    top: 9rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 10rem;
+    height: 20rem;
+    cursor: pointer;
+  }
+}
+
+._close_x {
+  &_pone {
+    position: absolute;
+    height: 15rem;
+    background-color: rgba(0, 0, 0, .45);
+    border: 1rem solid rgba(0, 0, 0, .45);
+
+    transform: rotate(150deg);
+  }
+
+  &_ptwo {
+    position: absolute;
+    height: 15rem;
+    background-color: rgba(0, 0, 0, .45);
+    border: 1rem solid rgba(0, 0, 0, .45);
+
+    transform: rotate(30deg);
+  }
+}

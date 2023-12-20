@@ -1,16 +1,43 @@
-.__button_wrapper {
-  padding: 5rem 16rem;
-  width: 100%;
-  height: 100%;
+button {
+  font-size: 14rem;
+  font-weight: normal;
+  line-height: 22rem;
 
-  outline: none;
-  border: 0;
-  border-radius: 5rem;
-  cursor: pointer;
+  &.__button_wrapper {
+    padding: 5rem 16rem;
+    width: 100%;
+    height: 100%;
 
-  button {
-    font-size: 14rem;
-    font-weight: normal;
-    line-height: 22rem;
+    outline: none;
+    border: 0;
+    border-radius: 5rem;
+    cursor: pointer;
+  }
+
+  &.primary {
+    color: #fff;
+    background-color: #1677FF;
+  }
+
+  &.board-primary {
+    color: #1677FF;
+    background-color: #FFFFFF;
+  }
+
+  &.danger {
+    color: #fff;
+    background-color: #f5365c;
+  }
+
+  &.outline-danger {
+    outline: 1rem solid rgba(234, 0, 0, 0.5);
+    color: rgba(234, 0, 0, 0.5);
+    background-color: transparent;
+  }
+
+  &.default {
+    color: #1677FF;
+    border: 1px solid #1677FF;
+    background: rgba(22, 119, 255, 0.1216);
   }
 }
