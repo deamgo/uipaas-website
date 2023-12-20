@@ -3,24 +3,42 @@ package developer
 import (
 	"context"
 	"crypto/sha1"
+	"errors"
 	"fmt"
-	"github.com/bwmarrin/snowflake"
 	"time"
 
 	"github.com/deamgo/workbench/dao/developer"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/service/mail"
+
+	"github.com/bwmarrin/snowflake"
+	"gorm.io/gorm"
 )
 
+// UserService DeveloperService is an interface that defines the methods that our service should implement.
 type UserService interface {
+	// DeveloperAdd adds a new developer to the system.
 	DeveloperAdd(ctx context.Context, user *Developer) (string, error)
+	// DeveloperGetByID retrieves a developer by their ID.
 	DeveloperGetByID(ctx context.Context, id string) (*Developer, error)
+	// DeveloperGetByEmail retrieves a developer by their email.
 	DeveloperGetByEmail(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
+	// DeveloperGetByEmailAndPwd retrieves a developer by their email and password.
+	DeveloperGetByEmailAndPwd(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
+	// ForgotVerifySend sends a verification code to a developer who forgot their password.
 	ForgotVerifySend(ctx context.Context, u *Developer) (string, error)
+	// DeveloperGetByUserName retrieves a developer by their username.
 	DeveloperGetByUserName(ctx context.Context, u *Developer) (*Developer, error)
+	// DeveloperNameModifyByID modifies a developer's name by their ID.
 	DeveloperNameModifyByID(ctx context.Context, u *Developer) error
+	// SendModifyEmailVerify sends a verification code to a developer who wants to modify their email.
+	SendModifyEmailVerify(ctx context.Context, u *Developer) (string, error)
+	// DeveloperEmailModifyByEmail modifies a developer's email by their old email.
+	DeveloperEmailModifyByEmail(ctx context.Context, oldEmail string, u *Developer) error
+	// DeveloperStatusModifyByEmail modifies a developer's status by their email.
 	DeveloperStatusModifyByEmail(ctx context.Context, u *Developer) error
+	// DeveloperPasswordModifyByEmail modifies a developer's password by their email.
 	DeveloperPasswordModifyByEmail(ctx context.Context, u *Developer) error
 }
 
@@ -125,7 +143,8 @@ func (us developerService) DeveloperGetByID(ctx context.Context, id string) (*De
 		ID: id,
 	}
 	ud := convertDeveloperDO(u)
-	ud, err = us.dao.DeveloperGetByUserName(ctx, ud)
+
+	ud, err = us.dao.DeveloperGetByID(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 
@@ -145,6 +164,46 @@ func (us developerService) DeveloperGetByEmail(ctx context.Context, u *Developer
 	}
 	return ud, err
 }
+func (us developerService) DeveloperGetByEmailAndPwd(ctx context.Context, u *Developer) (*developer.DeveloperDO, error) {
+	dlp := convertDeveloperDO(u)
+	dlp, err := us.dao.DeveloperGetByEmailAndPwd(ctx, dlp)
+	if err != nil {
+		logger.Error(err)
+		return nil, err
+	}
+	return dlp, nil
+}
+func (us developerService) DeveloperEmailModifyByEmail(ctx context.Context, oldEmail string, u *Developer) error {
+	dlp := convertDeveloperDO(u)
+	err := us.dao.DeveloperEmailModifyByEmail(ctx, oldEmail, dlp)
+	if err != nil {
+		logger.Error(err)
+		return err
+	}
+	return nil
+}
+
+func (us developerService) SendModifyEmailVerify(ctx context.Context, u *Developer) (string, error) {
+	dlp, err := us.dao.DeveloperGetByEmail(ctx, convertDeveloperDO(u))
+	if err != nil {
+		if !errors.Is(err, gorm.ErrRecordNotFound) {
+			logger.Error(err)
+			return "", err
+		}
+	}
+	if dlp != nil {
+		return "", errors.New("email already exists")
+	}
+	code := mail.MailService.SendMail(mail.NewMailService(), ctx, u.Email)
+	codeHash, err := SaveCode(u.Email, code)
+	if err != nil {
+		logger.Error(err)
+		return "", err
+	}
+
+	return codeHash, nil
+}
+
 func convertDeveloperDO(u *Developer) *developer.DeveloperDO {
 	return &developer.DeveloperDO{
 		ID:       u.ID,
