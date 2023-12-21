@@ -1,29 +1,29 @@
 import React from "react"
+import { useLocation } from 'react-router-dom'
 //
 import './index.less'
 //
 import MenuContent from '@components/MenuContent'
-
-interface mcontent {
-  id: number;
-  title: string;
-  path: string;
-  icon: React.ReactElement;
-}
+import { mcontent } from "@/interface/some"
 
 type SideMenuProps = {
   list: mcontent[]
 }
 
+
 const SideMenu: React.FC<SideMenuProps> = (props) => {
   return (
     <>
-      <div className="__smenu">
-        {props.list
-          ? props.list.map(item => (
-            <MenuContent id={item.id} title={item.title} icon={item.icon} path={item.path} />
-          ))
-          : (<></>)}
+      <div className="__sidermenu_list">
+        {props.list && props.list.map(item => (
+          <MenuContent
+            id={item.id}
+            title={item.title}
+            path={item.path}
+            matcher={item.matcher}
+            index={item.index}
+            icon={item.icon} />
+        ))}
       </div>
     </>
   )

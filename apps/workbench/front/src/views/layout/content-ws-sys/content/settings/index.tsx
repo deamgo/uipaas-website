@@ -20,12 +20,16 @@ const WSSettings: React.FC = () => {
   const [confirmDeleteAble, setConfirmDeleteAble] = React.useState(true)
 
   React.useEffect(() => {
-    if (workname) {
+    if (workname === 'Deamgo') {
       setConfirmDeleteAble(false)
     } else {
       setConfirmDeleteAble(true)
     }
   }, [workname])
+
+  React.useEffect(() => {
+    document.body.style.overflow = isMask ? 'hidden' : 'auto'
+  }, [isMask])
 
   const resetForm = () => {
     setWorkName('')

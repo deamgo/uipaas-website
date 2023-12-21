@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from 'react';
-import { redirect, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { appStore, tokenStore } from '@/store/store'
 //style
 import './index.less'
 //
@@ -9,47 +10,31 @@ import MultiplySelector from '@/components/multiplySelector';
 //
 import { Avatar } from 'antd';
 import { ReactComponent as Application } from '@assets/layout/application.svg'
-import { SettingTwo } from '@icon-park/react';
+import { ReactComponent as Wssettings } from '@assets/layout/wssettings.svg'
+import { observer } from 'mobx-react-lite';
+import { IMultiplySelectorPropsItem, mcontent } from '@/interface/some';
+import Cookies from 'js-cookie';
 
-const list_c = [
+const list_c: mcontent[] = [
   {
-    id: 1,
+    id: 'application',
     title: 'Applications',
     path: '/',
+    matcher: '',
+    index: 1,
     icon: (<Application />)
   },
 ]
 
-const list_f = [
+const list_f: mcontent[] = [
   {
-    id: 2,
+    id: 'wss',
     title: 'workspace Settings',
-    path: 'workspace/',
-    icon: (<SettingTwo theme="outline" size="18" fill="#333" />)
+    path: '/workspace',
+    matcher: 'workspace',
+    index: 1,
+    icon: (<Wssettings />)
   },
-]
-
-interface IMultiplySelectorPropsItem {
-  id: number
-  text: string
-  path: string
-  type: 'normal' | 'error'
-}
-
-
-const list_ms: IMultiplySelectorPropsItem[] = [
-  {
-    id: 101,
-    text: 'Profile',
-    path: '/u',
-    type: "normal"
-  },
-  {
-    id: 99,
-    text: 'Logout',
-    path: '/s',
-    type: "error"
-  }
 ]
 
 type SiderProps = {
@@ -59,9 +44,53 @@ type SiderProps = {
 const Sider: React.FC<SiderProps> = (props) => {
   const [showMultiSelect, setShowMultiSelect] = React.useState(false)
 
+  const [username, setUsername] = React.useState('')
+  const [active, setActive] = React.useState<number>()
+
+
+  React.useEffect(() => {
+    setUsername(appStore.getUserInfo().username)
+  }, [])
+
+  React.useEffect(() => {
+    console.log('update appStore');
+
+    setUsername(appStore.getUserInfo().username)
+  }, [appStore.getUserInfo()])
+
   const handleShow = () => {
     setShowMultiSelect(showMultiSelect => !showMultiSelect)
   }
+
+  const navigate = useNavigate()
+
+  const list_ms: IMultiplySelectorPropsItem[] = [
+    {
+      id: 101,
+      text: 'Profile',
+      path: '/u',
+      type: "normal",
+      method: () => {
+        setShowMultiSelect(false)
+        navigate('/u')
+      },
+      children: (<span style={{ color: '#0871F0' }}>Profile</span>)
+    },
+    {
+      id: 99,
+      text: 'Logout',
+      path: '/s',
+      type: "error",
+      method: () => {
+        appStore.resetUserInfo()
+        tokenStore.resetToken()
+        Cookies.remove('token')
+        setShowMultiSelect(false)
+        navigate('/s')
+      },
+      children: (<span style={{ color: '#FF7875' }}>Logout</span>)
+    }
+  ]
 
   return (
     <>
@@ -77,9 +106,9 @@ const Sider: React.FC<SiderProps> = (props) => {
         </div>
         <div className="__sider_usr_info" onClick={handleShow}>
           <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={32} gap={3}>
-            {'ILEE'.charAt(0).toUpperCase()}
+            {username.charAt(0).toUpperCase()}
           </Avatar>
-          <span className='__sider_usr_info_name'>Ilee</span>
+          <span className='__sider_usr_info_name'>{username}</span>
         </div>
         {showMultiSelect && (
           <div className="__sider_usr_info_ms">
@@ -91,4 +120,4 @@ const Sider: React.FC<SiderProps> = (props) => {
   )
 }
 
-export default Sider
+export default observer(Sider)

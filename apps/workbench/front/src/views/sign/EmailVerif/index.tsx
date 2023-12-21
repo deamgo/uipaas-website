@@ -8,7 +8,7 @@ import Mask from '@/components/Mask'
 //
 import { emailVerificationReg } from '@constants/regexp'
 import { usrSignUpVerify } from '@api/sign_up'
-import appStore from '@/store/store'
+import { appStore } from '@/store/store'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'

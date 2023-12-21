@@ -1,5 +1,5 @@
 import React from 'react'
-import { useObserver } from 'mobx-react'
+import { useObserver } from 'mobx-react-lite'
 import { useNavigate } from 'react-router-dom'
 //style
 import './index.less'
@@ -11,7 +11,7 @@ import { codeReg, usernameReg, emailReg, passwordReg } from '@constants/regexp.t
 import $message from '@/components/Message'
 import { usrSignUp } from '@api/sign_up'
 import { IUsrAccount } from '@api/account'
-import appStore from '@store/store'
+import { appStore } from '@store/store'
 import { Link } from 'react-router-dom'
 
 
@@ -52,8 +52,6 @@ const SignUp: React.FC = () => {
     sessionStorage.setItem('username', name)
     sessionStorage.setItem('email', email)
     sessionStorage.setItem('password', pwd)
-    appStore.setUserInfo(usr)
-    console.log(appStore.userInfo);
 
     usrSignUp(usr).then(res => {
       if (res.value.code === 0) {

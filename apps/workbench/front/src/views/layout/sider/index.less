@@ -16,13 +16,14 @@
     position: absolute;
     left: 0;
     top: 72rem;
+    width: 240rem;
   }
 
   &_menu_f {
     position: absolute;
-    left: 25rem;
     // top: 871rem;
     bottom: 101rem;
+    width: 240rem;
   }
 
   &_usr_info {
@@ -43,12 +44,16 @@
     &_name {
       margin-left: 4rem;
 
-      width: 45rem;
+      width: 100rem;
       height: 22rem;
 
       font-size: 14rem;
       font-weight: normal;
       line-height: 22rem;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &_ms {
@@ -59,5 +64,18 @@
       width: max-content;
       height: max-content;
     }
+  }
+}
+
+.__active {
+  background: #E6E9EF;
+
+  svg {
+    fill: rgba(68, 85, 108, 0.9);
+  }
+
+  span:nth-child(2) {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { redirect } from 'react-router-dom';
 import { resize } from '@utils/adapt'
+import { observer } from 'mobx-react'
 //style
 import './index.less'
 //
@@ -31,4 +32,4 @@ const Layout: React.FC = () => {
   )
 }
 
-export default Layout
+export default observer(Layout)
