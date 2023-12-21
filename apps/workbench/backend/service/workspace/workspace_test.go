@@ -64,6 +64,21 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 	}
 }
 
+func TestWorkspaceService_WorkspaceDel(t *testing.T) {
+	us, mock := setupWorkspaceServiceTest(t)
+
+	mock.ExpectBegin()
+	mock.ExpectExec("UPDATE `workspace`").WithArgs(1, "1").
+		WillReturnResult(sqlmock.NewResult(1, 1))
+	mock.ExpectCommit()
+
+	u := &Workspace{Id: "1"}
+
+	err := us.WorkspaceDel(context.Background(), u)
+
+	assert.NoError(t, err)
+}
+
 type AnyTime struct{}
 
 // Match satisfies sqlmock.Argument interface

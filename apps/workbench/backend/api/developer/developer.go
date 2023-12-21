@@ -6,7 +6,6 @@ import (
 	"github.com/deamgo/workbench/auth/jwt"
 	"net/http"
 	"regexp"
-	"strings"
 	"time"
 
 	"github.com/deamgo/workbench/context"
@@ -31,9 +30,12 @@ type Resp struct {
 func DeveloperGetByID(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.Request.Header.Get("Authorization")
-		parts := strings.SplitN(authHeader, " ", 2)
-		claim, err := jwt.ParseToken(parts[1])
-		dlp, err := ctx.UserService.DeveloperGetByID(c, claim.ID)
+
+		id, err := jwt.ExtractIDFromToken(authHeader)
+		if err != nil {
+			c.AbortWithStatus(http.StatusInternalServerError)
+		}
+		dlp, err := ctx.UserService.DeveloperGetByID(c, id)
 		if err != nil {
 			if errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{

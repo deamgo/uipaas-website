@@ -42,7 +42,7 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			c.Abort()
 			return
 		}
-		isExpireToken, err := jwt.IsExpireToken(parts[1])
+		isExpireToken, _ := jwt.IsExpireToken(parts[1])
 		if isExpireToken {
 			id, _ := jwt.ExtractIDFromToken(authHeader)
 			newToken, err := jwt.GenToken(id)

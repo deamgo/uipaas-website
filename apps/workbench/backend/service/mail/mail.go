@@ -57,17 +57,9 @@ func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 	}{
 		Code: randomNumber,
 	}
-	tmpl, err := template.New("mjml").Parse(htmlStr)
-	if err != nil {
-		fmt.Println("Error parsing MJML template:", err)
-		log.Fatal(err)
-	}
+	tmpl, _ := template.New("mjml").Parse(htmlStr)
 	var rendered bytes.Buffer
-	err = tmpl.Execute(&rendered, data)
-	if err != nil {
-		fmt.Println("Error rendering MJML template:", err)
-		log.Fatal(err)
-	}
+	_ = tmpl.Execute(&rendered, data)
 	e.HTML = rendered.Bytes()
 	// Set the server-related configurations
 	err = e.Send("smtp.feishu.cn:25", smtp.PlainAuth("", "uipaas@tests.run", "rR9rJvSiXkfAm44h", "smtp.feishu.cn"))
