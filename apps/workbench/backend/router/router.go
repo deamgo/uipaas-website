@@ -22,7 +22,7 @@ func NewRouter(ctx context.ApplicationContext) http.Handler {
 func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("v1")
 	{
-		api.POST("/signup", account.SignUp(ctx))
+    api.POST("/signup", account.SignUp(ctx))
 		api.POST("/signup_verify", account.SignUpVerify(ctx))
 		api.POST("/signin", account.SignIn(ctx))
 		api.POST("/forgot_verify", account.SendForgotVerify(ctx))
@@ -46,9 +46,15 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		developerAPI.POST("/developer/password/secondstep", developer.VerifyPwdVerificationCode(ctx))
 		developerAPI.PUT("/developer/password/thirdstep", developer.ModifyPwd(ctx))
 
-		api.POST("/workspace/create", workspace.WorkspaceCreate(ctx))
-		api.DELETE("/workspace/:id", workspace.WorkspaceDel(ctx))
-
+		developerAPI.POST("/developer/password/firststep", developer.SendModifyPwdVerify(ctx))
+		developerAPI.POST("/developer/password/secondstep", developer.VerifyPwdVerificationCode(ctx))
+	}
+	workspaceApi := api.Group("/workspace")
+	{
+    workspaceApi.DELETE("/:id", workspace.WorkspaceDel(ctx))
+		workspaceApi.POST("/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
+		workspaceApi.GET("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
+		workspaceApi.POST("/logo", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetLogoPath(ctx))
 	}
 
 }

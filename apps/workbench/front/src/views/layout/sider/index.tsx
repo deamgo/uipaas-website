@@ -10,6 +10,7 @@ import MultiplySelector from '@/components/multiplySelector';
 import { Avatar } from 'antd';
 import { ReactComponent as Application } from '@assets/layout/application.svg'
 import { SettingTwo } from '@icon-park/react';
+import Popup from "@components/Popup";
 
 const list_c = [
   {
@@ -87,6 +88,11 @@ const Sider: React.FC<SiderProps> = (props) => {
           </div>
         )}
       </div>
+      {/*{isWsCreate && (*/}
+      {/*    <>*/}
+      {/*      <Popup unit={'rem'} width={31} height={17.25} title={'Create Workspace'}></Popup>*/}
+      {/*    </>*/}
+      {/*)}*/}
     </>
   )
 }
