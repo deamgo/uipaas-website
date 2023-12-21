@@ -1,0 +1,117 @@
+.__wcb{
+    position: absolute;
+    top:60px;
+    width: 212px;
+    //height: 180px;
+
+    opacity: 1;
+    border-radius: 4px;
+    background: #FFFFFF;
+    border: 1px solid #E5E8EF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+
+    z-index: 999;
+    &_box{
+        min-height: 60px;
+        &_item{
+
+            position: relative;
+            left: 3px;
+            top: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+
+            color: black;
+
+            width: 203px;
+            height: 40px;
+            border-radius: 2px;
+
+            &_logo{
+                position: absolute;
+                left:25px;
+                border-radius: 100px;
+            }
+            &_tittle{
+                position: relative;
+                left: 10px;
+                //top: 3px;
+                font-size: 13px!important;
+            }
+        }
+        &_item:first-child{
+            background: rgba(22, 119, 255,0.1);
+        }
+        &_item +  &_item {
+            margin-top: 10px;
+        }
+        &_item:hover{
+            cursor: pointer;
+        }
+    }
+    &_line{
+        position: relative;
+        left: 3px;
+        bottom: 5px;
+
+        width: 203px;
+        border: 0;
+        height: 1px;
+        background: #D8D8D8;
+    }
+
+    &_button{
+        position: relative;
+
+        left: 0px;
+        bottom: 0px;
+
+        width: 210px;
+        height: 40px;
+        border: 0px;
+        background: #FFFFFF;
+        margin-top: 20px;
+
+
+    }
+    &_button:hover{
+        cursor: pointer;
+    }
+
+    &_add_logo{
+        position: relative;
+
+        right: 12px;
+        top: 4px;
+    }
+
+
+}
+
+.__wcb_popup{
+    position: absolute;
+    bottom: 23px;
+    left:94px;
+    color: #4E5969;
+
+    &_logo:hover{
+       background: url("@/assets/layout/workspace-create-upload.png");
+    }
+    &_input{
+        position: relative;
+        top:13px;
+    }
+    &_button{
+        position: absolute;
+       left: 236px;
+        top: 106px;
+        height: 32px;
+        width: 106px;
+    }
+}
+
+

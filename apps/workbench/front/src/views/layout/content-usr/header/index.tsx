@@ -11,18 +11,18 @@ const Header: React.FC = () => {
 
   const handleCreate = () => {
     console.log('Create');
-
   }
+
   return (
     <>
       <div className="__header">
         <ul className="__header_nav">
           <li className="__header_nav_item">
-            <Link to={'/s/up'}>Profile</Link>
+            <Link to={'/u/profile'}>Profile</Link>
           </li>
-          <li className="__header_nav_item">
-            <Link to={'/s/in'}>Invite</Link>
-          </li>
+          {/* <li className="__header_nav_item">
+            <Link to={'/u/invite'}>Invite</Link>
+          </li> */}
         </ul>
       </div>
     </>

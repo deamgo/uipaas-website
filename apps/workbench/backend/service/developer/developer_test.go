@@ -2,14 +2,16 @@ package developer
 
 import (
 	"context"
-	"github.com/deamgo/workbench/service/mail"
 	"testing"
-
-	"github.com/DATA-DOG/go-sqlmock"
-	"github.com/stretchr/testify/assert"
 
 	dao "github.com/deamgo/workbench/dao/developer"
 	mockTest "github.com/deamgo/workbench/mock"
+	"github.com/deamgo/workbench/service/mail"
+
+	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/stretchr/testify/assert"
+	"gorm.io/gorm"
+
 )
 
 func setupDeveloperServiceTest(t *testing.T) (UserService, sqlmock.Sqlmock) {
@@ -100,4 +102,62 @@ func TestDeveloperService_DeveloperGetByUserName(t *testing.T) {
 	err := us.DeveloperNameModifyByID(context.Background(), u)
 
 	assert.NoError(t, err)
+}
+
+func TestDeveloperService_DeveloperGetByID(t *testing.T) {
+
+	us, mock := setupDeveloperServiceTest(t)
+
+	rows := sqlmock.NewRows([]string{"id", "email", "username", "password", "status"}).
+		AddRow("1", "test@example.com", "testuser", "password", 1)
+	mock.ExpectQuery("^SELECT (.+) FROM `developer`").WithArgs("1").WillReturnRows(rows)
+
+	id := "1"
+	user, err := us.DeveloperGetByID(context.Background(), id)
+
+	assert.NoError(t, err)
+	assert.NotNil(t, user)
+
+}
+
+func TestDeveloperService_DeveloperEmailModifyByEmail(t *testing.T) {
+	us, mock := setupDeveloperServiceTest(t)
+
+	mock.ExpectBegin()
+	mock.ExpectExec("UPDATE `developer`").WithArgs("newtest@example.com", "test@example.com").
+		WillReturnResult(sqlmock.NewResult(1, 1))
+	mock.ExpectCommit()
+
+	u := &Developer{Email: "newtest@example.com"}
+
+	err := us.DeveloperEmailModifyByEmail(context.Background(), "test@example.com", u)
+
+	assert.NoError(t, err)
+}
+
+func TestDeveloperService_DeveloperEmailModifyByEmail_EmailNotFound(t *testing.T) {
+	us, mock := setupDeveloperServiceTest(t)
+
+	mock.ExpectBegin()
+	mock.ExpectExec("UPDATE `developer`").WithArgs("newtest@example.com", "test@example.com").
+		WillReturnError(gorm.ErrRecordNotFound)
+	mock.ExpectRollback()
+
+	u := &Developer{Email: "newtest@example.com"}
+
+	err := us.DeveloperEmailModifyByEmail(context.Background(), "test@example.com", u)
+
+	assert.Error(t, err)
+}
+
+func TestDeveloperService_DeveloperGetByID_NotFound(t *testing.T) {
+	us, mock := setupDeveloperServiceTest(t)
+
+	mock.ExpectQuery("^SELECT (.+) FROM `developer`").WithArgs("1").
+		WillReturnError(gorm.ErrRecordNotFound)
+
+	id := "1"
+	_, err := us.DeveloperGetByID(context.Background(), id)
+
+	assert.Error(t, err)
 }

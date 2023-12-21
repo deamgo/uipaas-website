@@ -4,9 +4,10 @@ import './index.less'
 //
 
 interface ButtonProps {
-  context: string
-  method: () => void
+  context?: string
+  method?: () => void
   disabled?: boolean
+  type?: 'primary' | 'danger' | 'default' | 'outline-danger' | 'board-primary'
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -15,7 +16,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       <button
         type="button"
         onClick={props.method}
-        className='__button_wrapper'
+        className={`__button_wrapper ${props.type}`}
         disabled={props.disabled}>
         {props.context}
       </button>

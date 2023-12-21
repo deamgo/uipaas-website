@@ -7,6 +7,7 @@ import MenuContent from '@components/MenuContent'
 interface mcontent {
   id: number;
   title: string;
+  path: string;
   icon: React.ReactElement;
 }
 
@@ -20,7 +21,7 @@ const SideMenu: React.FC<SideMenuProps> = (props) => {
       <div className="__smenu">
         {props.list
           ? props.list.map(item => (
-            <MenuContent id={item.id} title={item.title} icon={item.icon} />
+            <MenuContent id={item.id} title={item.title} icon={item.icon} path={item.path} />
           ))
           : (<></>)}
       </div>
