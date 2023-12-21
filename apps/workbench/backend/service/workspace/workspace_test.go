@@ -67,7 +67,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 			workspace: &Workspace{
 				Name:        "test1",
 				Logo:        "/public/head.jpg",
-				Lable:       "短描述",
+				Label:       "短描述",
 				Description: "这是测试偷偷编写的workspace的长描述",
 				CreatedBy:   1,
 				UpdateBy:    1,
@@ -79,11 +79,11 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			workspaceservice, mock := setupWorkspaceServiceTest(t)
 			workspace := test.workspace
-			//INSERT INTO `workspace` (`id`,`name`,`logo`,`lable`,`description`,`created_by`,`created_at`,`updated_by`,`updated_at`,`deleted_by`,`is_deleted`) VALUES ('68c1bf','第三个2据121','/public/Golang.png','工作空间测试数据','这是用于测试workspace的测试数据',0,'2023-12-18 18:19:41.942',0,'2023-12-18 18:19:41.942',0,0)
+			//INSERT INTO `workspace` (`id`,`name`,`logo`,`label`,`description`,`created_by`,`created_at`,`updated_by`,`updated_at`,`deleted_by`,`is_deleted`) VALUES ('68c1bf','第三个2据121','/public/Golang.png','工作空间测试数据','这是用于测试workspace的测试数据',0,'2023-12-18 18:19:41.942',0,'2023-12-18 18:19:41.942',0,0)
 
 			mock.ExpectBegin()
-			mock.ExpectExec("INSERT INTO `workspace`").
-				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Lable, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
+			mock.ExpectExec("INSERT INTO workspaces").
+				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Label, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectCommit()
 

@@ -1,9 +1,17 @@
 package workspace
 
 import (
+	"bytes"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
+	"fmt"
+	"io"
+	"log"
+	"mime/multipart"
+	"net/http"
+	"os"
+	"path"
 	"strings"
 
 	dao "github.com/deamgo/workbench/dao/workspace"
@@ -13,6 +21,8 @@ import (
 
 type WorkspaceService interface {
 	WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
+	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*Workspace, error)
+	WorkspaceGetFilePath(file *os.File) (string, error)
 }
 
 type WorkspaceServiceParams struct {
@@ -32,8 +42,8 @@ func NewWorkspaceService(params WorkspaceServiceParams) WorkspaceService {
 // WorkspaceCreate todo the token get developer id set developer_workspace_reaction
 func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error) {
 	var err error
-	workspace.Id = hashTop6(workspace.Name)
-	workspace.Lable = strings.Split(workspace.Lable, "\n")[0]
+	workspace.Id = hashTop(workspace.Name, 6)
+	workspace.Label = strings.Split(workspace.Label, "\n")[0]
 
 	err = equalParameterLen(workspace.Logo, 1, 50)
 	if err != nil {
@@ -43,7 +53,7 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	if err != nil {
 		return nil, err
 	}
-	err = equalParameterLen(workspace.Lable, 0, 50)
+	err = equalParameterLen(workspace.Label, 0, 50)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +82,7 @@ func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 		Id:          workspace.Id,
 		Name:        workspace.Name,
 		Logo:        workspace.Logo,
-		Lable:       workspace.Lable,
+		Label:       workspace.Label,
 		Description: workspace.Description,
 		CreatedBy:   workspace.CreatedBy,
 		UpdatedBy:   workspace.UpdateBy,
@@ -83,7 +93,7 @@ func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 	return &Workspace{
 		Id:          workspaceDao.Id,
 		Name:        workspaceDao.Name,
-		Lable:       workspaceDao.Lable,
+		Label:       workspaceDao.Label,
 		Description: workspaceDao.Description,
 		Logo:        workspaceDao.Logo,
 		CreatedBy:   workspaceDao.CreatedBy,

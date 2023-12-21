@@ -21,7 +21,7 @@ type Resp struct {
 
 type WorkspaceCreateReq struct {
 	Name        string `json:"name"`
-	Lable       string `json:"lable"`
+	Label       string `json:"label"`
 	Description string `json:"description"`
 	Logo        string `json:"logo"`
 }
@@ -122,7 +122,7 @@ func convertWorkspace(req WorkspaceCreateReq, c *gin.Context) *workspace.Workspa
 	}
 	return &workspace.Workspace{
 		Name:        req.Name,
-		Lable:       req.Lable,
+		Label:       req.Label,
 		Description: req.Description,
 		Logo:        req.Logo,
 		CreatedBy:   id,
