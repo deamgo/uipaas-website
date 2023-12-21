@@ -22,9 +22,7 @@ func NewWorkspaceDao(db *gorm.DB) WorkspaceDao {
 }
 
 func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error) {
-	var dwrDO *DeveloperWorkspaceRelationDO
-
-	dwrDO = &DeveloperWorkspaceRelationDO{
+	dwrDO := &DeveloperWorkspaceRelationDO{
 		WorkspaceId: workspace.Id,
 		DeveloperId: workspace.CreatedBy,
 		Role:        1,

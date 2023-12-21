@@ -104,6 +104,14 @@ func WorkspaceGetListById(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		list, err := ctx.WorkspaceService.WorkspaceGetListById(c, id)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+				Code: e.Failed,
+				Msg:  "Get developId data exception",
+				Data: nil,
+			})
+			return
+		}
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  "get workspace succeed",
