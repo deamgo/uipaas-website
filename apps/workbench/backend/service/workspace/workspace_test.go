@@ -36,7 +36,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 			workspace: &Workspace{
 				Name:        "test1",
 				Logo:        "/public/head.jpg",
-				Lable:       "短描述",
+				Label:       "短描述",
 				Description: "这是测试偷偷编写的workspace的长描述",
 				CreatedBy:   1,
 				UpdateBy:    1,
@@ -52,7 +52,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 
 			mock.ExpectBegin()
 			mock.ExpectExec("INSERT INTO `workspace`").
-				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Lable, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
+				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Label, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectCommit()
 

@@ -13,6 +13,7 @@ import (
 
 type WorkspaceService interface {
 	WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
+	WorkspaceDel(ctx context.Context, workspace *Workspace) error
 }
 
 type WorkspaceServiceParams struct {
@@ -33,7 +34,7 @@ func NewWorkspaceService(params WorkspaceServiceParams) WorkspaceService {
 func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error) {
 	var err error
 	workspace.Id = hashTop6(workspace.Name)
-	workspace.Lable = strings.Split(workspace.Lable, "\n")[0]
+	workspace.Label = strings.Split(workspace.Label, "\n")[0]
 
 	err = equalParameterLen(workspace.Logo, 1, 50)
 	if err != nil {
@@ -43,7 +44,7 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	if err != nil {
 		return nil, err
 	}
-	err = equalParameterLen(workspace.Lable, 0, 50)
+	err = equalParameterLen(workspace.Label, 0, 50)
 	if err != nil {
 		return nil, err
 	}
@@ -67,12 +68,18 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	return convertWorkspace(newWorkspaceDO), nil
 }
 
+func (w workspaceService) WorkspaceDel(ctx context.Context, workspace *Workspace) error {
+	workspaceDo := convertWorkspaceDao(workspace)
+	err := w.dao.WorkspaceDel(ctx, workspaceDo)
+	return err
+}
+
 func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 	return &dao.WorkspaceDO{
 		Id:          workspace.Id,
 		Name:        workspace.Name,
 		Logo:        workspace.Logo,
-		Lable:       workspace.Lable,
+		Lable:       workspace.Label,
 		Description: workspace.Description,
 		CreatedBy:   workspace.CreatedBy,
 		UpdatedBy:   workspace.UpdateBy,
@@ -83,7 +90,7 @@ func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 	return &Workspace{
 		Id:          workspaceDao.Id,
 		Name:        workspaceDao.Name,
-		Lable:       workspaceDao.Lable,
+		Label:       workspaceDao.Lable,
 		Description: workspaceDao.Description,
 		Logo:        workspaceDao.Logo,
 		CreatedBy:   workspaceDao.CreatedBy,

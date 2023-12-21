@@ -3,8 +3,10 @@ package developer
 import (
 	"errors"
 	"fmt"
+	"github.com/deamgo/workbench/auth/jwt"
 	"net/http"
 	"regexp"
+	"strings"
 	"time"
 
 	"github.com/deamgo/workbench/context"
@@ -28,8 +30,10 @@ type Resp struct {
 
 func DeveloperGetByID(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		id := c.Param("id")
-		dlp, err := ctx.UserService.DeveloperGetByID(c, id)
+		authHeader := c.Request.Header.Get("Authorization")
+		parts := strings.SplitN(authHeader, " ", 2)
+		claim, err := jwt.ParseToken(parts[1])
+		dlp, err := ctx.UserService.DeveloperGetByID(c, claim.ID)
 		if err != nil {
 			if errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
@@ -56,7 +60,6 @@ func DeveloperNameModify(ctx context.ApplicationContext) gin.HandlerFunc {
 			ID       string `json:"id" validate:"required"`
 			UserName string `json:"username" validate:"required,min=4,max=20"`
 		}
-
 		err := c.ShouldBind(&req)
 		if err != nil {
 			fmt.Println(err)
@@ -111,7 +114,7 @@ func VerifyEmailAndPwd(ctx context.ApplicationContext) gin.HandlerFunc {
 		validate := validator.New()
 		err = validate.RegisterValidation("verifyPwd", verifyPwd)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 				Data: nil,
@@ -134,7 +137,7 @@ func VerifyEmailAndPwd(ctx context.ApplicationContext) gin.HandlerFunc {
 		dlp.Password = encryption.EncryptPwd(dlp.Password)
 		findDlp, err := ctx.UserService.DeveloperGetByEmailAndPwd(c, dlp)
 		if err != nil {
-			if !errors.Is(err, gorm.ErrRecordNotFound) {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
 				c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 					Code: e.Failed,
 					Msg:  "Incorrect password.",
@@ -317,7 +320,6 @@ func SendModifyPwdVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
-		db.RedisDB.HSet(developer.GetEmailHashStr(req.Email), "mod-pwd-step", 1)
 
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
@@ -329,6 +331,59 @@ func SendModifyPwdVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 	}
 }
 func VerifyPwdVerificationCode(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var req struct {
+			Email   string `json:"email" validate:"required,email"`
+			CodeKey string `json:"code_key" validate:"required"`
+			Code    int    `json:"code" validate:"required"`
+		}
+		err := c.ShouldBind(&req)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		validate := validator.New()
+		if err = validate.Struct(req); err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The parameters are not formatted correctly",
+				Data: nil,
+			}))
+			return
+		}
+		isExists := db.RedisDB.HExists(req.CodeKey, "code")
+		if !isExists.Val() {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.VerifyCodeExpired,
+				Data: nil,
+			}))
+			return
+		}
+
+		getCode, _ := db.RedisDB.HGet(req.CodeKey, "code").Int()
+		if getCode != req.Code {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.InvalidVerifyCode,
+				Data: nil,
+			}))
+			return
+		}
+		db.RedisDB.HSet(developer.GetEmailHashStr(req.Email), "mod-pwd-step", 1)
+
+		// Delete the verification code that has already been used
+		db.RedisDB.HDel(req.CodeKey, "code")
+
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+			Code: e.Success,
+			Msg:  "Success",
+			Data: nil,
+		}))
+	}
+}
+
+func ModifyPwd(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var req struct {
 			Email    string `json:"email" validate:"required,email"`
@@ -358,16 +413,15 @@ func VerifyPwdVerificationCode(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		// Verify that the password check and email check have passed
 		step, _ := db.RedisDB.HGet(developer.GetEmailHashStr(req.Email), "mod-pwd-step").Int()
-		if step != 2 {
+		if step != 1 {
 			c.AbortWithStatus(http.StatusBadRequest)
 			return
 		}
-		dlp := &developer.Developer{
+		var dlp = &developer.Developer{
 			Email:    req.Email,
 			Password: req.Password,
 		}
 		dlp.Password = encryption.EncryptPwd(dlp.Password)
-
 		err = ctx.UserService.DeveloperPasswordModifyByEmail(c, dlp)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{

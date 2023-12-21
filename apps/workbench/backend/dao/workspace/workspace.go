@@ -8,6 +8,7 @@ import (
 
 type WorkspaceDao interface {
 	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error)
+	WorkspaceDel(ctx context.Context, workspace *WorkspaceDO) error
 }
 
 type workspaceDao struct {
@@ -23,4 +24,9 @@ func NewWorkspaceDao(db *gorm.DB) WorkspaceDao {
 func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error) {
 	err := dao.db.WithContext(ctx).Model(&WorkspaceDO{}).Create(&workspace).Error
 	return workspace, err
+}
+
+func (dao workspaceDao) WorkspaceDel(ctx context.Context, workspace *WorkspaceDO) error {
+	err := dao.db.WithContext(ctx).Model(workspace).UpdateColumn("is_deleted", 1).Error
+	return err
 }
