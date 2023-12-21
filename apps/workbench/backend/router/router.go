@@ -28,7 +28,12 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/forgot_verify", developer.ForgotVerifySend(ctx))
 		api.PUT("/reset_password", developer.ResetPassword(ctx))
 		//api.PUT("/developer/username/:id")
-		api.POST("/workspace/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
+	}
+	workspaceApi := api.Group("/workspace")
+	{
+		workspaceApi.POST("/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
+		workspaceApi.POST("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
+		workspaceApi.POST("/logo", workspace.WorkspaceGetLogoPath(ctx))
 	}
 
 }

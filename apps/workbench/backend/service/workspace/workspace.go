@@ -91,14 +91,12 @@ func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 	}
 }
 
-// hashTop6 hash
-func hashTop6(str string) string {
+func hashTop(str string, length int) string {
 	hash := sha256.New()
 	hash.Write([]byte(str))
 	hashValue := hash.Sum(nil)
 	hexString := hex.EncodeToString(hashValue)
-	return hexString[:6]
-
+	return hexString[:length]
 }
 
 // equalParameterLen min<=len(str)<=max

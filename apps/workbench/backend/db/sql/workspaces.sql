@@ -1,7 +1,7 @@
 create table if not exists workbench.`workspaces`(
-                                                     `id`    char(6) not null comment 'workspace ID' primary key,
+     `id`    char(6) not null comment 'workspace ID' primary key,
     `name`  varchar(20) not null comment 'workspace Name',
-    `lable` varchar(255) default '' not null comment 'lable',
+    `label` varchar(255) default '' not null comment 'label',
     `logo`  varchar(255) not null comment 'logo',
     `description` varchar(1023) default '' not null comment 'description',
 
@@ -11,7 +11,7 @@ create table if not exists workbench.`workspaces`(
     `updated_at` datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP not null comment 'update time',
     `deleted_by` bigint default 0 comment 'Deleting people',
     `deleted_at` datetime default null comment 'Delete time',
-    `is_deleted` tinyint default 0 not null index comment 'Logical deletion 0-not deleted 1-deleted',
+    `is_deleted` tinyint default 0 not null comment 'Logical deletion 0-not deleted 1-deleted',
     INDEX (`is_deleted`)
 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci comment 'workspace model';
