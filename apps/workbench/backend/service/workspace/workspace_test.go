@@ -83,7 +83,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 
 			mock.ExpectBegin()
 			mock.ExpectExec("INSERT INTO workspaces").
-				WithArgs(hashTop6(workspace.Name), workspace.Name, workspace.Logo, workspace.Label, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
+				WithArgs(hashTop(workspace.Name, 6), workspace.Name, workspace.Logo, workspace.Label, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectCommit()
 

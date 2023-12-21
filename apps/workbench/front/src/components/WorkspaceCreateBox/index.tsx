@@ -9,7 +9,7 @@ import Popup from "@components/Popup";
 import {Avatar} from "antd";
 import Button from "@components/Button";
 import Input from "@components/Input"
-import {IUsrWorkspace, workspaceCreate} from "@api/workspace.ts";
+import {IUsrWorkspace, workspaceCreate, workspaceLogo} from "@api/workspace.ts";
 import $message from "@components/Message";
 
 
@@ -32,7 +32,7 @@ type BoxProps = {
 const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     const [isWsCreate, setIsWsCreate] = React.useState(false)
     const [workspaceName,setworkspaceName] = React.useState("")
-    const [workspaceLogo,setwworkspaceLogo] = React.useState("")
+    const [workspaceLogoPath,setworkspaceLogoPath] = React.useState("")
     const [file, setFile] = useState<File | null>(null);
     const formData = new FormData();
 
@@ -45,23 +45,24 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     };
 
 
-    const handleUpload = async () => {
+    const handleUpload = async  () => {
         if (file != null){
             console.log(file)
             formData.set('file', file)
 
-            axios.create().post('http://121.41.78.218:8700/api/v1/extract-public/upload', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
+            workspaceLogo(formData).then(res => {
+                if (res.value.code === 0) {
+                    console.log(res.value)
+                    setworkspaceLogoPath(res.value.data)
+                } else {
+                    $message.error(res.value.msg)
                 }
+            }).catch(err => {
+                console.log(err);
+                $message.error(err.response.data.value.msg)
             })
-                .then(response => {
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
         }
+
     };
 
 
@@ -74,7 +75,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     const reqWorkspaceCreate = () => {
         workspaceCreate({
             name: workspaceName,
-            logo: "/test/test.png"
+            logo: workspaceLogoPath,
         }).then(res => {
             if (res.value.code === 0) {
                 console.log(res.value.data)
@@ -116,14 +117,13 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
                             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
 
-
                                 <label onClick={handleUpload} htmlFor="workspace-logo">
                                 <input style={{display:"none"}} id="workspace-logo" type="file" onChange={handleFileChange}/>
-                                {workspaceLogo === '' ?
+                                {workspaceLogoPath === '' ?
                                     <Avatar style={{backgroundColor: '#4080FF', verticalAlign: 'middle'}} size={65}
                                             gap={3}>
                                         {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
-                                    </Avatar> : <img src={workspaceLogo} alt="workspace-logo"/>}
+                                    </Avatar> : <img style={{borderRadius:'50%'}} height={65} width={65} src={workspaceLogoPath} alt="workspace-logo"/>}
 
                                 </label>
 

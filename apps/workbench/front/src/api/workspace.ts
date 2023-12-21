@@ -1,4 +1,5 @@
 import request from "@/utils/axios"
+import axios from "axios";
 
 export type IUsrWorkspace = {
     name?: string
@@ -8,13 +9,14 @@ export type IUsrWorkspace = {
 function workspaceList(){
     return request({
         url: '/workspace/list',
-        method: 'post',
+        method: 'get',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer '+ sessionStorage.getItem('token')
         }
     })
 }
+
 
 function workspaceCreate(data:IUsrWorkspace){
     return request({
@@ -28,7 +30,22 @@ function workspaceCreate(data:IUsrWorkspace){
     })
 }
 
+
+function workspaceLogo(formData:FormData){
+   return request({
+       url:'/workspace/logo',
+       method:'post',
+        data:formData,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': 'Bearer '+ sessionStorage.getItem('token')
+        }
+    })
+
+}
+
 export {
     workspaceCreate,
-    workspaceList
+    workspaceList,
+    workspaceLogo
 }

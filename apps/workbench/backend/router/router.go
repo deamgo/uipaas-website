@@ -32,8 +32,8 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	workspaceApi := api.Group("/workspace")
 	{
 		workspaceApi.POST("/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
-		workspaceApi.POST("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
-		workspaceApi.POST("/logo", workspace.WorkspaceGetLogoPath(ctx))
+		workspaceApi.GET("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
+		workspaceApi.POST("/logo", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetLogoPath(ctx))
 	}
 
 }

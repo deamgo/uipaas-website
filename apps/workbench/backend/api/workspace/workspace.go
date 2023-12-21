@@ -8,6 +8,7 @@ import (
 	"github.com/deamgo/workbench/service/workspace"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -43,8 +44,35 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 			})
 			return
 		}
-		file.
-			path, err := ctx.WorkspaceService.WorkspaceGetFilePath(f)
+
+		err = c.SaveUploadedFile(file, "./public/"+file.Filename)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+				Code: e.Failed,
+				Msg:  "upload workspace logo error",
+				Data: nil,
+			})
+			return
+		}
+
+		f, err := os.Open("./public/" + file.Filename)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+				Code: e.Failed,
+				Msg:  "upload workspace logo error",
+				Data: nil,
+			})
+			return
+		}
+		defer func() {
+			err = os.Remove("./public/" + file.Filename)
+			if err != nil {
+				log.Println(err)
+			}
+		}()
+
+		path, err := ctx.WorkspaceService.WorkspaceGetFilePath(f)
+
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
 				Code: e.Failed,
