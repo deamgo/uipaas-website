@@ -68,7 +68,7 @@ func TestWorkspaceService_WorkspaceDel(t *testing.T) {
 	us, mock := setupWorkspaceServiceTest(t)
 
 	mock.ExpectBegin()
-	mock.ExpectExec("UPDATE `workspace`").WithArgs(1, "1").
+	mock.ExpectExec("UPDATE `workspaces`").WithArgs(1, "1").
 		WillReturnResult(sqlmock.NewResult(1, 1))
 	mock.ExpectCommit()
 
