@@ -8,6 +8,7 @@ import (
 
 type WorkspaceDao interface {
 	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error)
+	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*WorkspaceDO, error)
 }
 
 type workspaceDao struct {
@@ -21,6 +22,38 @@ func NewWorkspaceDao(db *gorm.DB) WorkspaceDao {
 }
 
 func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error) {
-	err := dao.db.WithContext(ctx).Model(&WorkspaceDO{}).Create(&workspace).Error
+	dwrDO := &DeveloperWorkspaceRelationDO{
+		WorkspaceId: workspace.Id,
+		DeveloperId: workspace.CreatedBy,
+		Role:        1,
+		CreatedBy:   workspace.CreatedBy,
+		UpdatedBy:   workspace.UpdatedBy,
+	}
+
+	err := dao.db.Transaction(func(tx *gorm.DB) error {
+		if err := tx.WithContext(ctx).Model(&WorkspaceDO{}).Create(&workspace).Error; err != nil {
+			return err
+		}
+		if err := tx.Model(&DeveloperWorkspaceRelationDO{}).Create(&dwrDO).Error; err != nil {
+			return err
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
 	return workspace, err
+
+}
+
+func (dao workspaceDao) WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*WorkspaceDO, error) {
+	var WorkspaceDOs []*WorkspaceDO
+	err := dao.db.WithContext(ctx).Debug().
+		Raw("select w.* from workspace_developer_relation r left join workspaces w on w.id = r.workspace_id where developer_id = ?;", developerId).Scan(&WorkspaceDOs).Error
+	if err != nil {
+		return nil, err
+	}
+	return WorkspaceDOs, nil
 }

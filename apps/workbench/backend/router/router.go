@@ -23,7 +23,7 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	api := e.Group("v1")
 	// api.Any("/*", middleware.JWTAuthMiddleware())
 	{
-		api.POST("/signup", account.SignUp(ctx))
+    api.POST("/signup", account.SignUp(ctx))
 		api.POST("/signup_verify", account.SignUpVerify(ctx))
 		api.POST("/signin", account.SignIn(ctx))
 		api.GET("/logout", middleware.JWTAuthMiddleware(), account.Logout())
@@ -40,9 +40,12 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		// Modify the password
 		api.POST("/developer/password/firststep", middleware.JWTAuthMiddleware(), developer.SendModifyPwdVerify(ctx))
 		api.POST("/developer/password/secondstep", middleware.JWTAuthMiddleware(), developer.VerifyPwdVerificationCode(ctx))
-
-		api.POST("/workspace/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
-
+	}
+	workspaceApi := api.Group("/workspace")
+	{
+		workspaceApi.POST("/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
+		workspaceApi.GET("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
+		workspaceApi.POST("/logo", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetLogoPath(ctx))
 	}
 
 }
