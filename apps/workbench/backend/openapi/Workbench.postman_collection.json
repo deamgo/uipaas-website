@@ -48,7 +48,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"zjdisaisdf\",\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\"\n}",
+					"raw": "{\n    \"username\": \"sfsadfs\",\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,11 +100,11 @@
 		{
 			"name": "reset_password",
 			"request": {
-				"method": "POST",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n    \"email\":\"2734170020@qq.com\",\n    \"code_key\":\"b5b3daeea698996132db725d02a4cb302e07d378\",\n    \"code\":5363,\n    \"password\":\"admin123\"\n}",
+					"raw": "{\n\n    \"email\":\"2734170020@qq.com\",\n    \"code_key\":\"a53d90941ba3ffebae4c03ef9e5b3482d7fb11dc\",\n    \"code\":4164,\n    \"password\":\"admin100\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -132,7 +132,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"zjdisaisdf\",\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\",\n    \"code_key\": \"98f7d2685668fd406bc603926db312e25b01f534\",\n    \"code\": 6524\n}",
+					"raw": "{\n    \"username\": \"zjdisaisdf\",\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\",\n    \"code_key\": \"a53d90941ba3ffebae4c03ef9e5b3482d7fb11dc\",\n    \"code\": 2028\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -148,6 +148,199 @@
 					"path": [
 						"v1",
 						"signup_verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "获取用户信息",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MzY5Mzk3NDM1MzY0ODQzNTIiLCJleHAiOjE3MDI5NzMyMjUsImlzcyI6Im15LXByb2plY3QifQ.NS_oOXB_k2jfVxJlOmhxQ4KbPlbauKZJ3vlcGKKFzPE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8989/v1/developer/1736939743536484352",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"developer",
+						"1736939743536484352"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "修改用户名",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MzY5Mzk3NDM1MzY0ODQzNTIiLCJleHAiOjE3MDI5NjMyMzksImlzcyI6Im15LXByb2plY3QifQ.4Ttng8_GxqKGyP-UqnVUo_VTfc3XY3OjpjrgxypA0eQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"zhoucong\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/developer/username/1736939743536484352",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"developer",
+						"username",
+						"1736939743536484352"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "验证邮箱和密码",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MzY5Mzk3NDM1MzY0ODQzNTIiLCJleHAiOjE3MDI5NzMyMjUsImlzcyI6Im15LXByb2plY3QifQ.NS_oOXB_k2jfVxJlOmhxQ4KbPlbauKZJ3vlcGKKFzPE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"2734170020@qq.com\",\n    \"password\": \"2j532lj5k32\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/developer/email/firststep",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"developer",
+						"email",
+						"firststep"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "发送新邮箱验证码",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MzY5Mzk3NDM1MzY0ODQzNTIiLCJleHAiOjE3MDI5NzMyMjUsImlzcyI6Im15LXByb2plY3QifQ.NS_oOXB_k2jfVxJlOmhxQ4KbPlbauKZJ3vlcGKKFzPE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"old_email\":\"2734170020@qq.com\",\n    \"email\":\"3494246542@qq.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/developer/email/secondstep",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"developer",
+						"email",
+						"secondstep"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "验证并更新邮箱",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE3MzY5Mzk3NDM1MzY0ODQzNTIiLCJleHAiOjE3MDI5NzMyMjUsImlzcyI6Im15LXByb2plY3QifQ.NS_oOXB_k2jfVxJlOmhxQ4KbPlbauKZJ3vlcGKKFzPE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code_key\":\"dc155d73cfc406a314e2dfe980dd9d083d73211d\",\n    \"code\":4776,\n    \"old_email\":\"2734170020@qq.com\",\n    \"email\":\"3494246542@qq.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8989/v1/developer/email/thirdstep",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v1",
+						"developer",
+						"email",
+						"thirdstep"
 					]
 				}
 			},
