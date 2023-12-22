@@ -18,6 +18,9 @@ const SwitchWorkspace: React.FC = () => {
   const [username, setUsername] = React.useState('')
   const [wsName, setWsName] = React.useState('')
 
+  const [wcbShow, setwcbShow] = useState(false);
+  const [list_workspace, setlist_workspace] = useState([{ name: "Ilee's Workspace", logo: "" }])
+
   useEffect(() => {
     workspaceList().then(res => {
       if (res.value.code === 0) {
@@ -36,10 +39,8 @@ const SwitchWorkspace: React.FC = () => {
   React.useEffect(() => {
     setWsName(currentWorkspaceStore.getCurrentWorkspace().name)
     setUsername(appStore.getUserInfo().username)
-  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username])
-
-  const [wcbShow, setwcbShow] = useState(false);
-  const [list_workspace, setlist_workspace] = useState([{ name: "Ilee's Workspace", logo: "" }])
+    setlist_workspace(wsStore.getWsList())
+  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username, wsStore.getWsList().length])
 
 
   const wcbHandleClick = () => {
@@ -53,7 +54,7 @@ const SwitchWorkspace: React.FC = () => {
         <Avatar style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={28} gap={2}>
           {wsName.charAt(0).toUpperCase()}
         </Avatar>
-        <span className="__sws_title">{wsName ? wsName : { username } + 's Workspace'}</span>
+        <span className="__sws_title">{wsName ? wsName : 'no Workspace'}</span>
         <div className="__sws_switch" onClick={wcbHandleClick}>
           <Switch />
         </div>

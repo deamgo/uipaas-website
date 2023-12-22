@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 //
 import './index.less'
 //
@@ -7,9 +8,10 @@ import { Avatar } from 'antd'
 import Button from '@/components/Button'
 import Popup from '@/components/Popup'
 import Mask from '@/components/Mask'
-import { currentWorkspaceStore } from '@/store/wsStore'
+import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 import { deleteWorkspace } from '@/api/workspace_settings'
 import $message from '@/components/Message'
+import { workspaceList } from '@/api/workspace'
 
 
 const WSSettings: React.FC = () => {
@@ -21,6 +23,8 @@ const WSSettings: React.FC = () => {
 
   const [isDelete, setIsDelete] = React.useState(false)
   const [confirmDeleteAble, setConfirmDeleteAble] = React.useState(true)
+
+  const navigate = useNavigate()
 
   React.useEffect(() => {
     setCurrentWorkspace(currentWorkspaceStore.getCurrentWorkspace())
@@ -58,6 +62,15 @@ const WSSettings: React.FC = () => {
     deleteWorkspace(currentWorkspace.id).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
+        workspaceList().then(res => {
+          if (res.value.code === 0) {
+            wsStore.setWsList(res.value.data)
+            currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList()[0])
+            navigate('/')
+          }
+        }).catch(err => {
+          console.log(err);
+        })
         setIsDelete(false)
         handleMask()
       }

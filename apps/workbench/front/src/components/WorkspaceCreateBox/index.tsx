@@ -9,8 +9,9 @@ import Popup from "@components/Popup";
 import { Avatar } from "antd";
 import Button from "@components/Button";
 import Input from "@components/Input"
-import { IUsrWorkspace, workspaceCreate, workspaceLogo } from "@api/workspace.ts";
+import { IUsrWorkspace, workspaceCreate, workspaceList, workspaceLogo } from "@api/workspace.ts";
 import $message from "@components/Message";
+import { wsStore } from "@/store/wsStore";
 
 
 interface WorkspaceItem {
@@ -74,8 +75,8 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     }
 
 
-    const reqWorkspaceCreate = () => {
-        workspaceCreate({
+    const reqWorkspaceCreate = async () => {
+        await workspaceCreate({
             name: workspaceName,
             logo: workspaceLogoPath,
         }).then(res => {
@@ -90,6 +91,18 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
             console.log(err);
             $message.error(err.response.data.value.msg)
         })
+
+        await workspaceList().then(res => {
+            if (res.value.code === 0) {
+                console.log(res.value.data)
+                props.setlist_workspace(res.value.data)
+                wsStore.setWsList(res.value.data)
+            } else {
+                $message.error(res.value.msg)
+            }
+        }).catch(err => {
+
+        })
     }
 
 
@@ -99,7 +112,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
             <div className="__wcb">
                 <div className="__wcb_box">
                     {props.list
-                        ? props.list.map(item => (
+                        ? wsStore.getWsList().map(item => (
                             <WorkspaceCreateBoxItem id={item.id} name={item.name} logo={item.logo} />
                         ))
                         : (<></>)}
@@ -119,7 +132,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
                             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
 
-                                <label onClick={handleUpload} htmlFor="workspace-logo">
+                                <label htmlFor="workspace-logo">
                                     <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
                                     {workspaceLogoPath === '' ?
                                         <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={65}
