@@ -39,7 +39,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		file, err := c.FormFile("file")
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "upload workspace logo error",
 				Data: nil,
@@ -49,7 +49,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		err = c.SaveUploadedFile(file, "./public/"+file.Filename)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "upload workspace logo error",
 				Data: nil,
@@ -59,7 +59,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		f, err := os.Open("./public/" + file.Filename)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "upload workspace logo error",
 				Data: nil,
@@ -76,7 +76,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 		path, err := ctx.WorkspaceService.WorkspaceGetFilePath(f)
 
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "upload workspace logo file unusual.",
 				Data: nil,
@@ -98,7 +98,7 @@ func WorkspaceGetListById(ctx context.ApplicationContext) gin.HandlerFunc {
 		var err error
 		id, err := getDevelopId(c)
 		if id == 0 || err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "Get developId data exception",
 				Data: nil,
@@ -107,7 +107,7 @@ func WorkspaceGetListById(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		list, err := ctx.WorkspaceService.WorkspaceGetListById(c, id)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "Get developId data exception",
 				Data: nil,
@@ -136,7 +136,7 @@ func WorkspaceCreate(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		data, err := ctx.WorkspaceService.WorkspaceCreate(c, convertWorkspace(req, c))
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
 				Code: e.Failed,
 				Msg:  "The parameters are not formatted correctly." + err.Error(),
 				Data: nil,
