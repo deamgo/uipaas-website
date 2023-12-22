@@ -3,7 +3,6 @@ package developer
 import (
 	"errors"
 	"fmt"
-	"github.com/deamgo/workbench/auth/jwt"
 	"net/http"
 	"regexp"
 	"time"
@@ -16,6 +15,7 @@ import (
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
 
+	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
@@ -116,7 +116,7 @@ func VerifyEmailAndPwd(ctx context.ApplicationContext) gin.HandlerFunc {
 		validate := validator.New()
 		err = validate.RegisterValidation("verifyPwd", verifyPwd)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 				Data: nil,
@@ -419,7 +419,7 @@ func ModifyPwd(ctx context.ApplicationContext) gin.HandlerFunc {
 			c.AbortWithStatus(http.StatusBadRequest)
 			return
 		}
-		var dlp = &developer.Developer{
+		dlp := &developer.Developer{
 			Email:    req.Email,
 			Password: req.Password,
 		}

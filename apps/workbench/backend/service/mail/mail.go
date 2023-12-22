@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/deamgo/workbench/pkg/consts"
 	"html/template"
 	"log"
 	"math/rand"
@@ -15,11 +16,6 @@ import (
 
 	"github.com/Boostport/mjml-go"
 	"github.com/jordan-wright/email"
-)
-
-var (
-	SUBJECT_LINE = "UIPaaS Email verification code"
-	ADDRESSER    = "uipaas@tests.run"
 )
 
 type MailService interface {
@@ -41,11 +37,11 @@ func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 	randomNumber := rand.Intn(9000) + 1000
 	e := email.NewEmail()
 	// Set the sender's mailbox
-	e.From = fmt.Sprintf("UIPaaS <%v>", ADDRESSER)
+	e.From = fmt.Sprintf("UIPaaS <%v>", consts.ADDRESSER)
 	// Set up the recipient's mailbox
 	e.To = []string{emailStr}
 	// Set up a subject
-	e.Subject = SUBJECT_LINE
+	e.Subject = consts.SUBJECT_LINE
 	// Set the content of the file to be sent
 	htmlStr, err := parseMJMLFile(getCurrentAbPathByCaller()+"/mjml/verification_code.mjml", ctx)
 	if err != nil {

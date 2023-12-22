@@ -66,7 +66,7 @@ func IsExpireToken(tokenString string) (bool, error) {
 		return time.Now().Unix() < claims.ExpiresAt, nil
 	}
 
-	return false, fmt.Errorf("Invalid token")
+	return false, errors.New("invalid token")
 }
 
 func ExtractIDFromToken(tokenString string) (string, error) {
