@@ -44,13 +44,14 @@
             }
         }
         &_item:first-child{
-            background: rgba(22, 119, 255,0.1);
+            background: rgba(22, 119, 255,0.1) !important;
         }
         &_item +  &_item {
             margin-top: 10px;
         }
         &_item:hover{
             cursor: pointer;
+            background: rgba(22, 119, 255,0.05);
         }
     }
     &_line{
@@ -97,10 +98,34 @@
     bottom: 23px;
     left:94px;
     color: #4E5969;
+    &_setLogo{
+        z-index: 99999;
+        position: absolute;
+        top: 0px;
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+        opacity: 100;
+    }
+    &_setLogo:hover{
+        z-index: 99999;
+        position: absolute;
+        top: 0px;
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+        background: url("@/assets/layout/workspace-create-upload.png");
+        background-position: center;
+        background-size: 25px 25px;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-color: rgba(140, 140, 140, 0.55);
+    }
 
     &_logo:hover{
-       background: url("@/assets/layout/workspace-create-upload.png");
+        cursor: pointer;
     }
+
     &_input{
         position: relative;
         top:13px;
