@@ -14,6 +14,7 @@ import { ReactComponent as Wssettings } from '@assets/layout/wssettings.svg'
 import { observer } from 'mobx-react-lite';
 import { IMultiplySelectorPropsItem, mcontent } from '@/interface/some';
 import Cookies from 'js-cookie';
+import Popup from "@components/Popup";
 
 const list_c: mcontent[] = [
   {
@@ -116,6 +117,11 @@ const Sider: React.FC<SiderProps> = (props) => {
           </div>
         )}
       </div>
+      {/*{isWsCreate && (*/}
+      {/*    <>*/}
+      {/*      <Popup unit={'rem'} width={31} height={17.25} title={'Create Workspace'}></Popup>*/}
+      {/*    </>*/}
+      {/*)}*/}
     </>
   )
 }
