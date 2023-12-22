@@ -2,14 +2,15 @@ package workspace
 
 import (
 	"fmt"
-	"github.com/deamgo/workbench/context"
-	"github.com/deamgo/workbench/pkg/e"
-	"github.com/deamgo/workbench/pkg/types"
-	"github.com/deamgo/workbench/service/workspace"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
+
+	"github.com/deamgo/workbench/context"
+	"github.com/deamgo/workbench/pkg/e"
+	"github.com/deamgo/workbench/pkg/types"
+	"github.com/deamgo/workbench/service/workspace"
 
 	"github.com/gin-gonic/gin"
 )
