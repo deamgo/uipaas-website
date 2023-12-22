@@ -33,7 +33,6 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     const [isWsCreate, setIsWsCreate] = React.useState(false)
     const [workspaceName, setworkspaceName] = React.useState("")
     const [workspaceLogoPath, setworkspaceLogoPath] = React.useState("")
-    const [file, setFile] = useState<File | null>(null);
     const formData = new FormData();
 
 
@@ -119,7 +118,8 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
                             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
 
-                                <label onClick={handleUpload} htmlFor="workspace-logo">
+                                <label htmlFor="workspace-logo">
+                                    <div className="__wcb_popup_setLogo"></div>
                                     <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
                                     {workspaceLogoPath === '' ?
                                         <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={65}
