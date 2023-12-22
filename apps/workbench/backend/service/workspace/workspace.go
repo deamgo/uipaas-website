@@ -22,7 +22,7 @@ import (
 
 type WorkspaceService interface {
 	WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
-	WorkspaceDel(ctx context.Context, workspace *Workspace) error
+	WorkspaceDel(ctx context.Context, workspace *Workspace, developerID string) error
 	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*Workspace, error)
 	WorkspaceGetFilePath(file *os.File) (string, error)
 }
@@ -153,9 +153,9 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	return convertWorkspace(newWorkspaceDO), nil
 }
 
-func (w workspaceService) WorkspaceDel(ctx context.Context, workspace *Workspace) error {
+func (w workspaceService) WorkspaceDel(ctx context.Context, workspace *Workspace, developerID string) error {
 	workspaceDo := convertWorkspaceDao(workspace)
-	err := w.dao.WorkspaceDel(ctx, workspaceDo)
+	err := w.dao.WorkspaceDel(ctx, workspaceDo, developerID)
 	return err
 }
 
