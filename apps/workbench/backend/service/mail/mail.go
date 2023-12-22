@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/deamgo/workbench/pkg/consts"
 	"html/template"
 	"log"
 	"math/rand"
@@ -13,6 +12,8 @@ import (
 	"path"
 	"runtime"
 	"time"
+
+	"github.com/deamgo/workbench/pkg/consts"
 
 	"github.com/Boostport/mjml-go"
 	"github.com/jordan-wright/email"
