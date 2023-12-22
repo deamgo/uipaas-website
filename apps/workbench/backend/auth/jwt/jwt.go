@@ -55,15 +55,16 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 }
 
 func IsExpireToken(tokenString string) (bool, error) {
-	token, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
+	_, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return MySecret, nil
 	})
 
 	if err != nil {
-		return false, err
-	}
-	if claims, ok := token.Claims.(*MyClaims); ok && token.Valid {
-		return time.Now().Unix() < claims.ExpiresAt, nil
+		if ve, ok := err.(*jwt.ValidationError); ok {
+			if ve.Errors&(jwt.ValidationErrorExpired) != 0 {
+				return true, nil
+			}
+		}
 	}
 
 	return false, errors.New("invalid token")

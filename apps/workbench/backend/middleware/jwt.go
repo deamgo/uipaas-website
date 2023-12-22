@@ -56,6 +56,8 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 					Token string `json:"token"`
 				}{newToken},
 			})
+			c.Abort()
+			return
 		}
 
 		mc, err := jwt.ParseToken(parts[1])
