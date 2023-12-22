@@ -2,16 +2,18 @@ package workspace
 
 import (
 	"fmt"
-	"github.com/deamgo/workbench/context"
-	"github.com/deamgo/workbench/pkg/e"
-	"github.com/deamgo/workbench/pkg/types"
-	"github.com/deamgo/workbench/service/workspace"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
 
+	"github.com/deamgo/workbench/context"
+	"github.com/deamgo/workbench/pkg/e"
+	"github.com/deamgo/workbench/pkg/types"
+	"github.com/deamgo/workbench/service/workspace"
+
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 )
 
 type Resp struct {
@@ -148,6 +150,40 @@ func WorkspaceCreate(ctx context.ApplicationContext) gin.HandlerFunc {
 			Data: WorkspaceCreateResp{data},
 		}))
 
+	}
+}
+
+func WorkspaceDel(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var req struct {
+			Id string `json:"id" validate:"required"`
+		}
+		req.Id = c.Param("id")
+
+		validate := validator.New()
+		if err := validate.Struct(req); err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The parameters are not formatted correctly",
+				Data: nil,
+			}))
+			return
+		}
+		var workspace = &workspace.Workspace{
+			Id: req.Id,
+		}
+		err := ctx.WorkspaceService.WorkspaceDel(c, workspace)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+			}))
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+			Code: e.Success,
+			Msg:  "delete workspace succeed",
+		}))
 	}
 }
 

@@ -3,6 +3,7 @@ package jwt
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -53,21 +54,28 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 	return nil, errors.New("invalid token")
 }
 
-func ExtractIDFromToken(tokenString string) (string, error) {
+func IsExpireToken(tokenString string) (bool, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return getSecret(), nil
+		return MySecret, nil
 	})
 
 	if err != nil {
-		return "", fmt.Errorf("failed to parse token: %v", err)
+		return false, err
+	}
+	if claims, ok := token.Claims.(*MyClaims); ok && token.Valid {
+		return time.Now().Unix() < claims.ExpiresAt, nil
 	}
 
-	claims, ok := token.Claims.(*MyClaims)
-	if !ok || !token.Valid {
-		return "", fmt.Errorf("invalid token")
-	}
+	return false, errors.New("invalid token")
+}
 
-	return claims.ID, nil
+func ExtractIDFromToken(tokenString string) (string, error) {
+	parts := strings.SplitN(tokenString, " ", 2)
+	claim, err := ParseToken(parts[1])
+	if err != nil {
+		return "", err
+	}
+	return claim.ID, nil
 }
 
 func getSecret() []byte {

@@ -195,7 +195,8 @@ func (us developerService) SendModifyEmailVerify(ctx context.Context, u *Develop
 		return "", errors.New("email already exists")
 	}
 	code := mail.MailService.SendMail(mail.NewMailService(), ctx, u.Email)
-	codeHash, err := SaveCode(u.Email, code)
+	var codeHash string
+	codeHash, err = SaveCode(u.Email, code)
 	if err != nil {
 		logger.Error(err)
 		return "", err

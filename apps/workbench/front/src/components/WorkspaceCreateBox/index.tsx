@@ -39,13 +39,11 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            setFile(e.target.files[0]);
+        if (!e.target.files) {
+            return;
         }
-    };
-
-
-    const handleUpload = async  () => {
+        const file = e.target.files[0];
+        // setFile(file)
         if (file != null){
             console.log(file)
             formData.set('file', file)
@@ -62,8 +60,8 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
                 $message.error(err.response.data.value.msg)
             })
         }
-
     };
+
 
 
     const wcbpHandleClick = () => {
@@ -117,18 +115,20 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
                             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
 
-                                <label onClick={handleUpload} htmlFor="workspace-logo">
-                                <input style={{display:"none"}} id="workspace-logo" type="file" onChange={handleFileChange}/>
-                                {workspaceLogoPath === '' ?
-                                    <Avatar style={{backgroundColor: '#4080FF', verticalAlign: 'middle'}} size={65}
-                                            gap={3}>
-                                        {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
-                                    </Avatar> : <img style={{borderRadius:'50%'}} height={65} width={65} src={workspaceLogoPath} alt="workspace-logo"/>}
+
+                                <label htmlFor="workspace-logo" className="__wcb_popup_logo">
+                                    <div className="__wcb_popup_setLogo">
+                                    </div>
+                                    <input style={{display: "none"}} id="workspace-logo" type="file"
+                                           onChange={handleFileChange}/>
+                                    {workspaceLogoPath === '' ?
+                                        <Avatar style={{backgroundColor: 'blue', verticalAlign: 'middle'}} size={65}
+                                                gap={3}>
+                                            {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
+                                        </Avatar> : <img style={{borderRadius: '50%'}} height={65} width={65}
+                                                         src={workspaceLogoPath} alt="workspace-logo"/>}
 
                                 </label>
-
-
-
                                 <div className="__user_profile_account_container_wrapper_input_besideAvatar">
                                     <div style={{marginBottom: '13px'}}><span
                                         style={{color: '#4E5969'}}>Workspace Name</span><span
