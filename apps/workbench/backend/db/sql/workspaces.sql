@@ -2,7 +2,7 @@ create table if not exists workbench.`workspaces`(
      `id`    char(6) not null comment 'workspace ID' primary key,
     `name`  varchar(20) not null comment 'workspace Name',
     `label` varchar(255) default '' not null comment 'label',
-    `logo`  varchar(255) not null comment 'logo',
+    `logo`  varchar(255) default '' not null comment 'logo',
     `description` varchar(1023) default '' not null comment 'description',
 
     `created_by` bigint default 0 not null comment 'creator',
