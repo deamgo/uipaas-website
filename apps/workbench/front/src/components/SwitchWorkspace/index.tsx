@@ -9,19 +9,34 @@ import { observer } from "mobx-react-lite"
 import WorkspaceCreateBox from "@components/WorkspaceCreateBox";
 import { workspaceList } from "@api/workspace.ts";
 import $message from "@components/Message";
+import { appStore } from "@/store/store"
+import { currentWorkspaceStore, wsStore } from "@/store/wsStore"
 
 
 const SwitchWorkspace: React.FC = () => {
 
   const [username, setUsername] = React.useState('')
+  const [wsName, setWsName] = React.useState('')
 
-  React.useEffect(() => {
-    setUsername(appStore.getUserInfo().username)
+  useEffect(() => {
+    workspaceList().then(res => {
+      if (res.value.code === 0) {
+        console.log(res.value);
+        setlist_workspace(res.value.data)
+        wsStore.setWsList(res.value.data)
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.response.data.value.msg)
+    })
   }, [])
 
   React.useEffect(() => {
+    setWsName(currentWorkspaceStore.getCurrentWorkspace().name)
     setUsername(appStore.getUserInfo().username)
-  }, [appStore.getUserInfo()])
+  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username])
 
   const [wcbShow, setwcbShow] = useState(false);
   const [list_workspace, setlist_workspace] = useState([{ name: "Ilee's Workspace", logo: "" }])
@@ -32,27 +47,13 @@ const SwitchWorkspace: React.FC = () => {
   };
 
 
-  useEffect(() => {
-    workspaceList().then(res => {
-      if (res.value.code === 0) {
-        setlist_workspace(res.value.data)
-      } else {
-        $message.error(res.value.msg)
-      }
-    }).catch(err => {
-      console.log(err);
-      $message.error(err.response.data.value.msg)
-    })
-  }, [])
-
-
   return (
     <>
       <div className="__sws">
         <Avatar style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={28} gap={2}>
-          {'ILEE'.charAt(0).toUpperCase()}
+          {wsName.charAt(0).toUpperCase()}
         </Avatar>
-        <span className="__sws_title">{'Ilee'}'s Workspace</span>
+        <span className="__sws_title">{wsName ? wsName : { username } + 's Workspace'}</span>
         <div className="__sws_switch" onClick={wcbHandleClick}>
           <Switch />
         </div>

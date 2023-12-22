@@ -15,6 +15,7 @@ import { observer } from 'mobx-react-lite';
 import { IMultiplySelectorPropsItem, mcontent } from '@/interface/some';
 import Cookies from 'js-cookie';
 import Popup from "@components/Popup";
+import { currentWorkspaceStore, wsStore } from '@/store/wsStore';
 
 const list_c: mcontent[] = [
   {
@@ -85,6 +86,9 @@ const Sider: React.FC<SiderProps> = (props) => {
       method: () => {
         appStore.resetUserInfo()
         tokenStore.resetToken()
+        wsStore.resetWsList()
+        currentWorkspaceStore.resetCurrentWorkspace()
+        sessionStorage.clear()
         Cookies.remove('token')
         setShowMultiSelect(false)
         navigate('/s')

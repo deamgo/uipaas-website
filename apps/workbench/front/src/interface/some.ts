@@ -15,3 +15,21 @@ export interface IMultiplySelectorPropsItem {
   method: () => void
   children?: React.ReactNode
 }
+
+export interface IWorkSpaceMate {
+  id: string
+  name: string
+  logo: string
+  lable: string
+  description: string
+  creator: string
+  createTime?: string
+  updateTime?: string
+  status?: number
+}
+
+export interface IWorkspaceItemProps {
+  id: string;
+  logo: string;
+  name: string;
+}

@@ -15,10 +15,13 @@ import WSDevelopers from '@/views/layout/content-ws-sys/content/developers'
 import WSSettings from '@/views/layout/content-ws-sys/content/settings'
 import { tokenStore, appStore } from '@/store/store'
 import { getUserInfo } from '@/api/developer_profile'
+import { workspaceList } from '@/api/workspace'
+import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 
 const tokenLoader = async () => {
-  const token = tokenStore.getToken()
+  console.log('tokenLoading');
 
+  const token = tokenStore.getToken()
   if (!token) {
     return redirect('/s')
   } else {
@@ -29,7 +32,6 @@ const tokenLoader = async () => {
         sessionStorage.setItem('userEmail', res.value.data.email)
         sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
         appStore.setUserInfo(res.value.data)
-        console.log(appStore.userInfo.username);
       } else if (res.code === 2005) {
         return redirect('/s')
       }
@@ -37,6 +39,8 @@ const tokenLoader = async () => {
       console.log(err);
       return redirect('/s')
     })
+
+    WorkspaceListLoader()
 
   }
   return null
@@ -53,6 +57,24 @@ const UserProfileLoader = () => {
     return {}
   })
   return {}
+}
+
+const WorkspaceListLoader = () => {
+  workspaceList().then(res => {
+    if (res.value.code === 0) {
+      wsStore.setWsList(res.value.data)
+      if (!currentWorkspaceStore.currentWorkspace.name) {
+        console.log(currentWorkspaceStore.currentWorkspace);
+
+        currentWorkspaceStore.setCurrentWorkspace(res.value.data[0])
+      }
+      return res.value.data
+    } else {
+    }
+  }).catch(err => {
+    console.log(err);
+  })
+  return []
 }
 
 export const routes: RouteObject[] = [
