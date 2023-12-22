@@ -105,11 +105,13 @@ func TestWorkspaceService_WorkspaceDel(t *testing.T) {
 	mock.ExpectBegin()
 	mock.ExpectExec("UPDATE `workspaces`").WithArgs(1, "1").
 		WillReturnResult(sqlmock.NewResult(1, 1))
+	mock.ExpectExec("UPDATE `workspace_developer_relation`").WithArgs(1, "1").
+		WillReturnResult(sqlmock.NewResult(1, 1))
 	mock.ExpectCommit()
 
 	u := &Workspace{Id: "1"}
 
-	err := us.WorkspaceDel(context.Background(), u)
+	err := us.WorkspaceDel(context.Background(), u, "1")
 
 	assert.NoError(t, err)
 }
