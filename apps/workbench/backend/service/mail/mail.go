@@ -51,7 +51,6 @@ func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 	if err != nil {
 		log.Fatal(err)
 	}
-	// 定义包含变量的结构
 	data := struct {
 		Code int
 	}{
