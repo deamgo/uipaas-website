@@ -1,55 +1,68 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 //
 import './index.less'
 //
 import { ReactComponent as Switch } from '@assets/layout/switch.svg'
 //
 import { Avatar } from 'antd'
+import { observer } from "mobx-react-lite"
 import WorkspaceCreateBox from "@components/WorkspaceCreateBox";
-import {workspaceList} from "@api/workspace.ts";
+import { workspaceList } from "@api/workspace.ts";
 import $message from "@components/Message";
+import { appStore } from "@/store/store"
+import { currentWorkspaceStore, wsStore } from "@/store/wsStore"
 
 
 const SwitchWorkspace: React.FC = () => {
-    const [wcbShow,setwcbShow]= useState(false);
-    const [list_workspace,setlist_workspace] = useState([{name:"Ilee's Workspace",logo:""}])
+
+  const [username, setUsername] = React.useState('')
+  const [wsName, setWsName] = React.useState('')
+
+  useEffect(() => {
+    workspaceList().then(res => {
+      if (res.value.code === 0) {
+        console.log(res.value);
+        setlist_workspace(res.value.data)
+        wsStore.setWsList(res.value.data)
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.response.data.value.msg)
+    })
+  }, [])
+
+  React.useEffect(() => {
+    setWsName(currentWorkspaceStore.getCurrentWorkspace().name)
+    setUsername(appStore.getUserInfo().username)
+  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username])
+
+  const [wcbShow, setwcbShow] = useState(false);
+  const [list_workspace, setlist_workspace] = useState([{ name: "Ilee's Workspace", logo: "" }])
 
 
-    const wcbHandleClick = () => {
-        setwcbShow(!wcbShow);
-    };
-
-
-    useEffect(() => {
-        workspaceList().then(res => {
-            if (res.value.code === 0) {
-                setlist_workspace(res.value.data)
-            } else {
-                $message.error(res.value.msg)
-            }
-        }).catch(err => {
-            console.log(err);
-            $message.error(err.response.data.value.msg)
-        })
-    },[])
+  const wcbHandleClick = () => {
+    setwcbShow(!wcbShow);
+  };
 
 
   return (
-      <>
-        {/*  <div className="__sws" onClick={wcbHandleClick}>  无法起效果 */}
-        <div className="__sws">
-          <Avatar onClick={wcbHandleClick} style={{backgroundColor: 'blue', verticalAlign: 'middle'}} size={28} gap={2}>
-            {'ILEE'.charAt(0).toUpperCase()}
-          </Avatar>
-          <span onClick={wcbHandleClick} className="__sws_title">{'Ilee'}'s Workspace</span>
-          <div className="__sws_switch" onClick={wcbHandleClick}>
-            <Switch/>
-          </div>
-            {wcbShow && <WorkspaceCreateBox list_workspace={list_workspace} setlist_workspace={setlist_workspace} setwcbShow={setwcbShow} list={list_workspace} />}
+    <>
+      <div className="__sws">
+        <Avatar style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={28} gap={2}>
+          {wsName.charAt(0).toUpperCase()}
+        </Avatar>
+        <span className="__sws_title">{wsName ? wsName : { username } + 's Workspace'}</span>
+        <div className="__sws_switch" onClick={wcbHandleClick}>
+          <Switch />
         </div>
-      </>
+        {wcbShow && <WorkspaceCreateBox list_workspace={list_workspace} setlist_workspace={setlist_workspace} setwcbShow={setwcbShow} list={list_workspace} />}
+      </div>
+    </>
   )
 
 
 }
-export default SwitchWorkspace
+
+export default observer(SwitchWorkspace)

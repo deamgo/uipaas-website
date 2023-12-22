@@ -8,7 +8,13 @@ declare module 'axios' {
       data: {
         token: string
         code_key: string
+        id: string
+        username: string
+        email: string
+        avatar: string
       }
     }
+    code: number;
+    msg: string;
   }
 }

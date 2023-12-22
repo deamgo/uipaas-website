@@ -9,6 +9,7 @@ import { emailReg, passwordReg } from '@constants/regexp'
 import { usrSignIn } from '@api/sign_in'
 import $message from '@/components/Message'
 import { Link, useNavigate } from 'react-router-dom'
+import { tokenStore } from '@/store/store'
 
 const SignIn: React.FC = () => {
 
@@ -33,19 +34,17 @@ const SignIn: React.FC = () => {
   //impl api/sign_in.ts > usrSignIn
   const handleContinue = () => {
     console.log('SignIn');
-    const usrinfo = {
-      email,
-      pwd
-    }
-    console.log(usrinfo);
     usrSignIn({
       email,
       password: pwd
     }).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('token', res.value?.data.token)
+        tokenStore.setToken(res.value?.data.token)
+        if (!tokenStore.getToken()) {
+          tokenStore.setToken(res.value?.data.token)
+        }
         $message.success(res.value.msg)
-        navigate('/apps')
+        navigate('/')
       } else {
         $message.error(res.value.msg)
       }
