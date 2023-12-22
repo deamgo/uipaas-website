@@ -16,6 +16,7 @@ import (
 
 	dao "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/pkg/logger"
+
 	"github.com/pkg/errors"
 )
 
@@ -160,9 +161,9 @@ func (w workspaceService) WorkspaceDel(ctx context.Context, workspace *Workspace
 
 func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 	return &dao.WorkspaceDO{
-		Id:          workspace.Id,
-		Name:        workspace.Name,
-		Logo:        workspace.Logo,
+		Id:   workspace.Id,
+		Name: workspace.Name,
+		Logo: workspace.Logo,
 
 		Label:       workspace.Label,
 		Description: workspace.Description,
@@ -173,8 +174,8 @@ func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 
 func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 	return &Workspace{
-		Id:          workspaceDao.Id,
-		Name:        workspaceDao.Name,
+		Id:   workspaceDao.Id,
+		Name: workspaceDao.Name,
 
 		Label:       workspaceDao.Label,
 		Description: workspaceDao.Description,

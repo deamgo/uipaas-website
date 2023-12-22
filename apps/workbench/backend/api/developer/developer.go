@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/e"
@@ -15,7 +16,6 @@ import (
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
 
-	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
