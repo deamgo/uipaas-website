@@ -15,6 +15,7 @@ import (
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
+	workspace "github.com/deamgo/workbench/service/workspace"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -122,6 +123,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			}
 			return
 		}
+		//ctx.WorkspaceService.WorkspaceCreate()
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  e.AddMsgSuccess,
@@ -183,10 +185,25 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+		// create default workspace
+		var workspace = &workspace.Workspace{
+			Name:        dpl.Username + "'s Workspace",
+			Logo:        "",
+			Label:       "default workspace",
+			Description: "default workspace",
+		}
+		_, err = ctx.WorkspaceService.WorkspaceCreate(c, workspace)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  "The workspace failed to be created",
+				Data: nil,
+			}))
+			return
+		}
 		//	generate A Token And Return It
 		var t string
 		t, _ = jwt.GenToken(dpl.ID)
-		fmt.Println(t)
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  "Registration Successful, signing in...",
