@@ -55,7 +55,7 @@ func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *Workspac
 func (dao workspaceDao) WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*WorkspaceDO, error) {
 	var WorkspaceDOs []*WorkspaceDO
 	err := dao.db.WithContext(ctx).Debug().
-		Raw("select w.* from workspace_developer_relation r left join workspaces w on w.id = r.workspace_id where developer_id = ?;", developerId).Scan(&WorkspaceDOs).Error
+		Raw("select w.* from workspace_developer_relation r left join workspaces w on w.id = r.workspace_id where developer_id = ? and w.is_deleted = 0; ", developerId).Scan(&WorkspaceDOs).Error
 	if err != nil {
 		return nil, err
 	}

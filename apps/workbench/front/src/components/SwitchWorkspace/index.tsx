@@ -36,11 +36,12 @@ const SwitchWorkspace: React.FC = () => {
 
   return (
       <>
+        {/*  <div className="__sws" onClick={wcbHandleClick}>  无法起效果 */}
         <div className="__sws">
-          <Avatar style={{backgroundColor: 'pink', verticalAlign: 'middle'}} size={28} gap={2}>
+          <Avatar onClick={wcbHandleClick} style={{backgroundColor: 'blue', verticalAlign: 'middle'}} size={28} gap={2}>
             {'ILEE'.charAt(0).toUpperCase()}
           </Avatar>
-          <span className="__sws_title">{'Ilee'}'s Workspace</span>
+          <span onClick={wcbHandleClick} className="__sws_title">{'Ilee'}'s Workspace</span>
           <div className="__sws_switch" onClick={wcbHandleClick}>
             <Switch/>
           </div>

@@ -121,7 +121,7 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	workspace.Id = hashTop(workspace.Name, 6)
 	workspace.Label = strings.Split(workspace.Label, "\n")[0]
 
-	err = equalParameterLen(workspace.Logo, 1, 50)
+	err = equalParameterLen(workspace.Logo, 0, 50)
 	if err != nil {
 		return nil, err
 	}
@@ -139,7 +139,7 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	}
 	err = equalParameterIMG(workspace.Logo)
 	if err != nil {
-		return nil, err
+		workspace.Logo = ""
 	}
 
 	workspaceDo := convertWorkspaceDao(workspace)
