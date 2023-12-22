@@ -136,7 +136,7 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	}
 	err = equalParameterIMG(workspace.Logo)
 	if err != nil {
-		return nil, err
+		workspace.Logo = ""
 	}
 
 	workspaceDo := convertWorkspaceDao(workspace)
