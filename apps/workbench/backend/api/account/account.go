@@ -2,7 +2,6 @@ package account
 
 import (
 	"fmt"
-	"github.com/go-playground/validator/v10"
 	"net/http"
 	"regexp"
 
@@ -19,6 +18,7 @@ import (
 	workspace "github.com/deamgo/workbench/service/workspace"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
