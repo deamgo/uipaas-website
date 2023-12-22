@@ -9,7 +9,9 @@ import Popup from "@components/Popup";
 import { Avatar } from "antd";
 import Button from "@components/Button";
 import Input from "@components/Input"
+
 import { IUsrWorkspace, workspaceCreate, workspaceList, workspaceLogo } from "@api/workspace.ts";
+
 import $message from "@components/Message";
 import { wsStore } from "@/store/wsStore";
 
@@ -75,6 +77,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     }
 
 
+
     const reqWorkspaceCreate = async () => {
         await workspaceCreate({
             name: workspaceName,
@@ -131,6 +134,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
                         <div className="_current" style={{ fontSize: '13px' }}>
 
                             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
+
 
                                 <label htmlFor="workspace-logo">
                                     <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
