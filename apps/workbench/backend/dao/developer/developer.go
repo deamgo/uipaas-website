@@ -91,7 +91,7 @@ func (u developerDao) DeveloperGetByUserName(ctx context.Context, user *Develope
 }
 
 func (u developerDao) DeveloperGetByID(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
-	err := u.db.WithContext(ctx).Model(&user).Select("username, avatar, email").Find(&user).Error
+	err := u.db.WithContext(ctx).Model(&user).Select("id,username, avatar, email").Find(&user).Error
 	if err != nil {
 		return nil, err
 	}

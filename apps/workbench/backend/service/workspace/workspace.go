@@ -16,11 +16,13 @@ import (
 
 	dao "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/pkg/logger"
+
 	"github.com/pkg/errors"
 )
 
 type WorkspaceService interface {
 	WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
+	WorkspaceDel(ctx context.Context, workspace *Workspace) error
 	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*Workspace, error)
 	WorkspaceGetFilePath(file *os.File) (string, error)
 }
@@ -115,6 +117,7 @@ func (w workspaceService) WorkspaceGetListById(ctx context.Context, developerId 
 // WorkspaceCreate
 func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error) {
 	var err error
+
 	workspace.Id = hashTop(workspace.Name, 6)
 	workspace.Label = strings.Split(workspace.Label, "\n")[0]
 
@@ -150,11 +153,18 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	return convertWorkspace(newWorkspaceDO), nil
 }
 
+func (w workspaceService) WorkspaceDel(ctx context.Context, workspace *Workspace) error {
+	workspaceDo := convertWorkspaceDao(workspace)
+	err := w.dao.WorkspaceDel(ctx, workspaceDo)
+	return err
+}
+
 func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 	return &dao.WorkspaceDO{
-		Id:          workspace.Id,
-		Name:        workspace.Name,
-		Logo:        workspace.Logo,
+		Id:   workspace.Id,
+		Name: workspace.Name,
+		Logo: workspace.Logo,
+
 		Label:       workspace.Label,
 		Description: workspace.Description,
 		CreatedBy:   workspace.CreatedBy,
@@ -164,8 +174,9 @@ func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 
 func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 	return &Workspace{
-		Id:          workspaceDao.Id,
-		Name:        workspaceDao.Name,
+		Id:   workspaceDao.Id,
+		Name: workspaceDao.Name,
+
 		Label:       workspaceDao.Label,
 		Description: workspaceDao.Description,
 		Logo:        workspaceDao.Logo,

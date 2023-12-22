@@ -42,6 +42,21 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			c.Abort()
 			return
 		}
+		isExpireToken, _ := jwt.IsExpireToken(parts[1])
+		if isExpireToken {
+			id, _ := jwt.ExtractIDFromToken(authHeader)
+			newToken, err := jwt.GenToken(id)
+			if err != nil {
+				c.AbortWithStatus(http.StatusInternalServerError)
+			}
+			c.JSON(http.StatusOK, gin.H{
+				"code": 2006,
+				"msg":  "Token Expired",
+				"data": struct {
+					Token string `json:"token"`
+				}{newToken},
+			})
+		}
 
 		mc, err := jwt.ParseToken(parts[1])
 		if err != nil {
