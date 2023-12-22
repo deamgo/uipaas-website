@@ -2,6 +2,7 @@ package account
 
 import (
 	"fmt"
+	"github.com/go-playground/validator/v10"
 	"net/http"
 	"regexp"
 
@@ -18,7 +19,6 @@ import (
 	workspace "github.com/deamgo/workbench/service/workspace"
 
 	"github.com/gin-gonic/gin"
-	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
 )
@@ -188,7 +188,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		// create default workspace
 		var workspace = &workspace.Workspace{
 			Name:        dpl.Username + "'s Workspace",
-			Logo:        "",
+			Logo:        "http://121.41.78.218:80/images/9ccb00dbd1.jpg",
 			Label:       "default workspace",
 			Description: "default workspace",
 		}

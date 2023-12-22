@@ -2,6 +2,7 @@ package workspace
 
 import (
 	"fmt"
+	"github.com/deamgo/workbench/auth/jwt"
 	"log"
 	"net/http"
 	"os"
@@ -172,7 +173,11 @@ func WorkspaceDel(ctx context.ApplicationContext) gin.HandlerFunc {
 		var workspace = &workspace.Workspace{
 			Id: req.Id,
 		}
-		err := ctx.WorkspaceService.WorkspaceDel(c, workspace)
+		developerID, err := jwt.ExtractIDFromToken(c.Request.Header.Get("Authorization"))
+		if err != nil {
+			c.AbortWithStatus(http.StatusInternalServerError)
+		}
+		err = ctx.WorkspaceService.WorkspaceDel(c, workspace, developerID)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
 				Code: e.Failed,
