@@ -54,9 +54,7 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 	return nil, errors.New("invalid token")
 }
 
-// ValidateToken 验证 JWT 是否过期
 func IsExpireToken(tokenString string) (bool, error) {
-	// 解析 JWT
 	token, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return MySecret, nil
 	})
@@ -64,8 +62,6 @@ func IsExpireToken(tokenString string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-
-	// 检查是否过期
 	if claims, ok := token.Claims.(*MyClaims); ok && token.Valid {
 		return time.Now().Unix() < claims.ExpiresAt, nil
 	}
