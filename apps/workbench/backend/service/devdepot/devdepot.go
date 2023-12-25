@@ -79,18 +79,18 @@ func convertRoleNum(devInfoList *[]devdepot.DevDepotItem) *[]devdepot.DevDepotIt
 
 }
 
-func convertRole(devInfo *devdepot.DevDepotItem) *devdepot.DevDepotItem {
-	// Map the Role value to a human-readable string
-	roleMapping := map[string]string{
-		"owner":     "0",
-		"Admin":     "1",
-		"Developer": "2",
-		"Reviewer":  "3",
-	}
-
-	if roleName, ok := roleMapping[devInfo.Role]; ok {
-		devInfo.Role = roleName
-	}
-	return devInfo
-
-}
+//func convertRole(devInfo *devdepot.DevDepotItem) *devdepot.DevDepotItem {
+//	// Map the Role value to a human-readable string
+//	roleMapping := map[string]string{
+//		"owner":     "0",
+//		"Admin":     "1",
+//		"Developer": "2",
+//		"Reviewer":  "3",
+//	}
+//
+//	if roleName, ok := roleMapping[devInfo.Role]; ok {
+//		devInfo.Role = roleName
+//	}
+//	return devInfo
+//
+//}
