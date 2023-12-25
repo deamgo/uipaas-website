@@ -197,7 +197,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			Label:       "default workspace",
 			Description: "default workspace",
 			CreatedBy:   uint64(id),
-			UpdateBy:    uint64(id),
+			UpdatedBy:   uint64(id),
 		}
 		_, err = ctx.WorkspaceService.WorkspaceCreate(c, workspace)
 		if err != nil {
