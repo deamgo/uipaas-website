@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import './index.less'
 
 import { Avatar } from "antd";
-import { currentWorkspaceStore } from "@/store/wsStore";
+import {currentWorkspaceStore, wsStore} from "@/store/wsStore";
 
 interface WorkspaceItemProps {
     id: string;
@@ -18,6 +18,8 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
 
     const handleChangeCurrentWorkspace = () => {
         currentWorkspaceStore.setCurrentWorkspace(props)
+        wsStore.setFirst(props.name)
+
         navigate('/')
     }
 
@@ -35,7 +37,7 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
                 {
                     props.logo !== "" &&
                     <>
-                        <img className="__wcb_box_item_logo" src={props.logo} width={20} height={20} />
+                        <img className="__wcb_box_item_logo" src={props.logo} width={20} height={20}  alt="workspace logo"/>
                         <span className="__wcb_box_item_tittle">{props.name}</span>
                     </>
                 }
