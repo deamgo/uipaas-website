@@ -65,7 +65,7 @@ const WSSettings: React.FC = () => {
         workspaceList().then(res => {
           if (res.value.code === 0) {
             wsStore.setWsList(res.value.data)
-            currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList()[0])
+            currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList() ? wsStore.getWsList()[0] : { id: '', name: '', logo: '' })
             navigate('/')
           }
         }).catch(err => {

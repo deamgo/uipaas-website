@@ -48,11 +48,20 @@ const Sider: React.FC<SiderProps> = (props) => {
 
   const [username, setUsername] = React.useState('')
   const [active, setActive] = React.useState<number>()
+  const [isWslist, setIsWslist] = React.useState(true)
 
 
   React.useEffect(() => {
     setUsername(appStore.getUserInfo().username)
   }, [])
+
+  React.useEffect(() => {
+    if (wsStore.getWsList() === null) {
+      setIsWslist(false)
+    } else {
+      setIsWslist(true)
+    }
+  }, [wsStore.getWsList()])
 
   React.useEffect(() => {
     console.log('update appStore');
@@ -104,10 +113,10 @@ const Sider: React.FC<SiderProps> = (props) => {
           <SwitchWorkspace />
         </div>
         <div className="__sider_menu_c">
-          <SideMenu list={list_c} />
+          {isWslist && <SideMenu list={list_c} />}
         </div>
         <div className="__sider_menu_f">
-          <SideMenu list={list_f} />
+          {isWslist && <SideMenu list={list_f} />}
         </div>
         <div className="__sider_usr_info" onClick={handleShow}>
           <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={32} gap={3}>

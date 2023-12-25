@@ -68,10 +68,6 @@ const SignUp: React.FC = () => {
 
   return (
     <>
-      <div className="__sign_title">
-        <span>Sign up</span>
-        <span>Complete the Information for Account Registration</span>
-      </div>
       <div className="__sign_form">
         {/* <div className="__sign_form_input">
           <Input
@@ -117,23 +113,23 @@ const SignUp: React.FC = () => {
             outputChange={setPwd}
             reg={passwordReg} />
         </div>
-      </div>
-      <div className="__sign_continue">
-        <div className="__sign_continue_tip">
-          <span>Already have an account?</span>
-          <span>
-            <Link to='/s'>Sign in</Link>
-          </span>
-        </div>
-        <Button
-          context='Continue'
-          method={handleContinue}
-          disabled={btnAbled} />
-        <div className="__sign_continue_privacy">
-          <span>By using UIPaaS, you are agreeing to the</span>
-          <span>
-            <a href="/privacy" target='_blank'>Privacy Policy.</a>
-          </span>
+        <div className="__sign_form_continue">
+          <div className="__sign_form_continue_tip">
+            <span>Already have an account?</span>
+            <span>
+              <Link to='/s'>Sign in</Link>
+            </span>
+          </div>
+          <Button
+            context='Continue'
+            method={handleContinue}
+            disabled={btnAbled} />
+          <div className="__sign_form_continue_privacy">
+            <span>By using UIPaaS, you are agreeing to the</span>
+            <span>
+              <a href="/privacy" target='_blank'>Privacy Policy.</a>
+            </span>
+          </div>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { redirect } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { resize } from '@utils/adapt'
 import { observer } from 'mobx-react'
 //style
@@ -7,16 +7,26 @@ import './index.less'
 //
 import Sider from '@views/layout/sider'
 import { Outlet } from 'react-router-dom';
+import { wsStore } from '@/store/wsStore';
 //
 
 
 
 
 const Layout: React.FC = () => {
+
+  const navigate = useNavigate()
+
   React.useEffect(() => {
     window.addEventListener('resize', resize)
     resize()
   })
+
+  React.useEffect(() => {
+    if (wsStore.getWsList()) {
+      navigate('/_blank')
+    }
+  }, [wsStore.getWsList()?.length])
 
   return (
     <>

@@ -106,15 +106,11 @@ const PwdReset: React.FC = () => {
 
   return (
     <>
-      <div className="__ryp_title">
-        <span>Reset your Password</span>
-        <div className="__ryp_title_row">
-          <Link to='/s'>
-            <img src={ArrowLeft} alt="" />
-          </Link>
-        </div>
-      </div>
       <div className="__ryp_form">
+        <div className="__ryp_title">
+          <div className="__ryp_title_divider"></div>
+          <span>Reset your Password</span>
+        </div>
         <div className="__ryp_form_input">
           <Input
             id='1'
@@ -152,12 +148,12 @@ const PwdReset: React.FC = () => {
             reg={passwordReg}
             outputChange={setPwd} />
         </div>
-      </div>
-      <div className="__ryp_continue">
-        <Button
-          context='Confirm'
-          method={handleContinue}
-          disabled={btnAbled} />
+        <div className="__ryp_form_continue">
+          <Button
+            context='Confirm'
+            method={handleContinue}
+            disabled={btnAbled} />
+        </div>
       </div>
 
     </>

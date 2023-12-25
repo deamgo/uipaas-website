@@ -7,7 +7,7 @@ interface ButtonProps {
   context?: string
   method?: () => void
   disabled?: boolean
-  type?: 'primary' | 'danger' | 'default' | 'outline-danger' | 'board-primary'
+  type?: 'primary' | 'danger' | 'default' | 'outline-danger' | 'board-danger' | 'board-primary'
 }
 
 const Button: React.FC<ButtonProps> = (props) => {

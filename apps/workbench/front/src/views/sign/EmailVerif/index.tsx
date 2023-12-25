@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 //style
 import './index.less'
 //
-import Input from '@/components/Input'
 import Button from '@/components/Button'
 import Mask from '@/components/Mask'
 //
@@ -10,14 +9,17 @@ import { emailVerificationReg } from '@constants/regexp'
 import { usrSignUpVerify } from '@api/sign_up'
 import { appStore } from '@/store/store'
 //
-import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'
 import { Link, useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const EmailVerif: React.FC = () => {
 
-  const [emailVerification, setEmailVerification] = React.useState('')
+  const [code, setCode] = useState(['', '', '', ''])
+  const [emailVerification, setEmailVerification] = useState('')
   const [btnAbled, setBtnAbled] = React.useState(true)
+
+  let typeCode = ''
 
   const navigate = useNavigate()
 
@@ -28,6 +30,26 @@ const EmailVerif: React.FC = () => {
       setBtnAbled(true)
     }
   }, [emailVerification])
+
+  const handleChange = (index: number, value: string) => {
+    if (/^\d*$/.test(value) && value.length <= 1) {
+      const newCode = [...code];
+      newCode[index] = value;
+      setCode(newCode);
+      typeCode = newCode.join('');
+      setEmailVerification(typeCode);
+      if (value && index < code.length - 1) {
+        document.getElementById(`__ev_form_input_${index + 1}`)?.focus();
+      }
+    }
+
+  };
+
+  const handleBackspace = (index: number) => {
+    if (index > 0 && code[index] === '') {
+      document.getElementById(`__ev_form_input_${index - 1}`)?.focus();
+    }
+  };
 
   //impl api/sign_up.ts > usrSignUpVerify
   const handleContinue = () => {
@@ -41,7 +63,7 @@ const EmailVerif: React.FC = () => {
 
     const usr = {
       ...usrInfo,
-      emailVerification,
+      typeCode,
     }
     console.log(usr);
     usrSignUpVerify({
@@ -52,7 +74,7 @@ const EmailVerif: React.FC = () => {
       code: parseInt(emailVerification),
     }).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('token', res.value?.data.token)
+        Cookies.set('token', res.value?.data.token)
         sessionStorage.removeItem('username')
         sessionStorage.removeItem('codeKey')
         sessionStorage.removeItem('email')
@@ -71,44 +93,45 @@ const EmailVerif: React.FC = () => {
 
   return (
     <>
-      <div className="__ev_title">
-        <span>Email Verification</span>
-        <span>Please check your email for the verification code and enter it below</span>
-        <div className="__ev_title_row">
-          <Link to='/s/up'>
-            <img src={ArrowLeft} alt="" />
-          </Link>
-        </div>
-      </div>
       <div className="__ev_form">
-        <div className="__ev_form_input">
-          <Input
-            id='1'
-            title='Email verification code'
-            type='text'
-            placeholder='Enter your email verification code'
-            valid='Please enter your email verification code'
-            isNeed={true}
-            reg={emailVerificationReg}
-            outputChange={setEmailVerification} />
+        <div className="__ev_title">
+          <span>Email verification code</span><span>*</span>
+          <span>Please check your email for the verification code and enter it below</span>
+          <div className='__ev_form_input'>
+            {code.map((value, index) => (
+              <input
+                key={index}
+                id={`__ev_form_input_${index}`}
+                type="text"
+                value={value}
+                maxLength={1}
+                onChange={(e) => handleChange(index, e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Backspace') {
+                    handleBackspace(index);
+                  }
+                }}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="__ev_btnbox">
-        <div className="__ev_btnbox_tip">
-          <span>Already have an account?</span>
-          <span>
-            <Link to='/s'>Sign in</Link>
-          </span>
-        </div>
-        <Button
-          context='Sign up'
-          method={handleContinue}
-          disabled={btnAbled} />
-        <div className="__ev_btnbox_privacy">
-          <span>By using UIPaaS, you are agreeing to the</span>
-          <span>
-            <a href="/privacy" target='_blank'>Privacy Policy.</a>
-          </span>
+        <div className="__ev_btnbox">
+          <div className="__ev_btnbox_tip">
+            <span>Already have an account?</span>
+            <span>
+              <Link to='/s'>Sign in</Link>
+            </span>
+          </div>
+          <Button
+            context='Sign up'
+            method={handleContinue}
+            disabled={btnAbled} />
+          <div className="__ev_btnbox_privacy">
+            <span>By using UIPaaS, you are agreeing to the</span>
+            <span>
+              <a href="/privacy" target='_blank'>Privacy Policy.</a>
+            </span>
+          </div>
         </div>
       </div>
     </>

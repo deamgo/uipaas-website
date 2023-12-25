@@ -17,6 +17,7 @@ import { tokenStore, appStore } from '@/store/store'
 import { getUserInfo } from '@/api/developer_profile'
 import { workspaceList } from '@/api/workspace'
 import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
+import _Blank from '@/views/layout/_blank'
 
 const tokenLoader = async () => {
   console.log('tokenLoading');
@@ -25,7 +26,7 @@ const tokenLoader = async () => {
   if (!token) {
     return redirect('/s')
   } else {
-    getUserInfo().then(res => {
+    await getUserInfo().then(res => {
       if (res.value?.code === 0) {
         sessionStorage.setItem('userId', res.value.data.id)
         sessionStorage.setItem('userName', res.value.data.username)
@@ -46,8 +47,8 @@ const tokenLoader = async () => {
   return null
 }
 
-const UserProfileLoader = () => {
-  getUserInfo().then(res => {
+const UserProfileLoader = async () => {
+  await getUserInfo().then(res => {
     if (res.value.code === 0) {
       return res.value.data
     } else {
@@ -59,8 +60,8 @@ const UserProfileLoader = () => {
   return {}
 }
 
-const WorkspaceListLoader = () => {
-  workspaceList().then(res => {
+const WorkspaceListLoader = async () => {
+  await workspaceList().then(res => {
     if (res.value.code === 0) {
       wsStore.setWsList(res.value.data)
       if (!currentWorkspaceStore.currentWorkspace.name) {
@@ -97,6 +98,10 @@ export const routes: RouteObject[] = [
             Component: UserProfile,
           }
         ]
+      },
+      {
+        path: '/_blank',
+        Component: _Blank,
       },
       {
         path: '/workspace',

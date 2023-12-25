@@ -39,6 +39,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
 
 
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) {
             return;
@@ -82,7 +83,6 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
         }).then(res => {
             if (res.value.code === 0) {
                 console.log(res.value.data)
-                props.list_workspace.push({ name: res.value.data.name as string, logo: res.value.data.logo as string })
                 setIsWsCreate(false)
             } else {
                 $message.error(res.value.msg)
@@ -101,17 +101,16 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
                 $message.error(res.value.msg)
             }
         }).catch(err => {
+            console.log(err);
 
         })
     }
-
-
 
     return (
         <>
             <div className="__wcb">
                 <div className="__wcb_box">
-                    {props.list
+                    {wsStore.getWsList()
                         ? wsStore.getWsList().map(item => (
                             <WorkspaceCreateBoxItem id={item.id} name={item.name} logo={item.logo} />
                         ))

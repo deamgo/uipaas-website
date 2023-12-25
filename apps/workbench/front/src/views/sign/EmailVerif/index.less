@@ -1,68 +1,80 @@
 .__ev {
 
   &_title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: max-content;
-
-    margin-bottom: 139rem;
+    width: 100%;
 
     span {
-      &:nth-child(1) {
-        margin-bottom: 24rem;
+      font-size: 12rem;
+      font-weight: normal;
+      line-height: 20rem;
+      letter-spacing: 0em;
 
-        font-size: 24rem;
-        font-weight: normal;
-        line-height: 28rem;
+      &:nth-child(1) {
+        margin-bottom: 4rem;
+        height: 22rem;
+        font-size: 14rem;
+        line-height: 22rem;
+        color: rgba(0, 0, 0, 0.9)
       }
 
       &:nth-child(2) {
+        margin-left: 5rem;
+        margin-bottom: 4rem;
+        height: 22rem;
         font-size: 14rem;
-        font-weight: normal;
         line-height: 22rem;
+        color: #D54941
       }
-    }
 
-    &_row {
-      position: absolute;
-      left: 45rem;
-      top: 0rem;
-      width: 24rem;
-      height: 24rem;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      cursor: pointer;
-
-      img {
-        width: 71.88%;
-        height: 69.53%;
+      &:nth-child(3) {
+        margin-bottom: 8rem;
+        height: 20rem;
+        display: block;
+        color: rgba(0, 0, 0, 0.4);
       }
     }
   }
 
   &_form {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
+    padding: 0;
+    gap: 24rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &_input {
-      margin-bottom: 26rem;
-      width: 350rem;
-      height: 60rem;
+      display: flex;
+      gap: 26rem;
+
+      input {
+        width: 80rem;
+        height: 56rem;
+        border-radius: 4rem;
+        opacity: 1;
+
+        box-sizing: border-box;
+        border: 1rem solid #E7E7E7;
+
+        outline: none;
+
+        font-family: D-DIN;
+        font-size: 24rem;
+        font-weight: bold;
+        line-height: 32rem;
+        letter-spacing: 0rem;
+
+        font-feature-settings: "kern" on;
+        color: #3D3D3D;
+
+        text-align: center;
+      }
     }
   }
 
   &_btnbox {
-    margin-top: 13rem;
-    width: 350rem;
-    height: 32rem;
+    width: 400rem;
+    height: fit-content;
 
     &_tip {
       display: flex;
@@ -95,6 +107,7 @@
     }
 
     button {
+      height: 36rem;
       margin: 13rem 0 24rem 0;
       background-color: #165DFF;
       color: #FFFFFF;

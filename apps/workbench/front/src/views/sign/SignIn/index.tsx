@@ -32,9 +32,9 @@ const SignIn: React.FC = () => {
   //   return regex.test(value)
   // }
   //impl api/sign_in.ts > usrSignIn
-  const handleContinue = () => {
+  const handleContinue = async () => {
     console.log('SignIn');
-    usrSignIn({
+    await usrSignIn({
       email,
       password: pwd
     }).then(res => {
@@ -56,13 +56,10 @@ const SignIn: React.FC = () => {
 
   return (
     <>
-      <div className="__signin_title">
-        <span>Sign in</span>
-      </div>
       <div className="__signin_form">
         <div className="__signin_form_input">
           <Input
-            id='1'
+            id='signin-email'
             title='Email'
             type='text'
             placeholder='Enter your email address'
@@ -73,7 +70,7 @@ const SignIn: React.FC = () => {
         </div>
         <div className="__signin_form_input">
           <Input
-            id='2'
+            id='signin-pwd'
             title='Password'
             type='password'
             placeholder='Enter your password'
@@ -86,23 +83,23 @@ const SignIn: React.FC = () => {
             <Link to='/s/ryp'>Forgot?</Link>
           </div>
         </div>
-      </div>
-      <div className="__signin_continue">
-        <div className="__signin_continue_tip">
-          <span>New to UIPaaS?</span>
-          <span>
-            <Link to='/s/up'>Sign up</Link>
-          </span>
-        </div>
-        <Button
-          context='Sign in'
-          method={handleContinue}
-          disabled={btnAbled} />
-        <div className="__signin_continue_privacy">
-          <span>By using UIPaaS, you are agreeing to the</span>
-          <span>
-            <a href="/privacy" target='_blank'>Privacy Policy.</a>
-          </span>
+        <div className="__signin_form_continue">
+          <div className="__signin_form_continue_tip">
+            <span>New to UIPaaS?</span>
+            <span>
+              <Link to='/s/up'>Sign up</Link>
+            </span>
+          </div>
+          <Button
+            context='Sign in'
+            method={handleContinue}
+            disabled={btnAbled} />
+          <div className="__signin_form_continue_privacy">
+            <span>By using UIPaaS, you are agreeing to the</span>
+            <span>
+              <a href="/privacy" target='_blank'>Privacy Policy.</a>
+            </span>
+          </div>
         </div>
       </div>
     </>

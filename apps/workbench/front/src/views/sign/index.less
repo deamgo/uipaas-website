@@ -3,31 +3,46 @@
   left: 0;
   top: 0;
   width: 1440rem;
-  height: 1056rem;
+  height: 100vh;
+  opacity: 1;
 
-  background-color: #FFFFFF;
-
-  &_logo {
-    position: absolute;
-    left: 23rem;
-    top: 23.8rem;
-
-    img {
-      width: 140rem;
-      height: 26.4rem;
-    }
-  }
+  background: #FAFAFB;
 
   &_container {
     position: absolute;
     left: 50%;
-    top: 204rem;
-    transform: translate(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
 
-    min-width: 361rem;
+    width: 480rem;
+    height: max-content;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 80rem 40rem;
+    gap: 60rem;
+    border-radius: 8rem;
+    opacity: 1;
+
+    background: #FFFFFF;
+
+    box-sizing: border-box;
+    border: 1rem solid #E7E7E7;
+    box-shadow: 0rem 2rem 8rem 1rem rgba(178, 206, 238, 0.24);
+
+    &_logo {
+      width: 172rem;
+      height: 26rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        width: 172rem;
+        height: 26rem;
+      }
+    }
   }
 }

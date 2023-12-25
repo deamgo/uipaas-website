@@ -40,7 +40,7 @@ const SwitchWorkspace: React.FC = () => {
     setWsName(currentWorkspaceStore.getCurrentWorkspace().name)
     setUsername(appStore.getUserInfo().username)
     setlist_workspace(wsStore.getWsList())
-  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username, wsStore.getWsList().length])
+  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username, wsStore.getWsList()?.length])
 
 
   const wcbHandleClick = () => {
