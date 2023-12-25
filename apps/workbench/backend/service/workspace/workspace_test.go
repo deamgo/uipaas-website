@@ -70,7 +70,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 				Label:       "短描述",
 				Description: "这是测试偷偷编写的workspace的长描述",
 				CreatedBy:   1,
-				UpdateBy:    1,
+				UpdatedBy:   1,
 			},
 		},
 	}
