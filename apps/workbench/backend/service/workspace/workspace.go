@@ -10,7 +10,6 @@ import (
 	"log"
 	"mime/multipart"
 	"net/http"
-	"os"
 	"path"
 	"strings"
 
@@ -24,7 +23,7 @@ type WorkspaceService interface {
 	WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
 	WorkspaceDel(ctx context.Context, workspace *Workspace, developerID string) error
 	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*Workspace, error)
-	WorkspaceGetFilePath(file *os.File) (string, error)
+	WorkspaceGetFilePath(file *multipart.FileHeader) (string, error)
 }
 
 type UploadFileResp struct {
@@ -47,20 +46,24 @@ func NewWorkspaceService(params WorkspaceServiceParams) WorkspaceService {
 	}
 }
 
-func (w workspaceService) WorkspaceGetFilePath(file *os.File) (string, error) {
+func (w workspaceService) WorkspaceGetFilePath(header *multipart.FileHeader) (string, error) {
 	var err error
 	var data UploadFileResp
-	//err = equalParameterIMG(file.Name())
+
+	err = equalParameterIMG(header.Filename)
+	if err != nil {
+		return "", err
+	}
+	ext := path.Ext(header.Filename)
+	newFileName := hashTop(header.Filename, 10) + ext
+
+	file, err := header.Open()
 	if err != nil {
 		return "", err
 	}
 
-	ext := path.Ext(file.Name())
-
-	form := new(bytes.Buffer)
-	writer := multipart.NewWriter(form)
-
-	newFileName := hashTop(file.Name(), 10) + ext
+	body := new(bytes.Buffer)
+	writer := multipart.NewWriter(body)
 	fw, err := writer.CreateFormFile("file", newFileName)
 	if err != nil {
 		log.Fatal(err)
@@ -71,19 +74,9 @@ func (w workspaceService) WorkspaceGetFilePath(file *os.File) (string, error) {
 	}
 	writer.Close()
 
-	client := &http.Client{}
-	req, err := http.NewRequest("POST", "http://121.41.78.218:8700/api/v1/extract-public/upload", form)
+	resp, err := http.Post("http://121.41.78.218:8700/api/v1/extract-public/upload", writer.FormDataContentType(), body)
 	if err != nil {
-		log.Fatal(err)
-	}
-	req.Header.Set("User-Agent", "Apifox/1.0.0 (https://apifox.com)")
-	req.Header.Set("Accept", "*/*")
-	req.Header.Set("Host", "121.41.78.218:8700")
-	req.Header.Set("Connection", "keep-alive")
-	req.Header.Set("Content-Type", writer.FormDataContentType())
-	resp, err := client.Do(req)
-	if err != nil {
-		log.Fatal(err)
+		return "", err
 	}
 	defer resp.Body.Close()
 	bodyText, err := io.ReadAll(resp.Body)
@@ -121,6 +114,10 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	workspace.Id = hashTop(workspace.Name, 6)
 	workspace.Label = strings.Split(workspace.Label, "\n")[0]
 
+	err = equalParameterIMG(workspace.Logo)
+	if err != nil {
+		workspace.Logo = ""
+	}
 	err = equalParameterLen(workspace.Logo, 0, 50)
 	if err != nil {
 		return nil, err
@@ -136,10 +133,6 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	err = equalParameterLen(workspace.Description, 0, 1023)
 	if err != nil {
 		return nil, err
-	}
-	err = equalParameterIMG(workspace.Logo)
-	if err != nil {
-		workspace.Logo = ""
 	}
 
 	workspaceDo := convertWorkspaceDao(workspace)
@@ -168,7 +161,7 @@ func convertWorkspaceDao(workspace *Workspace) *dao.WorkspaceDO {
 		Label:       workspace.Label,
 		Description: workspace.Description,
 		CreatedBy:   workspace.CreatedBy,
-		UpdatedBy:   workspace.UpdateBy,
+		UpdatedBy:   workspace.UpdatedBy,
 	}
 }
 
@@ -181,7 +174,7 @@ func convertWorkspace(workspaceDao *dao.WorkspaceDO) *Workspace {
 		Description: workspaceDao.Description,
 		Logo:        workspaceDao.Logo,
 		CreatedBy:   workspaceDao.CreatedBy,
-		UpdateBy:    workspaceDao.UpdatedBy,
+		UpdatedBy:   workspaceDao.UpdatedBy,
 	}
 }
 
@@ -206,8 +199,7 @@ func equalParameterLen(str string, min, max int) error {
 func equalParameterIMG(str string) error {
 	if strings.HasSuffix(str, ".jpg") ||
 		strings.HasSuffix(str, ".jpeg") ||
-		strings.HasSuffix(str, ".png") ||
-		len(str) == 0 {
+		strings.HasSuffix(str, ".png") {
 		return nil
 	}
 	return errors.New("parameter exception")
