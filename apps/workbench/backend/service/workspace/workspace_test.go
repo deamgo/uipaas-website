@@ -43,7 +43,7 @@ func TestWorkspaceService_WorkspaceGetListById(t *testing.T) {
 			rows := sqlmock.NewRows([]string{"id", "name", "label", "description", "logo"}).
 				AddRow("d30340", "test021", "", "这是用于测试workspace的测试数据", "/public/Golang.png")
 
-			mock.ExpectQuery("^select w.* from workspace_developer_relation r left join workspaces w on w.id = r.workspace_id where developer_id = (.+) and w.is_deleted = 0;").
+			mock.ExpectQuery("^select w.* from workspace_developer_relation r left join workspaces w on w.id = r.workspace_id where developer_id = (.+) and r.is_deleted = 0;").
 				WithArgs(test.developerId).
 				WillReturnRows(rows)
 
@@ -70,7 +70,7 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 				Label:       "短描述",
 				Description: "这是测试偷偷编写的workspace的长描述",
 				CreatedBy:   1,
-				UpdateBy:    1,
+				UpdatedBy:   1,
 			},
 		},
 	}

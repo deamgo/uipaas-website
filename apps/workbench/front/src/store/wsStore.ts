@@ -31,6 +31,24 @@ class WsStore {
     console.log(this.WsList);
 
   }
+
+
+  setFirst(workspaceName:string){
+    if (workspaceName.length != 0) {
+      let index = this.WsList.findIndex(element => element.name === workspaceName);
+      let temp = this.WsList[index];
+      this.WsList[index] = this.WsList[0];
+      this.WsList[0] = temp;
+      currentWorkspaceStore.setCurrentWorkspace(temp)
+    }
+  }
+
+
+  getWsListFirstByWorkspace(workspaceName:string){
+    this.setFirst(workspaceName)
+    return this.WsList
+  }
+
 }
 
 class CurrentWorkspaceStore {
