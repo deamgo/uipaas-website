@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"regexp"
+	"strconv"
 
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
@@ -185,12 +186,18 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+		id, err := strconv.ParseInt(dpl.ID, 10, 64)
+		if err != nil {
+			c.AbortWithStatus(http.StatusInternalServerError)
+		}
 		// create default workspace
 		var workspace = &workspace.Workspace{
 			Name:        dpl.Username + "'s Workspace",
 			Logo:        "http://121.41.78.218:80/images/9ccb00dbd1.jpg",
 			Label:       "default workspace",
 			Description: "default workspace",
+			CreatedBy:   uint64(id),
+			UpdateBy:    uint64(id),
 		}
 		_, err = ctx.WorkspaceService.WorkspaceCreate(c, workspace)
 		if err != nil {
