@@ -10,6 +10,9 @@ import TableHead from '@/components/Tables/TableHead'
 import TableRow from '@/components/Tables/TableRow'
 import TableCell from '@/components/Tables/TableCell'
 import TableBody from '@/components/Tables/TableBody'
+import Select from '@/components/Select'
+import Pagenation from '@/components/Pagenation'
+import { ISelectOption } from '@/interface/some'
 
 
 interface IColumns {
@@ -34,28 +37,28 @@ const columns: IColumns[] = [
 
 const rows = [
   {
-    id: 1001,
+    id: '1001',
     name: 'Shawn',
     email: 'Shawn@example.com',
     role: 'Owner',
     status: 's',
   },
   {
-    id: 1002,
+    id: '1002',
     name: 'Lisa',
     email: 'Lisa@example.com',
     role: 'Admin',
     status: 's',
   },
   {
-    id: 1003,
+    id: '1003',
     name: 'Tom',
     email: 'Tom@example.com',
     role: 'Editer',
     status: 's',
   },
   {
-    id: 1004,
+    id: '1004',
     name: 'Jerry',
     email: 'Jerry@example.com',
     role: 'Viewer',
@@ -63,9 +66,37 @@ const rows = [
   },
 ]
 
+const list_r: ISelectOption[] = [
+  {
+    id: 'admin',
+    value: 'admin',
+    label: 'Admin',
+  },
+  {
+    id: 'editer',
+    value: 'editer',
+    label: 'Editer',
+  },
+  {
+    id: 'viewer',
+    value: 'viewer',
+    label: 'Viewer',
+  }
+]
+
+
 
 const WSDevelopers: React.FC = () => {
 
+
+  const handleChangeCurrentPage = () => {
+    console.log('handleChangeCurrentPage')
+  }
+
+
+  const handleChangeRole = (id: string): void => {
+    console.log('handleChangeRole')
+  }
   return (
     <>
       <div className="__workspace_developers">
@@ -152,7 +183,35 @@ const WSDevelopers: React.FC = () => {
 
                               color: '#3D3D3D',
                             }}>
-                            {column.id === 'name'
+                            {column.id === 'name' && (
+                              <>
+                                <Avatar
+                                  style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }}
+                                  size={32}>
+                                  {value.charAt(0).toUpperCase()}
+                                </Avatar>
+                                {value}
+                                {row.status === 'pending' && (<>pending</>)}
+                              </>
+                            )}
+                            {column.id === 'role' && (
+                              <>
+                                {value === 'Owner' ? (
+                                  <>{value}</>
+                                ) : (
+                                  <>
+                                    <Select onChange={() => handleChangeRole(row.id)} list={list_r} default={value}>
+                                      {value}
+                                    </Select>
+                                  </>)}
+                              </>
+                            )}
+                            {column.id !== 'name' && column.id !== 'role' && (
+                              <>
+                                {value}
+                              </>
+                            )}
+                            {/* {column.id === 'name'
                               ? (
                                 <>
                                   <Avatar
@@ -164,8 +223,16 @@ const WSDevelopers: React.FC = () => {
                                   {row.status === 'pending' && (<>pending</>)}
                                 </>
                               )
-                              : (<>{value}</>)
-                            }
+                              : column.id === 'role'
+                                ? (
+                                  <>
+                                    <Select onChange={handleChangeRole} list={list_r} default={value}>
+                                      {value}
+                                    </Select>
+                                  </>
+                                )
+                                : (<>{value}</>)
+                            } */}
                           </TableCell>
                         </>
                       )
@@ -198,7 +265,7 @@ const WSDevelopers: React.FC = () => {
           </Table>
         </div>
         <div className="__workspace_developers_pagenation">
-
+          <Pagenation pages={5} total={20} current={1} onCurrentPageChange={handleChangeCurrentPage} />
         </div>
       </div>
     </>

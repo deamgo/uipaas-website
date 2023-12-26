@@ -13,22 +13,15 @@ const MultiplySelector: React.FC<MultiplySelectorProps> = (props) => {
 
   return (
     <>
-      <div className="__mulselector_wrapper">
+      <div className="__mulselector_wrapper" >
         {
-          props.list[0] !== null && props.list.map(item => (
-            <>
-              <div
-                key={item.id}
-                className={`__mulselector_wrapper_item ${item.type}`}
-                onClick={item.method} >
-                {item.children}
-                {/* <span style={{
-                  color: '#000000'
-                }}>
-                  {item.text}
-                </span> */}
-              </div>
-            </>
+          props.list && props.list.map(item => (
+            <div
+              key={item.id}
+              className={`__mulselector_wrapper_item ${item.type}`}
+              onClick={item.method} >
+              {item.children}
+            </div>
           ))
         }
       </div>

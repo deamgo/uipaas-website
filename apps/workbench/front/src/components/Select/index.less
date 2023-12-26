@@ -1,0 +1,105 @@
+.__select {
+  width: 100%;
+  height: 100%;
+
+  &_shower {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    gap: 8rem;
+
+    font-size: 14rem;
+    font-weight: 400;
+    line-height: 22rem;
+
+
+    user-select: none;
+    cursor: pointer;
+
+    &_text {
+      width: 48rem;
+    }
+
+    &_down {
+      width: 16rem;
+      height: 16rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        width: 66.67%;
+        height: 37.28%;
+        fill: rgba(0, 0, 0, 0.26);
+      }
+    }
+  }
+
+  &_list {
+    position: absolute;
+    padding: 4rem;
+
+    width: 80rem;
+    height: 100rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    border-radius: 4rem;
+    background-color: #FFFFFF;
+    box-shadow: 0rem 6rem 30rem 5rem rgba(128, 160, 194, 0.05),
+      0rem 16rem 24rem 2rem rgba(128, 160, 194, 0.1),
+      0rem 8rem 10rem -5rem rgba(128, 160, 194, 0.08);
+
+    &_item {
+      padding: 4rem 8rem;
+      width: 72rem;
+      height: 28rem;
+      border-radius: 4rem;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      // gap: 8rem;
+
+      font-size: 12rem;
+      font-weight: normal;
+      line-height: 20rem;
+
+      user-select: none;
+      cursor: pointer;
+      transition: all .3s;
+
+      &_icon {
+        width: 16rem;
+        height: 16rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          width: 8.67rem;
+          height: 5.97rem;
+        }
+      }
+
+      &:hover {
+        background-color: #F2F9FD;
+        color: #0871F0;
+      }
+    }
+
+    &_active {
+      background-color: #F2F9FD;
+      color: #0871F0;
+
+      svg {
+        fill: #0871F0;
+      }
+    }
+  }
+}

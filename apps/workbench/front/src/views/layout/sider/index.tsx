@@ -64,7 +64,7 @@ const Sider: React.FC<SiderProps> = (props) => {
   }, [wsStore.getWsList()])
 
   React.useEffect(() => {
-    console.log('update appStore');
+    console.log('update sider foot username')
 
     setUsername(appStore.getUserInfo().username)
   }, [appStore.getUserInfo()])
@@ -77,7 +77,7 @@ const Sider: React.FC<SiderProps> = (props) => {
 
   const list_ms: IMultiplySelectorPropsItem[] = [
     {
-      id: 101,
+      id: 'profile',
       text: 'Profile',
       path: '/u',
       type: "normal",
@@ -88,7 +88,7 @@ const Sider: React.FC<SiderProps> = (props) => {
       children: (<span style={{ color: '#0871F0' }}>Profile</span>)
     },
     {
-      id: 99,
+      id: 'logout',
       text: 'Logout',
       path: '/s',
       type: "error",
@@ -130,11 +130,6 @@ const Sider: React.FC<SiderProps> = (props) => {
           </div>
         )}
       </div>
-      {/*{isWsCreate && (*/}
-      {/*    <>*/}
-      {/*      <Popup unit={'rem'} width={31} height={17.25} title={'Create Workspace'}></Popup>*/}
-      {/*    </>*/}
-      {/*)}*/}
     </>
   )
 }

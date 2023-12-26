@@ -1,3 +1,4 @@
+import { IWorkspaceItemProps } from '@/interface/some';
 import 'axios'
 
 declare module 'axios' {

@@ -1,14 +1,14 @@
 export interface mcontent {
-  id: string;
-  title: string;
-  path: string;
-  matcher: string;
-  index: number;
-  icon: React.ReactElement;
+  id: string
+  title: string
+  path: string
+  matcher: string
+  index: number
+  icon: React.ReactElement
 }
 
 export interface IMultiplySelectorPropsItem {
-  id: number
+  id: string
   text: string
   path: string
   type: 'normal' | 'error'
@@ -29,7 +29,27 @@ export interface IWorkSpaceMate {
 }
 
 export interface IWorkspaceItemProps {
-  id: string;
-  logo: string;
-  name: string;
+  id: string
+  logo: string
+  name: string
+}
+
+export interface IPaginationProps {
+  pages: number
+  total: number
+  current: number
+  onCurrentPageChange: (page: number) => void
+}
+
+export interface ISelectOption {
+  id: string
+  value: string
+  label: string
+}
+export interface ISelectProps {
+  default: string
+  list: ISelectOption[]
+  onChange: (value: string) => void
+  onOpen?: () => void
+  children?: React.ReactNode
 }

@@ -1,6 +1,7 @@
 import { makeAutoObservable, observable, configure, runInAction } from 'mobx'
 import { IUserInfo } from '@api/account'
 import Cookies from 'js-cookie'
+import { getUserInfo } from '@/api/developer_profile'
 
 class AppStore {
 
@@ -31,6 +32,12 @@ class AppStore {
     }
   }
 
+  async updateUserInfo() {
+    const { value } = await getUserInfo()
+    sessionStorage.setItem('userInfo', JSON.stringify(value.data))
+    this.setUserInfo(value.data)
+  }
+
   resetUserInfo() {
     this.userInfo = {
       id: '',
@@ -39,7 +46,6 @@ class AppStore {
       avatar: '',
     }
     console.log(this.userInfo);
-
   }
 }
 

@@ -49,7 +49,6 @@ const SignIn: React.FC = () => {
         $message.error(res.value.msg)
       }
     }).catch(err => {
-      console.log(err);
       $message.error(err.response.data.value.msg)
     })
   }

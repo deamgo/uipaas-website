@@ -21,7 +21,7 @@ const MenuContent: React.FC<mcontent> = (props) => {
 
   return (
     <>
-      <Link to={props.path}>
+      <Link to={props.path} >
         <div className={`__menuc_item ${active ? '__menuc_active' : ''}`}>
           <div className="__menuc_item_svg">
             {props.icon}

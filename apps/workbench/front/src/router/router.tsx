@@ -18,30 +18,37 @@ import { getUserInfo } from '@/api/developer_profile'
 import { workspaceList } from '@/api/workspace'
 import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 import _Blank from '@/views/layout/_blank'
+import Cookies from 'js-cookie'
 
 const tokenLoader = async () => {
   console.log('tokenLoading');
-
   const token = tokenStore.getToken()
   if (!token) {
     return redirect('/s')
   } else {
     await getUserInfo().then(res => {
+      console.log('enter get info');
+
       if (res.value?.code === 0) {
-        sessionStorage.setItem('userId', res.value.data.id)
-        sessionStorage.setItem('userName', res.value.data.username)
-        sessionStorage.setItem('userEmail', res.value.data.email)
+        console.log('enter 0');
+
+
         sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
         appStore.setUserInfo(res.value.data)
       } else if (res.code === 2005) {
+        console.log('enter 2005');
+
         return redirect('/s')
+      } else if (res.code === 2006) {
+        console.log('enter 2006');
+        tokenStore.setToken(res.data.token)
       }
     }).catch(err => {
       console.log(err);
       return redirect('/s')
     })
 
-    WorkspaceListLoader()
+    await WorkspaceListLoader()
 
   }
   return null
@@ -66,7 +73,6 @@ const WorkspaceListLoader = async () => {
       wsStore.setWsList(res.value.data)
       if (!currentWorkspaceStore.currentWorkspace.name) {
         console.log(currentWorkspaceStore.currentWorkspace);
-
         currentWorkspaceStore.setCurrentWorkspace(res.value.data[0])
       }
       return res.value.data

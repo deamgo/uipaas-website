@@ -1,0 +1,73 @@
+.__pagination {
+  width: 100%;
+  height: 100%;
+
+  font-size: 14rem;
+  font-weight: normal;
+  line-height: 22rem;
+  letter-spacing: 0em;
+
+  &_swrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8rem;
+
+    &_total {}
+
+    button {
+      // outline: none;
+      // border: none;
+    }
+
+    &_row,
+    button {
+      border: none;
+      background-color: transparent;
+
+      &:disabled {
+        svg {
+          fill: rgba(0, 0, 0, .26);
+        }
+      }
+
+      svg {
+        width: 66.67%;
+        height: 37.28%;
+        fill: rgba(0, 0, 0, .6);
+      }
+    }
+
+    // &_next {
+    //   svg {
+    //     width: 66.67%;
+    //     height: 37.28%;
+    //     fill: rgba(0, 0, 0, .6);
+    //   }
+    // }
+
+    &_step {
+      user-select: none;
+    }
+  }
+
+  &_q {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &_ellips {
+    background-color: #fff;
+  }
+
+  &_current {
+    background: #F2F9FD;
+    transition: all .3s;
+  }
+}

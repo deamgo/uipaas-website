@@ -147,6 +147,10 @@ const UserProfile: React.FC = () => {
     }).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
+        appStore.setUserInfo({
+          ...appStore.userInfo,
+          email: newEmail
+        })
         handleEditEmail()
         sessionStorage.removeItem('code_key')
         shouldChange(c => -c)
@@ -178,7 +182,6 @@ const UserProfile: React.FC = () => {
 
   const handleEditPwdContinue = () => {
     editPwdContinue()
-
   }
 
   const handleConfirmEditPwd = () => {
@@ -222,11 +225,13 @@ const UserProfile: React.FC = () => {
     }).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
-        appStore.setUserInfo({
-          ...appStore.userInfo,
-          username: name
-        })
+        // appStore.setUserInfo({
+        //   ...appStore.userInfo,
+        //   username: name
+        // })
+        appStore.updateUserInfo()
         shouldChange(c => -c)
+
         handleEditName()
       } else {
         $message.error(res.value.msg)
@@ -308,16 +313,6 @@ const UserProfile: React.FC = () => {
     })
 
     console.log('send over');
-  }
-
-  const editEmial = () => {
-    console.log('Edit email');
-
-  }
-
-  const editPwd = () => {
-    console.log('Edit name');
-
   }
 
 
