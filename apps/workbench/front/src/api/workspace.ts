@@ -8,9 +8,6 @@ export type IUsrWorkspace = {
     logo?: string | null
 }
 
-// request.defaults.headers.common['Authorization'] = 'Bearer ' + tokenStore.getToken()
-// // request.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('token')
-
 function workspaceList() {
     return request({
         url: '/workspace/list',

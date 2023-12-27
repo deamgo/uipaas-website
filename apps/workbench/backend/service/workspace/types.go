@@ -8,5 +8,5 @@ type Workspace struct {
 	Logo        string `json:"logo"`
 
 	CreatedBy uint64
-	UpdateBy  uint64
+	UpdatedBy uint64
 }
