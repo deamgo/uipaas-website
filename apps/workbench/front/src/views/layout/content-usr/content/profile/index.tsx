@@ -1,4 +1,5 @@
 import React from 'react'
+import { appStore } from '@/store/store'
 //
 import './index.less'
 //
@@ -8,10 +9,14 @@ import { Avatar } from 'antd'
 import Button from '@/components/Button'
 import Mask from '@/components/Mask'
 import Popup from '@/components/Popup'
-import { set } from 'mobx'
+import { getUserInfo, updateUserName, verifiEmail, verifiEmailCode, verifiPwdEmail, sendPwdEmailCode, verifiPwdEmailCode, updatePwd } from '@/api/developer_profile'
+import { IUserInfo } from '@/api/account'
+import $message from '@/components/Message'
 
 
 const UserProfile: React.FC = () => {
+
+  const [userInfo, setUserInfo] = React.useState<IUserInfo | null>(null)
 
   const [name, setName] = React.useState('')
   const [currentPassword, setCurrentPassword] = React.useState('')
@@ -37,6 +42,29 @@ const UserProfile: React.FC = () => {
   const [pwdEditContinueAble, setPwdEditContinueAble] = React.useState(true)
   const [PwdEditConfirmAble, setPwdEditConfirmAble] = React.useState(true)
   const [send, setSend] = React.useState('Get')
+
+  //
+  const [change, shouldChange] = React.useState(1)
+
+  React.useEffect(() => {
+    getUserInfo().then(res => {
+      if (res.code && res.code === 2005) {
+        $message.warning(res.msg)
+      }
+      if (res.value?.code === 0) {
+        setUserInfo(res.value.data)
+      } else {
+        $message.error(res.value?.msg)
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.message)
+    })
+  }, [change])
+
+  React.useEffect(() => {
+    document.body.style.overflow = isMask ? 'hidden' : 'auto'
+  }, [isMask])
 
   React.useEffect(() => {
     if (usernameReg.test(name)) {
@@ -111,7 +139,24 @@ const UserProfile: React.FC = () => {
 
   const handleConfirmEditEmail = () => {
     console.log('click email confirm');
-
+    verifiEmailCode({
+      code_key: sessionStorage.getItem('code_key') as string,
+      code: parseInt(emailCode),
+      old_email: userInfo?.email,
+      email: newEmail
+    }).then(res => {
+      if (res.value.code === 0) {
+        $message.success(res.value.msg)
+        handleEditEmail()
+        sessionStorage.removeItem('code_key')
+        shouldChange(c => -c)
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.response.data.msg)
+    })
   }
 
   const handleEditPwd = () => {
@@ -122,22 +167,37 @@ const UserProfile: React.FC = () => {
       setSend('Get')
       setSendAble(false)
     }
+    setSendAble(false)
     setIsEditPwd(!isEditPwd)
     setIseditPwdContinue(false)
   }
 
   const handleEditEmailContinue = () => {
     editEmailContinue()
-    setIsEditEmailContinue(true)
   }
 
   const handleEditPwdContinue = () => {
     editPwdContinue()
-    setIseditPwdContinue(true)
+
   }
 
   const handleConfirmEditPwd = () => {
     console.log('click pwd confirm');
+    updatePwd({
+      email: userInfo?.email,
+      password: newPassword
+    }).then(res => {
+      if (res.value.code === 0) {
+        $message.success(res.value.msg)
+        sessionStorage.removeItem('code_key')
+        handleEditPwd()
+        shouldChange(c => -c)
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.message)
+
+    })
   }
 
   const getTimer = () => {
@@ -157,22 +217,75 @@ const UserProfile: React.FC = () => {
 
   const editName = () => {
     console.log('Edit name');
-
+    updateUserName(appStore.getUserInfo().id, {
+      username: name
+    }).then(res => {
+      if (res.value.code === 0) {
+        $message.success(res.value.msg)
+        appStore.setUserInfo({
+          ...appStore.userInfo,
+          username: name
+        })
+        shouldChange(c => -c)
+        handleEditName()
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      $message.error(err.response.data.msg)
+    })
   }
 
   const editEmailContinue = () => {
     console.log('Edit email continue');
-
+    verifiPwdEmail({
+      email: userInfo?.email,
+      password: currentPassword
+    }).then(res => {
+      if (res.value.code === 0) {
+        setIsEditEmailContinue(true)
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   const editPwdContinue = () => {
     console.log('Edit pwd continue');
+    verifiPwdEmailCode({
+      code_key: sessionStorage.getItem('code_key') as string,
+      code: parseInt(pwdEmailCode),
+      email: userInfo?.email
+    }).then(res => {
+      if (res.value.code === 0) {
+        setIseditPwdContinue(true)
+        sessionStorage.removeItem('code_key')
+      }
+    }).catch(err => {
+      console.log(err)
+      $message.error(err.message)
+    })
+
   }
 
   const sendVerifiCode = () => {
     console.log('Send verifi code');
     setSendAble(true)
     getTimer()
+    verifiEmail({
+      old_email: userInfo?.email,
+      email: newEmail
+    }).then(res => {
+      if (res.value.code === 0) {
+        sessionStorage.setItem('code_key', res.value.data.code_key)
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      $message.error(err.response.data.msg)
+    })
     console.log('send over');
 
   }
@@ -181,6 +294,19 @@ const UserProfile: React.FC = () => {
     console.log('Send pwd verifi code');
     setSendAble(true)
     getTimer()
+    sendPwdEmailCode({
+      email: userInfo?.email
+    }).then(res => {
+      if (res.value.code === 0) {
+        sessionStorage.setItem('code_key', res.value.data.code_key)
+      } else {
+        $message.error(res.value.msg)
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.message)
+    })
+
     console.log('send over');
   }
 
@@ -206,7 +332,7 @@ const UserProfile: React.FC = () => {
           <div className="__user_profile_account_container_wrapper">
             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar">
               <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
-                {'ILEE'.charAt(0).toUpperCase()}
+                {userInfo?.username.charAt(0).toUpperCase()}
               </Avatar>
               <div className="__user_profile_account_container_wrapper_input_besideAvatar">
                 <Input
@@ -215,7 +341,7 @@ const UserProfile: React.FC = () => {
                   type='text'
                   isNeed={false}
                   typeAble={true}
-                  value={'ilee'} />
+                  value={userInfo?.username} />
               </div>
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
@@ -231,7 +357,7 @@ const UserProfile: React.FC = () => {
                 type='text'
                 isNeed={false}
                 typeAble={true}
-                value={'123@qq.com'} />
+                value={userInfo?.email} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
               <Button context='Edit' type='board-primary' method={handleEditEmail} />
@@ -280,7 +406,7 @@ const UserProfile: React.FC = () => {
                     <span>Current email</span>
                   </div>
                   <div className="_current_wrapper_content">
-                    <span>{'123@qq.com'}</span>
+                    <span>{userInfo?.email}</span>
                   </div>
                 </div>
                 <div className="_current_wrapper">
@@ -350,7 +476,7 @@ const UserProfile: React.FC = () => {
                     <span>Current email</span>
                   </div>
                   <div className="_current_wrapper_content">
-                    <span>{'123@qq.com'}</span>
+                    <span>{userInfo?.email}</span>
                   </div>
                 </div>
                 <div className="_current_wrapper">

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react"
+import React, { useEffect, useRef, useState } from "react"
 //
 import './index.less'
 
@@ -6,34 +6,32 @@ import axios from "axios"
 import { ReactComponent as Wca } from '@assets/layout/workspace-create-add.svg'
 import WorkspaceCreateBoxItem from "@components/WorkspaceCreateBoxItem";
 import Popup from "@components/Popup";
-import {Avatar} from "antd";
+import { Avatar } from "antd";
 import Button from "@components/Button";
 import Input from "@components/Input"
-import {IUsrWorkspace, workspaceCreate, workspaceLogo} from "@api/workspace.ts";
+import { IUsrWorkspace, workspaceCreate, workspaceLogo } from "@api/workspace.ts";
 import $message from "@components/Message";
+import {currentWorkspaceStore, wsStore} from "@store/wsStore.ts";
+import {IWorkspaceItemProps} from "@/interface/some.ts";
 
 
-interface WorkspaceItem{
+interface WorkspaceItem {
     id: string
-    name:string
-    logo:string
-    lable:string
-    description:string
+    name: string
+    logo: string
+    label: string
+    description: string
 }
 
 type BoxProps = {
-    list:WorkspaceItem[]
-    list_workspace: {name: string, logo: string}[]
-    setwcbShow: React.Dispatch<React.SetStateAction<boolean>>
-    setlist_workspace: React.Dispatch<React.SetStateAction<{name: string, logo: string}[]>>
+    setWcbShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
 const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     const [isWsCreate, setIsWsCreate] = React.useState(false)
-    const [workspaceName,setworkspaceName] = React.useState("")
-    const [workspaceLogoPath,setworkspaceLogoPath] = React.useState("")
-    const [file, setFile] = useState<File | null>(null);
+    const [workspaceName, setWorkspaceName] = React.useState("")
+    const [workspaceLogoPath, setWorkspaceLogoPath] = React.useState("")
     const formData = new FormData();
 
 
@@ -44,14 +42,14 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
         }
         const file = e.target.files[0];
         // setFile(file)
-        if (file != null){
+        if (file != null) {
             console.log(file)
             formData.set('file', file)
 
             workspaceLogo(formData).then(res => {
                 if (res.value.code === 0) {
                     console.log(res.value)
-                    setworkspaceLogoPath(res.value.data)
+                    setWorkspaceLogoPath(res.value.data)
                 } else {
                     $message.error(res.value.msg)
                 }
@@ -69,6 +67,10 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
         // props.setwcbShow(true);
     };
 
+    const handleIsWsCreate = () => {
+        setIsWsCreate(!isWsCreate);
+    }
+
 
     const reqWorkspaceCreate = () => {
         workspaceCreate({
@@ -77,8 +79,15 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
         }).then(res => {
             if (res.value.code === 0) {
                 console.log(res.value.data)
-                props.list_workspace.push({name:res.value.data.name as  string,logo:res.value.data.logo as string})
+                let ws = {id: res.value.data.id, name: res.value.data.name, logo: res.value.data.logo}
+                let list = wsStore.getWsList();
+                list.push(ws)
+                wsStore.setWsList(list)
+                currentWorkspaceStore.setCurrentWorkspace(ws)
+                wsStore.setFirst(ws.name)
                 setIsWsCreate(false)
+                setWorkspaceLogoPath("")
+                $message.error(res.value.msg)
             } else {
                 $message.error(res.value.msg)
             }
@@ -92,51 +101,47 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
     return (
         <>
-           <div className="__wcb">
-               <div className="__wcb_box">
-                   {props.list
-                       ? props.list.map(item => (
-                           <WorkspaceCreateBoxItem  name={item.name} logo={item.logo} />
-                       ))
-                       : (<></>)}
-               </div>
-               <button className="__wcb_button" onClick={wcbpHandleClick}>
-                    <hr className="__wcb_line"/>
-                   <span className="__wcb_add_logo">
-                       <Wca />
-                   </span>
-                   Create Workspace
-               </button>
-           </div>
+            <div className="__wcb">
+                <div className="__wcb_box">
+                    {wsStore.getWsListFirstByWorkspace(currentWorkspaceStore.getCurrentWorkspace().name)
+                        ? wsStore.getWsListFirstByWorkspace(currentWorkspaceStore.getCurrentWorkspace().name).map(item => (
+                            <WorkspaceCreateBoxItem id={item.id} name={item.name} logo={item.logo} />
+                        ))
+                        : (<></>)}
+                </div>
+                <button className="__wcb_button" onClick={wcbpHandleClick}>
+                    <hr className="__wcb_line" />
+                    <span className="__wcb_add_logo">
+                        <Wca />
+                    </span>
+                    Create Workspace
+                </button>
+            </div>
             {isWsCreate && (
                 <>
-                    <Popup unit={'rem'} width={496} height={276} title={'Create Workspace'}>
-                        <div className="_current" style={{fontSize: '13px'}}>
+                    <Popup unit={'rem'} width={496} height={276} title={'Create Workspace'} onClose={handleIsWsCreate}>
+                        <div className="_current" style={{ fontSize: '13px' }}>
 
                             <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
 
-
-                                <label htmlFor="workspace-logo" className="__wcb_popup_logo">
-                                    <div className="__wcb_popup_setLogo">
-                                    </div>
-                                    <input style={{display: "none"}} id="workspace-logo" type="file"
-                                           onChange={handleFileChange}/>
+                                <label htmlFor="workspace-logo">
+                                    <div className="__wcb_popup_setLogo"></div>
+                                    <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
                                     {workspaceLogoPath === '' ?
-                                        <Avatar style={{backgroundColor: 'blue', verticalAlign: 'middle'}} size={65}
-                                                gap={3}>
+                                        <Avatar style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={65}
+                                            gap={3}>
                                             {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
-                                        </Avatar> : <img style={{borderRadius: '50%'}} height={65} width={65}
-                                                         src={workspaceLogoPath} alt="workspace-logo"/>}
+                                        </Avatar> : <img style={{ borderRadius: '50%' }} height={65} width={65} src={workspaceLogoPath} alt="workspace-logo" />}
 
                                 </label>
                                 <div className="__user_profile_account_container_wrapper_input_besideAvatar">
-                                    <div style={{marginBottom: '13px'}}><span
-                                        style={{color: '#4E5969'}}>Workspace Name</span><span
-                                        style={{color: '#FF4D4F'}}>*</span></div>
+                                    <div style={{ marginBottom: '13px' }}><span
+                                        style={{ color: '#4E5969' }}>Workspace Name</span><span
+                                            style={{ color: '#FF4D4F' }}>*</span></div>
 
                                     <Input
                                         type='text'
-                                        outputChange={setworkspaceName}
+                                        outputChange={setWorkspaceName}
                                         placeholder={"Enter your Workspace name"}
                                     />
                                 </div>
@@ -144,7 +149,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
 
 
                             <div className="__wcb_popup_button">
-                                <Button context={'Create'} type='primary' method={reqWorkspaceCreate}/>
+                                <Button context={'Create'} type='primary' method={reqWorkspaceCreate} />
                             </div>
                         </div>
 

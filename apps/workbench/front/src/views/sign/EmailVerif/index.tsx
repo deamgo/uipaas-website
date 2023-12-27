@@ -8,7 +8,7 @@ import Mask from '@/components/Mask'
 //
 import { emailVerificationReg } from '@constants/regexp'
 import { usrSignUpVerify } from '@api/sign_up'
-import appStore from '@/store/store'
+import { appStore } from '@/store/store'
 //
 import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'
@@ -59,7 +59,7 @@ const EmailVerif: React.FC = () => {
         sessionStorage.removeItem('password')
 
         $message.success(res.value.msg)
-        navigate('/apps')
+        navigate('/')
       } else {
         $message.error(res.value.msg)
       }
@@ -97,7 +97,7 @@ const EmailVerif: React.FC = () => {
         <div className="__ev_btnbox_tip">
           <span>Already have an account?</span>
           <span>
-            <Link to='s/in'>Sign in</Link>
+            <Link to='/s'>Sign in</Link>
           </span>
         </div>
         <Button

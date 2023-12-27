@@ -2,17 +2,20 @@ import React from 'react'
 //
 import './index.less'
 //
-import { usernameReg, emailReg, passwordReg } from '@constants/regexp'
 import Input from '@/components/Input'
 import { Avatar } from 'antd'
 import Button from '@/components/Button'
 import Popup from '@/components/Popup'
 import Mask from '@/components/Mask'
+import { currentWorkspaceStore } from '@/store/wsStore'
+import { deleteWorkspace } from '@/api/workspace_settings'
+import $message from '@/components/Message'
 
 
 const WSSettings: React.FC = () => {
 
   const [workname, setWorkName] = React.useState('')
+  const [currentWorkspace, setCurrentWorkspace] = React.useState(currentWorkspaceStore.getCurrentWorkspace())
 
   const [isMask, setIsMask] = React.useState(false)
 
@@ -20,12 +23,21 @@ const WSSettings: React.FC = () => {
   const [confirmDeleteAble, setConfirmDeleteAble] = React.useState(true)
 
   React.useEffect(() => {
-    if (workname) {
+    setCurrentWorkspace(currentWorkspaceStore.getCurrentWorkspace())
+
+  }, [currentWorkspaceStore.getCurrentWorkspace().name])
+
+  React.useEffect(() => {
+    if (workname === currentWorkspaceStore.getCurrentWorkspace().name) {
       setConfirmDeleteAble(false)
     } else {
       setConfirmDeleteAble(true)
     }
   }, [workname])
+
+  React.useEffect(() => {
+    document.body.style.overflow = isMask ? 'hidden' : 'auto'
+  }, [isMask])
 
   const resetForm = () => {
     setWorkName('')
@@ -43,7 +55,16 @@ const WSSettings: React.FC = () => {
 
   const handleConfirmDelete = () => {
     console.log('delete workspace');
-
+    deleteWorkspace(currentWorkspace.id).then(res => {
+      if (res.value.code === 0) {
+        $message.success(res.value.msg)
+        setIsDelete(false)
+        handleMask()
+      }
+    }).catch(err => {
+      console.log(err);
+      $message.error(err.message)
+    })
   }
 
   return (
@@ -51,14 +72,14 @@ const WSSettings: React.FC = () => {
       <div className="__workspace_settings">
         <div className="__workspace_settings_container">
           <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
-            {'ILEE'.charAt(0).toUpperCase()}
+            {currentWorkspaceStore.getCurrentWorkspace().name.charAt(0).toUpperCase()}
           </Avatar>
           <div className="__workspace_settings_container_input">
             <Input
               id='1'
               title='Workspace Name'
               type='text'
-              value={'Deamgo'}
+              value={currentWorkspace.name}
               isNeed={false}
               typeAble={true} />
           </div>
@@ -70,7 +91,7 @@ const WSSettings: React.FC = () => {
       {isMask && (<Mask />)}
       {isDelete && (
         <>
-          <Popup unit='rem' width={496} height={276} title={`Delete the "${'Deamgo'}" Workspace?`} onClose={handleOpenDeleteDialog}>
+          <Popup unit='rem' width={496} height={276} title={`Delete the "${currentWorkspaceStore.getCurrentWorkspace().name}" Workspace?`} onClose={handleOpenDeleteDialog}>
             <div className="_delete_tips">
               <div className="_delete_tips_bef">
                 <span>All Workspace applications will be permanently deleted.</span>

@@ -13,13 +13,68 @@ import UserProfile from '@/views/layout/content-usr/content/profile'
 import ContentWorkSpace from '@/views/layout/content-ws-sys'
 import WSDevelopers from '@/views/layout/content-ws-sys/content/developers'
 import WSSettings from '@/views/layout/content-ws-sys/content/settings'
+import { tokenStore, appStore } from '@/store/store'
+import { getUserInfo } from '@/api/developer_profile'
+import { workspaceList } from '@/api/workspace'
+import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 
 const tokenLoader = async () => {
-  const token = sessionStorage.getItem('token')
+  console.log('tokenLoading');
+
+  const token = tokenStore.getToken()
   if (!token) {
     return redirect('/s')
+  } else {
+    getUserInfo().then(res => {
+      if (res.value?.code === 0) {
+        sessionStorage.setItem('userId', res.value.data.id)
+        sessionStorage.setItem('userName', res.value.data.username)
+        sessionStorage.setItem('userEmail', res.value.data.email)
+        sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
+        appStore.setUserInfo(res.value.data)
+      } else if (res.code === 2005) {
+        return redirect('/s')
+      }
+    }).catch(err => {
+      console.log(err);
+      return redirect('/s')
+    })
+
+    WorkspaceListLoader()
+
   }
   return null
+}
+
+const UserProfileLoader = () => {
+  getUserInfo().then(res => {
+    if (res.value.code === 0) {
+      return res.value.data
+    } else {
+      return {}
+    }
+  }).catch(err => {
+    return {}
+  })
+  return {}
+}
+
+const WorkspaceListLoader = () => {
+  workspaceList().then(res => {
+    if (res.value.code === 0) {
+      wsStore.setWsList(res.value.data)
+      if (!currentWorkspaceStore.currentWorkspace.name) {
+        console.log(currentWorkspaceStore.currentWorkspace);
+
+        currentWorkspaceStore.setCurrentWorkspace(res.value.data[0])
+      }
+      return res.value.data
+    } else {
+    }
+  }).catch(err => {
+    console.log(err);
+  })
+  return []
 }
 
 export const routes: RouteObject[] = [
@@ -38,6 +93,7 @@ export const routes: RouteObject[] = [
         children: [
           {
             index: true,
+            loader: UserProfileLoader,
             Component: UserProfile,
           }
         ]
