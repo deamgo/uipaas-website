@@ -2,6 +2,7 @@ package account
 
 import (
 	"fmt"
+	"github.com/deamgo/workbench/service/workspace"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -16,8 +17,6 @@ import (
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
-	workspace "github.com/deamgo/workbench/service/workspace"
-
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/pkg/errors"
@@ -162,16 +161,6 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		// Delete the verification code that has already been used
 		db.RedisDB.HDel(req.CodeKey, "code")
-		// Modify developer deactivate
-		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
-		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
-				Code: e.Failed,
-				Msg:  e.SignUpError,
-				Data: nil,
-			}))
-			return
-		}
 
 		dpl, _ := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 
@@ -186,6 +175,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+
 		id, err := strconv.ParseInt(dpl.ID, 10, 64)
 		if err != nil {
 			c.AbortWithStatus(http.StatusInternalServerError)
@@ -208,6 +198,17 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+		// Modify developer deactivate
+		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.SignUpError,
+				Data: nil,
+			}))
+			return
+		}
+
 		//	generate A Token And Return It
 		var t string
 		t, _ = jwt.GenToken(dpl.ID)

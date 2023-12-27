@@ -67,7 +67,7 @@ func (dao workspaceDao) WorkspaceDel(ctx context.Context, workspace *WorkspaceDO
 		if err := tx.WithContext(ctx).Model(workspace).UpdateColumn("is_deleted", 1).Error; err != nil {
 			return err
 		}
-		if err := tx.Model(&DeveloperWorkspaceRelationDO{}).Where("developer_id", developerID).UpdateColumn("is_deleted", 1).Error; err != nil {
+		if err := tx.Model(&DeveloperWorkspaceRelationDO{}).Where("workspace_id", workspace.Id).UpdateColumn("is_deleted", 1).Error; err != nil {
 			return err
 		}
 		return nil

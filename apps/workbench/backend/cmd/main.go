@@ -22,14 +22,14 @@ func main() {
 	initialize.InitConfig()
 	db.InitDB()
 	db.InitRedis()
-	dao := user2.NewADeveloperDao(db.DB)
+	developerDao := user2.NewADeveloperDao(db.DB)
 	workspaceDao := workspace2.NewWorkspaceDao(db.DB)
 	devdepotDao := devdepot2.NewDevDepotDao(db.DB)
 	ctx := context.ApplicationContext{
-		UserService:      developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
+		UserService:      developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: developerDao, MailService: mail.NewMailService()}),
 		MailService:      mail.NewMailService(),
 		WorkspaceService: workspace.NewWorkspaceService(workspace.WorkspaceServiceParams{Dao: workspaceDao}),
-		DevDepotService:  devdepot.NewDepotService(devdepot.DevDepotServiceParams{Dao: devdepotDao}),
+		DevDepotService:  devdepot.NewDepotService(devdepot.DevDepotServiceParams{Dao: devdepotDao, DeveloperDao: developerDao, MailService: mail.NewMailService()}),
 	}
 
 	r := gin.Default()

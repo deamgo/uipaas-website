@@ -20,7 +20,8 @@ import (
 )
 
 type MailService interface {
-	SendMail(ctx context.Context, emailStr string) int
+	SendVerificationCodeMail(ctx context.Context, emailStr string) int
+	SendWorkspaceInviteMail(ctx context.Context, emailStr, workspaceID string) error
 }
 
 type mailService struct {
@@ -30,7 +31,7 @@ func NewMailService() MailService {
 	return &mailService{}
 }
 
-func (us mailService) SendMail(ctx context.Context, emailStr string) int {
+func (us mailService) SendVerificationCodeMail(ctx context.Context, emailStr string) int {
 
 	// Set up a random seed
 	rand.NewSource(time.Now().UnixNano())
@@ -63,6 +64,39 @@ func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 		log.Fatal(err)
 	}
 	return randomNumber
+
+}
+
+func (us mailService) SendWorkspaceInviteMail(ctx context.Context, emailStr, workspaceID string) error {
+
+	url := "https://uipaas.com/" + workspaceID
+	e := email.NewEmail()
+	// Set the sender's mailbox
+	e.From = fmt.Sprintf("UIPaaS <%v>", consts.ADDRESSER)
+	// Set up the recipient's mailbox
+	e.To = []string{emailStr}
+	// Set up a subject
+	e.Subject = consts.SUBJECT_LINE
+	// Set the content of the file to be sent
+	htmlStr, err := parseMJMLFile(getCurrentAbPathByCaller()+"/mjml/workspace_invite.mjml", ctx)
+	if err != nil {
+		return err
+	}
+	data := struct {
+		URL string
+	}{
+		URL: url,
+	}
+	tmpl, _ := template.New("mjml").Parse(htmlStr)
+	var rendered bytes.Buffer
+	_ = tmpl.Execute(&rendered, data)
+	e.HTML = rendered.Bytes()
+	// Set the server-related configurations
+	err = e.Send("smtp.feishu.cn:25", smtp.PlainAuth("", "uipaas@tests.run", "rR9rJvSiXkfAm44h", "smtp.feishu.cn"))
+	if err != nil {
+		return err
+	}
+	return err
 
 }
 
