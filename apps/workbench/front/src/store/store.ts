@@ -18,6 +18,7 @@ class AppStore {
   }
 
   setUserInfo(user: typeof this.userInfo) {
+    sessionStorage.setItem('userInfo', JSON.stringify(user))
     this.userInfo = user
   }
 

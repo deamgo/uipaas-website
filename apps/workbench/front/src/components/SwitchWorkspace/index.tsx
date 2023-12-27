@@ -29,7 +29,7 @@ const SwitchWorkspace: React.FC = () => {
     workspaceList().then(res => {
       if (res.value.code === 0) {
         console.log(res.value);
-        wsStore.setWsList(res.value.data)
+        wsStore.setWsList(res.value.data ? res.value.data : [])
       } else {
         $message.error(res.value.msg)
       }
@@ -40,11 +40,11 @@ const SwitchWorkspace: React.FC = () => {
   }, [])
 
   React.useEffect(() => {
-    setWsName(currentWorkspaceStore.getCurrentWorkspace().name)
-    setWsLogo(currentWorkspaceStore.getCurrentWorkspace().logo)
+    setWsName(currentWorkspaceStore.getCurrentWorkspace()?.name)
+    setWsLogo(currentWorkspaceStore.getCurrentWorkspace()?.logo)
     setUsername(appStore.getUserInfo().username)
     setWcbShow(false)
-  }, [currentWorkspaceStore.currentWorkspace.name, currentWorkspaceStore.currentWorkspace.logo, appStore.userInfo.username])
+  }, [currentWorkspaceStore.currentWorkspace?.name, currentWorkspaceStore.currentWorkspace?.logo, appStore.userInfo.username])
 
   const wcbHandleClick = () => {
     setWcbShow(!wcbShow);

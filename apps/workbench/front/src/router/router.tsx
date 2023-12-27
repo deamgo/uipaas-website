@@ -31,9 +31,7 @@ const tokenLoader = async () => {
 
       if (res.value?.code === 0) {
         console.log('enter 0');
-
-
-        sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
+        // sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
         appStore.setUserInfo(res.value.data)
       } else if (res.code === 2005) {
         console.log('enter 2005');
@@ -41,6 +39,8 @@ const tokenLoader = async () => {
         return redirect('/s')
       } else if (res.code === 2006) {
         console.log('enter 2006');
+        console.log('updating token...');
+
         tokenStore.setToken(res.data.token)
       }
     }).catch(err => {
@@ -55,33 +55,37 @@ const tokenLoader = async () => {
 }
 
 const UserProfileLoader = async () => {
-  await getUserInfo().then(res => {
-    if (res.value.code === 0) {
-      return res.value.data
-    } else {
-      return {}
-    }
-  }).catch(err => {
-    return {}
-  })
-  return {}
+  try {
+    const { value } = await getUserInfo()
+    return value.data
+  } catch (err) {
+    console.log(err);
+    return null
+  }
 }
 
 const WorkspaceListLoader = async () => {
-  await workspaceList().then(res => {
-    if (res.value.code === 0) {
-      wsStore.setWsList(res.value.data)
-      if (!currentWorkspaceStore.currentWorkspace.name) {
-        console.log(currentWorkspaceStore.currentWorkspace);
-        currentWorkspaceStore.setCurrentWorkspace(res.value.data[0])
-      }
-      return res.value.data
-    } else {
-    }
-  }).catch(err => {
-    console.log(err);
-  })
-  return []
+  // await workspaceList().then(res => {
+  //   if (res.value.code === 0) {
+  //     wsStore.setWsList(res.value.data)
+  //     if (!currentWorkspaceStore.currentWorkspace.name) {
+  //       console.log(currentWorkspaceStore.currentWorkspace);
+  //       currentWorkspaceStore.setCurrentWorkspace(res.value.data[0])
+  //     }
+  //     return res.value.data
+  //   } else {
+  //   }
+  // }).catch(err => {
+  //   console.log(err);
+  // })
+  // return [] 
+  try {
+    const { value } = await workspaceList()
+    return value.data ? value.data : []
+  } catch (err) {
+    return []
+  }
+
 }
 
 export const routes: RouteObject[] = [

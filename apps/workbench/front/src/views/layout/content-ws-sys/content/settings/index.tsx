@@ -64,8 +64,8 @@ const WSSettings: React.FC = () => {
         $message.success(res.value.msg)
         workspaceList().then(res => {
           if (res.value.code === 0) {
-            wsStore.setWsList(res.value.data)
-            currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList() ? wsStore.getWsList()[0] : { id: '', name: '', logo: '' })
+            wsStore.setWsList(res.value.data ? res.value.data : [])
+            currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList().length > 0 ? wsStore.getWsList()[0] : { id: '', name: '', logo: '' })
             navigate('/')
           }
         }).catch(err => {

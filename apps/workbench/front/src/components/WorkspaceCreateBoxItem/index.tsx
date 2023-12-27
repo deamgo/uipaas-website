@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import './index.less'
 
 import { Avatar } from "antd";
+import { currentWorkspaceStore, wsStore } from "@/store/wsStore";
 
 interface WorkspaceItemProps {
     id: string;

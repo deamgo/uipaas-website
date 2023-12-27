@@ -8,7 +8,6 @@ import Mask from '@/components/Mask'
 import { emailVerificationReg } from '@constants/regexp'
 import { usrSignUpVerify } from '@api/sign_up'
 import { appStore } from '@/store/store'
-import { appStore } from '@/store/store'
 //
 import $message from '@/components/Message'
 import { Link, useNavigate } from 'react-router-dom'

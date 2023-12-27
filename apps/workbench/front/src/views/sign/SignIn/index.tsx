@@ -10,7 +10,6 @@ import { usrSignIn } from '@api/sign_in'
 import $message from '@/components/Message'
 import { Link, useNavigate } from 'react-router-dom'
 import { tokenStore } from '@/store/store'
-import { tokenStore } from '@/store/store'
 
 const SignIn: React.FC = () => {
 

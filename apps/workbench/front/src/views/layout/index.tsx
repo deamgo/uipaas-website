@@ -23,8 +23,10 @@ const Layout: React.FC = () => {
   })
 
   React.useEffect(() => {
-    if (wsStore.getWsList()) {
+    if (!(wsStore.getWsList().length > 0)) {
       navigate('/_blank')
+    } else {
+      navigate('/')
     }
   }, [wsStore.getWsList()?.length])
 

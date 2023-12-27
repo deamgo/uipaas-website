@@ -48,7 +48,7 @@ const Sider: React.FC<SiderProps> = (props) => {
 
   const [username, setUsername] = React.useState('')
   const [active, setActive] = React.useState<number>()
-  const [isWslist, setIsWslist] = React.useState(true)
+  const [isWslist, setIsWslist] = React.useState(false)
 
 
   React.useEffect(() => {
@@ -56,12 +56,12 @@ const Sider: React.FC<SiderProps> = (props) => {
   }, [])
 
   React.useEffect(() => {
-    if (wsStore.getWsList() === null) {
-      setIsWslist(false)
-    } else {
+    if (wsStore.getWsList().length > 0) {
       setIsWslist(true)
+    } else {
+      setIsWslist(false)
     }
-  }, [wsStore.getWsList()])
+  }, [wsStore.getWsList().length])
 
   React.useEffect(() => {
     console.log('update sider foot username')
