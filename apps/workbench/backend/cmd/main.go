@@ -2,12 +2,14 @@ package main
 
 import (
 	"github.com/deamgo/workbench/context"
+	devdepot2 "github.com/deamgo/workbench/dao/devdepot"
 	user2 "github.com/deamgo/workbench/dao/developer"
 	workspace2 "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/initialize"
 	"github.com/deamgo/workbench/pkg/logger"
 	routes "github.com/deamgo/workbench/router"
+	"github.com/deamgo/workbench/service/devdepot"
 	"github.com/deamgo/workbench/service/developer"
 	"github.com/deamgo/workbench/service/mail"
 	"github.com/deamgo/workbench/service/workspace"
@@ -22,10 +24,12 @@ func main() {
 	db.InitRedis()
 	dao := user2.NewADeveloperDao(db.DB)
 	workspaceDao := workspace2.NewWorkspaceDao(db.DB)
+	devdepotDao := devdepot2.NewDevDepotDao(db.DB)
 	ctx := context.ApplicationContext{
 		UserService:      developer.NewDeveloperService(developer.DeveloperServiceParams{Dao: dao, MailService: mail.NewMailService()}),
 		MailService:      mail.NewMailService(),
 		WorkspaceService: workspace.NewWorkspaceService(workspace.WorkspaceServiceParams{Dao: workspaceDao}),
+		DevDepotService:  devdepot.NewDepotService(devdepot.DevDepotServiceParams{Dao: devdepotDao}),
 	}
 
 	r := gin.Default()

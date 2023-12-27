@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/deamgo/workbench/api/account"
+	"github.com/deamgo/workbench/api/devdepot"
 	"github.com/deamgo/workbench/api/developer"
 	"github.com/deamgo/workbench/api/workspace"
 	"github.com/deamgo/workbench/context"
@@ -48,10 +49,14 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 	}
 	workspaceApi := api.Group("/workspace")
 	{
-		workspaceApi.DELETE("/:id", workspace.WorkspaceDel(ctx))
+		workspaceApi.DELETE("/settings/:id", workspace.WorkspaceDel(ctx))
 		workspaceApi.POST("/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
 		workspaceApi.GET("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
 		workspaceApi.POST("/logo", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetLogoPath(ctx))
+		workspaceApi.GET("/:workspace_id/developer", middleware.JWTAuthMiddleware(), devdepot.DevdepotList(ctx))
+		workspaceApi.GET("/:workspace_id/developer/search", middleware.JWTAuthMiddleware(), devdepot.DevdepotSearch(ctx))
+		workspaceApi.DELETE("/:workspace_id/developer", middleware.JWTAuthMiddleware(), devdepot.DevdepotDel(ctx))
+
 	}
 
 }
