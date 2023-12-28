@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"regexp"
 	"strconv"
+	"time"
 
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
@@ -270,7 +271,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		//	generate A Token And Return It
 		var t string
 		t, _ = jwt.GenToken(findUser.ID)
-		fmt.Println(t)
+		db.RedisDB.Set(findUser.ID, t, time.Hour*2)
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  e.LoginSuccess,

@@ -3,10 +3,12 @@ package middleware
 import (
 	"net/http"
 	"strings"
-
-	"github.com/gin-gonic/gin"
+	"time"
 
 	"github.com/deamgo/workbench/auth/jwt"
+	"github.com/deamgo/workbench/db"
+
+	"github.com/gin-gonic/gin"
 )
 
 // JWTAuthMiddleware based On JWT Certified Middleware
@@ -42,10 +44,19 @@ func JWTAuthMiddleware() func(c *gin.Context) {
 			c.Abort()
 			return
 		}
-		isExpireToken, _ := jwt.IsExpireToken(parts[1])
+		isExpireToken, err := jwt.IsExpireToken(parts[1])
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{
+				"code": 2005,
+				"msg":  err,
+			})
+			c.Abort()
+			return
+		}
 		if isExpireToken {
 			id, _ := jwt.ExtractIDFromToken(authHeader)
 			newToken, err := jwt.GenToken(id)
+			db.RedisDB.Set(id, newToken, time.Hour*2)
 			if err != nil {
 				c.AbortWithStatus(http.StatusInternalServerError)
 			}

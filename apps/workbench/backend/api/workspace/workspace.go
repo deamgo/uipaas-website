@@ -132,7 +132,7 @@ func WorkspaceDel(ctx context.ApplicationContext) gin.HandlerFunc {
 		var req struct {
 			Id string `json:"id" validate:"required"`
 		}
-		req.Id = c.Param("id")
+		req.Id = c.Param("workspace_id")
 
 		validate := validator.New()
 		if err := validate.Struct(req); err != nil {

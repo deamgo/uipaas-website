@@ -82,6 +82,9 @@ func WSHandler() gin.HandlerFunc {
 func SendMsgToDeveloper(developerID string, msg []byte) error {
 	connectionPool.Lock()
 	connection := connectionPool.pool[developerID]
+	if connection == nil {
+		return nil
+	}
 	err := connection.WS.WriteMessage(websocket.TextMessage, msg)
 	if err != nil {
 		return err
