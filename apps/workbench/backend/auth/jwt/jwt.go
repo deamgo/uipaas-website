@@ -6,7 +6,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/deamgo/workbench/db"
+
 	"github.com/dgrijalva/jwt-go"
+	"github.com/go-redis/redis"
 	"github.com/spf13/viper"
 )
 
@@ -20,7 +23,7 @@ type MyClaims struct {
 var TokenBlacklist = make(map[string]bool)
 
 // defineTheExpirationTime
-const TokenExpireDuration = time.Hour * 2
+const TokenExpireDuration = time.Hour * 4
 
 // generate jwt
 func GenToken(id string) (string, error) {
@@ -55,19 +58,23 @@ func ParseToken(tokenString string) (*MyClaims, error) {
 }
 
 func IsExpireToken(tokenString string) (bool, error) {
-	_, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
+	t, err := jwt.ParseWithClaims(tokenString, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return MySecret, nil
 	})
 
 	if err != nil {
-		if ve, ok := err.(*jwt.ValidationError); ok {
-			if ve.Errors&(jwt.ValidationErrorExpired) != 0 {
-				return true, nil
-			}
+		return true, err
+	}
+	err = db.RedisDB.Get(t.Claims.(*MyClaims).ID).Err()
+	if err != nil {
+		if errors.Is(err, redis.Nil) {
+			return true, nil
+		} else {
+			return false, err
 		}
 	}
 
-	return false, errors.New("invalid token")
+	return false, nil
 }
 
 func ExtractIDFromToken(tokenString string) (string, error) {

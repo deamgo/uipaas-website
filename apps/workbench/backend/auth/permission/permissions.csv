@@ -1,0 +1,5 @@
+Role,Path,Method
+"[1,0]","/v1/workspace/:workspace_id/developer","GET"
+"[1,0]","/v1/workspace/:workspace_id/developer/search","GET"
+"[1,0]","/v1/workspace/:workspace_id/developer/invite","POST"
+"[0]","/v1/workspace/:workspace_id/setting","DELETE"

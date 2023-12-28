@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"regexp"
 	"strconv"
+	"time"
 
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
@@ -16,7 +17,7 @@ import (
 	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
-	workspace "github.com/deamgo/workbench/service/workspace"
+	"github.com/deamgo/workbench/service/workspace"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -162,16 +163,6 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		// Delete the verification code that has already been used
 		db.RedisDB.HDel(req.CodeKey, "code")
-		// Modify developer deactivate
-		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
-		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
-				Code: e.Failed,
-				Msg:  e.SignUpError,
-				Data: nil,
-			}))
-			return
-		}
 
 		dpl, _ := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 
@@ -186,6 +177,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+
 		id, err := strconv.ParseInt(dpl.ID, 10, 64)
 		if err != nil {
 			c.AbortWithStatus(http.StatusInternalServerError)
@@ -208,6 +200,17 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 			}))
 			return
 		}
+		// Modify developer deactivate
+		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				Code: e.Failed,
+				Msg:  e.SignUpError,
+				Data: nil,
+			}))
+			return
+		}
+
 		//	generate A Token And Return It
 		var t string
 		t, _ = jwt.GenToken(dpl.ID)
@@ -268,7 +271,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		//	generate A Token And Return It
 		var t string
 		t, _ = jwt.GenToken(findUser.ID)
-		fmt.Println(t)
+		db.RedisDB.Set(findUser.ID, t, time.Hour*2)
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
 			Code: e.Success,
 			Msg:  e.LoginSuccess,

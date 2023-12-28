@@ -12,7 +12,15 @@ func TestMailService_SendMail(t *testing.T) {
 	ctx := context.Background()
 	ms := mailService{}
 	email := "zhaokang0610@gmail.com"
-	number := ms.SendMail(ctx, email)
+	number := ms.SendVerificationCodeMail(ctx, email)
+	fmt.Println(number)
+}
+
+func TestMailService_SendWorkspaceInviteMail(t *testing.T) {
+	ctx := context.Background()
+	ms := mailService{}
+	email := "zhaokang0610@gmail.com"
+	number := ms.SendWorkspaceInviteMail(ctx, email, "test22")
 	fmt.Println(number)
 }
 

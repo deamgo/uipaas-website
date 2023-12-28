@@ -68,7 +68,7 @@ func (us developerService) DeveloperAdd(ctx context.Context, u *Developer) (stri
 
 	ud := convertDeveloperDO(u)
 	//send email and get  code
-	code := us.mail.SendMail(ctx, u.Email)
+	code := us.mail.SendVerificationCodeMail(ctx, u.Email)
 	codeHash, err := SaveCode(u.Email, code)
 	if err != nil {
 		logger.Error(err)
@@ -107,7 +107,7 @@ func (us developerService) DeveloperNameModifyByID(ctx context.Context, u *Devel
 }
 
 func (us developerService) ForgotVerifySend(ctx context.Context, u *Developer) (string, error) {
-	code := mail.MailService.SendMail(mail.NewMailService(), ctx, u.Email)
+	code := mail.MailService.SendVerificationCodeMail(mail.NewMailService(), ctx, u.Email)
 	codeHash, err := SaveCode(u.Email, code)
 	if err != nil {
 		logger.Error(err)
@@ -194,7 +194,7 @@ func (us developerService) SendModifyEmailVerify(ctx context.Context, u *Develop
 	if dlp != nil {
 		return "", errors.New("email already exists")
 	}
-	code := mail.MailService.SendMail(mail.NewMailService(), ctx, u.Email)
+	code := mail.MailService.SendVerificationCodeMail(mail.NewMailService(), ctx, u.Email)
 	var codeHash string
 	codeHash, err = SaveCode(u.Email, code)
 	if err != nil {

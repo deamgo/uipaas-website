@@ -4,16 +4,19 @@ import "time"
 
 type DevDepotItem struct {
 	WorkspaceId string `json:"workspace_id" gorm:"type:char(6);size 6;primary_key;comment:'workspace ID'"`
-	DeveloperId uint64 `json:"developer_id" gorm:"type:bigint;size 20;not null;comment:'Developer ID'"`
-	Role        string `json:"Role" gorm:"type:varchar(255);not null;comment:'role 0-owner 1-Admin 2-Developer 3-Reviewer'"`
-	Username    string `json:"username" gorm:"type:varchar(255);not null;comment:'username'"`
-	Email       string `json:"email" gorm:"type:varchar(255);not null;comment:'email'"`
+	DeveloperId string `json:"developer_id" gorm:"type:varchar;size 20;not null;comment:'Developer ID'"`
+	Role        string `json:"Role" gorm:"type:varchar(10);not null;comment:'role 0-owner 1-Admin 2-Developer 3-Reviewer'"`
+	Status      uint8  `json:"status" gorm:"type:tinyint;not null;comment:'status 0-Pending 1-Accept'"`
+	Username    string `json:"username" gorm:"type:varchar(50);not null;comment:'username'"`
+	Email       string `json:"email" gorm:"type:varchar(50);not null;comment:'email'"`
 }
 
 type DeveloperWorkspaceRelationDO struct {
 	WorkspaceId string `gorm:"type:char(6);size 6;primary_key;comment:'workspace ID'"`
-	DeveloperId uint64 `gorm:"type:bigint;size 20;not null;comment:'Developer ID'"`
+	Email       string `gorm:"type:varchar(50);not null;comment:'email'"`
+	DeveloperId string `gorm:"type:varchar;size 20;not null;comment:'Developer ID'"`
 	Role        uint8  `gorm:"type:tinyint;not null;comment:'role  1-Admin 2-Developer 3-Reviewer'"`
+	Status      uint8  `json:"status" gorm:"type:tinyint;not null;comment:'status 0-Pending 1-Accept'"`
 
 	CreatedBy uint64    `gorm:"type:bigint;default:0;not null;comment:'creator';"`
 	CreatedAt time.Time `gorm:"comment:'creation time';"`
