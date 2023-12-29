@@ -1,24 +1,27 @@
 .__mulselector {
   &_wrapper {
-    width: max-content;
-    height: max-content;
+    padding: 4rem;
+    width: 75rem;
+    height: 68rem;
+
+    display: flex;
+    flex-flow: column wrap;
+    gap: 4rem;
 
     border-radius: 4rem;
 
     background: #FFFFFF;
 
-    border: 1rem solid #E5E8EF;
-
-    box-shadow: 0rem 0rem 10rem 0rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0rem 6rem 30rem 5rem rgba(128, 160, 194, 0.05),
+      0rem 16rem 24rem 2rem rgba(128, 160, 194, 0.1),
+      0rem 8rem 10rem -5rem rgba(128, 160, 194, 0.08);
     background-color: #FFFFFF;
 
     user-select: none;
 
     &_item {
-      margin: 10rem 2rem;
-      padding: 4rem 16rem 3rem 15rem;
-      width: max-content;
-      height: 27rem;
+      flex-grow: 1;
+      width: 100%;
 
       display: flex;
       justify-content: center;

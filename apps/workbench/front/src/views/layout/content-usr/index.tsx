@@ -11,11 +11,13 @@ const ContentUsr: React.FC = () => {
 
   return (
     <>
-      <div className="__cusr_header">
-        <Header />
-      </div>
-      <div className="__cusr_content">
-        <Content />
+      <div className="__cusr">
+        <div className="__cusr_header">
+          <Header />
+        </div>
+        <div className="__cusr_content">
+          <Content />
+        </div>
       </div>
     </>
   )

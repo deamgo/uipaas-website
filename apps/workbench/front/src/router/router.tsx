@@ -19,8 +19,11 @@ import { workspaceList } from '@/api/workspace'
 import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 import _Blank from '@/views/layout/_blank'
 import Cookies from 'js-cookie'
+import { resize } from '@/utils/adapt'
+import { getDevelopers } from '@/api/workspace_settings'
 
 const tokenLoader = async () => {
+  resize()
   console.log('tokenLoading');
   const token = tokenStore.getToken()
   if (!token) {
@@ -44,8 +47,8 @@ const tokenLoader = async () => {
         tokenStore.setToken(res.data.token)
       }
     }).catch(err => {
-      console.log(err);
       return redirect('/s')
+      console.log(err);
     })
 
     await WorkspaceListLoader()
@@ -60,7 +63,7 @@ const UserProfileLoader = async () => {
     return value.data
   } catch (err) {
     console.log(err);
-    return null
+    return redirect('/s')
   }
 }
 
@@ -81,11 +84,23 @@ const WorkspaceListLoader = async () => {
   // return [] 
   try {
     const { value } = await workspaceList()
+    if (value.data) {
+      currentWorkspaceStore.setCurrentWorkspace(value.data[0])
+    }
     return value.data ? value.data : []
   } catch (err) {
     return []
   }
 
+}
+
+const DeveloperListLoader = async () => {
+  try {
+    const { value } = await getDevelopers(1, currentWorkspaceStore.getCurrentWorkspace().id)
+    return value.data ? value.data : []
+  } catch (err) {
+    return []
+  }
 }
 
 export const routes: RouteObject[] = [
@@ -119,6 +134,7 @@ export const routes: RouteObject[] = [
         children: [
           {
             index: true,
+            loader: DeveloperListLoader,
             Component: WSDevelopers,
           },
           {

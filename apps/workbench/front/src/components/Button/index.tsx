@@ -8,6 +8,7 @@ interface ButtonProps {
   method?: () => void
   disabled?: boolean
   type?: 'primary' | 'danger' | 'default' | 'outline-danger' | 'board-danger' | 'board-primary'
+  children?: React.ReactNode
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -18,7 +19,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         onClick={props.method}
         className={`__button_wrapper ${props.type}`}
         disabled={props.disabled}>
-        {props.context}
+        {props.children}
       </button>
     </>
   )

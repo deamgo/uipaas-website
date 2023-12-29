@@ -7,6 +7,7 @@ import MenuContent from '@components/MenuContent'
 import { mcontent } from "@/interface/some"
 
 type SideMenuProps = {
+  title?: string,
   list: mcontent[]
 }
 
@@ -15,6 +16,11 @@ const SideMenu: React.FC<SideMenuProps> = (props) => {
   return (
     <>
       <div className="__sidermenu_list">
+        {props.title && (
+          <div className="__sidermenu_list_title">
+            {props.title}
+          </div>
+        )}
         {props.list && props.list.map(item => (
           <MenuContent
             key={item.id}

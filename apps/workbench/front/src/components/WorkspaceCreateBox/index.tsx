@@ -86,16 +86,16 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
             if (res.value.code === 0) {
                 console.log(res.value.data)
                 let ws = { id: res.value.data.id, name: res.value.data.name, logo: res.value.data.logo }
-                let list = wsStore.getWsList();
+                let list = wsStore.getWsList()
                 list.push(ws)
                 wsStore.setWsList(list)
                 currentWorkspaceStore.setCurrentWorkspace(ws)
                 wsStore.setFirst(ws.name)
                 setIsWsCreate(false)
                 setWorkspaceLogoPath("")
-                $message.success(res.value.msg)
+                $message.success(res.msg)
             } else {
-                $message.error(res.value.msg)
+                $message.error(res.msg)
             }
         }).catch(err => {
             console.log(err);

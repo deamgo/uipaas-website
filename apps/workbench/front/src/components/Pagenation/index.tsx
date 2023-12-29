@@ -52,6 +52,9 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
     }
 
     setPagenum(temp)
+
+    props.onCurrentPageChange(current)
+    return () => { }
   }, [current])
 
 
@@ -82,7 +85,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
           }
           {isFarEnd && <div className="__pagination_swrapper_step __pagination_q">...</div>}
           <button
-            disabled={current === total}
+            disabled={current >= total}
             className="__pagination_swrapper_row __pagination_q __pagination_disable"
             onClick={() => setCurrent(c => c + 1)}>
             <Right />

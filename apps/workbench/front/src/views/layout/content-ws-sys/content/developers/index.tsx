@@ -1,8 +1,9 @@
 import React from 'react'
 //
 import './index.less'
-import Input from '@/components/Input'
+//
 import { Avatar } from 'antd'
+import Input from '@/components/Input'
 import Button from '@/components/Button'
 import SearchLine from '@/components/SearchLine'
 import Table from '@/components/Tables/Table'
@@ -13,16 +14,26 @@ import TableBody from '@/components/Tables/TableBody'
 import Select from '@/components/Select'
 import Pagenation from '@/components/Pagenation'
 import { ISelectOption } from '@/interface/some'
+//
+import { ReactComponent as Plus } from '@assets/comps/plus.svg'
+import Label from '@/components/Label'
+import Mask from '@/components/Mask'
+import Popup from '@/components/Popup'
+import { useLoaderData } from 'react-router-dom'
+import { currentWorkspaceStore } from '@/store/wsStore'
+import { editDeveloperPermission, findDeveloper, getDevelopers, inviteByEmail, removeDeveloper } from '@/api/workspace_settings'
+import $message from '@/components/Message'
+
 
 
 interface IColumns {
-  id: 'name' | 'email' | 'role'
+  id: 'username' | 'email' | 'Role'
   label: string
 }
 
 const columns: IColumns[] = [
   {
-    id: 'name',
+    id: 'username',
     label: 'Name',
   },
   {
@@ -30,7 +41,7 @@ const columns: IColumns[] = [
     label: 'Email',
   },
   {
-    id: 'role',
+    id: 'Role',
     label: 'Role',
   }
 ]
@@ -69,17 +80,17 @@ const rows = [
 const list_r: ISelectOption[] = [
   {
     id: 'admin',
-    value: 'admin',
+    value: '1',
     label: 'Admin',
   },
   {
     id: 'editer',
-    value: 'editer',
+    value: '2',
     label: 'Editer',
   },
   {
     id: 'viewer',
-    value: 'viewer',
+    value: '3',
     label: 'Viewer',
   }
 ]
@@ -88,24 +99,139 @@ const list_r: ISelectOption[] = [
 
 const WSDevelopers: React.FC = () => {
 
+  const [isAddDevelopers, setIsAddDevelopers] = React.useState<boolean>(false)
+  const [isMask, setMask] = React.useState<boolean>(false)
 
-  const handleChangeCurrentPage = () => {
-    console.log('handleChangeCurrentPage')
+  const [pages, setPages] = React.useState<number>(0)
+  const [currenPage, setCurrentPage] = React.useState<number>(1)
+  const [total, setTotal] = React.useState<number>(1)
+
+  const [developers, setDevelopers] = React.useState<[]>([])
+
+  const [queryParam, setQueryParam] = React.useState<string>('')
+
+  const [inviteEmail, setInviteEmail] = React.useState<string>('')
+  const [inviteByEmailRole, setInviteByEmailRole] = React.useState<string>('3')
+
+  const loader: [] = useLoaderData()
+
+  React.useEffect(() => {
+    if (loader.length > 0) {
+      setDevelopers(loader ? loader : [])
+    }
+
+    let tempTotal = Math.ceil(developers.length / 10)
+
+    setTotal(tempTotal)
+    if (tempTotal > 0 && tempTotal < 5) {
+      setPages(tempTotal)
+    } else if (tempTotal !== 0 && tempTotal >= 5) {
+      setPages(5)
+    }
+
+
+  }, [currenPage])
+
+
+  const handleOpenMask = () => {
+    setMask(!isMask)
+  }
+
+  const handleOpenAddDevelopers = () => {
+    handleOpenMask()
+    setIsAddDevelopers(!isAddDevelopers)
   }
 
 
-  const handleChangeRole = (id: string): void => {
-    console.log('handleChangeRole')
+  const handleChangeCurrentPage = async (item: number) => {
+    console.log('handleChangeCurrentPage' + item)
+    setCurrentPage(item)
+    try {
+      const { data } = await getDevelopers(item)
+      setDevelopers(data)
+      $message.success('Success to get developers')
+    } catch (error) {
+      console.log(error);
+      $message.error('Failed to get developers')
+    }
+  }
+
+  const handeSearch = async () => {
+    console.log('handeSearch:' + queryParam)
+    try {
+      const { value } = await findDeveloper(currenPage, queryParam)
+      setDevelopers(value.data)
+      $message.success(value.msg)
+    } catch (error) {
+      console.log(error);
+      $message.error('Failed to get developers by search')
+    }
+  }
+
+  const handleRemove = async (id: string) => {
+    console.log('handleRemove:' + id)
+    try {
+      const { value } = await removeDeveloper({
+        developer_id: id
+      })
+      console.log(value);
+
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+
+  const handleInviteDevelopers = async () => {
+    console.log('handleInviteDevelopers' + inviteEmail + inviteByEmailRole)
+    try {
+      const { value } = await inviteByEmail({
+        email: inviteEmail,
+        role: inviteByEmailRole
+      })
+      console.log(value);
+      $message.success(value.msg)
+    } catch (error) {
+      console.log(error);
+      $message.error('Failed to invite developers')
+
+    }
+  }
+
+
+  const handleRowChangeRole = async (role: string, developer_id?: string) => {
+    console.log({
+      role,
+      developer_id
+    })
+    try {
+      const { value } = await editDeveloperPermission({
+        developer_id,
+        role: role
+      })
+      $message.success(value.msg)
+    } catch (error) {
+      console.log(error);
+      $message.error('Failed to edit developer permission')
+    }
+
   }
   return (
     <>
       <div className="__workspace_developers">
         <div className="__workspace_developers_tools">
           <div className="__workspace_developers_tools_addbtn">
-            <Button context='Add developers' type='primary' />
+            <Button context='Add developers' type='primary' method={handleOpenAddDevelopers}>
+              <Plus style={{
+                width: '10.67rem',
+                height: '10.67rem',
+                fill: '#FFFFFF'
+              }} />
+              Add developers
+            </Button>
           </div>
           <div className="__workspace_developers_tools_searchline">
-            <SearchLine placeholder='Search' />
+            <SearchLine placeholder='Search' outputChange={setQueryParam} searchClick={handeSearch} />
           </div>
         </div>
         <div className="__workspace_developers_container">
@@ -158,9 +284,9 @@ const WSDevelopers: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
+              {developers?.map((row, index) => (
                 <>
-                  <TableRow key={row.id}>
+                  <TableRow key={index}>
                     {columns.map(column => {
                       const value = row[column.id]
                       return (
@@ -183,30 +309,32 @@ const WSDevelopers: React.FC = () => {
 
                               color: '#3D3D3D',
                             }}>
-                            {column.id === 'name' && (
+                            {column.id === 'username' && (
                               <>
-                                <Avatar
-                                  style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }}
-                                  size={32}>
-                                  {value.charAt(0).toUpperCase()}
-                                </Avatar>
-                                {value}
-                                {row.status === 'pending' && (<>pending</>)}
+                                <div className="__workspace_developers_name">
+                                  <Avatar
+                                    style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }}
+                                    size={32}>
+                                    {value.charAt(0).toUpperCase()}
+                                  </Avatar>
+                                  {value}
+                                  {row['status'] === 0 && (<Label label={'pending'} type='info' />)}
+                                </div>
                               </>
                             )}
-                            {column.id === 'role' && (
+                            {column.id === 'Role' && (
                               <>
                                 {value === 'Owner' ? (
                                   <>{value}</>
                                 ) : (
                                   <>
-                                    <Select onChange={() => handleChangeRole(row.id)} list={list_r} default={value}>
+                                    <Select onChange={handleRowChangeRole} id={row['developer_id']} list={list_r} default={value}>
                                       {value}
                                     </Select>
                                   </>)}
                               </>
                             )}
-                            {column.id !== 'name' && column.id !== 'role' && (
+                            {column.id !== 'username' && column.id !== 'Role' && (
                               <>
                                 {value}
                               </>
@@ -254,9 +382,14 @@ const WSDevelopers: React.FC = () => {
 
                         color: '#3D3D3D',
                       }}>
-                      <div className="__workspace_developers_container_remove">
-                        <Button context='Remove' type='board-danger' />
-                      </div>
+                      {
+                        row['Role'] !== 'Owner' &&
+                        (<div className="__workspace_developers_container_remove">
+                          <Button context='Remove' type='board-danger' method={() => handleRemove(row['developer_id'])}>
+                            Remove
+                          </Button>
+                        </div>)
+                      }
                     </TableCell>
                   </TableRow>
                 </>
@@ -264,10 +397,57 @@ const WSDevelopers: React.FC = () => {
             </TableBody>
           </Table>
         </div>
-        <div className="__workspace_developers_pagenation">
-          <Pagenation pages={5} total={20} current={1} onCurrentPageChange={handleChangeCurrentPage} />
+        <div className="__workspace_developers_pwrapper">
+          <div className="__workspace_developers_pwrapper_pagenation">
+            <Pagenation
+              pages={pages}
+              total={total}
+              current={currenPage}
+              onCurrentPageChange={handleChangeCurrentPage} />
+          </div>
         </div>
       </div>
+      {isMask && <Mask />}
+      {isAddDevelopers && <Popup unit='rem' width={480} height={272} title='Add developers' onClose={handleOpenAddDevelopers}>
+        <div className="_add_developers_popup">
+          <div className="_add_developers_popup_wrapper">
+            <div className="_add_developers_popup_wrapper_input">
+              <Input
+                id='invitebyemail'
+                title='Invite by email'
+                placeholder='Enter email address'
+                isNeed={false}
+                outputChange={setInviteEmail} />
+              <div className="_add_developers_popup_wrapper_input_select">
+                <Select list={list_r} default='Viewer' onChange={setInviteByEmailRole} />
+              </div>
+            </div>
+            <div className="_add_developers_popup_wrapper_invite">
+              <Button context='Invite' type='primary' method={handleInviteDevelopers} >
+                Invite
+              </Button>
+            </div>
+          </div>
+          <div className="_add_developers_popup_wrapper">
+            <div className="_add_developers_popup_wrapper_input">
+              <Input
+                id='invitelink'
+                title='Invite link'
+                value={'https://www.uipaas.com/' + currentWorkspaceStore.getCurrentWorkspace().id}
+                isNeed={false}
+                typeAble={true} />
+              <div className="_add_developers_popup_wrapper_input_select">
+                <Select list={list_r} default='Viewer' />
+              </div>
+            </div>
+            <div className="_add_developers_popup_wrapper_invite">
+              <Button type='primary' method={handleOpenAddDevelopers} >
+                Copy link
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Popup>}
     </>
   )
 }

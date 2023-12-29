@@ -84,7 +84,7 @@ const WSSettings: React.FC = () => {
     <>
       <div className="__workspace_settings">
         <div className="__workspace_settings_container">
-          <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
+          <Avatar shape="square" style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
             {currentWorkspaceStore.getCurrentWorkspace().name.charAt(0).toUpperCase()}
           </Avatar>
           <div className="__workspace_settings_container_input">
@@ -98,7 +98,9 @@ const WSSettings: React.FC = () => {
           </div>
         </div>
         <div className="__workspace_settings_delbtn">
-          <Button context='Delete' type='outline-danger' method={handleOpenDeleteDialog} />
+          <Button context='Delete' type='outline-danger' method={handleOpenDeleteDialog} >
+            Delete
+          </Button>
         </div>
       </div>
       {isMask && (<Mask />)}
@@ -124,10 +126,14 @@ const WSSettings: React.FC = () => {
             </div>
             <div className="_delete_btn_group">
               <div className="_delete_btn_group_cancel">
-                <Button context='Cancel' type='default' method={handleOpenDeleteDialog} />
+                <Button context='Cancel' type='default' method={handleOpenDeleteDialog} >
+                  Cancel
+                </Button>
               </div>
               <div className="_delete_btn_group_confirm">
-                <Button context='Delete' type='danger' disabled={confirmDeleteAble} method={handleConfirmDelete} />
+                <Button context='Delete' type='danger' disabled={confirmDeleteAble} method={handleConfirmDelete} >
+                  Delete
+                </Button>
               </div>
             </div>
           </Popup>

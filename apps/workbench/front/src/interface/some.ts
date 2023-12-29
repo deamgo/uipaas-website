@@ -1,10 +1,10 @@
 export interface mcontent {
   id: string
   title: string
-  path: string
-  matcher: string
-  index: number
-  icon: React.ReactElement
+  path?: string
+  matcher?: string
+  index?: number
+  icon?: React.ReactElement
 }
 
 export interface IMultiplySelectorPropsItem {
@@ -47,9 +47,10 @@ export interface ISelectOption {
   label: string
 }
 export interface ISelectProps {
+  id?: string
   default: string
   list: ISelectOption[]
-  onChange: (value: string) => void
+  onChange: (value: string, developer_id?: string) => void
   onOpen?: () => void
   children?: React.ReactNode
 }

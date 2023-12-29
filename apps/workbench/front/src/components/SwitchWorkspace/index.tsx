@@ -22,9 +22,9 @@ const SwitchWorkspace: React.FC = () => {
 
 
   useEffect(() => {
-    document.addEventListener("click", function (event) {
-      console.log("点击位置：", event.target);
-    });
+    // document.addEventListener("click", function (event) {
+    //   console.log("点击位置：", event.target);
+    // });
 
     workspaceList().then(res => {
       if (res.value.code === 0) {
@@ -54,12 +54,18 @@ const SwitchWorkspace: React.FC = () => {
   return (
     <>
       <div className="__sws">
-        {
-          wsLogo === '' ? <Avatar onClick={wcbHandleClick} style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={28} gap={2}>
-            {wsName.charAt(0).toUpperCase()}
-          </Avatar> : <img height={28} width={28} style={{ borderRadius: '50%' }} src={wsLogo} alt="workspcae-logo" />
-        }
-        <span className="__sws_title" onClick={wcbHandleClick}>{wsName ? wsName : 'no Workspace'}</span>
+        <div className="__sws_info">
+          <div className="__sws_info_logo">
+            {
+              wsLogo === '' ? <Avatar onClick={wcbHandleClick} shape="square" style={{ backgroundColor: 'gray', verticalAlign: 'middle' }} size={28} gap={2}>
+                {wsName ? wsName.charAt(0).toUpperCase() : 'N'}
+              </Avatar> : <img height={28} width={28} style={{ borderRadius: '50%' }} src={wsLogo} alt="workspcae-logo" />
+            }
+          </div>
+
+          <span className="__sws_info_title" onClick={wcbHandleClick}>{wsName ? wsName : 'No Workspace'}</span>
+        </div>
+
         <div className="__sws_switch" onClick={wcbHandleClick}>
           <Switch />
         </div>

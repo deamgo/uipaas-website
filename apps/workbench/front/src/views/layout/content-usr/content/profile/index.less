@@ -1,12 +1,16 @@
 .__user_profile_account {
   position: relative;
+  margin: 16rem 24rem;
   width: 100%;
   height: 100%;
 
+  display: flex;
+  flex-direction: column;
+  gap: 16rem;
+
+
   &_title {
-    position: absolute;
-    left: 47rem;
-    top: 43rem;
+    position: relative;
     font-size: 18rem;
     font-weight: normal;
     line-height: 22rem;
@@ -15,9 +19,11 @@
   }
 
   &_container {
-    position: absolute;
-    left: 47rem;
-    top: 83rem;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16rem;
 
     &_wrapper {
       display: flex;
@@ -25,8 +31,8 @@
       align-items: center;
 
       &_input {
-        margin-bottom: 19rem;
         width: 353rem;
+        height: 66rem;
 
         &._sp_withAvatar {
           display: flex;
@@ -38,7 +44,11 @@
         }
       }
 
-      &_edit {}
+      &_edit {
+        position: relative;
+        top: 15rem;
+        left: 4rem;
+      }
     }
   }
 }

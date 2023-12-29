@@ -324,23 +324,23 @@ const UserProfile: React.FC = () => {
           <span>Account</span>
         </div>
         <div className="__user_profile_account_container">
+          <div className="_sp_withAvatar">
+            <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
+              {userInfo?.username.charAt(0).toUpperCase()}
+            </Avatar>
+          </div>
           <div className="__user_profile_account_container_wrapper">
-            <div className="__user_profile_account_container_wrapper_input _sp_withAvatar">
-              <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
-                {userInfo?.username.charAt(0).toUpperCase()}
-              </Avatar>
-              <div className="__user_profile_account_container_wrapper_input_besideAvatar">
-                <Input
-                  id='1'
-                  title='Name'
-                  type='text'
-                  isNeed={false}
-                  typeAble={true}
-                  value={userInfo?.username} />
-              </div>
+            <div className="__user_profile_account_container_wrapper_input">
+              <Input
+                id='1'
+                title='Name'
+                type='text'
+                isNeed={false}
+                typeAble={true}
+                value={userInfo?.username} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
-              <Button context='Edit' type='board-primary' method={handleEditName} />
+              <Button context='Edit' type='board-primary' method={handleEditName} >Edit</Button>
             </div>
           </div>
 
@@ -355,7 +355,7 @@ const UserProfile: React.FC = () => {
                 value={userInfo?.email} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
-              <Button context='Edit' type='board-primary' method={handleEditEmail} />
+              <Button context='Edit' type='board-primary' method={handleEditEmail} >Edit</Button>
             </div>
           </div>
 
@@ -370,7 +370,7 @@ const UserProfile: React.FC = () => {
                 value={'......'} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
-              <Button context='Edit' type='board-primary' method={handleEditPwd} />
+              <Button context='Edit' type='board-primary' method={handleEditPwd} >Edit</Button>
             </div>
           </div>
         </div>
@@ -386,7 +386,9 @@ const UserProfile: React.FC = () => {
               outputChange={setName} />
           </div>
           <div className="_edit_name_btn">
-            <Button context='Save' type='primary' disabled={nameEditAble} method={editName} />
+            <Button context='Save' type='primary' disabled={nameEditAble} method={editName} >
+              Save
+            </Button>
           </div>
         </Popup>
       }
@@ -418,7 +420,9 @@ const UserProfile: React.FC = () => {
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Continue' type='primary' disabled={emailEditAble} method={handleEditEmailContinue} />
+                <Button context='Continue' type='primary' disabled={emailEditAble} method={handleEditEmailContinue} >
+                  Continue
+                </Button>
               </div>
             </>
           )}
@@ -448,13 +452,17 @@ const UserProfile: React.FC = () => {
                       outputChange={setEmailCode}
                       reg={emailVerificationReg} />
                     <div className="_current_wrapper_content_send">
-                      <Button context={send} type='primary' disabled={sendAble} method={sendVerifiCode} />
+                      <Button context={send} type='primary' disabled={sendAble} method={sendVerifiCode} >
+                        {send}
+                      </Button>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Confirm' type='primary' disabled={emailEditConfirmAble} method={handleConfirmEditEmail} />
+                <Button context='Confirm' type='primary' disabled={emailEditConfirmAble} method={handleConfirmEditEmail} >
+                  Confirm
+                </Button>
               </div>
             </>
           )}
@@ -485,13 +493,17 @@ const UserProfile: React.FC = () => {
                       outputChange={setPwdEmailCode}
                       reg={emailVerificationReg} />
                     <div className="_current_wrapper_content_send">
-                      <Button context={send} type='primary' disabled={sendAble} method={sendPwdVerifiCode} />
+                      <Button context={send} type='primary' disabled={sendAble} method={sendPwdVerifiCode} >
+                        {send}
+                      </Button>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Continue' type='primary' disabled={pwdEditContinueAble} method={handleEditPwdContinue} />
+                <Button context='Continue' type='primary' disabled={pwdEditContinueAble} method={handleEditPwdContinue} >
+                  Continue
+                </Button>
               </div>
             </>
           )}
@@ -513,7 +525,9 @@ const UserProfile: React.FC = () => {
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Confirm' type='primary' disabled={PwdEditConfirmAble} method={handleConfirmEditPwd} />
+                <Button context='Confirm' type='primary' disabled={PwdEditConfirmAble} method={handleConfirmEditPwd} >
+                  Confirm
+                </Button>
               </div>
             </>
           )}

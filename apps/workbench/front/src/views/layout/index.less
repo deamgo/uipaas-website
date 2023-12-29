@@ -1,28 +1,29 @@
 .layout {
   position: relative;
+  display: grid;
+  grid-template-columns: 1.8fr 7.9fr;
+  grid-template-rows: 1fr;
+  // grid-gap: 24rem;
 
-  width: 1440rem;
-  height: 1056rem;
-  background-color: #F7F8FA;
+  // width: 1440rem;
+  // height: 1056rem;
+  background-color: #FAFAFB;
 
   .sider {
-    position: absolute;
-    left: 0;
-    top: 0;
+    // margin-right: 24rem;
+    width: 256rem;
+    min-height: 800rem;
 
-    background-color: #FFFFFF;
   }
 
   .main {
-    position: absolute;
-    left: 240rem;
-    top: 0;
+    position: relative;
+    padding: 24rem;
+    // margin-right: 24rem;
 
     // width: 1200rem;
     // height: 1056rem;
-    width: fit-content;
-    height: fit-content;
-
-    border: 1rem solid #D8D8D8;
+    width: 1184rem;
+    height: 100%;
   }
 }

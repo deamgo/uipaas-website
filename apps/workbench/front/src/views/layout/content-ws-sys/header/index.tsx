@@ -3,6 +3,23 @@ import React from 'react';
 import './index.less'
 //
 import { Link } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+
+
+const list_nav = [
+  {
+    name: 'Developers',
+    path: '/workspace',
+    matcher: 'workspace',
+    index: 2
+  },
+  {
+    name: 'Settings',
+    path: '/workspace/settings',
+    matcher: 'settings',
+    index: 2
+  },
+]
 
 
 const Header: React.FC = () => {
@@ -10,14 +27,7 @@ const Header: React.FC = () => {
   return (
     <>
       <div className="__header">
-        <ul className="__header_nav">
-          <li className="__header_nav_item">
-            <Link to={'/workspace'}>Developers</Link>
-          </li>
-          <li className="__header_nav_item">
-            <Link to={'/workspace/settings'}>Settings</Link>
-          </li>
-        </ul>
+        <Navbar items={list_nav} />
       </div>
     </>
   )

@@ -27,8 +27,8 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
         <>
             <div className="__wcb_box_item" onClick={handleChangeCurrentWorkspace}>
                 {props.logo === "" && <>
-                    <Avatar className="__wcb_box_item_logo" style={{ backgroundColor: 'pink', verticalAlign: 'middle' }}
-                        size={20}>
+                    <Avatar shape="square" className="__wcb_box_item_logo" style={{ backgroundColor: 'gray', verticalAlign: 'middle' }}
+                        size={24}>
                         {props.name.charAt(0).toUpperCase()}
                     </Avatar>
                     <span className="__wcb_box_item_tittle">{props.name}</span>
