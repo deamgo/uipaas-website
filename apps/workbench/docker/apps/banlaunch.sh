@@ -3,6 +3,8 @@
 max_attempts=10
 attempts=0
 
+redis-server &
+
 while [ $attempts -lt $max_attempts ]; do
     ./backend -dbConfig ./config.yaml &
     sleep 10

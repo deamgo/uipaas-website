@@ -23,6 +23,7 @@ import { useLoaderData } from 'react-router-dom'
 import { currentWorkspaceStore } from '@/store/wsStore'
 import { editDeveloperPermission, findDeveloper, getDevelopers, inviteByEmail, removeDeveloper } from '@/api/workspace_settings'
 import $message from '@/components/Message'
+import { socket } from '@/utils/websocket'
 
 
 
@@ -181,6 +182,7 @@ const WSDevelopers: React.FC = () => {
 
   const handleRemove = async (id: string) => {
     console.log('handleRemove:' + id)
+    socket.send(id + ' you are out')
     try {
       const { value } = await removeDeveloper({
         developer_id: id
@@ -353,28 +355,6 @@ const WSDevelopers: React.FC = () => {
                                 {value}
                               </>
                             )}
-                            {/* {column.id === 'name'
-                              ? (
-                                <>
-                                  <Avatar
-                                    style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }}
-                                    size={32}>
-                                    {value.charAt(0).toUpperCase()}
-                                  </Avatar>
-                                  {value}
-                                  {row.status === 'pending' && (<>pending</>)}
-                                </>
-                              )
-                              : column.id === 'role'
-                                ? (
-                                  <>
-                                    <Select onChange={handleChangeRole} list={list_r} default={value}>
-                                      {value}
-                                    </Select>
-                                  </>
-                                )
-                                : (<>{value}</>)
-                            } */}
                           </TableCell>
                         </>
                       )

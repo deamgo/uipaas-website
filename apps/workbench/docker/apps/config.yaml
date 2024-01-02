@@ -1,5 +1,5 @@
 database:
-  host: 127.0.0.1
+  host: workbench-mysql
   port: 3306
   user: root
   password: rootroot
