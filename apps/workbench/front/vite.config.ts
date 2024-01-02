@@ -38,7 +38,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // target: 'http://127.0.0.1:8989',
-        target: 'http://192.168.31.106:8989',
+        target: 'http://192.168.31.107:8989',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
@@ -56,6 +56,9 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
+  build: {
+    outDir: '../docker/nginx/html/',
   }
 
 })

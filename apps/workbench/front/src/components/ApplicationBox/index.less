@@ -1,30 +1,129 @@
 .__applicationbox {
   position: relative;
+  padding: 16rem 16rem 0 16rem;
   width: 368rem;
   height: 149rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 4rem;
+
   border-radius: 4rem;
 
+  font-size: 14rem;
   background: #FFFFFF;
   border: 1rem solid #E7E7E7;
   box-shadow: 0rem 2rem 8rem 1rem rgba(178, 206, 238, 0.24);
 
   &_head {
-    &_icon {}
+    // position: absolute;
+    // top: 16rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-    &_name {}
+    &_info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8rem;
+    }
 
-    &_label {}
+    &_icon {
+      // position: absolute;
+      // left: 0rem;
+      // top: 20rem;
+    }
+
+    &_name {
+      // position: absolute;
+      // left: 40rem;
+      // top: 20rem;
+    }
+
+    &_label {
+      // position: absolute;
+      // right: 0;
+      // top: 20rem;
+    }
   }
 
   &_main {
-    &_desc {}
+    // position: absolute;
+    padding-left: 40rem;
+    // left: 56rem;
+    // top: 52rem;
+    width: 100%;
+    height: 54rem;
+
+    &_desc {
+      font-family: Roboto;
+      font-size: 12px;
+      font-weight: normal;
+      line-height: 20px;
+      // display: flex;
+      // align-items: center;
+      letter-spacing: 0em;
+      color: rgba(0, 0, 0, 0.4);
+
+      text-wrap: wrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
   }
 
   &_foot {
-    &_edit {}
+    // position: absolute;
+    // top: 108rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-    &_preview {}
+    border-top: 1px solid #F3F3F3;
 
-    &_more {}
+    user-select: none;
+
+    &_btns {
+      padding-left: 28rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35rem;
+    }
+
+    &_edit {
+      // position: absolute;
+      // left: 32rem;
+      // width: 24rem;
+      // height: 22rem;
+    }
+
+    &_preview {
+      // position: absolute;
+      // left: 40rem;
+      // width: 50rem;
+      // height: 22rem;
+    }
+
+    &_more {
+      // position: absolute;
+      // top: 12rem;
+      // right: 0rem;
+      margin-right: 16rem;
+      padding: 5rem;
+      cursor: pointer;
+    }
   }
+}
+
+._application_more_list {
+  position: absolute;
+  right: 80rem;
+  bottom: 0;
 }

@@ -1,7 +1,6 @@
-import React, { MouseEventHandler, useEffect } from "react"
+import React from "react"
 //
 import './index.less'
-import { Link, useNavigate } from "react-router-dom"
 import { IMultiplySelectorPropsItem } from "@/interface/some"
 //
 

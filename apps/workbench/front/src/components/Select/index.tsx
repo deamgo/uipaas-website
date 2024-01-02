@@ -17,7 +17,7 @@ const Select: React.FC<ISelectProps> = (props) => {
 
   const handleChange = (label: string, value: string) => {
     setValue(label)
-    props.onChange(value, props.id && props.id)
+    props.onChange && props.onChange(value, props.id && props.id)
   }
 
   return (

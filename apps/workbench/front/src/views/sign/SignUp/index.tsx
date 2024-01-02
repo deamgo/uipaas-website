@@ -1,5 +1,4 @@
 import React from 'react'
-import { useObserver } from 'mobx-react-lite'
 import { useNavigate } from 'react-router-dom'
 //style
 import './index.less'
@@ -7,11 +6,10 @@ import './index.less'
 import Input from '@/components/Input'
 import Button from '@/components/Button'
 //
-import { codeReg, usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
+import { usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
 import $message from '@/components/Message'
 import { usrSignUp } from '@api/sign_up'
 import { IUsrAccount } from '@api/account'
-import { appStore } from '@store/store'
 import { Link } from 'react-router-dom'
 
 
@@ -55,7 +53,8 @@ const SignUp: React.FC = () => {
 
     usrSignUp(usr).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('codeKey', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('codeKey', data.code_key)
         navigate('/s/ev')
       } else {
         $message.error(res.value.msg)

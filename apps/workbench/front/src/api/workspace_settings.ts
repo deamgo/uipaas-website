@@ -1,6 +1,5 @@
 import request from "@/utils/axios"
 import { tokenStore } from "@/store/store"
-import Cookies from "js-cookie"
 import { currentWorkspaceStore } from "@/store/wsStore"
 
 // request.defaults.headers.common['Authorization'] = 'Bearer ' + tokenStore.getToken()

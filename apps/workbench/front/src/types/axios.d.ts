@@ -13,7 +13,7 @@ declare module 'axios' {
         username: string
         email: string
         avatar: string
-      }
+      } | IWorkspaceItemProps[] | IWorkspaceItemProps | string
     }
     code: number;
     msg: string;

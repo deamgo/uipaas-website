@@ -2,9 +2,6 @@ import React from 'react';
 //style
 import './index.less'
 //
-import Button from '@/components/Button';
-import SearchLine from '@/components/SearchLine';
-import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 
 
@@ -18,10 +15,6 @@ const list_nav = [
 ]
 
 const Header: React.FC = () => {
-
-  const handleCreate = () => {
-    console.log('Create');
-  }
 
   return (
     <>

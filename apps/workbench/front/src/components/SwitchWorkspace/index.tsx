@@ -11,10 +11,11 @@ import { workspaceList } from "@api/workspace.ts";
 import $message from "@components/Message";
 import { appStore } from "@/store/store"
 import { currentWorkspaceStore, wsStore } from "@/store/wsStore"
+import { IWorkspaceItemProps } from "@/interface/some"
 
 
 const SwitchWorkspace: React.FC = () => {
-  const [username, setUsername] = React.useState('')
+  // const [username, setUsername] = React.useState('')
   const [wsName, setWsName] = React.useState('')
   const [wsLogo, setWsLogo] = React.useState('')
   const [wcbShow, setWcbShow] = useState(false);
@@ -29,7 +30,7 @@ const SwitchWorkspace: React.FC = () => {
     workspaceList().then(res => {
       if (res.value.code === 0) {
         console.log(res.value);
-        wsStore.setWsList(res.value.data ? res.value.data : [])
+        wsStore.setWsList(res.value.data ? res.value.data as IWorkspaceItemProps[] : [])
       } else {
         $message.error(res.value.msg)
       }
@@ -42,7 +43,7 @@ const SwitchWorkspace: React.FC = () => {
   React.useEffect(() => {
     setWsName(currentWorkspaceStore.getCurrentWorkspace()?.name)
     setWsLogo(currentWorkspaceStore.getCurrentWorkspace()?.logo)
-    setUsername(appStore.getUserInfo().username)
+    // setUsername(appStore.getUserInfo().username)
     setWcbShow(false)
   }, [currentWorkspaceStore.currentWorkspace?.name, currentWorkspaceStore.currentWorkspace?.logo, appStore.userInfo.username])
 

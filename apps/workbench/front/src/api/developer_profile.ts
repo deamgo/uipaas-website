@@ -1,7 +1,6 @@
 import request from "@/utils/axios"
 import { IUsrAccount } from "./account"
 import { tokenStore } from "@/store/store"
-import Cookies from "js-cookie"
 
 // manually refresh rather then auto updated
 // const token = tokenStore.getToken()

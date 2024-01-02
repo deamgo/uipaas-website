@@ -12,6 +12,7 @@ import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 import { deleteWorkspace } from '@/api/workspace_settings'
 import $message from '@/components/Message'
 import { workspaceList } from '@/api/workspace'
+import { IWorkspaceItemProps } from '@/interface/some'
 
 
 const WSSettings: React.FC = () => {
@@ -64,7 +65,7 @@ const WSSettings: React.FC = () => {
         $message.success(res.value.msg)
         workspaceList().then(res => {
           if (res.value.code === 0) {
-            wsStore.setWsList(res.value.data ? res.value.data : [])
+            wsStore.setWsList(res.value.data ? res.value.data as IWorkspaceItemProps[] : [])
             currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList().length > 0 ? wsStore.getWsList()[0] : { id: '', name: '', logo: '' })
             navigate('/')
           }

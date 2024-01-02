@@ -25,6 +25,8 @@ const Header: React.FC = () => {
     handleMask()
     setCreatApp(!isCreatApp)
     console.log('Create');
+    console.log(appName);
+
 
   }
   return (

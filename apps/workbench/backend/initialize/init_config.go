@@ -8,7 +8,6 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"github.com/deamgo/workbench/conf"
-	"github.com/deamgo/workbench/pkg/consts"
 	"github.com/deamgo/workbench/pkg/logger"
 )
 
@@ -27,7 +26,7 @@ func getRootDir() string {
 
 func InitConfig() {
 
-	configPath = getRootDir() + consts.Separate + "conf" + consts.Separate + "config.yaml"
+	configPath = "config.yaml"
 	config, err := os.ReadFile(configPath)
 	if err != nil {
 		logger.Errorf("Cannot open config file: %s", err.Error())

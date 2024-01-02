@@ -5,7 +5,9 @@ import Label from '../Label'
 import Button from '../Button'
 //
 import { ReactComponent as More } from '@assets/comps/more.svg'
-import Divider from '../Divider'
+import { Avatar } from 'antd'
+import { ISelectOption } from '@/interface/some'
+import DownList from '../DownList'
 
 interface IApplicationBoxProps {
   id: string
@@ -15,14 +17,43 @@ interface IApplicationBoxProps {
   type: string
 }
 
+const OperationList: ISelectOption[] = [
+  {
+    id: 'setting',
+    value: 'setting',
+    label: 'Setting'
+  },
+  {
+    id: 'duplicate',
+    value: 'duplicate',
+    label: 'Duplicate'
+  },
+  {
+    id: 'export',
+    value: 'export',
+    label: 'Export'
+  },
+  {
+    id: 'delete',
+    value: 'delete',
+    label: 'Delete'
+  },
+]
+
 const ApplicationBox: React.FC<IApplicationBoxProps> = (props) => {
+  const [isMore, setIsMore] = React.useState(false)
   return (
     <>
       <div className="__applicationbox">
         <div className="__applicationbox_head">
-          <div className="__applicationbox_head_icon"></div>
-          <div className="__applicationbox_head_name">
-            {props.name}
+          <div className="__applicationbox_head_info">
+            <div className="__applicationbox_head_icon">
+              <Avatar style={{ backgroundColor: 'skyblue', verticalAlign: 'middle' }} size={32} gap={2}>
+              </Avatar>
+            </div>
+            <div className="__applicationbox_head_name">
+              {props.name}
+            </div>
           </div>
           <div className="__applicationbox_head_label">
             <Label label={props.label} type={props.type} />
@@ -33,24 +64,31 @@ const ApplicationBox: React.FC<IApplicationBoxProps> = (props) => {
             {props.desc}
           </p>
         </div>
-        <Divider ys={{
+        {/* <Divider ys={{
           width: '336rem'
-        }} />
+        }} /> */}
         <div className="__applicationbox_foot">
-          <div className="_applicationbox_foot_edit">
-            <Button type='board-primary'>
-              Edit
-            </Button>
+          <div className="__applicationbox_foot_btns">
+            <div className="__applicationbox_foot_edit">
+              <Button type='board-primary'>
+                Edit
+              </Button>
+            </div>
+            <div className="__applicationbox_foot_preview">
+              <Button type='board-primary'>
+                Preview
+              </Button>
+            </div>
           </div>
-          <div className="_applicationbox_foot_preview">
-            <Button type='board-primary'>
-              Preview
-            </Button>
-          </div>
-          <div className="_applicationbox_foot_more">
+          <div onClick={() => setIsMore(!isMore)} className="__applicationbox_foot_more">
             <More />
           </div>
         </div>
+        {isMore && (
+          <div className="_application_more_list">
+            <DownList list={OperationList} />
+          </div>
+        )}
       </div>
     </>
   )

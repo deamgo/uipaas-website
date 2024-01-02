@@ -4,15 +4,12 @@ import './index.less'
 //
 import Input from '@/components/Input'
 import Button from '@/components/Button'
-import Mask from '@/components/Mask'
 //
 import { emailReg, emailVerificationReg, passwordReg } from '@constants/regexp'
 import { ResetPwd, forgotVerify } from '@api/reset_pwd'
 //
-import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'
-import { Link, useNavigate } from 'react-router-dom'
-import { set } from 'mobx'
+import { useNavigate } from 'react-router-dom'
 
 const PwdReset: React.FC = () => {
 
@@ -94,7 +91,8 @@ const PwdReset: React.FC = () => {
     }).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
-        sessionStorage.setItem('codeKey', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('codeKey', data.code_key)
       } else {
         $message.error(res.value.msg)
       }

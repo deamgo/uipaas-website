@@ -16,11 +16,11 @@ import WSSettings from '@/views/layout/content-ws-sys/content/settings'
 import { tokenStore, appStore } from '@/store/store'
 import { getUserInfo } from '@/api/developer_profile'
 import { workspaceList } from '@/api/workspace'
-import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
+import { currentWorkspaceStore } from '@/store/wsStore'
 import _Blank from '@/views/layout/_blank'
-import Cookies from 'js-cookie'
 import { resize } from '@/utils/adapt'
 import { getDevelopers } from '@/api/workspace_settings'
+import { IUserInfo } from '@/api/account'
 
 const tokenLoader = async () => {
   resize()
@@ -35,7 +35,7 @@ const tokenLoader = async () => {
       if (res.value?.code === 0) {
         console.log('enter 0');
         // sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
-        appStore.setUserInfo(res.value.data)
+        appStore.setUserInfo(res.value.data as IUserInfo)
       } else if (res.code === 2005) {
         console.log('enter 2005');
 
@@ -68,20 +68,6 @@ const UserProfileLoader = async () => {
 }
 
 const WorkspaceListLoader = async () => {
-  // await workspaceList().then(res => {
-  //   if (res.value.code === 0) {
-  //     wsStore.setWsList(res.value.data)
-  //     if (!currentWorkspaceStore.currentWorkspace.name) {
-  //       console.log(currentWorkspaceStore.currentWorkspace);
-  //       currentWorkspaceStore.setCurrentWorkspace(res.value.data[0])
-  //     }
-  //     return res.value.data
-  //   } else {
-  //   }
-  // }).catch(err => {
-  //   console.log(err);
-  // })
-  // return [] 
   try {
     const { value } = await workspaceList()
     if (value.data) {
@@ -96,7 +82,7 @@ const WorkspaceListLoader = async () => {
 
 const DeveloperListLoader = async () => {
   try {
-    const { value } = await getDevelopers(1, currentWorkspaceStore.getCurrentWorkspace().id)
+    const { value } = await getDevelopers(1)
     return value.data ? value.data : []
   } catch (err) {
     return []

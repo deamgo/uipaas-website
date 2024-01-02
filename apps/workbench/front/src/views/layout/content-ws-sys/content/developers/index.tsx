@@ -27,7 +27,7 @@ import $message from '@/components/Message'
 
 
 interface IColumns {
-  id: 'username' | 'email' | 'Role'
+  id: 'username' | 'email' | 'role'
   label: string
 }
 
@@ -41,41 +41,49 @@ const columns: IColumns[] = [
     label: 'Email',
   },
   {
-    id: 'Role',
+    id: 'role',
     label: 'Role',
   }
 ]
 
-const rows = [
-  {
-    id: '1001',
-    name: 'Shawn',
-    email: 'Shawn@example.com',
-    role: 'Owner',
-    status: 's',
-  },
-  {
-    id: '1002',
-    name: 'Lisa',
-    email: 'Lisa@example.com',
-    role: 'Admin',
-    status: 's',
-  },
-  {
-    id: '1003',
-    name: 'Tom',
-    email: 'Tom@example.com',
-    role: 'Editer',
-    status: 's',
-  },
-  {
-    id: '1004',
-    name: 'Jerry',
-    email: 'Jerry@example.com',
-    role: 'Viewer',
-    status: 'pending',
-  },
-]
+interface IDeveloper {
+  developer_id: string
+  username: string
+  email: string
+  role: string
+  status: number
+}
+
+// const rows = [
+//   {
+//     id: '1001',
+//     name: 'Shawn',
+//     email: 'Shawn@example.com',
+//     role: 'Owner',
+//     status: 's',
+//   },
+//   {
+//     id: '1002',
+//     name: 'Lisa',
+//     email: 'Lisa@example.com',
+//     role: 'Admin',
+//     status: 's',
+//   },
+//   {
+//     id: '1003',
+//     name: 'Tom',
+//     email: 'Tom@example.com',
+//     role: 'Editer',
+//     status: 's',
+//   },
+//   {
+//     id: '1004',
+//     name: 'Jerry',
+//     email: 'Jerry@example.com',
+//     role: 'Viewer',
+//     status: 'pending',
+//   },
+// ]
 
 const list_r: ISelectOption[] = [
   {
@@ -106,21 +114,24 @@ const WSDevelopers: React.FC = () => {
   const [currenPage, setCurrentPage] = React.useState<number>(1)
   const [total, setTotal] = React.useState<number>(1)
 
-  const [developers, setDevelopers] = React.useState<[]>([])
+  const [developers, setDevelopers] = React.useState<IDeveloper[]>([])
 
   const [queryParam, setQueryParam] = React.useState<string>('')
 
   const [inviteEmail, setInviteEmail] = React.useState<string>('')
   const [inviteByEmailRole, setInviteByEmailRole] = React.useState<string>('3')
 
-  const loader: [] = useLoaderData()
+  const loader = useLoaderData() as IDeveloper[]
 
   React.useEffect(() => {
     if (loader.length > 0) {
       setDevelopers(loader ? loader : [])
     }
 
+    console.log(developers.length);
+
     let tempTotal = Math.ceil(developers.length / 10)
+
 
     setTotal(tempTotal)
     if (tempTotal > 0 && tempTotal < 5) {
@@ -147,8 +158,8 @@ const WSDevelopers: React.FC = () => {
     console.log('handleChangeCurrentPage' + item)
     setCurrentPage(item)
     try {
-      const { data } = await getDevelopers(item)
-      setDevelopers(data)
+      const { value } = await getDevelopers(item)
+      setDevelopers(value.data)
       $message.success('Success to get developers')
     } catch (error) {
       console.log(error);
@@ -175,6 +186,7 @@ const WSDevelopers: React.FC = () => {
         developer_id: id
       })
       console.log(value);
+      handleChangeCurrentPage(currenPage)
 
     } catch (error) {
       console.log(error);
@@ -185,12 +197,13 @@ const WSDevelopers: React.FC = () => {
   const handleInviteDevelopers = async () => {
     console.log('handleInviteDevelopers' + inviteEmail + inviteByEmailRole)
     try {
-      const { value } = await inviteByEmail({
+      const { code, msg } = await inviteByEmail({
         email: inviteEmail,
         role: inviteByEmailRole
       })
-      console.log(value);
-      $message.success(value.msg)
+      console.log(code);
+      handleChangeCurrentPage(currenPage)
+      $message.success(msg)
     } catch (error) {
       console.log(error);
       $message.error('Failed to invite developers')
@@ -209,6 +222,7 @@ const WSDevelopers: React.FC = () => {
         developer_id,
         role: role
       })
+      handleChangeCurrentPage(currenPage)
       $message.success(value.msg)
     } catch (error) {
       console.log(error);
@@ -322,7 +336,7 @@ const WSDevelopers: React.FC = () => {
                                 </div>
                               </>
                             )}
-                            {column.id === 'Role' && (
+                            {column.id === 'role' && (
                               <>
                                 {value === 'Owner' ? (
                                   <>{value}</>
@@ -334,7 +348,7 @@ const WSDevelopers: React.FC = () => {
                                   </>)}
                               </>
                             )}
-                            {column.id !== 'username' && column.id !== 'Role' && (
+                            {column.id !== 'username' && column.id !== 'role' && (
                               <>
                                 {value}
                               </>
@@ -383,7 +397,7 @@ const WSDevelopers: React.FC = () => {
                         color: '#3D3D3D',
                       }}>
                       {
-                        row['Role'] !== 'Owner' &&
+                        row['role'] !== 'Owner' &&
                         (<div className="__workspace_developers_container_remove">
                           <Button context='Remove' type='board-danger' method={() => handleRemove(row['developer_id'])}>
                             Remove

@@ -2,7 +2,6 @@ import React from "react";
 //
 import './index.less'
 //
-import { ReactComponent as DArrowR } from '@assets/layout/darrow-right.svg'
 
 interface GuideProps {
   handleClosed: () => void;

@@ -1,5 +1,5 @@
-import React, { MouseEventHandler, MutableRefObject } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useNavigate } from 'react-router-dom'
 import { appStore, tokenStore } from '@/store/store'
 //style
 import './index.less'
@@ -7,7 +7,6 @@ import './index.less'
 import SwitchWorkspace from '@/components/SwitchWorkspace';
 import SideMenu from '@/components/SideMenu';
 import MultiplySelector from '@/components/multiplySelector';
-import Popup from "@components/Popup";
 //
 import { Avatar } from 'antd';
 import { ReactComponent as Application } from '@assets/layout/application.svg'
@@ -20,7 +19,6 @@ import { observer } from 'mobx-react-lite';
 import { IMultiplySelectorPropsItem, mcontent } from '@/interface/some';
 import Cookies from 'js-cookie';
 import { currentWorkspaceStore, wsStore } from '@/store/wsStore';
-import Divider from '@/components/Divider';
 
 const list_c: mcontent[] = [
   {
@@ -63,11 +61,10 @@ type SiderProps = {
   children?: React.ReactNode
 }
 
-const Sider: React.FC<SiderProps> = (props) => {
+const Sider: React.FC<SiderProps> = () => {
   const [showMultiSelect, setShowMultiSelect] = React.useState(false)
 
   const [username, setUsername] = React.useState('')
-  const [active, setActive] = React.useState<number>()
   const [isWslist, setIsWslist] = React.useState(false)
 
   const multiplySelectorRef = React.useRef<HTMLDivElement>(null)

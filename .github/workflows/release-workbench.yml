@@ -1,0 +1,76 @@
+on:
+  push:
+    branches:
+      - '1226/feat-*'
+name: Release
+jobs:
+  build:
+    name: docekr pkg
+    runs-on: ubuntu-22.04
+    environment:
+      name: workbench_deploy
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node -v
+
+      - name: Install Golang
+        uses: actions/setup-go@v4.1.0
+        with:
+          go-version: '^1.21.4'
+          cache: false
+      - run: go version
+
+      - name: Install front Dep & build
+        working-directory: ./apps/workbench/front
+        run: |
+          yarn
+          yarn build
+
+      - name: Backend build
+        working-directory: ./apps/workbench/backend
+        run: |
+          CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend
+    
+      - name: zip Docker pkg
+        working-directory: ./apps/workbench
+        run: |
+          zip -r workbench.zip ./docker
+
+      - name: SCP Files 
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}  # Secrets中的配置：vps IP地址
+          username: ${{ secrets.REMOTE_USER }}  # Secrets中的配置：vps 登录用户名
+          key: ${{ secrets.SERVER_SSH_KEY }} # Secrets中的配置：vps 上创建的ssh key的私钥内容
+          source: './apps/workbench.zip'  # 打包的文件
+          target: '/deamgo/workbench' # Secrets中的配置：scp 到 vps 上的的目录
+    
+  release:
+    name: Release artifacts
+    needs: [build]
+    runs-on: ubuntu-latest
+    environment:
+      name: workbench_deploy
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |  
+            docker stop uipaashome-uipaas uipaashome-mysql
+            docker rm uipaashome-uipaas uipaashome-mysql
+            docker rmi uihome
+            rm -f uihome*.zip
+            rm -rf ./docker
+            wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
+            unzip uihome-${{ github.ref_name }}.zip
+            cd ./docker
+            docker-compose up --build -d

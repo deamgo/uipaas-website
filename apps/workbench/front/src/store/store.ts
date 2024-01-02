@@ -1,4 +1,4 @@
-import { makeAutoObservable, observable, configure, runInAction } from 'mobx'
+import { makeAutoObservable, observable } from 'mobx'
 import { IUserInfo } from '@api/account'
 import Cookies from 'js-cookie'
 import { getUserInfo } from '@/api/developer_profile'

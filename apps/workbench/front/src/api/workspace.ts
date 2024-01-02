@@ -1,7 +1,5 @@
 import { tokenStore } from "@/store/store";
 import request from "@/utils/axios"
-import axios from "axios";
-import Cookies from "js-cookie";
 
 export type IUsrWorkspace = {
     name?: string

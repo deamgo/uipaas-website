@@ -1,5 +1,4 @@
-import { makeAutoObservable, observable, configure, runInAction } from 'mobx'
-import Cookies from 'js-cookie'
+import { makeAutoObservable } from 'mobx'
 import { IWorkspaceItemProps } from '@/interface/some'
 
 class WsStore {

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import './index.less'
 //
 import Button from '@/components/Button'
-import Mask from '@/components/Mask'
 //
 import { emailVerificationReg } from '@constants/regexp'
 import { usrSignUpVerify } from '@api/sign_up'
@@ -74,7 +73,8 @@ const EmailVerif: React.FC = () => {
       code: parseInt(emailVerification),
     }).then(res => {
       if (res.value.code === 0) {
-        Cookies.set('token', res.value?.data.token)
+        const data = res.value.data as { token: string }
+        Cookies.set('token', data.token)
         sessionStorage.removeItem('username')
         sessionStorage.removeItem('codeKey')
         sessionStorage.removeItem('email')

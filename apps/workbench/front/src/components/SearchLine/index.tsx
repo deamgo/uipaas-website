@@ -7,17 +7,17 @@ import Magnifier from '@assets/layout/magnifier.svg'
 
 interface SearchLineProps {
   placeholder?: string
-  outputChange: (value: string) => void
-  searchClick: () => void
+  outputChange?: (value: string) => void
+  searchClick?: () => void
 }
 
 const SearchLine: React.FC<SearchLineProps> = (props) => {
 
   const handleChange = (value: string) => {
-    props.outputChange(value)
+    props.outputChange && props.outputChange(value)
   }
   const handleClick = () => {
-    props.searchClick()
+    props.searchClick && props.searchClick()
   }
   return (
     <>

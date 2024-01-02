@@ -1,19 +1,17 @@
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 //
 import './index.less'
 
-import axios from "axios"
 import { ReactComponent as Wca } from '@assets/layout/workspace-create-add.svg'
 import WorkspaceCreateBoxItem from "@components/WorkspaceCreateBoxItem";
 import Popup from "@components/Popup";
 import { Avatar } from "antd";
 import Button from "@components/Button";
 import Input from "@components/Input"
-import { IUsrWorkspace, workspaceCreate, workspaceList, workspaceLogo } from "@api/workspace.ts";
+import { workspaceCreate, workspaceList, workspaceLogo } from "@api/workspace.ts";
 import $message from "@components/Message";
 import { currentWorkspaceStore, wsStore } from "@store/wsStore.ts";
-import { IWorkspaceItemProps } from "@/interface/some.ts";
-import { Header } from "antd/es/layout/layout";
+import { IWorkspaceItemProps } from "@/interface/some";
 
 
 interface WorkspaceItem {
@@ -25,18 +23,18 @@ interface WorkspaceItem {
 }
 
 type BoxProps = {
-    list: WorkspaceItem[]
-    list_workspace: { name: string, logo: string }[]
-    setlist_workspace: React.Dispatch<React.SetStateAction<{ name: string, logo: string }[]>>
-    setWcbShow: React.Dispatch<React.SetStateAction<boolean>>
+    list?: WorkspaceItem[]
+    list_workspace?: { name: string, logo: string }[]
+    setlist_workspace?: React.Dispatch<React.SetStateAction<{ name: string, logo: string }[]>>
+    setWcbShow?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
 const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     const [isWsCreate, setIsWsCreate] = React.useState(false)
-    const [file, setFile] = useState<File | null>(null);
+    // const [file, setFile] = useState<File | null>(null);
     const [workspaceName, setWorkspaceName] = React.useState("")
-    const [workspaceLogoPath, setWorkspaceLogoPath] = React.useState("")
+    const [workspaceLogoPath, setWorkspaceLogoPath] = React.useState<string>("")
     const formData = new FormData();
 
 
@@ -55,7 +53,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
             workspaceLogo(formData).then(res => {
                 if (res.value.code === 0) {
                     console.log(res.value)
-                    setWorkspaceLogoPath(res.value.data)
+                    setWorkspaceLogoPath(res.value.data as string)
                 } else {
                     $message.error(res.value.msg)
                 }
@@ -85,7 +83,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
         }).then(res => {
             if (res.value.code === 0) {
                 console.log(res.value.data)
-                let ws = { id: res.value.data.id, name: res.value.data.name, logo: res.value.data.logo }
+                let ws = res.value.data as IWorkspaceItemProps
                 let list = wsStore.getWsList()
                 list.push(ws)
                 wsStore.setWsList(list)
@@ -105,8 +103,8 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
         await workspaceList().then(res => {
             if (res.value.code === 0) {
                 console.log(res.value.data)
-                props.setlist_workspace(res.value.data)
-                wsStore.setWsList(res.value.data)
+                props.setlist_workspace && props.setlist_workspace(res.value.data as IWorkspaceItemProps[])
+                wsStore.setWsList(res.value.data as IWorkspaceItemProps[])
             } else {
                 $message.error(res.value.msg)
             }
@@ -157,6 +155,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
                                             style={{ color: '#FF4D4F' }}>*</span></div>
 
                                     <Input
+                                        id='workspacename'
                                         type='text'
                                         outputChange={setWorkspaceName}
                                         placeholder={"Enter your Workspace name"}

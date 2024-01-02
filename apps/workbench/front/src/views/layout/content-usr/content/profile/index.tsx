@@ -52,7 +52,7 @@ const UserProfile: React.FC = () => {
         $message.warning(res.msg)
       }
       if (res.value?.code === 0) {
-        setUserInfo(res.value.data)
+        setUserInfo(res.value.data as IUserInfo)
       } else {
         $message.error(res.value?.msg)
       }
@@ -284,7 +284,8 @@ const UserProfile: React.FC = () => {
       email: newEmail
     }).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('code_key', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('code_key', data.code_key)
       } else {
         $message.error(res.value.msg)
       }
@@ -303,7 +304,8 @@ const UserProfile: React.FC = () => {
       email: userInfo?.email
     }).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('code_key', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('code_key', data.code_key)
       } else {
         $message.error(res.value.msg)
       }

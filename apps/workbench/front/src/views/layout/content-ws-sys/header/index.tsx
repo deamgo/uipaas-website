@@ -2,7 +2,6 @@ import React from 'react';
 //style
 import './index.less'
 //
-import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 
 

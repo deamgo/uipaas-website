@@ -25,6 +25,7 @@ func InitDB() *gorm.DB {
 		config.Database.DBName,
 		config.Database.Charset)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	fmt.Println(dsn)
 	if err != nil {
 		log.Fatalf("failed to connect to database: %v", err)
 	}

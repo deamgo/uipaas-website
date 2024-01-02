@@ -50,7 +50,15 @@ export interface ISelectProps {
   id?: string
   default: string
   list: ISelectOption[]
-  onChange: (value: string, developer_id?: string) => void
+  onChange?: (value: string, developer_id?: string) => void
+  onOpen?: () => void
+  children?: React.ReactNode
+}
+
+export interface IDownListProps {
+  id?: string
+  list: ISelectOption[]
+  onChange?: (value: string, developer_id?: string) => void
   onOpen?: () => void
   children?: React.ReactNode
 }

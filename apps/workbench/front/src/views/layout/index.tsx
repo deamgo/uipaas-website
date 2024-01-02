@@ -1,5 +1,5 @@
 import React from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { resize } from '@utils/adapt'
 import { observer } from 'mobx-react'
 //style
@@ -8,6 +8,7 @@ import './index.less'
 import Sider from '@views/layout/sider'
 import { Outlet } from 'react-router-dom';
 import { wsStore } from '@/store/wsStore';
+import { socket } from '@/utils/websocket';
 //
 
 
@@ -20,6 +21,17 @@ const Layout: React.FC = () => {
   React.useEffect(() => {
     window.addEventListener('resize', resize)
     resize()
+
+    socket.onopen = () => {
+      console.log('connected');
+    }
+    socket.onmessage = (e) => {
+      console.log(e.data)
+    }
+    return () => {
+      window.removeEventListener('resize', resize)
+      socket.close()
+    }
   })
 
   React.useEffect(() => {

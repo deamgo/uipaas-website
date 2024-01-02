@@ -39,9 +39,10 @@ const SignIn: React.FC = () => {
       password: pwd
     }).then(res => {
       if (res.value.code === 0) {
-        tokenStore.setToken(res.value?.data.token)
+        const data = res.value?.data as { token: string }
+        tokenStore.setToken(data.token)
         if (!tokenStore.getToken()) {
-          tokenStore.setToken(res.value?.data.token)
+          tokenStore.setToken(data.token)
         }
         $message.success(res.value.msg)
         navigate('/')
