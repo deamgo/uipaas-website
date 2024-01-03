@@ -6,6 +6,7 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"github.com/deamgo/workbench/conf"
+	"github.com/deamgo/workbench/pkg/consts"
 	"github.com/deamgo/workbench/pkg/logger"
 )
 

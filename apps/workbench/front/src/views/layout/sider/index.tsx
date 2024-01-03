@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'
 import { appStore, tokenStore } from '@/store/store'
 //style
 import './index.less'

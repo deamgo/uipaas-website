@@ -12,7 +12,6 @@ import Popup from '@/components/Popup'
 import { getUserInfo, updateUserName, verifiEmail, verifiEmailCode, verifiPwdEmail, sendPwdEmailCode, verifiPwdEmailCode, updatePwd } from '@/api/developer_profile'
 import { IUserInfo } from '@/api/account'
 import $message from '@/components/Message'
-import { useLoaderData } from 'react-router-dom'
 
 const UserProfile: React.FC = () => {
 
