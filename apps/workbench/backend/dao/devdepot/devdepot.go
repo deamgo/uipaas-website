@@ -31,7 +31,7 @@ func (d devDepotDao) DevInfoList(ctx context.Context, dwr *DeveloperWorkspaceRel
 	err := d.db.Debug().WithContext(ctx).Table("workspace_developer_relation wdr").
 		Joins("JOIN developer d ON d.id = wdr.developer_id").
 		Where("wdr.workspace_id = ? and is_deleted=0", dwr.WorkspaceId).
-		Select("wdr.email,d.username, wdr.role ,wdr.status").
+		Select("wdr.developer_id ,wdr.email,d.username, wdr.role ,wdr.status").
 		Limit(pageSize).Offset(pageSize * (pageNum - 1)).
 		Find(&devDepotItems).Error
 	return devDepotItems, err
@@ -79,6 +79,6 @@ func (d devDepotDao) GetCreatorByWokSpID(ctx context.Context, workspaceID string
 
 func (d devDepotDao) DevDepotGetByEmail(ctx context.Context, dwr *DeveloperWorkspaceRelationDO) (*DevDepotItem, error) {
 	var devDepotItem *DevDepotItem
-	err := d.db.WithContext(ctx).Model(&DeveloperWorkspaceRelationDO{}).Where("email = ?", dwr.Email).Find(&devDepotItem).Error
+	err := d.db.WithContext(ctx).Model(&DeveloperWorkspaceRelationDO{}).Select("workspace_id").Where("email = ?", dwr.Email).Find(&devDepotItem).Error
 	return devDepotItem, err
 }

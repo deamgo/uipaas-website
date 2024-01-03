@@ -7,7 +7,7 @@
                     <mj-text font-size="18px" font-weight="bold" color="#3D3D3D" line-height="28px" align="left">
                         You're invited to join Shawn's Workspace in UIPaas
                     </mj-text>
-                    <mj-button align="left" background-color="#0871F0" border-radius="3px" font-family="Roboto" font-size="16px" font-weight="normal" inner-padding="10px 25px" padding-bottom="30px" padding="10px 25px"><span style="color: #FFFFFF;">Accept Invitation</span></mj-button>
+                    <mj-button align="left" background-color="#0871F0" border-radius="3px" font-family="Roboto" font-size="16px" font-weight="normal" inner-padding="10px 25px" padding-bottom="30px" padding="10px 25px" href="{{.URL}}"><span style="color: #FFFFFF;">Accept Invitation</span></mj-button>
                     <mj-text font-size="14px" font-family=" Roboto" font-weight="normal" color="#C1BEBE" line-height="28px" align="left">
                         You can also copy and paste belowing url into your web browser to accept the invitation:
                     </mj-text>

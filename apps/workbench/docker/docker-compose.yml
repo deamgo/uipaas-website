@@ -1,0 +1,55 @@
+version: "3.3"
+services:
+
+  mysql:
+    image: mysql:8.0.29
+    container_name: ${DOCKER_PREFIX}-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ./mysql/init.d/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../temp/${DOCKER_PREFIX}-mysql/log:/var/log/mysql
+      - ../temp/${DOCKER_PREFIX}-mysql/data:/var/lib/mysql
+      - ../temp/${DOCKER_PREFIX}-mysql/conf:/etc/mysql/conf.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - uipaas-workbench
+  
+  home:
+    image: workbench
+    env_file: 
+      - .env
+    build:
+      dockerfile: ./apps/Dockerfile
+      context: .
+      args:
+        - APP_HOME=${APP_HOME}
+    container_name: ${DOCKER_PREFIX}-uipaas
+    restart: always
+    volumes:     
+      - ${BACKEND_HOME}:${APP_HOME}
+      - /etc/localtime:/etc/localtime
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/logs:/var/log/nginx
+    ports:
+      - ${NGINX_PORT}:${NGINX_PORT}
+    command: [ "${APP_HOME}banlaunch.sh" ]
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    links:
+      - mysql
+    networks:
+      - uipaas-workbench
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+networks:
+  uipaas-workbench:

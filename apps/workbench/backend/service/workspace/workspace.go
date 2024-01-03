@@ -11,8 +11,10 @@ import (
 	"mime/multipart"
 	"net/http"
 	"path"
+	"strconv"
 	"strings"
 
+	developerDO "github.com/deamgo/workbench/dao/developer"
 	dao "github.com/deamgo/workbench/dao/workspace"
 	"github.com/deamgo/workbench/pkg/logger"
 
@@ -33,16 +35,19 @@ type UploadFileResp struct {
 }
 
 type WorkspaceServiceParams struct {
-	Dao dao.WorkspaceDao
+	Dao          dao.WorkspaceDao
+	DeveloperDao developerDO.DeveloperDao
 }
 
 type workspaceService struct {
-	dao dao.WorkspaceDao
+	dao          dao.WorkspaceDao
+	developerDao developerDO.DeveloperDao
 }
 
 func NewWorkspaceService(params WorkspaceServiceParams) WorkspaceService {
 	return &workspaceService{
-		dao: params.Dao,
+		dao:          params.Dao,
+		developerDao: params.DeveloperDao,
 	}
 }
 
@@ -136,8 +141,13 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	}
 
 	workspaceDo := convertWorkspaceDao(workspace)
-
-	newWorkspaceDO, err := w.dao.WorkspaceCreate(ctx, workspaceDo)
+	developer := &developerDO.DeveloperDO{ID: strconv.FormatUint(workspace.CreatedBy, 10)}
+	d, err := w.developerDao.DeveloperGetByID(ctx, developer)
+	if err != nil {
+		logger.Error(err)
+		return nil, err
+	}
+	newWorkspaceDO, err := w.dao.WorkspaceCreate(ctx, workspaceDo, d.Email)
 	if err != nil {
 		logger.Error(err)
 		return nil, err

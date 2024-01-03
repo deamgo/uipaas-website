@@ -27,7 +27,7 @@ func getRootDir() string {
 
 func InitConfig() {
 
-	configPath = getRootDir() + consts.Separate + "conf" + consts.Separate + "config.yaml"
+	configPath = "conf" + consts.Separate + "config.yaml"
 	config, err := os.ReadFile(configPath)
 	if err != nil {
 		logger.Errorf("Cannot open config file: %s", err.Error())

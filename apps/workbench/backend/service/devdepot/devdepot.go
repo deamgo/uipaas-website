@@ -7,6 +7,7 @@ import (
 
 	"github.com/deamgo/workbench/dao/devdepot"
 	developerDO "github.com/deamgo/workbench/dao/developer"
+	"github.com/deamgo/workbench/db"
 	"github.com/deamgo/workbench/pkg/consts"
 	"github.com/deamgo/workbench/service/mail"
 
@@ -74,15 +75,22 @@ func (d devDepotService) DevDepotRoleModify(ctx context.Context, devdepot *devde
 		return err
 	}
 	err = d.dao.DevDepotRoleModify(ctx, dwr)
+	db.RedisDB.Del(dwr.DeveloperId + ":info")
 	return err
 }
 
 func (d devDepotService) DevDepotInvite(ctx context.Context, item *devdepot.DevDepotItem) error {
 	// Determine if you are already in the workspace
-	_, err := d.dao.DevDepotGetByEmail(ctx, &devdepot.DeveloperWorkspaceRelationDO{Email: item.Email, WorkspaceId: item.WorkspaceId})
-	if !errors.Is(err, gorm.ErrRecordNotFound) {
-		return errors.New("the developer is already in the workspace")
+	devDepot, err := d.dao.DevDepotGetByEmail(ctx, &devdepot.DeveloperWorkspaceRelationDO{Email: item.Email, WorkspaceId: item.WorkspaceId})
+	if err != nil {
+		if !errors.Is(err, gorm.ErrRecordNotFound) {
+			return err
+		}
 	}
+	if devDepot.WorkspaceId != "" {
+		return errors.New("the developer has exist")
+	}
+
 	// Sending mailbox
 	err = d.mailService.SendWorkspaceInviteMail(ctx, item.Email, item.WorkspaceId)
 	if err != nil {
@@ -121,10 +129,10 @@ func (d devDepotService) getCreator(ctx context.Context, workspaceID string) (ui
 func convertRoleNum(devInfoList *[]devdepot.DevDepotItem) *[]devdepot.DevDepotItem {
 	// Map the Role value to a human-readable string
 	roleMapping := map[string]string{
-		"0": "owner",
+		"0": "Owner",
 		"1": "Admin",
-		"2": "Developer",
-		"3": "Reviewer",
+		"2": "Editor",
+		"3": "Viewer",
 	}
 
 	for i := range *devInfoList {
@@ -140,10 +148,10 @@ func convertRoleNum(devInfoList *[]devdepot.DevDepotItem) *[]devdepot.DevDepotIt
 func convertRole(devInfo *devdepot.DevDepotItem) *devdepot.DevDepotItem {
 	// Map the Role value to a human-readable string
 	roleMapping := map[string]string{
-		"owner":     "0",
-		"Admin":     "1",
-		"Developer": "2",
-		"Reviewer":  "3",
+		"Owner":  "0",
+		"Admin":  "1",
+		"Editor": "2",
+		"Viewer": "3",
 	}
 
 	if roleName, ok := roleMapping[devInfo.Role]; ok {

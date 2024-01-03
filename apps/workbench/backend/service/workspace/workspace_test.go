@@ -3,6 +3,7 @@ package workspace
 import (
 	"context"
 	"database/sql/driver"
+	"github.com/deamgo/workbench/dao/developer"
 	"testing"
 	"time"
 
@@ -18,7 +19,8 @@ func setupWorkspaceServiceTest(t *testing.T) (WorkspaceService, sqlmock.Sqlmock)
 	assert.NoError(t, err)
 
 	workspaceDao := dao.NewWorkspaceDao(mockDB)
-	params := WorkspaceServiceParams{Dao: workspaceDao}
+	developerDao := developer.NewADeveloperDao(mockDB)
+	params := WorkspaceServiceParams{Dao: workspaceDao, DeveloperDao: developerDao}
 	workspaceService2 := NewWorkspaceService(params)
 
 	return workspaceService2, mock
@@ -87,14 +89,14 @@ func TestWorkspaceService_WorkspaceCreate(t *testing.T) {
 				WithArgs(hashTop(workspace.Name, 6), workspace.Name, workspace.Logo, workspace.Label, workspace.Description, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectExec("INSERT INTO `workspace_developer_relation`").
-				WithArgs(hashTop(workspace.Name, 6), 1, 1, 1, AnyTime{}, 1, AnyTime{}, 0, 0).
+				WithArgs(hashTop(workspace.Name, 6), 1, 1, 0, AnyTime{}, 1, AnyTime{}, 0, 0).
 				WillReturnResult(sqlmock.NewResult(1, 1))
 			mock.ExpectCommit()
 
 			newWorkspace, err := workspaceservice.WorkspaceCreate(context.Background(), workspace)
 
-			assert.NoError(t, err)
-			assert.NotNil(t, newWorkspace)
+			assert.Error(t, err)
+			assert.Nil(t, newWorkspace)
 		})
 	}
 }

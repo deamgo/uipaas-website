@@ -55,6 +55,8 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
+  build: {
+    outDir: '../docker/nginx/html/'
   }
-
 })

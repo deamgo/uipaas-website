@@ -39,7 +39,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		header, err := c.FormFile("file")
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &types.Resp{
 				Code: e.Failed,
 				Msg:  "upload workspace logo error",
 				Data: nil,
@@ -50,7 +50,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 		path, err := ctx.WorkspaceService.WorkspaceGetFilePath(header)
 
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &types.Resp{
 				Code: e.Failed,
 				Msg:  "upload workspace logo file unusual.",
 				Data: nil,
@@ -58,7 +58,7 @@ func WorkspaceGetLogoPath(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "upload workspace logo succeed",
 			Data: path,
@@ -72,7 +72,7 @@ func WorkspaceGetListById(ctx context.ApplicationContext) gin.HandlerFunc {
 		var err error
 		id, err := getDevelopId(c)
 		if id == 0 || err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &types.Resp{
 				Code: e.Failed,
 				Msg:  "Get developId data exception",
 				Data: nil,
@@ -81,14 +81,14 @@ func WorkspaceGetListById(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		list, err := ctx.WorkspaceService.WorkspaceGetListById(c, id)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &types.Resp{
 				Code: e.Failed,
 				Msg:  "Get developId data exception",
 				Data: nil,
 			})
 			return
 		}
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "get workspace succeed",
 			Data: list,
@@ -110,7 +110,7 @@ func WorkspaceCreate(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		data, err := ctx.WorkspaceService.WorkspaceCreate(c, convertWorkspace(req, c))
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, &Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, &types.Resp{
 				Code: e.Failed,
 				Msg:  "The parameters are not formatted correctly." + err.Error(),
 				Data: nil,
@@ -118,7 +118,7 @@ func WorkspaceCreate(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "create workspace succeed",
 			Data: WorkspaceCreateResp{data},
@@ -136,7 +136,7 @@ func WorkspaceDel(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		validate := validator.New()
 		if err := validate.Struct(req); err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The parameters are not formatted correctly",
 				Data: nil,
@@ -152,13 +152,13 @@ func WorkspaceDel(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		err = ctx.WorkspaceService.WorkspaceDel(c, workspace, developerID)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 			}))
 			return
 		}
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "delete workspace succeed",
 		}))
@@ -182,7 +182,10 @@ func convertWorkspace(req WorkspaceCreateReq, c *gin.Context) *workspace.Workspa
 
 // getDevelopId Get the developer id in the context
 func getDevelopId(c *gin.Context) (uint64, error) {
-	developIdStr := c.Value("username").(string)
+	developIdStr, err := jwt.ExtractIDFromToken(c.GetHeader("Authorization"))
+	if err != nil {
+		return 0, err
+	}
 	i, err := strconv.ParseInt(developIdStr, 10, 64)
 	if err != nil {
 		log.Println("developId data exception")
