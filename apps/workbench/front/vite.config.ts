@@ -60,5 +60,4 @@ export default defineConfig({
   build: {
     outDir: '../docker/nginx/html/',
   }
-
 })

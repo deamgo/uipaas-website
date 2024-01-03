@@ -9,8 +9,6 @@ import (
 	"math/rand"
 	"net/smtp"
 	"os"
-	"path"
-	"runtime"
 	"time"
 
 	"github.com/deamgo/workbench/pkg/consts"
@@ -20,7 +18,8 @@ import (
 )
 
 type MailService interface {
-	SendMail(ctx context.Context, emailStr string) int
+	SendVerificationCodeMail(ctx context.Context, emailStr string) int
+	SendWorkspaceInviteMail(ctx context.Context, emailStr, workspaceID string) error
 }
 
 type mailService struct {
@@ -30,7 +29,7 @@ func NewMailService() MailService {
 	return &mailService{}
 }
 
-func (us mailService) SendMail(ctx context.Context, emailStr string) int {
+func (us mailService) SendVerificationCodeMail(ctx context.Context, emailStr string) int {
 
 	// Set up a random seed
 	rand.NewSource(time.Now().UnixNano())
@@ -44,7 +43,7 @@ func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 	// Set up a subject
 	e.Subject = consts.SUBJECT_LINE
 	// Set the content of the file to be sent
-	htmlStr, err := parseMJMLFile(getCurrentAbPathByCaller()+"/mjml/verification_code.mjml", ctx)
+	htmlStr, err := parseMJMLFile("./mjml/verification_code.mjml", ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -66,6 +65,39 @@ func (us mailService) SendMail(ctx context.Context, emailStr string) int {
 
 }
 
+func (us mailService) SendWorkspaceInviteMail(ctx context.Context, emailStr, workspaceID string) error {
+
+	url := "https://uipaas.com/" + workspaceID
+	e := email.NewEmail()
+	// Set the sender's mailbox
+	e.From = fmt.Sprintf("UIPaaS <%v>", consts.ADDRESSER)
+	// Set up the recipient's mailbox
+	e.To = []string{emailStr}
+	// Set up a subject
+	e.Subject = consts.SUBJECT_LINE
+	// Set the content of the file to be sent
+	htmlStr, err := parseMJMLFile("./mjml/workspace_invite.mjml", ctx)
+	if err != nil {
+		return err
+	}
+	data := struct {
+		URL string
+	}{
+		URL: url,
+	}
+	tmpl, _ := template.New("mjml").Parse(htmlStr)
+	var rendered bytes.Buffer
+	_ = tmpl.Execute(&rendered, data)
+	e.HTML = rendered.Bytes()
+	// Set the server-related configurations
+	err = e.Send("smtp.feishu.cn:25", smtp.PlainAuth("", "uipaas@tests.run", "rR9rJvSiXkfAm44h", "smtp.feishu.cn"))
+	if err != nil {
+		return err
+	}
+	return err
+
+}
+
 func parseMJMLFile(filePath string, ctx context.Context) (string, error) {
 	file, err := os.ReadFile(filePath)
 	if err != nil {
@@ -76,13 +108,4 @@ func parseMJMLFile(filePath string, ctx context.Context) (string, error) {
 		return "", err
 	}
 	return html, nil
-}
-
-func getCurrentAbPathByCaller() string {
-	var abPath string
-	_, filename, _, ok := runtime.Caller(0)
-	if ok {
-		abPath = path.Dir(filename)
-	}
-	return abPath
 }

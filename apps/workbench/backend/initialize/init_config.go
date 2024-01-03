@@ -2,8 +2,6 @@ package initialize
 
 import (
 	"os"
-	"path"
-	"runtime"
 
 	"gopkg.in/yaml.v3"
 
@@ -16,17 +14,9 @@ var (
 	configPath   string
 )
 
-func getRootDir() string {
-
-	_, filename, _, _ := runtime.Caller(0)
-	root := path.Dir(path.Dir(filename))
-
-	return root
-}
-
 func InitConfig() {
 
-	configPath = "config.yaml"
+	configPath = "conf" + consts.Separate + "config.yaml"
 	config, err := os.ReadFile(configPath)
 	if err != nil {
 		logger.Errorf("Cannot open config file: %s", err.Error())

@@ -4,8 +4,11 @@ import (
 	"net/http"
 
 	"github.com/deamgo/workbench/api/account"
+	"github.com/deamgo/workbench/api/application"
+	"github.com/deamgo/workbench/api/devdepot"
 	"github.com/deamgo/workbench/api/developer"
 	"github.com/deamgo/workbench/api/workspace"
+	"github.com/deamgo/workbench/api/ws"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/middleware"
 
@@ -16,6 +19,7 @@ func NewRouter(ctx context.ApplicationContext) http.Handler {
 	e := gin.New()
 	e.Use(gin.Recovery())
 	e.Use(middleware.Cors())
+	e.GET("/v1/ws", ws.WSHandler())
 	mountAPIs(e, ctx)
 	return e
 }
@@ -28,7 +32,6 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		api.POST("/forgot_verify", account.SendForgotVerify(ctx))
 		api.PUT("/reset_password", account.ResetPassword(ctx))
 		api.GET("/logout", middleware.JWTAuthMiddleware(), account.Logout())
-
 	}
 	developerAPI := e.Group("v1", middleware.JWTAuthMiddleware())
 	{
@@ -46,12 +49,24 @@ func mountAPIs(e *gin.Engine, ctx context.ApplicationContext) {
 		developerAPI.POST("/developer/password/secondstep", developer.VerifyPwdVerificationCode(ctx))
 		developerAPI.PUT("/developer/password/thirdstep", developer.ModifyPwd(ctx))
 	}
-	workspaceApi := api.Group("/workspace")
+	workspaceApi := api.Group("/workspace", middleware.JWTAuthMiddleware())
 	{
-		workspaceApi.DELETE("/:id", workspace.WorkspaceDel(ctx))
-		workspaceApi.POST("/create", middleware.JWTAuthMiddleware(), workspace.WorkspaceCreate(ctx))
-		workspaceApi.GET("/list", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetListById(ctx))
-		workspaceApi.POST("/logo", middleware.JWTAuthMiddleware(), workspace.WorkspaceGetLogoPath(ctx))
+		workspaceApi.DELETE("/:workspace_id/settings", workspace.WorkspaceDel(ctx))
+		workspaceApi.POST("/create", workspace.WorkspaceCreate(ctx))
+		workspaceApi.GET("/list", workspace.WorkspaceGetListById(ctx))
+		workspaceApi.POST("/logo", workspace.WorkspaceGetLogoPath(ctx))
+		workspaceApi.GET("/:workspace_id/developer", middleware.AuthMiddleware(), devdepot.DevdepotList(ctx))
+		workspaceApi.GET("/:workspace_id/developer/search", middleware.AuthMiddleware(), devdepot.DevdepotSearch(ctx))
+		workspaceApi.DELETE("/:workspace_id/developer", middleware.AuthMiddleware(), devdepot.DevdepotDel(ctx))
+		workspaceApi.PUT("/:workspace_id/developer", middleware.AuthMiddleware(), devdepot.DevdepotRoleModify(ctx))
+		workspaceApi.POST("/:workspace_id/developer/invite", middleware.AuthMiddleware(), devdepot.DevDepotInvite(ctx))
+
+	}
+	applicationAPI := e.Group("v1", middleware.JWTAuthMiddleware(), middleware.AuthMiddleware())
+	{
+		applicationAPI.POST("/workspace/:workspace_id/application", application.ApplicationCreate(ctx))
+		applicationAPI.GET("/workspace/:workspace_id/application", application.ApplicationList(ctx))
+		applicationAPI.GET("/workspace/:workspace_id/application/search", application.ApplicationSearch(ctx))
 	}
 
 }

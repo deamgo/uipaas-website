@@ -7,7 +7,7 @@ import (
 )
 
 type WorkspaceDao interface {
-	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error)
+	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO, email string) (*WorkspaceDO, error)
 
 	WorkspaceDel(ctx context.Context, workspace *WorkspaceDO, developerID string) error
 
@@ -24,11 +24,13 @@ func NewWorkspaceDao(db *gorm.DB) WorkspaceDao {
 	}
 }
 
-func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error) {
+func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO, email string) (*WorkspaceDO, error) {
 	dwrDO := &DeveloperWorkspaceRelationDO{
 		WorkspaceId: workspace.Id,
 		DeveloperId: workspace.CreatedBy,
-		Role:        1,
+		Role:        0,
+		Email:       email,
+		Status:      1,
 		CreatedBy:   workspace.CreatedBy,
 		UpdatedBy:   workspace.UpdatedBy,
 	}
@@ -67,7 +69,7 @@ func (dao workspaceDao) WorkspaceDel(ctx context.Context, workspace *WorkspaceDO
 		if err := tx.WithContext(ctx).Model(workspace).UpdateColumn("is_deleted", 1).Error; err != nil {
 			return err
 		}
-		if err := tx.Model(&DeveloperWorkspaceRelationDO{}).Where("developer_id", developerID).UpdateColumn("is_deleted", 1).Error; err != nil {
+		if err := tx.Model(&DeveloperWorkspaceRelationDO{}).Where("workspace_id", workspace.Id).UpdateColumn("is_deleted", 1).Error; err != nil {
 			return err
 		}
 		return nil

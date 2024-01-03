@@ -3,7 +3,7 @@ services:
 
   mysql:
     image: mysql:8.0.29
-    container_name: ${DOCKER_PREFIX}-mysql  
+    container_name: ${DOCKER_PREFIX}-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -26,7 +26,7 @@ services:
     env_file: 
       - .env
     build:
-      dockerfile: ${BACKEND_HOME}/Dockerfile
+      dockerfile: ./apps/Dockerfile
       context: .
       args:
         - APP_HOME=${APP_HOME}
@@ -34,7 +34,6 @@ services:
     restart: always
     volumes:     
       - ${BACKEND_HOME}:${APP_HOME}
-      - ${BACKEND_HOME}/config.yaml:${APP_HOME}/config.yaml
       - /etc/localtime:/etc/localtime
       - ./nginx/conf/conf.d:/etc/nginx/conf.d
       - ./nginx/html:/usr/share/nginx/html
