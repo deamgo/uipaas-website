@@ -1,4 +1,4 @@
-FROM centos@a1801b843b1b
+FROM centos@SHA256:a1801b843b1b
 
 # FROM nginx:stable
 COPY ./server.txt /home/workbench/server.txt
