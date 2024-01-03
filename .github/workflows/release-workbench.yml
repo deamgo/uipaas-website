@@ -45,11 +45,11 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: workbench
-          path: ./apps/workbench/
+          path: ./apps/workbench/workbench.zip
 
       - uses: actions/download-artifact@v2
         with:
-          name: workbench
+          name: workbench.zip
           path: distfiles
 
       - name: SCP Files 
