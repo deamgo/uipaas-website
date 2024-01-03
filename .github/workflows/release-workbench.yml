@@ -78,7 +78,7 @@ jobs:
             docker stop workbench-uipaas workbench-mysql
             docker rm workbench-uipaas workbench-mysql
             docker rmi workbench
-            cd /deamgo/workbench
+            cd /deamgo/workbench/distfiles
             pwd
             rm -rf ./docker
             unzip ./workbench.zip
