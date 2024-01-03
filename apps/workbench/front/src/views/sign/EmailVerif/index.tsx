@@ -125,7 +125,9 @@ const EmailVerif: React.FC = () => {
           <Button
             context='Sign up'
             method={handleContinue}
-            disabled={btnAbled} />
+            disabled={btnAbled} >
+            Sign up
+          </Button>
           <div className="__ev_btnbox_privacy">
             <span>By using UIPaaS, you are agreeing to the</span>
             <span>

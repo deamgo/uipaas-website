@@ -23,9 +23,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   React.useEffect(() => {
     const url = location.pathname
     let urlArr = url.split('/')
-    console.log(urlArr);
     if (urlArr.length < 3) {
-      console.log(urlArr[1]);
 
       setActive(urlArr[1])
     } else if (urlArr.length === 3) {

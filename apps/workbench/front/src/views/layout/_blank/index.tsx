@@ -5,8 +5,14 @@ import Button from '@/components/Button'
 //
 import { ReactComponent as Plus } from '@assets/comps/plus.svg'
 import { ReactComponent as NoneContent } from '@assets/default/none-content.svg'
+import WorkspaceCreatePopup from '@/components/WorkspaceCreateBox/WorkspaceCreatePopup'
 
 const _Blank: React.FC = () => {
+  const [isCreate, setIsCreate] = React.useState(false)
+
+  const handleCreate = () => {
+    setIsCreate(!isCreate)
+  }
   return (
     <>
       <div className="__blank">
@@ -17,7 +23,7 @@ const _Blank: React.FC = () => {
           <span className="__blank_title">Create your first Workspace</span>
           <span className="__blank_tips">Start developing your applications by creating your first Workspace!</span>
           <div className="__blank_btn">
-            <Button type='primary' >
+            <Button type='primary' method={handleCreate}>
               <Plus style={{
                 width: '10.67rem',
                 height: '10.67rem',
@@ -28,6 +34,11 @@ const _Blank: React.FC = () => {
           </div>
         </div>
       </div>
+      {isCreate && (
+        <>
+          <WorkspaceCreatePopup onClose={handleCreate} />
+        </>
+      )}
     </>
   )
 }

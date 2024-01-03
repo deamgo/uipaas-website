@@ -2,3 +2,5 @@ nginx
 vim
 golang
 redis-server
+ca-certificates
+curl

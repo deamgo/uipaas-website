@@ -12,7 +12,7 @@ import Popup from '@/components/Popup'
 import { getUserInfo, updateUserName, verifiEmail, verifiEmailCode, verifiPwdEmail, sendPwdEmailCode, verifiPwdEmailCode, updatePwd } from '@/api/developer_profile'
 import { IUserInfo } from '@/api/account'
 import $message from '@/components/Message'
-
+import { useLoaderData } from 'react-router-dom'
 
 const UserProfile: React.FC = () => {
 
@@ -43,24 +43,48 @@ const UserProfile: React.FC = () => {
   const [PwdEditConfirmAble, setPwdEditConfirmAble] = React.useState(true)
   const [send, setSend] = React.useState('Get')
 
+  // const loaderData = useLoaderData() as IUserInfo
+
+
   //
-  const [change, shouldChange] = React.useState(1)
+  // const [change, shouldChange] = React.useState(1)
 
   React.useEffect(() => {
-    getUserInfo().then(res => {
-      if (res.code && res.code === 2005) {
-        $message.warning(res.msg)
+    (async function get() {
+      const { value } = await getUserInfo()
+      if (value.code === 0) {
+        setUserInfo(value.data as IUserInfo)
+        $message.success('获取用户信息成功')
       }
-      if (res.value?.code === 0) {
-        setUserInfo(res.value.data as IUserInfo)
-      } else {
-        $message.error(res.value?.msg)
-      }
-    }).catch(err => {
-      console.log(err);
-      $message.error(err.message)
-    })
-  }, [change])
+    })()
+    return () => {
+      console.log('user effect unmount');
+
+    }
+  }, [])
+
+  // React.useEffect(() => {
+  //   let init = false
+  //   if (!init) {
+  //     getUserInfo().then(res => {
+  //       if (res.code && res.code === 2005) {
+  //         $message.warning(res.msg)
+  //       }
+  //       if (res.value?.code === 0) {
+  //         setUserInfo(res.value.data as IUserInfo)
+  //       } else {
+  //         $message.error(res.value?.msg)
+  //       }
+  //     }).catch(err => {
+  //       console.log(err);
+  //       $message.error(err.message)
+  //     })
+  //     init = true
+  //   }
+  //   return () => {
+  //     init = false
+  //   }
+  // }, [change])
 
   React.useEffect(() => {
     document.body.style.overflow = isMask ? 'hidden' : 'auto'
@@ -103,6 +127,18 @@ const UserProfile: React.FC = () => {
       setPwdEditConfirmAble(true)
     }
   }, [name, currentPassword, newEmail, emailCode, pwdEmailCode, newPassword])
+
+  const getDeveloperInfo = async () => {
+    try {
+      const { value } = await getUserInfo()
+      if (value.code === 0) {
+        setUserInfo(value.data as IUserInfo)
+        $message.success(value.msg)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const resetForm = () => {
     setName('')
@@ -153,7 +189,8 @@ const UserProfile: React.FC = () => {
         })
         handleEditEmail()
         sessionStorage.removeItem('code_key')
-        shouldChange(c => -c)
+        // shouldChange(c => -c)
+        getDeveloperInfo()
       } else {
         $message.error(res.value.msg)
       }
@@ -194,7 +231,8 @@ const UserProfile: React.FC = () => {
         $message.success(res.value.msg)
         sessionStorage.removeItem('code_key')
         handleEditPwd()
-        shouldChange(c => -c)
+        // shouldChange(c => -c)
+        getDeveloperInfo()
       }
     }).catch(err => {
       console.log(err);
@@ -230,7 +268,8 @@ const UserProfile: React.FC = () => {
         //   username: name
         // })
         appStore.updateUserInfo()
-        shouldChange(c => -c)
+        // shouldChange(c => -c)
+        getDeveloperInfo()
 
         handleEditName()
       } else {

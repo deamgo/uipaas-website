@@ -33,12 +33,15 @@ const Layout: React.FC = () => {
   })
 
   React.useEffect(() => {
-    if (!(wsStore.getWsList().length > 0)) {
+    let location = window.location.pathname
+    if (location === '/u') {
+      navigate(location)
+    } else if (!(wsStore.getWsList().length > 0)) {
       navigate('/_blank')
     } else {
-      navigate('/')
+      navigate(location)
     }
-  }, [wsStore.getWsList()?.length])
+  }, [wsStore.getWsList().length])
 
   return (
     <>

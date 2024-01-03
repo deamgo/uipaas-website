@@ -3,7 +3,7 @@ import React from 'react'
 import './index.less'
 //
 
-interface PopupProps {
+interface IPopupProps {
   unit: string
   width: number
   height: number
@@ -12,7 +12,7 @@ interface PopupProps {
   children?: React.ReactNode
 }
 
-const Popup: React.FC<PopupProps> = (props) => {
+const Popup: React.FC<IPopupProps> = (props) => {
   return (
     <>
       <div className="__popup_wrapper" style={{

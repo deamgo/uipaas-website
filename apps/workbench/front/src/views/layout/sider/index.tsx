@@ -110,15 +110,12 @@ const Sider: React.FC<SiderProps> = () => {
     console.log('update sider foot username')
 
     setUsername(appStore.getUserInfo().username)
-  }, [appStore.getUserInfo()])
+  }, [appStore.getUserInfo().username])
 
   const handleShow = () => {
-    console.log('show?');
-
-    setShowMultiSelect(showMultiSelect => !showMultiSelect)
+    setShowMultiSelect(!showMultiSelect)
   }
 
-  const navigate = useNavigate()
 
   const list_ms: IMultiplySelectorPropsItem[] = [
     {
@@ -128,7 +125,6 @@ const Sider: React.FC<SiderProps> = () => {
       type: "normal",
       method: () => {
         handleShow()
-        navigate('/u')
       },
       children: (<span style={{ color: '#0871F0' }}>Profile</span>)
     },
@@ -144,8 +140,7 @@ const Sider: React.FC<SiderProps> = () => {
         currentWorkspaceStore.resetCurrentWorkspace()
         sessionStorage.clear()
         Cookies.remove('token')
-        setShowMultiSelect(false)
-        navigate('/s')
+        handleShow()
       },
       children: (<span style={{ color: '#FF7875' }}>Logout</span>)
     }
@@ -158,7 +153,6 @@ const Sider: React.FC<SiderProps> = () => {
           <div className="__sider_menuc_head">
             <SwitchWorkspace />
           </div>
-          {/* <Divider /> */}
           <div className="__sider_menuc_list">
             {isWslist && <SideMenu list={list_c} />}
           </div>

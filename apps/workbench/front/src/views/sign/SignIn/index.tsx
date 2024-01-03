@@ -93,7 +93,9 @@ const SignIn: React.FC = () => {
           <Button
             context='Sign in'
             method={handleContinue}
-            disabled={btnAbled} />
+            disabled={btnAbled} >
+            Sign in
+          </Button>
           <div className="__signin_form_continue_privacy">
             <span>By using UIPaaS, you are agreeing to the</span>
             <span>

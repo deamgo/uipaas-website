@@ -4,14 +4,8 @@ import './index.less'
 
 import { ReactComponent as Wca } from '@assets/layout/workspace-create-add.svg'
 import WorkspaceCreateBoxItem from "@components/WorkspaceCreateBoxItem";
-import Popup from "@components/Popup";
-import { Avatar } from "antd";
-import Button from "@components/Button";
-import Input from "@components/Input"
-import { workspaceCreate, workspaceList, workspaceLogo } from "@api/workspace.ts";
-import $message from "@components/Message";
 import { currentWorkspaceStore, wsStore } from "@store/wsStore.ts";
-import { IWorkspaceItemProps } from "@/interface/some";
+import WorkspaceCreatePopup from "./WorkspaceCreatePopup";
 
 
 interface WorkspaceItem {
@@ -30,39 +24,39 @@ type BoxProps = {
 }
 
 
-const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
+const WorkspaceCreateBox: React.FC<BoxProps> = () => {
     const [isWsCreate, setIsWsCreate] = React.useState(false)
     // const [file, setFile] = useState<File | null>(null);
-    const [workspaceName, setWorkspaceName] = React.useState("")
-    const [workspaceLogoPath, setWorkspaceLogoPath] = React.useState<string>("")
-    const formData = new FormData();
+    // const [workspaceName, setWorkspaceName] = React.useState("")
+    // const [workspaceLogoPath, setWorkspaceLogoPath] = React.useState<string>("")
+    // const formData = new FormData();
 
 
 
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!e.target.files) {
-            return;
-        }
-        const file = e.target.files[0];
-        // setFile(file)
-        if (file != null) {
-            console.log(file)
-            formData.set('file', file)
+    // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     if (!e.target.files) {
+    //         return;
+    //     }
+    //     const file = e.target.files[0];
+    //     // setFile(file)
+    //     if (file != null) {
+    //         console.log(file)
+    //         formData.set('file', file)
 
-            workspaceLogo(formData).then(res => {
-                if (res.value.code === 0) {
-                    console.log(res.value)
-                    setWorkspaceLogoPath(res.value.data as string)
-                } else {
-                    $message.error(res.value.msg)
-                }
-            }).catch(err => {
-                console.log(err);
-                $message.error(err.response.data.value.msg)
-            })
-        }
-    };
+    //         workspaceLogo(formData).then(res => {
+    //             if (res.value.code === 0) {
+    //                 console.log(res.value)
+    //                 setWorkspaceLogoPath(res.value.data as string)
+    //             } else {
+    //                 $message.error(res.value.msg)
+    //             }
+    //         }).catch(err => {
+    //             console.log(err);
+    //             $message.error(err.response.data.value.msg)
+    //         })
+    //     }
+    // };
 
 
 
@@ -72,47 +66,49 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
     };
 
     const handleIsWsCreate = () => {
+        console.log('handleIsWsCreate');
+
         setIsWsCreate(!isWsCreate);
     }
 
 
-    const reqWorkspaceCreate = async () => {
-        await workspaceCreate({
-            name: workspaceName,
-            logo: workspaceLogoPath,
-        }).then(res => {
-            if (res.value.code === 0) {
-                console.log(res.value.data)
-                let ws = res.value.data as IWorkspaceItemProps
-                let list = wsStore.getWsList()
-                list.push(ws)
-                wsStore.setWsList(list)
-                currentWorkspaceStore.setCurrentWorkspace(ws)
-                wsStore.setFirst(ws.name)
-                setIsWsCreate(false)
-                setWorkspaceLogoPath("")
-                $message.success(res.msg)
-            } else {
-                $message.error(res.msg)
-            }
-        }).catch(err => {
-            console.log(err);
-            $message.error(err.response.data.value.msg)
-        })
+    // const reqWorkspaceCreate = async () => {
+    //     await workspaceCreate({
+    //         name: workspaceName,
+    //         logo: workspaceLogoPath,
+    //     }).then(res => {
+    //         if (res.value.code === 0) {
+    //             console.log(res.value.data)
+    //             let ws = res.value.data as IWorkspaceItemProps
+    //             let list = wsStore.getWsList()
+    //             list.push(ws)
+    //             wsStore.setWsList(list)
+    //             currentWorkspaceStore.setCurrentWorkspace(ws)
+    //             wsStore.setFirst(ws.name)
+    //             setIsWsCreate(false)
+    //             setWorkspaceLogoPath("")
+    //             $message.success(res.msg)
+    //         } else {
+    //             $message.error(res.msg)
+    //         }
+    //     }).catch(err => {
+    //         console.log(err);
+    //         $message.error(err.response.data.value.msg)
+    //     })
 
-        await workspaceList().then(res => {
-            if (res.value.code === 0) {
-                console.log(res.value.data)
-                props.setlist_workspace && props.setlist_workspace(res.value.data as IWorkspaceItemProps[])
-                wsStore.setWsList(res.value.data as IWorkspaceItemProps[])
-            } else {
-                $message.error(res.value.msg)
-            }
-        }).catch(err => {
-            console.log(err);
+    //     await workspaceList().then(res => {
+    //         if (res.value.code === 0) {
+    //             console.log(res.value.data)
+    //             props.setlist_workspace && props.setlist_workspace(res.value.data as IWorkspaceItemProps[])
+    //             wsStore.setWsList(res.value.data as IWorkspaceItemProps[])
+    //         } else {
+    //             $message.error(res.value.msg)
+    //         }
+    //     }).catch(err => {
+    //         console.log(err);
 
-        })
-    }
+    //     })
+    // }
 
     return (
         <>
@@ -134,42 +130,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = (props) => {
             </div>
             {isWsCreate && (
                 <>
-                    <Popup unit={'rem'} width={496} height={276} title={'Create Workspace'} onClose={handleIsWsCreate}>
-                        <div className="_current" style={{ fontSize: '13px' }}>
-
-                            <div className="__user_profile_account_container_wrapper_input _sp_withAvatar ">
-
-                                <label htmlFor="workspace-logo">
-                                    <div className="__wcb_popup_setLogo"></div>
-                                    <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
-                                    {workspaceLogoPath === '' ?
-                                        <Avatar style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={65}
-                                            gap={3}>
-                                            {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
-                                        </Avatar> : <img style={{ borderRadius: '50%' }} height={65} width={65} src={workspaceLogoPath} alt="workspace-logo" />}
-
-                                </label>
-                                <div className="__user_profile_account_container_wrapper_input_besideAvatar">
-                                    <div style={{ marginBottom: '13px' }}><span
-                                        style={{ color: '#4E5969' }}>Workspace Name</span><span
-                                            style={{ color: '#FF4D4F' }}>*</span></div>
-
-                                    <Input
-                                        id='workspacename'
-                                        type='text'
-                                        outputChange={setWorkspaceName}
-                                        placeholder={"Enter your Workspace name"}
-                                    />
-                                </div>
-                            </div>
-
-
-                            <div className="__wcb_popup_button">
-                                <Button context={'Create'} type='primary' method={reqWorkspaceCreate} />
-                            </div>
-                        </div>
-
-                    </Popup>
+                    <WorkspaceCreatePopup onClose={handleIsWsCreate} />
                 </>
             )}
         </>

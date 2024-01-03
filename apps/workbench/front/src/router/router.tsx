@@ -16,7 +16,7 @@ import WSSettings from '@/views/layout/content-ws-sys/content/settings'
 import { tokenStore, appStore } from '@/store/store'
 import { getUserInfo } from '@/api/developer_profile'
 import { workspaceList } from '@/api/workspace'
-import { currentWorkspaceStore } from '@/store/wsStore'
+import { currentWorkspaceStore, wsStore } from '@/store/wsStore'
 import _Blank from '@/views/layout/_blank'
 import { resize } from '@/utils/adapt'
 import { getDevelopers } from '@/api/workspace_settings'
@@ -28,49 +28,47 @@ const tokenLoader = async () => {
   const token = tokenStore.getToken()
   if (!token) {
     return redirect('/s')
-  } else {
-    await getUserInfo().then(res => {
-      console.log('enter get info');
-
-      if (res.value?.code === 0) {
-        console.log('enter 0');
-        // sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
-        appStore.setUserInfo(res.value.data as IUserInfo)
-      } else if (res.code === 2005) {
-        console.log('enter 2005');
-
-        return redirect('/s')
-      } else if (res.code === 2006) {
-        console.log('enter 2006');
-        console.log('updating token...');
-
-        tokenStore.setToken(res.data.token)
-      }
-    }).catch(err => {
-      return redirect('/s')
-      console.log(err);
-    })
-
-    await WorkspaceListLoader()
-
   }
+  await WorkspaceListLoader()
+  await getUserInfo().then(res => {
+    console.log('enter get info');
+
+    if (res.value?.code === 0) {
+      console.log('enter 0');
+      // sessionStorage.setItem('userInfo', JSON.stringify(res.value.data))
+      appStore.setUserInfo(res.value.data as IUserInfo)
+    } else if (res.code === 2005) {
+      console.log('enter 2005');
+
+      return redirect('/s')
+    } else if (res.code === 2006) {
+      console.log('enter 2006');
+      console.log('updating token...');
+
+      tokenStore.setToken(res.data.token)
+    }
+  }).catch(err => {
+    return redirect('/s')
+    console.log(err);
+  })
   return null
 }
 
-const UserProfileLoader = async () => {
-  try {
-    const { value } = await getUserInfo()
-    return value.data
-  } catch (err) {
-    console.log(err);
-    return redirect('/s')
-  }
-}
+// const UserProfileLoader = async () => {
+//   try {
+//     const { value } = await getUserInfo()
+//     return value.data
+//   } catch (err) {
+//     console.log(err);
+//     return redirect('/s')
+//   }
+// }
 
 const WorkspaceListLoader = async () => {
   try {
     const { value } = await workspaceList()
     if (value.data) {
+      wsStore.setWsList(value.data)
       currentWorkspaceStore.setCurrentWorkspace(value.data[0])
     }
     return value.data ? value.data : []
@@ -105,7 +103,7 @@ export const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            loader: UserProfileLoader,
+            // loader: UserProfileLoader,
             Component: UserProfile,
           }
         ]

@@ -131,7 +131,9 @@ const PwdReset: React.FC = () => {
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
           <div className="__ryp_form_input_send">
-            <Button context={sendText} method={handleSend} disabled={bsendAbled} />
+            <Button context={sendText} method={handleSend} disabled={bsendAbled} >
+              {sendText}
+            </Button>
           </div>
         </div>
         <div className="__ryp_form_input">
@@ -150,7 +152,9 @@ const PwdReset: React.FC = () => {
           <Button
             context='Confirm'
             method={handleContinue}
-            disabled={btnAbled} />
+            disabled={btnAbled} >
+            Confirm
+          </Button>
         </div>
       </div>
 

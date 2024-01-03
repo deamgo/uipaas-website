@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - '1226/feat-*'
+      - '1226/feat-developer'
 name: Release
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
           yarn build
 
       - name: Backend build
-        working-directory: ./apps/workbench/backend
+        working-directory: ./apps/workbench/backend/cmd
         run: |
           CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend
     
@@ -59,18 +59,17 @@ jobs:
       name: workbench_deploy
     steps:
       - name: Deploy
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |  
-            docker stop uipaashome-uipaas uipaashome-mysql
-            docker rm uipaashome-uipaas uipaashome-mysql
+            docker stop workbench-uipaas workbench-mysql
+            docker rm workbench-uipaas workbench-mysql
             docker rmi uihome
-            rm -f uihome*.zip
             rm -rf ./docker
-            wget https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/uihome-${{ github.ref_name }}.zip
-            unzip uihome-${{ github.ref_name }}.zip
+            unzip workbench.zip
             cd ./docker
             docker-compose up --build -d
+            rm -f workbench.zip

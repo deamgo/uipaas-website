@@ -2,6 +2,7 @@ import React from "react"
 //
 import './index.less'
 import { IMultiplySelectorPropsItem } from "@/interface/some"
+import { Link } from "react-router-dom"
 //
 
 type MultiplySelectorProps = {
@@ -18,12 +19,13 @@ const MultiplySelector: React.FC<MultiplySelectorProps> = (props) => {
         onClick={props.onClose}>
         {
           props.list && props.list.map(item => (
-            <div
+            <Link
+              to={item.path}
               key={item.id}
-              className={`__mulselector_wrapper_item ${item.type}`}
-              onClick={item.method} >
+              onClick={item.method}
+              className={`__mulselector_wrapper_item ${item.type}`}>
               {item.children}
-            </div>
+            </Link>
           ))
         }
       </div>
