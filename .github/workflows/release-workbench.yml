@@ -35,7 +35,7 @@ jobs:
       - name: Backend build
         working-directory: ./apps/workbench/backend/cmd
         run: |
-          CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend
+          CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../docker/apps/backend
     
       - name: zip Docker pkg
         working-directory: ./apps/workbench
