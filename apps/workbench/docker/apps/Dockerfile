@@ -1,4 +1,4 @@
-FROM ubuntu:20.04@sha256:080169816683e6f063d3903434565624287828ecfd06bd2f813b30325e8b1eca
+FROM ubuntu:20.04sha256:bac6081102aae54ba4bcc714695b8f637e42768c7f376f374c428bab043ddc0f
 
 # FROM nginx:stable
 COPY ./server.txt /home/workbench/server.txt
