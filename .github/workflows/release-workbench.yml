@@ -79,8 +79,9 @@ jobs:
             docker rm workbench-uipaas workbench-mysql
             docker rmi workbench
             cd /deamgo/workbench
+            pwd
             rm -rf ./docker
-            unzip workbench.zip
+            unzip ./workbench.zip
             cd ./docker
             docker-compose up --build -d
             rm -f workbench.zip
