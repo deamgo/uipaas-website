@@ -198,6 +198,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
+
 				Code: e.Failed,
 				Msg:  e.SignUpError,
 				Data: nil,
@@ -267,6 +268,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		t, _ = jwt.GenToken(findUser.ID)
 		db.RedisDB.Set(findUser.ID, t, time.Hour*2)
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
+
 			Code: e.Success,
 			Msg:  e.LoginSuccess,
 			Data: LSR{Token: t},
