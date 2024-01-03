@@ -1,11 +1,8 @@
 package initialize
 
 import (
-	"os"
-	"path"
-	"runtime"
-
 	"gopkg.in/yaml.v3"
+	"os"
 
 	"github.com/deamgo/workbench/conf"
 	"github.com/deamgo/workbench/pkg/consts"
@@ -16,14 +13,6 @@ var (
 	globalConfig conf.Config
 	configPath   string
 )
-
-func getRootDir() string {
-
-	_, filename, _, _ := runtime.Caller(0)
-	root := path.Dir(path.Dir(filename))
-
-	return root
-}
 
 func InitConfig() {
 
