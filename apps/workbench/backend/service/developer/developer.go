@@ -24,6 +24,7 @@ type UserService interface {
 	DeveloperGetByID(ctx context.Context, id string) (*Developer, error)
 	// DeveloperGetByEmail retrieves a developer by their email.
 	DeveloperGetByEmail(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
+	DeveloperGetByEmailAndStatus(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
 	// DeveloperGetByEmailAndPwd retrieves a developer by their email and password.
 	DeveloperGetByEmailAndPwd(ctx context.Context, u *Developer) (*developer.DeveloperDO, error)
 	// ForgotVerifySend sends a verification code to a developer who forgot their password.
@@ -157,6 +158,17 @@ func (us developerService) DeveloperGetByEmail(ctx context.Context, u *Developer
 	var err error
 	ud := convertDeveloperDO(u)
 	ud, err = us.dao.DeveloperGetByEmail(ctx, ud)
+	if err != nil {
+		logger.Error(err)
+
+		return nil, err
+	}
+	return ud, err
+}
+func (us developerService) DeveloperGetByEmailAndStatus(ctx context.Context, u *Developer) (*developer.DeveloperDO, error) {
+	var err error
+	ud := convertDeveloperDO(u)
+	ud, err = us.dao.DeveloperGetByEmailAndStatus(ctx, ud)
 	if err != nil {
 		logger.Error(err)
 

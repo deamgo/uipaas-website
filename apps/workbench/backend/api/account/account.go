@@ -158,7 +158,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		// Delete the verification code that has already been used
 		db.RedisDB.HDel(req.CodeKey, "code")
 
-		dpl, _ := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
+		dpl, _ := ctx.UserService.DeveloperGetByEmailAndStatus(c, req.Developer)
 
 		//PasswordEncryption
 		password := encryption.EncryptPwd(req.Password)
