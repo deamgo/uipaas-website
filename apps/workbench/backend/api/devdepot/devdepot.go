@@ -6,10 +6,12 @@ import (
 	"strconv"
 
 	"github.com/deamgo/workbench/api/ws"
+	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/dao/devdepot"
 	"github.com/deamgo/workbench/pkg/e"
 	"github.com/deamgo/workbench/pkg/logger"
+	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/developer"
 
 	"github.com/gin-gonic/gin"
@@ -21,15 +23,16 @@ func DevdepotList(ctx context.ApplicationContext) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		workspace_id := c.Param("workspace_id")
 		if len(workspace_id) == 0 {
-			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-				"code": e.Failed,
-				"msg":  "The parameters are not formatted correctly",
-			})
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
+				Code: e.Failed,
+				Msg:  "The parameters are not formatted correctly",
+			}))
 		}
 		pageNum, err := strconv.Atoi(c.Query("pageNum"))
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"msg": "Parameter parsing failed"})
+			c.AbortWithStatusJSON(http.StatusInternalServerError,
+				types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: "Parameter parsing failed"}))
 		}
 
 		list, err := ctx.DevDepotService.DevItemList(c, workspace_id, pageNum)
@@ -37,10 +40,10 @@ func DevdepotList(ctx context.ApplicationContext) gin.HandlerFunc {
 			logger.Error(err)
 			c.AbortWithStatus(http.StatusInternalServerError)
 		}
-		c.AbortWithStatusJSON(http.StatusOK, gin.H{
-			"code": e.Success,
-			"data": list,
-		})
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
+			Code: e.Success,
+			Data: list,
+		}))
 	}
 }
 
@@ -55,7 +58,9 @@ func DevdepotSearch(ctx context.ApplicationContext) gin.HandlerFunc {
 		req.PageNum, err = strconv.Atoi(c.Query("pageNum"))
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"msg": "Parameter parsing failed"})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
+				Msg: "Parameter parsing failed",
+			}))
 		}
 		validate := validator.New()
 		err = validate.Struct(req)
@@ -78,7 +83,7 @@ func DevdepotSearch(ctx context.ApplicationContext) gin.HandlerFunc {
 		devInfoSearch, err := ctx.DevDepotService.DevInfoSearch(c, workspace_id, req.Q, req.PageNum)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"code": e.Failed, "msg": err.Error()})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: err.Error()}))
 		}
 		c.AbortWithStatusJSON(http.StatusOK, gin.H{
 			"code": e.Success,
@@ -110,7 +115,7 @@ func DevdepotDel(ctx context.ApplicationContext) gin.HandlerFunc {
 		err = ctx.DevDepotService.DevDepotDel(c, req.WorkspaceID, req.DeveloperID)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"code": e.Failed, "msg": err.Error()})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: err.Error()}))
 			return
 		}
 		// Send a message to the deleted developer
@@ -118,7 +123,7 @@ func DevdepotDel(ctx context.ApplicationContext) gin.HandlerFunc {
 		err = ws.SendMsgToDeveloper(req.DeveloperID, msg)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"code": e.Failed, "msg": err.Error()})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: err.Error()}))
 			return
 		}
 		c.AbortWithStatusJSON(http.StatusOK, gin.H{"code": e.Success, "msg": "Delete successfully"})
@@ -154,7 +159,7 @@ func DevdepotRoleModify(ctx context.ApplicationContext) gin.HandlerFunc {
 		err = ctx.DevDepotService.DevDepotRoleModify(c, devDepotItem)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"code": e.Failed, "msg": err.Error()})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: err.Error()}))
 			return
 		}
 		c.AbortWithStatusJSON(http.StatusOK, gin.H{"code": e.Success, "msg": "Modify successfully"})
@@ -170,7 +175,14 @@ func DevDepotInvite(ctx context.ApplicationContext) gin.HandlerFunc {
 			Role        string `json:"role" validate:"required"`
 		}
 		err := c.ShouldBind(&req)
+		if err != nil {
+			logger.Error(err)
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"msg": "Parameter parsing failed"})
+			return
+		}
 		req.WorkspaceID = c.Param("workspace_id")
+		token := c.GetHeader("Authorization")
+		req.DeveloperID, err = jwt.ExtractIDFromToken(token)
 
 		if err != nil {
 			logger.Error(err)
@@ -187,7 +199,7 @@ func DevDepotInvite(ctx context.ApplicationContext) gin.HandlerFunc {
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
 				logger.Error(err)
-				c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"code": e.Failed, "msg": err.Error()})
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: err.Error()}))
 				return
 			}
 		}
@@ -203,7 +215,7 @@ func DevDepotInvite(ctx context.ApplicationContext) gin.HandlerFunc {
 		err = ctx.DevDepotService.DevDepotInvite(c, devDepotItem)
 		if err != nil {
 			logger.Error(err)
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"code": e.Failed, "msg": err.Error()})
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{Code: e.Failed, Msg: err.Error()}))
 			return
 		}
 		c.AbortWithStatusJSON(http.StatusOK, gin.H{"code": e.Success, "msg": "Invitation email sent."})

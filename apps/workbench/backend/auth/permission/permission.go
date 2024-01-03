@@ -4,10 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
+	"net/http"
 	"strings"
 
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/db"
+	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/util"
 
 	"github.com/gin-gonic/gin"
@@ -34,9 +36,9 @@ func AuthenticationPermissions(c *gin.Context) {
 			return
 		}
 	}
-	c.JSON(403, gin.H{
-		"message": "No access",
-	})
+	c.JSON(http.StatusForbidden, types.NewValidResponse(&types.Resp{
+		Msg: "no access",
+	}))
 	c.Abort()
 }
 
@@ -61,7 +63,7 @@ func GetCurrentDeveloperRole(c *gin.Context) string {
 	// Example Query the role of a user
 	var devWorkspace *DevWorkspace
 	// Check cache first
-	devWorkspaceJSON, err := db.RedisDB.Get(userId).Result()
+	devWorkspaceJSON, err := db.RedisDB.Get(userId + ":info").Result()
 	if err != nil {
 		if !errors.Is(err, redis.Nil) {
 			log.Println(err)
@@ -79,7 +81,7 @@ func GetCurrentDeveloperRole(c *gin.Context) string {
 		if err != nil {
 			log.Println(err)
 		}
-		db.RedisDB.Set(userId, devWorkspaceJSON, 0)
+		db.RedisDB.Set(userId+":info", devWorkspaceJSON, 0)
 	}
 	return devWorkspace.Role
 }

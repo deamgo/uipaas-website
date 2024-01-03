@@ -25,12 +25,6 @@ import (
 	"gorm.io/gorm"
 )
 
-type Resp struct {
-	Code int         `json:"code"`
-	Msg  string      `json:"msg"`
-	Data interface{} `json:"data"`
-}
-
 type UserPostReq struct {
 	*developer.Developer
 }
@@ -71,7 +65,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		validate := validator.New()
 		err = validate.RegisterValidation("verifyPwd", verifyPwd)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 				Data: nil,
@@ -80,7 +74,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		err = validate.Struct(req.Developer)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The parameters do not match",
 				Data: nil,
@@ -98,7 +92,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			}
 		}
 		if u != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  e.EmailHasBeenOccupied,
 				Data: nil,
@@ -117,7 +111,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			case dao.DBError:
 				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewErrorResponse("failed to add developer"))
 			default:
-				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+				c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 					Code: e.Failed,
 					Msg:  err.Error(),
 					Data: nil,
@@ -126,7 +120,7 @@ func SignUp(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 		//ctx.WorkspaceService.WorkspaceCreate()
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  e.AddMsgSuccess,
 			Data: SignUpSuccessResp{CodeKey: codeHash},
@@ -145,7 +139,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		isExists := db.RedisDB.HExists(req.CodeKey, "code").Val()
 		if !isExists {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  e.VerifyCodeExpired,
 				Data: nil,
@@ -154,7 +148,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		getCode, _ := db.RedisDB.HGet(req.CodeKey, "code").Int()
 		if getCode != req.Code {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  e.InvalidVerifyCode,
 				Data: nil,
@@ -170,7 +164,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		password := encryption.EncryptPwd(req.Password)
 
 		if password != dpl.Password {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The account or password is incorrect",
 				Data: nil,
@@ -193,7 +187,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		_, err = ctx.WorkspaceService.WorkspaceCreate(c, workspace)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The workspace failed to be created",
 				Data: nil,
@@ -203,7 +197,8 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		// Modify developer deactivate
 		err = ctx.UserService.DeveloperStatusModifyByEmail(c, req.Developer)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
+
 				Code: e.Failed,
 				Msg:  e.SignUpError,
 				Data: nil,
@@ -214,7 +209,7 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		//	generate A Token And Return It
 		var t string
 		t, _ = jwt.GenToken(dpl.ID)
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "Registration Successful, signing in...",
 			Data: LSR{Token: t},
@@ -237,7 +232,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		findUser, err := ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
-				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 					Code: e.Failed,
 					Msg:  err.Error(),
 					Data: nil,
@@ -248,7 +243,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		if findUser == nil {
 			//	doesNotExist
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The account or password is incorrect",
 				Data: nil,
@@ -261,7 +256,7 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		password := encryption.EncryptPwd(req.Password)
 
 		if password != findUser.Password {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The account or password is incorrect",
 				Data: nil,
@@ -272,7 +267,8 @@ func SignIn(ctx context.ApplicationContext) gin.HandlerFunc {
 		var t string
 		t, _ = jwt.GenToken(findUser.ID)
 		db.RedisDB.Set(findUser.ID, t, time.Hour*2)
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
+
 			Code: e.Success,
 			Msg:  e.LoginSuccess,
 			Data: LSR{Token: t},
@@ -285,7 +281,7 @@ func Logout() gin.HandlerFunc {
 		authHeader := c.Request.Header.Get("Authorization")
 		// remove token
 		jwt.RevokeToken(authHeader)
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "Logout successfully",
 			Data: nil,
@@ -313,7 +309,7 @@ func SendMail(c *gin.Context, ctx context.ApplicationContext) {
 	validate := validator.New()
 	err = validate.Struct(req)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 			Code: e.Failed,
 			Msg:  "The parameters are not formatted correctly",
 			Data: nil,
@@ -325,7 +321,7 @@ func SendMail(c *gin.Context, ctx context.ApplicationContext) {
 	u, err = ctx.UserService.DeveloperGetByEmail(c, &developer.Developer{Email: req.Email})
 	if err != nil {
 		if !errors.Is(err, gorm.ErrRecordNotFound) {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 				Data: nil,
@@ -336,7 +332,7 @@ func SendMail(c *gin.Context, ctx context.ApplicationContext) {
 	}
 
 	if u == nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 			Code: e.Failed,
 			Msg:  "The developer does not exist",
 			Data: nil,
@@ -351,7 +347,7 @@ func SendMail(c *gin.Context, ctx context.ApplicationContext) {
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
-	c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+	c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 		Code: e.Success,
 		Msg:  "The email has been sent, please pay attention to check",
 		Data: SendMailResp{CodeKey: codeHash},
@@ -381,7 +377,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		u, err = ctx.UserService.DeveloperGetByEmail(c, req.Developer)
 		if err != nil {
 			if !errors.Is(err, gorm.ErrRecordNotFound) {
-				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+				c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 					Code: e.Failed,
 					Msg:  err.Error(),
 					Data: nil,
@@ -390,7 +386,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			}
 		}
 		if u == nil {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The developer does not exist",
 				Data: nil,
@@ -400,7 +396,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		// Verify that the mailbox has not been maliciously altered
 		emailHashStr := developer.GetEmailHashStr(u.Email)
 		if req.CodeKey != emailHashStr {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The email address is incorrect",
 				Data: nil,
@@ -411,7 +407,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		pwdPattern := `^[a-zA-Z0-9]{8,20}$`
 		reg, err := regexp.Compile(pwdPattern) // filter exclude chars
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 				Data: nil,
@@ -420,7 +416,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		}
 		match := reg.MatchString(req.Password)
 		if !match {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  "The password is not formatted correctly",
 				Data: nil,
@@ -430,7 +426,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		isExists := db.RedisDB.HExists(req.CodeKey, "code")
 		if !isExists.Val() {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  e.VerifyCodeExpired,
 				Data: nil,
@@ -440,7 +436,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 
 		getCode, _ := db.RedisDB.HGet(req.CodeKey, "code").Int()
 		if getCode != req.Code {
-			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  e.InvalidVerifyCode,
 				Data: nil,
@@ -460,7 +456,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 		req.Password = string(password)
 		err = ctx.UserService.DeveloperPasswordModifyByEmail(c, req.Developer)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&Resp{
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,
 				Msg:  err.Error(),
 				Data: nil,
@@ -468,7 +464,7 @@ func ResetPassword(ctx context.ApplicationContext) gin.HandlerFunc {
 			return
 		}
 
-		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&Resp{
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "Password successfully reset, redirecting to login page.",
 			Data: nil,

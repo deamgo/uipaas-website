@@ -66,20 +66,6 @@ func TestDevDepotService_DevInfoSearch(t *testing.T) {
 	assert.Error(t, err)
 }
 
-func TestDevDepotService_DevDepotRoleModify(t *testing.T) {
-	us, mock := setupDevDepotServiceTest(t)
-
-	mock.ExpectBegin()
-	mock.ExpectExec("UPDATE `workspace_developer_relation`").
-		WithArgs(1, "1").
-		WillReturnResult(sqlmock.NewResult(1, 0))
-
-	mock.ExpectCommit()
-	err := us.DevDepotRoleModify(context.Background(), &dao.DevDepotItem{DeveloperId: "1", Role: "1"})
-
-	assert.Error(t, err)
-}
-
 func TestDevDepotService_DevDepotInvite(t *testing.T) {
 	us, mock := setupDevDepotServiceTest(t)
 

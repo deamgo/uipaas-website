@@ -7,7 +7,7 @@ import (
 )
 
 type WorkspaceDao interface {
-	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error)
+	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO, email string) (*WorkspaceDO, error)
 
 	WorkspaceDel(ctx context.Context, workspace *WorkspaceDO, developerID string) error
 
@@ -24,11 +24,13 @@ func NewWorkspaceDao(db *gorm.DB) WorkspaceDao {
 	}
 }
 
-func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO) (*WorkspaceDO, error) {
+func (dao workspaceDao) WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO, email string) (*WorkspaceDO, error) {
 	dwrDO := &DeveloperWorkspaceRelationDO{
 		WorkspaceId: workspace.Id,
 		DeveloperId: workspace.CreatedBy,
-		Role:        1,
+		Role:        0,
+		Email:       email,
+		Status:      1,
 		CreatedBy:   workspace.CreatedBy,
 		UpdatedBy:   workspace.UpdatedBy,
 	}

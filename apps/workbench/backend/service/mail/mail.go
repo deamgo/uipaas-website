@@ -9,8 +9,6 @@ import (
 	"math/rand"
 	"net/smtp"
 	"os"
-	"path"
-	"runtime"
 	"time"
 
 	"github.com/deamgo/workbench/pkg/consts"
@@ -45,7 +43,7 @@ func (us mailService) SendVerificationCodeMail(ctx context.Context, emailStr str
 	// Set up a subject
 	e.Subject = consts.SUBJECT_LINE
 	// Set the content of the file to be sent
-	htmlStr, err := parseMJMLFile(getCurrentAbPathByCaller()+"/mjml/verification_code.mjml", ctx)
+	htmlStr, err := parseMJMLFile("./mjml/verification_code.mjml", ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -78,7 +76,7 @@ func (us mailService) SendWorkspaceInviteMail(ctx context.Context, emailStr, wor
 	// Set up a subject
 	e.Subject = consts.SUBJECT_LINE
 	// Set the content of the file to be sent
-	htmlStr, err := parseMJMLFile(getCurrentAbPathByCaller()+"/mjml/workspace_invite.mjml", ctx)
+	htmlStr, err := parseMJMLFile("./mjml/workspace_invite.mjml", ctx)
 	if err != nil {
 		return err
 	}
@@ -110,13 +108,4 @@ func parseMJMLFile(filePath string, ctx context.Context) (string, error) {
 		return "", err
 	}
 	return html, nil
-}
-
-func getCurrentAbPathByCaller() string {
-	var abPath string
-	_, filename, _, ok := runtime.Caller(0)
-	if ok {
-		abPath = path.Dir(filename)
-	}
-	return abPath
 }
