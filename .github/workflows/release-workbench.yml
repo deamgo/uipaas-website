@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - 'release/workbench'
-name: Release
+name: Release-workbench
 jobs:
   build:
     name: docekr pkg
