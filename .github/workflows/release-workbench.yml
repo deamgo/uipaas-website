@@ -36,11 +36,22 @@ jobs:
         working-directory: ./apps/workbench/backend/cmd
         run: |
           CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../docker/apps/backend
+          CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../docker/apps/backend
     
       - name: zip Docker pkg
         working-directory: ./apps/workbench
         run: |
           zip -r workbench.zip ./docker
+          
+      - uses: actions/upload-artifact@v3
+        with:
+          name: workbench
+          path: ./apps/workbench/workbench.zip
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: workbench
+          path: distfiles
 
       - name: SCP Files 
         uses: appleboy/scp-action@master
@@ -68,7 +79,7 @@ jobs:
             docker rm -f workbench-uipaas
             docker rmi workbench
             rm -rf ./docker
-            unzip workbench.zip
+            unzip ./workbench.zip
             cd ./docker
             docker-compose up --build -d
             rm -f workbench.zip
