@@ -6,7 +6,7 @@ name: Release
 jobs:
   build:
     name: docekr pkg
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     environment:
       name: workbench_deploy
     steps:
@@ -35,7 +35,6 @@ jobs:
       - name: Backend build
         working-directory: ./apps/workbench/backend/cmd
         run: |
-          apt-get install libc6
           CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../../docker/apps/backend
     
       - name: zip Docker pkg
