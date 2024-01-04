@@ -1,14 +1,12 @@
-FROM arm64v8/ubuntu:22.04
+FROM amd64/ubuntu:20.04
 
-# FROM nginx:stable
 COPY ./server.txt /home/workbench/server.txt
 
-RUN apt-get -qq update --fix-missing && apt-get -qq install -y $(cat /home/workbench/server.txt)
+ENV DEBIAN_FRONTEND noninteractive
 
-# RUN apt-get update --fix-missing && apt-get install -y nginx && apt-get -y install vim && apt-get install -y golang && apt-get install -y redis-server
+RUN apt-get update --fix-missing && apt-get install -y $(cat /home/workbench/server.txt)
 
 ARG APP_HOME
 
 VOLUME ${APP_HOME}
 WORKDIR ${APP_HOME}
-

@@ -35,7 +35,7 @@ jobs:
       - name: Backend build
         working-directory: ./apps/workbench/backend/cmd
         run: |
-          CGO_ENABLE=0 GOOS=linux GOARCH=arm64 go build -o ../docker/apps/backend
+          CGO_ENABLE=0 GOOS=linux GOARCH=amd64 go build -o ../docker/apps/backend
     
       - name: zip Docker pkg
         working-directory: ./apps/workbench
@@ -45,11 +45,11 @@ jobs:
       - name: SCP Files 
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.REMOTE_HOST }}  # Secrets中的配置：vps IP地址
-          username: ${{ secrets.REMOTE_USER }}  # Secrets中的配置：vps 登录用户名
-          key: ${{ secrets.SERVER_SSH_KEY }} # Secrets中的配置：vps 上创建的ssh key的私钥内容
-          source: './apps/workbench.zip'  # 打包的文件
-          target: '/deamgo/workbench' # Secrets中的配置：scp 到 vps 上的的目录
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          source: './apps/workbench.zip'
+          target: '/deamgo/workbench'
     
   release:
     name: Release artifacts
@@ -65,9 +65,8 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |  
-            docker stop workbench-uipaas workbench-mysql
-            docker rm workbench-uipaas workbench-mysql
-            docker rmi uihome
+            docker rm -f workbench-uipaas
+            docker rmi workbench
             rm -rf ./docker
             unzip workbench.zip
             cd ./docker

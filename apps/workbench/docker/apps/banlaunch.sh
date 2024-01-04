@@ -1,12 +1,14 @@
 #!/bin/bash
 
+set -e
+
 max_attempts=10
 attempts=0
 
 redis-server &
 
 while [ $attempts -lt $max_attempts ]; do
-    ./backend -dbConfig ./config.yaml &
+    ./backend &
     sleep 10
     if pgrep -x "backend" > /dev/null; then
         echo "Backend is running."
