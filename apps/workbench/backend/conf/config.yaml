@@ -10,3 +10,8 @@ database:
     addr: 127.0.0.1:6379
     password:
     db: 1
+
+email_config:
+    path: /Users/glancake/go/src/website-copt/uipaas-website/apps/workbench/backend/service/mail/mjml
+permission_config:
+    path: /Users/glancake/go/src/website-copt/uipaas-website/apps/workbench/backend/auth/permission/permissions.csv

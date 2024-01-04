@@ -10,5 +10,15 @@ type DBConfig struct {
 }
 
 type Config struct {
-	Database DBConfig `yaml:"database"`
+	Database         DBConfig         `yaml:"database"`
+	EmailConfig      EmailConfig      `yaml:"email_config"`
+	PermissionConfig PermissionConfig `yaml:"permission_config"`
+}
+
+type EmailConfig struct {
+	Path string `yaml:"path"`
+}
+
+type PermissionConfig struct {
+	Path string `yaml:"path"`
 }

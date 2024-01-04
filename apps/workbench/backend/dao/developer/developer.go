@@ -14,6 +14,7 @@ type DeveloperDao interface {
 	DeveloperAdd(ctx context.Context, user *DeveloperDO) error
 	DeveloperGetByID(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
 	DeveloperGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
+	DeveloperGetByEmailAndStatus(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
 	DeveloperGetByUserName(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error)
 	DeveloperStatusModifyByEmail(ctx context.Context, user *DeveloperDO) error
 	DeveloperNameModifyByID(ctx context.Context, user *DeveloperDO) error
@@ -74,6 +75,14 @@ func (u developerDao) DeveloperNameModifyByID(ctx context.Context, user *Develop
 func (u developerDao) DeveloperGetByEmail(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
 	email := user.Email
 	err := u.db.WithContext(ctx).Model(&user).Where("email=? and status=1", email).First(&user).Error
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
+}
+func (u developerDao) DeveloperGetByEmailAndStatus(ctx context.Context, user *DeveloperDO) (*DeveloperDO, error) {
+	email := user.Email
+	err := u.db.WithContext(ctx).Model(&user).Where("email=? and status=0", email).First(&user).Error
 	if err != nil {
 		return nil, err
 	}

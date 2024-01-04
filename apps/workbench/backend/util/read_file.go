@@ -1,8 +1,11 @@
 package util
 
 import (
+	"context"
 	"encoding/csv"
 	"fmt"
+	"github.com/Boostport/mjml-go"
+	"github.com/deamgo/workbench/initialize"
 	"os"
 )
 
@@ -15,14 +18,8 @@ type PathRole struct {
 
 func GetRoles() []PathRole {
 
-	// Gets the directory where the executable file is located
-	rootDir, err := os.Getwd()
-	if err != nil {
-		panic(err)
-	}
-
 	// Open CSV file
-	file, err := os.Open(rootDir + "/auth/permission/permissions.csv")
+	file, err := os.Open(initialize.GetConfig().PermissionConfig.Path)
 	if err != nil {
 		fmt.Println("Error opening CSV file:", err)
 		return nil
@@ -64,4 +61,16 @@ func GetRoles() []PathRole {
 	}
 
 	return userRoles
+}
+
+func ParseMJMLFile(filePath string, ctx context.Context) (string, error) {
+	file, err := os.ReadFile(filePath)
+	if err != nil {
+		return "", err
+	}
+	html, err := mjml.ToHTML(ctx, string(file), mjml.WithMinify(true))
+	if err != nil {
+		return "", err
+	}
+	return html, nil
 }
