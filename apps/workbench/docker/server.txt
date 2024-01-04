@@ -4,3 +4,4 @@ golang
 redis-server
 ca-certificates
 curl
+libc6
