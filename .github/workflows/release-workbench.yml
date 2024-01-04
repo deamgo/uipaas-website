@@ -59,7 +59,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          source: './apps/workbench.zip'
+          source: 'distfiles/*'
           target: '/deamgo/workbench'
     
   release:
@@ -78,6 +78,7 @@ jobs:
           script: |  
             docker rm -f workbench-uipaas
             docker rmi workbench
+            cd /deamgo/workbench/distfiles
             rm -rf ./docker
             unzip ./workbench.zip
             cd ./docker
