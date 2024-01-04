@@ -1,7 +1,7 @@
 version: "2.1"
 services:
 
-  mysql:
+  workbench-mysql:
     image: mysql:8.0.29
     container_name: ${DOCKER_PREFIX}-mysql
     restart: always
@@ -21,7 +21,7 @@ services:
     networks:
       - uipaas-workbench
   
-  home:
+  workbench:
     image: workbench
     env_file: 
       - .env
@@ -44,11 +44,11 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
     links:
-      - mysql
+      - workbench-mysql
     networks:
       - uipaas-workbench
     depends_on:
-      mysql:
+      workbench-mysql:
         condition: service_healthy
 
 networks:
