@@ -4,16 +4,16 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/deamgo/workbench/initialize"
+	"github.com/deamgo/workbench/util"
 	"html/template"
 	"log"
 	"math/rand"
 	"net/smtp"
-	"os"
 	"time"
 
 	"github.com/deamgo/workbench/pkg/consts"
 
-	"github.com/Boostport/mjml-go"
 	"github.com/jordan-wright/email"
 )
 
@@ -43,7 +43,7 @@ func (us mailService) SendVerificationCodeMail(ctx context.Context, emailStr str
 	// Set up a subject
 	e.Subject = consts.SUBJECT_LINE
 	// Set the content of the file to be sent
-	htmlStr, err := parseMJMLFile("./mjml/verification_code.mjml", ctx)
+	htmlStr, err := util.ParseMJMLFile(initialize.GetConfig().EmailConfig.Path+"/verification_code.mjml", ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -76,7 +76,7 @@ func (us mailService) SendWorkspaceInviteMail(ctx context.Context, emailStr, wor
 	// Set up a subject
 	e.Subject = consts.SUBJECT_LINE
 	// Set the content of the file to be sent
-	htmlStr, err := parseMJMLFile("./mjml/workspace_invite.mjml", ctx)
+	htmlStr, err := util.ParseMJMLFile(initialize.GetConfig().EmailConfig.Path+"/workspace_invite.mjml", ctx)
 	if err != nil {
 		return err
 	}
@@ -98,14 +98,11 @@ func (us mailService) SendWorkspaceInviteMail(ctx context.Context, emailStr, wor
 
 }
 
-func parseMJMLFile(filePath string, ctx context.Context) (string, error) {
-	file, err := os.ReadFile(filePath)
-	if err != nil {
-		return "", err
-	}
-	html, err := mjml.ToHTML(ctx, string(file), mjml.WithMinify(true))
-	if err != nil {
-		return "", err
-	}
-	return html, nil
-}
+//func getCurrentAbPathByCaller() string {
+//	var abPath string
+//	_, filename, _, ok := runtime.Caller(0)
+//	if ok {
+//		abPath = path.Dir(filename)
+//	}
+//	return abPath
+//}
