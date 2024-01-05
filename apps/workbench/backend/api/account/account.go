@@ -179,13 +179,12 @@ func SignUpVerify(ctx context.ApplicationContext) gin.HandlerFunc {
 		// create default workspace
 		var workspace = &workspace.Workspace{
 			Name:        dpl.Username + "'s Workspace",
-			Logo:        "http://121.41.78.218:80/images/9ccb00dbd1.jpg",
 			Label:       "default workspace",
 			Description: "default workspace",
 			CreatedBy:   uint64(id),
 			UpdatedBy:   uint64(id),
 		}
-		_, err = ctx.WorkspaceService.WorkspaceCreate(c, workspace)
+		_, err = ctx.WorkspaceService.WorkspaceDefaultCreate(c, workspace)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
 				Code: e.Failed,

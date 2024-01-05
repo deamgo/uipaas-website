@@ -53,7 +53,6 @@ CREATE TABLE `developer` (
                              `status` int DEFAULT NULL COMMENT '状态',
                              `update_at` datetime DEFAULT NULL COMMENT '更新时间',
                              PRIMARY KEY (`id`) USING BTREE,
-                             UNIQUE KEY `username` (`username`),
                              UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -85,7 +84,7 @@ CREATE TABLE `workspaces` (
                               `id` char(6) NOT NULL COMMENT '工作空间ID',
                               `name` varchar(20) NOT NULL COMMENT '工作空间名称 访问标识',
                               `label` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '短描述',
-                              `logo` varchar(255) NOT NULL COMMENT '图标地址',
+                              `logo` varchar(255)  COMMENT '图标地址',
                               `description` varchar(1023) NOT NULL DEFAULT '' COMMENT '长描述',
                               `created_by` bigint NOT NULL DEFAULT '0' COMMENT '创建人',
                               `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
