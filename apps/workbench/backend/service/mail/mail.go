@@ -4,15 +4,15 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/deamgo/workbench/initialize"
-	"github.com/deamgo/workbench/util"
 	"html/template"
 	"log"
 	"math/rand"
 	"net/smtp"
 	"time"
 
+	"github.com/deamgo/workbench/initialize"
 	"github.com/deamgo/workbench/pkg/consts"
+	"github.com/deamgo/workbench/util"
 
 	"github.com/jordan-wright/email"
 )
