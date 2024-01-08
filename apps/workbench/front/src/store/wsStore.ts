@@ -62,6 +62,7 @@ class CurrentWorkspaceStore {
   }
 
   setCurrentWorkspace(item: typeof this.currentWorkspace) {
+    window.sessionStorage.setItem('currentWorkspace', JSON.stringify(item))
     this.currentWorkspace = item
   }
 
@@ -70,12 +71,14 @@ class CurrentWorkspaceStore {
   }
 
   resetCurrentWorkspace() {
-    this.currentWorkspace = {
-      id: '',
-      name: '',
-      logo: ''
-    }
+    this.currentWorkspace = {} as IWorkspaceItemProps
   }
+
+  loadCurrentWorkspace() {
+    let currentWorkspace = window.sessionStorage.getItem('currentWorkspace')
+    this.setCurrentWorkspace(JSON.parse(currentWorkspace as string))
+  }
+
 }
 
 const wsStore = new WsStore()

@@ -18,6 +18,7 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
 
     const handleChangeCurrentWorkspace = () => {
         currentWorkspaceStore.setCurrentWorkspace(props)
+
         wsStore.setFirst(props.name)
 
         navigate('/')

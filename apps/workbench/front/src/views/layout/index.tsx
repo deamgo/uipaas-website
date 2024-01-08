@@ -7,7 +7,7 @@ import './index.less'
 //
 import Sider from '@views/layout/sider'
 import { Outlet } from 'react-router-dom';
-import { wsStore } from '@/store/wsStore';
+import { currentWorkspaceStore, wsStore } from '@/store/wsStore';
 import { socket } from '@/utils/websocket';
 //
 
@@ -20,23 +20,20 @@ const Layout: React.FC = () => {
     window.addEventListener('resize', resize)
     resize()
 
-    socket.onopen = () => {
-      console.log('connected');
-    }
     socket.onmessage = (e) => {
-      console.log(e.data)
+      console.log(e)
     }
+
     return () => {
       window.removeEventListener('resize', resize)
-      socket.close()
     }
-  })
+  }, [])
 
   React.useEffect(() => {
     let location = window.location.pathname
     if (location === '/u') {
       navigate(location)
-    } else if (!(wsStore.getWsList().length > 0)) {
+    } else if (!(wsStore.getWsList().length > 0) && !currentWorkspaceStore.getCurrentWorkspace()) {
       navigate('/_blank')
     } else {
       navigate(location)

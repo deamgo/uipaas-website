@@ -7,7 +7,7 @@ import { currentWorkspaceStore } from "@/store/wsStore"
 
 const deleteWorkspace = (id: number | string) => {
   return request({
-    url: '/workspace/' + id,
+    url: '/workspace/' + id + '/settings',
     method: 'delete',
     headers: {
       'Content-Type': 'application',

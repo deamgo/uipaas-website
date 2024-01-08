@@ -125,7 +125,10 @@ const EmailVerif: React.FC = () => {
           <Button
             context='Sign up'
             method={handleContinue}
-            disabled={btnAbled} >
+            disabled={btnAbled}
+            ys={{
+              width: '100%'
+            }}>
             Sign up
           </Button>
           <div className="__ev_btnbox_privacy">

@@ -53,7 +53,6 @@ const UserProfile: React.FC = () => {
       const { value } = await getUserInfo()
       if (value.code === 0) {
         setUserInfo(value.data as IUserInfo)
-        $message.success('获取用户信息成功')
       }
     })()
     return () => {
@@ -132,7 +131,6 @@ const UserProfile: React.FC = () => {
       const { value } = await getUserInfo()
       if (value.code === 0) {
         setUserInfo(value.data as IUserInfo)
-        $message.success(value.msg)
       }
     } catch (error) {
       console.log(error)
@@ -230,7 +228,6 @@ const UserProfile: React.FC = () => {
         $message.success(res.value.msg)
         sessionStorage.removeItem('code_key')
         handleEditPwd()
-        // shouldChange(c => -c)
         getDeveloperInfo()
       }
     }).catch(err => {
@@ -419,6 +416,9 @@ const UserProfile: React.FC = () => {
 
       {isEditName &&
         <Popup unit='rem' width={496} height={276} title='Edit name' onClose={handleEditName} >
+          <h1 className="_edit_name_title">
+            Edit name
+          </h1>
           <div className="_edit_name_input">
             <Input
               id='edit_name'
@@ -435,28 +435,34 @@ const UserProfile: React.FC = () => {
 
       {isEditEmail &&
         <Popup unit='rem' width={496} height={329} title='Edit email' onClose={handleEditEmail} >
+          <h1 className="_current_title">
+            Edit email
+          </h1>
           {!iseditEmailContinue && (
             <>
-              <div className="_current">
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Current email</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <span>{userInfo?.email}</span>
-                  </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Current email</span>
                 </div>
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Current password</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='repeat_pwd'
-                      type='password'
-                      outputChange={setCurrentPassword}
-                      reg={passwordReg} />
-                  </div>
+                <div className="_current_wrapper_content _current_wrapper_content_disable">
+                  <Input
+                    id='current-email'
+                    type='text'
+                    typeAble={true}
+                    value={userInfo?.email} />
+
+                </div>
+              </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Current password</span>
+                </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='repeat_pwd'
+                    type='password'
+                    outputChange={setCurrentPassword}
+                    reg={passwordReg} />
                 </div>
               </div>
               <div className="_edit_email_btn">
@@ -468,40 +474,38 @@ const UserProfile: React.FC = () => {
           )}
           {iseditEmailContinue && (
             <>
-              <div className="_current">
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>New email</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='edit_email'
-                      type='text'
-                      outputChange={setNewEmail}
-                      reg={emailReg} />
-                  </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>New email</span>
                 </div>
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Email verification code</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='edit_emailVerification'
-                      type='text'
-                      outputChange={setEmailCode}
-                      reg={emailVerificationReg} />
-                    <div className="_current_wrapper_content_send">
-                      <Button context={send} type='primary' disabled={sendAble} method={sendVerifiCode} >
-                        {send}
-                      </Button>
-                    </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='edit_email'
+                    type='text'
+                    outputChange={setNewEmail}
+                    reg={emailReg} />
+                </div>
+              </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Email verification code</span>
+                </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='edit_emailVerification'
+                    type='text'
+                    outputChange={setEmailCode}
+                    reg={emailVerificationReg} />
+                  <div className="_current_wrapper_content_send">
+                    <Button context={send} type='primary' disabled={sendAble} method={sendVerifiCode} >
+                      {send}
+                    </Button>
                   </div>
                 </div>
               </div>
               <div className="_edit_email_btn">
                 <Button context='Confirm' type='primary' disabled={emailEditConfirmAble} method={handleConfirmEditEmail} >
-                  Confirm
+                  Continue
                 </Button>
               </div>
             </>
@@ -511,32 +515,37 @@ const UserProfile: React.FC = () => {
 
       {isEditPwd &&
         <Popup unit='rem' width={496} height={329} title='Edit password' onClose={handleEditPwd} >
+          <h1 className="_current_title">
+            Edit password
+          </h1>
           {!iseditPwdContinue && (
             <>
-              <div className="_current">
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Current email</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <span>{userInfo?.email}</span>
-                  </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Current email</span>
                 </div>
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Email verification code</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='repeat_pwd'
-                      type='text'
-                      outputChange={setPwdEmailCode}
-                      reg={emailVerificationReg} />
-                    <div className="_current_wrapper_content_send">
-                      <Button context={send} type='primary' disabled={sendAble} method={sendPwdVerifiCode} >
-                        {send}
-                      </Button>
-                    </div>
+                <div className="_current_wrapper_content _current_wrapper_content_disable">
+                  <Input
+                    id='current-email'
+                    type='text'
+                    typeAble={true}
+                    value={userInfo?.email} />
+                </div>
+              </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Email verification code</span>
+                </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='repeat_pwd'
+                    type='text'
+                    outputChange={setPwdEmailCode}
+                    reg={emailVerificationReg} />
+                  <div className="_current_wrapper_content_send">
+                    <Button context={send} type='primary' disabled={sendAble} method={sendPwdVerifiCode} >
+                      {send}
+                    </Button>
                   </div>
                 </div>
               </div>

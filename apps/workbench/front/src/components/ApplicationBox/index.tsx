@@ -12,9 +12,22 @@ import DownList from '../DownList'
 interface IApplicationBoxProps {
   id: string
   name: string
-  label: string
+  label: number
   desc: string
-  type: string
+  type?: number
+}
+
+const format = (status: number) => {
+  switch (status) {
+    case 1:
+      return 'info'
+    case 2:
+      return 'success'
+    case 3:
+      return 'warning'
+    default:
+      return 'error'
+  }
 }
 
 const OperationList: ISelectOption[] = [
@@ -56,7 +69,7 @@ const ApplicationBox: React.FC<IApplicationBoxProps> = (props) => {
             </div>
           </div>
           <div className="__applicationbox_head_label">
-            <Label label={props.label} type={props.type} />
+            <Label label={props.label === 1 ? 'Draft' : 'Public'} type={format(props.type ? props.type : 0)} />
           </div>
         </div>
         <div className="__applicationbox_main">
@@ -64,9 +77,6 @@ const ApplicationBox: React.FC<IApplicationBoxProps> = (props) => {
             {props.desc}
           </p>
         </div>
-        {/* <Divider ys={{
-          width: '336rem'
-        }} /> */}
         <div className="__applicationbox_foot">
           <div className="__applicationbox_foot_btns">
             <div className="__applicationbox_foot_edit">

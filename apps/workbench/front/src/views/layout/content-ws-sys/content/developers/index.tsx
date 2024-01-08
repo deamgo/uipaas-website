@@ -22,14 +22,16 @@ import Popup from '@/components/Popup'
 import { useLoaderData } from 'react-router-dom'
 import { currentWorkspaceStore } from '@/store/wsStore'
 import { editDeveloperPermission, findDeveloper, getDevelopers, inviteByEmail, removeDeveloper } from '@/api/workspace_settings'
-import $message from '@/components/Message'
+// import $message from '@/components/Message'
 import { socket } from '@/utils/websocket'
+import { fakeData } from './fakedata'
 
 
 
 interface IColumns {
   id: 'username' | 'email' | 'role'
   label: string
+  format?: (role: string) => string
 }
 
 const columns: IColumns[] = [
@@ -44,6 +46,19 @@ const columns: IColumns[] = [
   {
     id: 'role',
     label: 'Role',
+    format: (role) => {
+      switch (role) {
+        case 'Admin':
+          return 'Admin'
+        case 'Editer':
+          return 'Editer'
+        case 'Viewer':
+          return 'Viewer'
+
+        default:
+          return 'Unknow'
+      }
+    }
   }
 ]
 
@@ -54,37 +69,6 @@ interface IDeveloper {
   role: string
   status: number
 }
-
-// const rows = [
-//   {
-//     id: '1001',
-//     name: 'Shawn',
-//     email: 'Shawn@example.com',
-//     role: 'Owner',
-//     status: 's',
-//   },
-//   {
-//     id: '1002',
-//     name: 'Lisa',
-//     email: 'Lisa@example.com',
-//     role: 'Admin',
-//     status: 's',
-//   },
-//   {
-//     id: '1003',
-//     name: 'Tom',
-//     email: 'Tom@example.com',
-//     role: 'Editer',
-//     status: 's',
-//   },
-//   {
-//     id: '1004',
-//     name: 'Jerry',
-//     email: 'Jerry@example.com',
-//     role: 'Viewer',
-//     status: 'pending',
-//   },
-// ]
 
 const list_r: ISelectOption[] = [
   {
@@ -111,9 +95,9 @@ const WSDevelopers: React.FC = () => {
   const [isAddDevelopers, setIsAddDevelopers] = React.useState<boolean>(false)
   const [isMask, setMask] = React.useState<boolean>(false)
 
-  const [pages, setPages] = React.useState<number>(0)
+  const [pages, setPages] = React.useState<number>(5)
   const [currenPage, setCurrentPage] = React.useState<number>(1)
-  const [total, setTotal] = React.useState<number>(1)
+  const [total, setTotal] = React.useState<number>()
 
   const [developers, setDevelopers] = React.useState<IDeveloper[]>([])
 
@@ -123,26 +107,30 @@ const WSDevelopers: React.FC = () => {
   const [inviteByEmailRole, setInviteByEmailRole] = React.useState<string>('3')
 
   const loader = useLoaderData() as IDeveloper[]
+  // const loader = fakeData as IDeveloper[]
 
   React.useEffect(() => {
     if (loader.length > 0) {
-      setDevelopers(loader ? loader : [])
+      setDevelopers(loader)
     }
+  }, [])
 
-    console.log(developers.length);
+  // const setPagenation = () => {
+  //   let tempTotal = Math.ceil(developers.length / 10)
 
-    let tempTotal = Math.ceil(developers.length / 10)
+  //   setTotal(tempTotal)
+  //   console.log(tempTotal + ':=:' + total);
 
+  //   if (tempTotal > 0 && tempTotal < 5) {
+  //     console.log('0 < t < 5');
 
-    setTotal(tempTotal)
-    if (tempTotal > 0 && tempTotal < 5) {
-      setPages(tempTotal)
-    } else if (tempTotal !== 0 && tempTotal >= 5) {
-      setPages(5)
-    }
+  //     setPages(tempTotal)
+  //   } else if (tempTotal >= 5) {
+  //     console.log('t >= 5');
 
-
-  }, [currenPage])
+  //     setPages(5)
+  //   }
+  // }
 
 
   const handleOpenMask = () => {
@@ -155,16 +143,18 @@ const WSDevelopers: React.FC = () => {
   }
 
 
-  const handleChangeCurrentPage = async (item: number) => {
-    console.log('handleChangeCurrentPage' + item)
-    setCurrentPage(item)
+  const handleChangeCurrentPage = async (page: number) => {
+    console.log('handleChangeCurrentPage' + page)
+    setCurrentPage(page)
+    // setDevelopers(loader)
+    // setTotal(Math.ceil(loader.length / 10))
     try {
-      const { value } = await getDevelopers(item)
-      setDevelopers(value.data)
-      $message.success('Success to get developers')
+      const { value } = await getDevelopers(page)
+      setDevelopers(value.data.records)
+      let totaltemp = Math.ceil(value.data.total / 10)
+      setTotal(totaltemp)
     } catch (error) {
       console.log(error);
-      $message.error('Failed to get developers')
     }
   }
 
@@ -173,10 +163,10 @@ const WSDevelopers: React.FC = () => {
     try {
       const { value } = await findDeveloper(currenPage, queryParam)
       setDevelopers(value.data)
-      $message.success(value.msg)
+      // $message.success(value.msg)
     } catch (error) {
       console.log(error);
-      $message.error('Failed to get developers by search')
+      // $message.error('Failed to get developers by search')
     }
   }
 
@@ -199,17 +189,15 @@ const WSDevelopers: React.FC = () => {
   const handleInviteDevelopers = async () => {
     console.log('handleInviteDevelopers' + inviteEmail + inviteByEmailRole)
     try {
-      const { code, msg } = await inviteByEmail({
+      const { code } = await inviteByEmail({
         email: inviteEmail,
         role: inviteByEmailRole
       })
       console.log(code);
       handleChangeCurrentPage(currenPage)
-      $message.success(msg)
+      handleOpenAddDevelopers()
     } catch (error) {
       console.log(error);
-      $message.error('Failed to invite developers')
-
     }
   }
 
@@ -225,10 +213,12 @@ const WSDevelopers: React.FC = () => {
         role: role
       })
       handleChangeCurrentPage(currenPage)
-      $message.success(value.msg)
+      console.log(value);
+
+      // $message.success(value.msg)
     } catch (error) {
       console.log(error);
-      $message.error('Failed to edit developer permission')
+      // $message.error('Failed to edit developer permission')
     }
 
   }
@@ -300,7 +290,7 @@ const WSDevelopers: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {developers?.map((row, index) => (
+              {developers?.slice((currenPage - 1) * 10, currenPage * 10).map((row, index) => (
                 <>
                   <TableRow key={index}>
                     {columns.map(column => {
@@ -344,8 +334,8 @@ const WSDevelopers: React.FC = () => {
                                   <>{value}</>
                                 ) : (
                                   <>
-                                    <Select onChange={handleRowChangeRole} id={row['developer_id']} list={list_r} default={value}>
-                                      {value}
+                                    <Select onChange={handleRowChangeRole} id={row['developer_id']} list={list_r} default={column.format ? column.format(value) : value}>
+                                      {column.format && column.format(value)}
                                     </Select>
                                   </>)}
                               </>
@@ -395,7 +385,7 @@ const WSDevelopers: React.FC = () => {
           <div className="__workspace_developers_pwrapper_pagenation">
             <Pagenation
               pages={pages}
-              total={total}
+              total={total ? total : 0}
               current={currenPage}
               onCurrentPageChange={handleChangeCurrentPage} />
           </div>
@@ -403,42 +393,43 @@ const WSDevelopers: React.FC = () => {
       </div>
       {isMask && <Mask />}
       {isAddDevelopers && <Popup unit='rem' width={480} height={272} title='Add developers' onClose={handleOpenAddDevelopers}>
-        <div className="_add_developers_popup">
-          <div className="_add_developers_popup_wrapper">
-            <div className="_add_developers_popup_wrapper_input">
-              <Input
-                id='invitebyemail'
-                title='Invite by email'
-                placeholder='Enter email address'
-                isNeed={false}
-                outputChange={setInviteEmail} />
-              <div className="_add_developers_popup_wrapper_input_select">
-                <Select list={list_r} default='Viewer' onChange={setInviteByEmailRole} />
-              </div>
-            </div>
-            <div className="_add_developers_popup_wrapper_invite">
-              <Button context='Invite' type='primary' method={handleInviteDevelopers} >
-                Invite
-              </Button>
+        <h1 className="_add_developers_popup_title">
+          Add developers
+        </h1>
+        <div className="_add_developers_popup_wrapper">
+          <div className="_add_developers_popup_wrapper_input">
+            <Input
+              id='invitebyemail'
+              title='Invite by email'
+              placeholder='Enter email address'
+              isNeed={false}
+              outputChange={setInviteEmail} />
+            <div className="_add_developers_popup_wrapper_input_select">
+              <Select list={list_r} default='Viewer' onChange={setInviteByEmailRole} />
             </div>
           </div>
-          <div className="_add_developers_popup_wrapper">
-            <div className="_add_developers_popup_wrapper_input">
-              <Input
-                id='invitelink'
-                title='Invite link'
-                value={'https://www.uipaas.com/' + currentWorkspaceStore.getCurrentWorkspace().id}
-                isNeed={false}
-                typeAble={true} />
-              <div className="_add_developers_popup_wrapper_input_select">
-                <Select list={list_r} default='Viewer' />
-              </div>
+          <div className="_add_developers_popup_wrapper_invite">
+            <Button context='Invite' type='primary' method={handleInviteDevelopers} >
+              Invite
+            </Button>
+          </div>
+        </div>
+        <div className="_add_developers_popup_wrapper">
+          <div className="_add_developers_popup_wrapper_input">
+            <Input
+              id='invitelink'
+              title='Invite link'
+              value={'https://www.uipaas.com/' + currentWorkspaceStore.getCurrentWorkspace().id}
+              isNeed={false}
+              typeAble={true} />
+            <div className="_add_developers_popup_wrapper_input_select">
+              <Select list={list_r} default='Viewer' />
             </div>
-            <div className="_add_developers_popup_wrapper_invite">
-              <Button type='primary' method={handleOpenAddDevelopers} >
-                Copy link
-              </Button>
-            </div>
+          </div>
+          <div className="_add_developers_popup_wrapper_invite">
+            <Button type='primary' method={handleOpenAddDevelopers} >
+              Copy link
+            </Button>
           </div>
         </div>
       </Popup>}
