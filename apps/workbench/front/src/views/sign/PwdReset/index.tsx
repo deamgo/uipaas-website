@@ -131,7 +131,7 @@ const PwdReset: React.FC = () => {
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
           <div className="__ryp_form_input_send">
-            <Button context={sendText} method={handleSend} disabled={bsendAbled} >
+            <Button context={sendText} type='primary' method={handleSend} disabled={bsendAbled} >
               {sendText}
             </Button>
           </div>
@@ -142,7 +142,7 @@ const PwdReset: React.FC = () => {
             title='Password'
             type='password'
             placeholder='Enter your password'
-            valid='Please enter the password'
+            valid='8+ characters(a-z,A-z,0-9)'
             isNeed={true}
             isShowPwd={true}
             reg={passwordReg}
@@ -151,8 +151,12 @@ const PwdReset: React.FC = () => {
         <div className="__ryp_form_continue">
           <Button
             context='Confirm'
+            type='primary'
             method={handleContinue}
-            disabled={btnAbled} >
+            disabled={btnAbled}
+            ys={{
+              width: '100%'
+            }}>
             Confirm
           </Button>
         </div>

@@ -74,7 +74,7 @@ const SignIn: React.FC = () => {
             title='Password'
             type='password'
             placeholder='Enter your password'
-            valid='Please enter the password'
+            valid='8+ characters(a-z,A-z,0-9)'
             isNeed={true}
             isShowPwd={true}
             reg={passwordReg}
@@ -92,8 +92,12 @@ const SignIn: React.FC = () => {
           </div>
           <Button
             context='Sign in'
+            type='primary'
             method={handleContinue}
-            disabled={btnAbled} >
+            disabled={btnAbled}
+            ys={{
+              width: '100%'
+            }}>
             Sign in
           </Button>
           <div className="__signin_form_continue_privacy">

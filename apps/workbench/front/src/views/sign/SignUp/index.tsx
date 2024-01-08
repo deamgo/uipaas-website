@@ -106,7 +106,7 @@ const SignUp: React.FC = () => {
             title='Password'
             type='password'
             placeholder='Enter new password'
-            valid='Please enter your password'
+            valid='8+ characters(a-z,A-z,0-9)'
             isNeed={true}
             isShowPwd={true}
             outputChange={setPwd}
@@ -121,8 +121,12 @@ const SignUp: React.FC = () => {
           </div>
           <Button
             context='Continue'
+            type='primary'
             method={handleContinue}
-            disabled={btnAbled} >
+            disabled={btnAbled}
+            ys={{
+              width: '100%'
+            }}>
             Continue
           </Button>
           <div className="__sign_form_continue_privacy">

@@ -28,27 +28,27 @@ const list_c: mcontent[] = [
     index: 1,
     icon: (<Application />)
   },
-  {
-    id: 'resource',
-    title: 'Resource',
-    icon: (<Resource />)
-  },
-  {
-    id: 'env',
-    title: 'Environments',
-    icon: (<Environments />)
-  },
+  // {
+  //   id: 'resource',
+  //   title: 'Resource',
+  //   icon: (<Resource />)
+  // },
+  // {
+  //   id: 'env',
+  //   title: 'Environments',
+  //   icon: (<Environments />)
+  // },
 ]
 
 const list_f: mcontent[] = [
-  {
-    id: 'nottifi',
-    title: 'Nottification',
-    icon: (<Nottification />)
-  },
+  // {
+  //   id: 'nottifi',
+  //   title: 'Nottification',
+  //   icon: (<Nottification />)
+  // },
   {
     id: 'wss',
-    title: 'workspace Settings',
+    title: 'Workspace Settings',
     path: '/workspace',
     matcher: 'workspace',
     index: 1,
@@ -161,7 +161,7 @@ const Sider: React.FC<SiderProps> = () => {
             {isWslist && <SideMenu title='SYSTEM' list={list_f} />}
             {/* <Divider /> */}
           </div>
-          <div className="__sider_menuf_usr">
+          <div className="__sider_menuf_usr" onClick={handleShow}>
             <div className="__sider_menuf_usr_info">
               <div className="__sider_menuf_usr_info_avatar">
                 <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={32} gap={3}>
@@ -170,7 +170,7 @@ const Sider: React.FC<SiderProps> = () => {
               </div>
               <span className='__sider_menuf_usr_info_name'>{username}</span>
             </div>
-            <div className="__sider_menuf_usr_down" onClick={handleShow}>
+            <div className="__sider_menuf_usr_down">
               <Down />
             </div>
             {showMultiSelect && (

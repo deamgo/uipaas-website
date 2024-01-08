@@ -6,6 +6,7 @@ import { ReactComponent as Wca } from '@assets/layout/workspace-create-add.svg'
 import WorkspaceCreateBoxItem from "@components/WorkspaceCreateBoxItem";
 import { currentWorkspaceStore, wsStore } from "@store/wsStore.ts";
 import WorkspaceCreatePopup from "./WorkspaceCreatePopup";
+import Mask from "../Mask";
 
 
 interface WorkspaceItem {
@@ -26,6 +27,7 @@ type BoxProps = {
 
 const WorkspaceCreateBox: React.FC<BoxProps> = () => {
     const [isWsCreate, setIsWsCreate] = React.useState(false)
+    const [isMask, setIsMask] = React.useState(false)
     // const [file, setFile] = useState<File | null>(null);
     // const [workspaceName, setWorkspaceName] = React.useState("")
     // const [workspaceLogoPath, setWorkspaceLogoPath] = React.useState<string>("")
@@ -58,17 +60,21 @@ const WorkspaceCreateBox: React.FC<BoxProps> = () => {
     //     }
     // };
 
+    const handleMask = () => {
+        setIsMask(!isMask);
+    }
+
 
 
     const wcbpHandleClick = () => {
+        handleMask()
         setIsWsCreate(!isWsCreate);
         // props.setwcbShow(true);
     };
 
     const handleIsWsCreate = () => {
-        console.log('handleIsWsCreate');
-
-        setIsWsCreate(!isWsCreate);
+        handleMask()
+        setIsWsCreate(!isWsCreate)
     }
 
 
@@ -128,6 +134,7 @@ const WorkspaceCreateBox: React.FC<BoxProps> = () => {
                     Create Workspace
                 </button>
             </div>
+            {isMask && (<Mask />)}
             {isWsCreate && (
                 <>
                     <WorkspaceCreatePopup onClose={handleIsWsCreate} />

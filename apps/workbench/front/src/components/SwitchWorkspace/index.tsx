@@ -41,8 +41,9 @@ const SwitchWorkspace: React.FC = () => {
   }, [])
 
   React.useEffect(() => {
-    setWsName(currentWorkspaceStore.getCurrentWorkspace()?.name)
-    setWsLogo(currentWorkspaceStore.getCurrentWorkspace()?.logo)
+    let currentWorkspace = currentWorkspaceStore.getCurrentWorkspace()
+    setWsName(currentWorkspace.name ? currentWorkspace.name : '')
+    setWsLogo(currentWorkspace.logo ? currentWorkspace.logo : '')
     // setUsername(appStore.getUserInfo().username)
     setWcbShow(false)
   }, [currentWorkspaceStore.currentWorkspace?.name, currentWorkspaceStore.currentWorkspace?.logo, appStore.userInfo.username])
@@ -70,8 +71,8 @@ const SwitchWorkspace: React.FC = () => {
         <div className="__sws_switch" onClick={wcbHandleClick}>
           <Switch />
         </div>
-        {wcbShow && <WorkspaceCreateBox setWcbShow={setWcbShow} />}
       </div>
+      {wcbShow && <WorkspaceCreateBox setWcbShow={setWcbShow} />}
     </>
   )
 

@@ -9,46 +9,54 @@ import { IPaginationProps } from '@/interface/some'
 
 
 const Pagination: React.FC<IPaginationProps> = (props) => {
+  const pageTemp = Array.from({ length: props.total }, (_, i) => i + 1)
+  const pagenumTemp = pageTemp.filter(i => i <= props.pages)
 
   // const visPage = props.pages
-  const [pages, setPages] = React.useState(Array.from({ length: props.total }, (_, i) => i + 1))
-  const [total, setTotal] = React.useState(props.total)
-  const [visPage, setVisPage] = React.useState(props.pages)
+  const [pages, setPages] = React.useState<number[]>([])
+  const [total, setTotal] = React.useState<number>(props.total)
+  // const [visPage, setVisPage] = React.useState(props.pages)
   const [current, setCurrent] = React.useState(props.current)
   const [isFarStart, setIsFarStart] = React.useState(false)
   const [isFarEnd, setIsFarEnd] = React.useState(false)
-  const [pagenum, setPagenum] = React.useState(pages)
+  const [pagenum, setPagenum] = React.useState<number[]>([])
 
   const step = () => {
-    return Math.floor(visPage / 2)
+    return Math.floor(props.pages / 2)
   }
 
   React.useEffect(() => {
-    setPages(Array.from({ length: props.total }, (_, i) => i + 1))
     setTotal(props.total)
-    setVisPage(props.pages)
-    setCurrent(props.current)
-  }, [props])
+    // setVisPage(props.pages)
+    // setCurrent(props.current)
+    setPages(Array.from({ length: props.total }, (_, i) => i + 1))
+    setPagenum(pagenumTemp)
+
+  }, [props.pages, props.total])
+
+  React.useEffect(() => {
+    // setTotal(props.total)
+    // setVisPage(props.pages)
+    // setCurrent(props.current)
+  }, [props.total])
 
 
   React.useEffect(() => {
     let temp: typeof pages = []
-    if (current < visPage / 2 + 1) {
+    if (current < props.pages / 2 + 1) {
       setIsFarStart(false)
       setIsFarEnd(true)
-      temp = pages.filter(i => i <= visPage)
+      temp = pages.filter(i => i <= props.pages)
     }
-    if (current >= total - visPage / 2 - 1) {
+    if (current >= total - props.pages / 2 - 1) {
       setIsFarStart(true)
       setIsFarEnd(false)
-
-      temp = pages.filter(i => i > total - visPage)
+      temp = pages.filter(i => i > total - props.pages)
     }
-    if (current >= visPage / 2 + 1 && current < total - visPage / 2 - 1) {
+    if (current >= props.pages / 2 + 1 && current < total - props.pages / 2 - 1) {
       setIsFarEnd(true)
       setIsFarStart(true)
       temp = pages.filter(i => i > current - step() && i <= current + step())
-
     }
 
     setPagenum(temp)
@@ -72,7 +80,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
             onClick={() => setCurrent(c => c - 1)}>
             <Left />
           </button>
-          {isFarStart && <div className="__pagination_swrapper_step __pagination_q">...</div>}
+          {total > 5 && isFarStart && <div className="__pagination_swrapper_step __pagination_q">...</div>}
           {
             pagenum.map((item, index) => (
               <div
@@ -83,7 +91,7 @@ const Pagination: React.FC<IPaginationProps> = (props) => {
               </div>
             ))
           }
-          {isFarEnd && <div className="__pagination_swrapper_step __pagination_q">...</div>}
+          {total > 5 && isFarEnd && <div className="__pagination_swrapper_step __pagination_q">...</div>}
           <button
             disabled={current >= total}
             className="__pagination_swrapper_row __pagination_q __pagination_disable"

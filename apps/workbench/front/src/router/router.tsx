@@ -21,13 +21,19 @@ import _Blank from '@/views/layout/_blank'
 import { resize } from '@/utils/adapt'
 import { getDevelopers } from '@/api/workspace_settings'
 import { IUserInfo } from '@/api/account'
+import Cookies from 'js-cookie'
 
 const tokenLoader = async () => {
   resize()
   console.log('tokenLoading');
   const token = tokenStore.getToken()
   if (!token) {
-    return redirect('/s')
+    if (Cookies.get('token')) {
+      tokenStore.setToken(Cookies.get('token') as string)
+    } else {
+      return redirect('/s')
+    }
+    // return redirect('/s')
   }
   await WorkspaceListLoader()
   await getUserInfo().then(res => {
@@ -66,14 +72,20 @@ const tokenLoader = async () => {
 
 const WorkspaceListLoader = async () => {
   try {
+    currentWorkspaceStore.loadCurrentWorkspace()
     const { value } = await workspaceList()
-    if (value.data) {
+    console.log('enter wsll');
+    console.log(value.data);
+
+    if (value.data && undefined !== typeof currentWorkspaceStore.getCurrentWorkspace()) {
+      console.log('enter wsll set');
+
       wsStore.setWsList(value.data)
       currentWorkspaceStore.setCurrentWorkspace(value.data[0])
     }
-    return value.data ? value.data : []
+    // return value.data ? value.data : []
   } catch (err) {
-    return []
+    // return []
   }
 
 }
@@ -96,6 +108,7 @@ export const routes: RouteObject[] = [
       {
         index: true,
         Component: ContentApp,
+        // loader: WorkspaceListLoader,
       },
       {
         path: '/u',

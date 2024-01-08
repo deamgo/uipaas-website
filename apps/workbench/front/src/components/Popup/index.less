@@ -1,10 +1,15 @@
-.__popup_wrapper {
+.__popup {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+
+  padding: 12rem 40rem 32rem 40rem;
   width: auto;
-  height: auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+
 
   border-radius: 4rem;
   background: #FFFFFF;
@@ -14,57 +19,34 @@
     0rem 16rem 24rem 2rem rgba(128, 160, 194, 0.1),
     0rem 8rem 10rem -5rem rgba(128, 160, 194, 0.08);
 
-  &_title {
-    position: absolute;
-    left: 26rem;
-    top: 26rem;
-
-    width: 430rem;
-
-    font-size: 20rem;
-    font-weight: 500;
-    line-height: 28rem;
-    letter-spacing: 0rem;
-
-    color: #1D2129;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  &_close {
-    position: absolute;
-    right: 12rem;
-    top: 9rem;
+  &_wrapper {
+    padding-top: 20rem;
+    width: 100%;
+    height: 100%;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 24rem;
 
-    width: 10rem;
-    height: 20rem;
-    z-index: 1099;
-    cursor: pointer;
-  }
-}
+    &_close {
+      position: absolute;
+      right: 12rem;
+      top: 12rem;
 
-._close_x {
-  &_pone {
-    position: absolute;
-    height: 15rem;
-    background-color: rgba(0, 0, 0, .45);
-    border: 1rem solid rgba(0, 0, 0, .45);
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    transform: rotate(150deg);
-  }
+      width: 16rem;
+      height: 16rem;
+      z-index: 1099;
+      cursor: pointer;
 
-  &_ptwo {
-    position: absolute;
-    height: 15rem;
-    background-color: rgba(0, 0, 0, .45);
-    border: 1rem solid rgba(0, 0, 0, .45);
-
-    transform: rotate(30deg);
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: rgba(0, 0, 0, 0.4);
+      }
+    }
   }
 }

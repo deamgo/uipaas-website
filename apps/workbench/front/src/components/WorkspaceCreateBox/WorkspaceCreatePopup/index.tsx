@@ -67,9 +67,9 @@ const WorkspaceCreatePopup: React.FC<IWsCPProps> = (props) => {
         wsStore.setFirst(ws.name)
         props.onClose && props.onClose()
         setWorkspaceLogoPath("")
-        $message.success(res.msg)
+        $message.success(res.value.msg)
       } else {
-        $message.error(res.msg)
+        $message.error(res.value.msg)
       }
     }).catch(err => {
       console.log(err);
@@ -91,40 +91,38 @@ const WorkspaceCreatePopup: React.FC<IWsCPProps> = (props) => {
   return (
     <>
       <Popup unit={'rem'} width={496} height={276} title={'Create Workspace'} onClose={props.onClose}>
-        <div className="__wcb_popup">
+        <h1 className="__wcb_popup_title">
+          Create Workspace
+        </h1>
+        <div className="__wcb_popup_container">
+          <label htmlFor="workspace-logo">
+            <div className="__wcb_popup_container_setLogo"></div>
+            <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
+            {workspaceLogoPath === '' ?
+              <Avatar shape="square" style={{ backgroundColor: 'gary', verticalAlign: 'middle' }} size={65}
+                gap={3}>
+                {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
+              </Avatar> : <img style={{ borderRadius: '6rem' }} height={65} width={65} src={workspaceLogoPath} alt="workspace-logo" />}
 
-          <div className="__wcb_popup_container ">
-
-            <label htmlFor="workspace-logo">
-              <div className="__wcb_popup_container_setLogo"></div>
-              <input style={{ display: "none" }} id="workspace-logo" type="file" onChange={handleFileChange} />
-              {workspaceLogoPath === '' ?
-                <Avatar style={{ backgroundColor: 'pink', verticalAlign: 'middle' }} size={65}
-                  gap={3}>
-                  {workspaceName === '' ? 'E' : workspaceName.charAt(0).toUpperCase()}
-                </Avatar> : <img style={{ borderRadius: '50%' }} height={65} width={65} src={workspaceLogoPath} alt="workspace-logo" />}
-
-            </label>
-            <div className="__wcb_popup_container_input">
-              <Input
-                id='workspacename'
-                title='Workspace Name'
-                isNeed={true}
-                type='text'
-                outputChange={setWorkspaceName}
-                placeholder={"Enter your Workspace name"}
-              />
-            </div>
-          </div>
-
-
-          <div className="__wcb_popup_button">
-            <Button context={'Create'} type='primary' method={reqWorkspaceCreate} >
-              Create
-            </Button>
+          </label>
+          <div className="__wcb_popup_container_input">
+            <Input
+              id='workspacename'
+              title='Workspace Name'
+              isNeed={true}
+              type='text'
+              outputChange={setWorkspaceName}
+              placeholder={"Enter your Workspace name"}
+            />
           </div>
         </div>
 
+
+        <div className="__wcb_popup_button">
+          <Button context={'Create'} type='primary' method={reqWorkspaceCreate} >
+            Create
+          </Button>
+        </div>
       </Popup>
     </>
   )
