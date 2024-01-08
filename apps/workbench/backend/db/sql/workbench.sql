@@ -53,7 +53,8 @@ CREATE TABLE `developer` (
                              `status` int DEFAULT NULL COMMENT '状态',
                              `update_at` datetime DEFAULT NULL COMMENT '更新时间',
                              PRIMARY KEY (`id`) USING BTREE,
-                             UNIQUE KEY `username` (`username`)
+                             UNIQUE KEY `username` (`username`),
+                             UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------

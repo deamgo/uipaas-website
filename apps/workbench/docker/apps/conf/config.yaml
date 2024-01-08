@@ -10,3 +10,7 @@ database:
     addr: 127.0.0.1:6379
     password:
     db: 1
+email_config:
+  path: /home/workbench/backend/mjml
+permission_config:
+  path: /home/workbench/backend/auth/permission/permissions.csv
