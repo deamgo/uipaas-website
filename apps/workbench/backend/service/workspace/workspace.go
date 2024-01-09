@@ -23,9 +23,11 @@ import (
 
 type WorkspaceService interface {
 	WorkspaceCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
+	WorkspaceDefaultCreate(ctx context.Context, workspace *Workspace) (*Workspace, error)
 	WorkspaceDel(ctx context.Context, workspace *Workspace, developerID string) error
 	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*Workspace, error)
 	WorkspaceGetFilePath(file *multipart.FileHeader) (string, error)
+	WorkspaceNameModify(ctx context.Context, workspace *Workspace) error
 }
 
 type UploadFileResp struct {
@@ -156,9 +158,51 @@ func (w workspaceService) WorkspaceCreate(ctx context.Context, workspace *Worksp
 	return convertWorkspace(newWorkspaceDO), nil
 }
 
+// WorkspaceCreate
+func (w workspaceService) WorkspaceDefaultCreate(ctx context.Context, workspace *Workspace) (*Workspace, error) {
+	var err error
+
+	workspace.Id = hashTop(workspace.Name, 6)
+	workspace.Label = strings.Split(workspace.Label, "\n")[0]
+
+	err = equalParameterLen(workspace.Name, 1, 20)
+	if err != nil {
+		return nil, err
+	}
+	err = equalParameterLen(workspace.Label, 0, 50)
+	if err != nil {
+		return nil, err
+	}
+	err = equalParameterLen(workspace.Description, 0, 1023)
+	if err != nil {
+		return nil, err
+	}
+
+	workspaceDo := convertWorkspaceDao(workspace)
+	developer := &developerDO.DeveloperDO{ID: strconv.FormatUint(workspace.CreatedBy, 10)}
+	d, err := w.developerDao.DeveloperGetByID(ctx, developer)
+	if err != nil {
+		logger.Error(err)
+		return nil, err
+	}
+	newWorkspaceDO, err := w.dao.WorkspaceCreate(ctx, workspaceDo, d.Email)
+	if err != nil {
+		logger.Error(err)
+		return nil, err
+	}
+
+	return convertWorkspace(newWorkspaceDO), nil
+}
+
 func (w workspaceService) WorkspaceDel(ctx context.Context, workspace *Workspace, developerID string) error {
 	workspaceDo := convertWorkspaceDao(workspace)
 	err := w.dao.WorkspaceDel(ctx, workspaceDo, developerID)
+	return err
+}
+
+func (w workspaceService) WorkspaceNameModify(ctx context.Context, workspace *Workspace) error {
+	workspaceDo := convertWorkspaceDao(workspace)
+	err := w.dao.WorkspaceNameModify(ctx, workspaceDo)
 	return err
 }
 

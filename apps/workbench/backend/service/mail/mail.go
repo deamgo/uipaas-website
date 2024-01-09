@@ -12,7 +12,9 @@ import (
 	"net/smtp"
 	"time"
 
+	"github.com/deamgo/workbench/initialize"
 	"github.com/deamgo/workbench/pkg/consts"
+	"github.com/deamgo/workbench/util"
 
 	"github.com/jordan-wright/email"
 )

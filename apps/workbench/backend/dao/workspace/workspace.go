@@ -10,6 +10,7 @@ type WorkspaceDao interface {
 	WorkspaceCreate(ctx context.Context, workspace *WorkspaceDO, email string) (*WorkspaceDO, error)
 
 	WorkspaceDel(ctx context.Context, workspace *WorkspaceDO, developerID string) error
+	WorkspaceNameModify(ctx context.Context, workspace *WorkspaceDO) error
 
 	WorkspaceGetListById(ctx context.Context, developerId uint64) ([]*WorkspaceDO, error)
 }
@@ -74,5 +75,10 @@ func (dao workspaceDao) WorkspaceDel(ctx context.Context, workspace *WorkspaceDO
 		}
 		return nil
 	})
+	return err
+}
+
+func (dao workspaceDao) WorkspaceNameModify(ctx context.Context, workspace *WorkspaceDO) error {
+	err := dao.db.WithContext(ctx).Model(&workspace).Updates(workspace).Error
 	return err
 }

@@ -1,2 +1,3 @@
 ./apps/bakcend
 ./nginx/html
+**/logs/*.log

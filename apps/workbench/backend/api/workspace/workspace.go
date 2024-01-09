@@ -9,6 +9,7 @@ import (
 	"github.com/deamgo/workbench/auth/jwt"
 	"github.com/deamgo/workbench/context"
 	"github.com/deamgo/workbench/pkg/e"
+	"github.com/deamgo/workbench/pkg/logger"
 	"github.com/deamgo/workbench/pkg/types"
 	"github.com/deamgo/workbench/service/workspace"
 
@@ -161,6 +162,59 @@ func WorkspaceDel(ctx context.ApplicationContext) gin.HandlerFunc {
 		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
 			Code: e.Success,
 			Msg:  "delete workspace succeed",
+		}))
+	}
+}
+func WorkspaceNameModify(ctx context.ApplicationContext) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var req struct {
+			WorkspaceId string `json:"id" validate:"required"`
+			DeveloperId string `validate:"required"`
+			Name        string `validate:"required"`
+		}
+		err := c.ShouldBind(&req)
+		if err != nil {
+			logger.Error(err)
+			return
+		}
+
+		req.WorkspaceId = c.Param("workspace_id")
+		req.DeveloperId, err = jwt.ExtractIDFromToken(c.Request.Header.Get("Authorization"))
+		if err != nil {
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
+
+		validate := validator.New()
+		if err := validate.Struct(req); err != nil {
+			c.AbortWithStatusJSON(http.StatusBadRequest, types.NewValidResponse(&types.Resp{
+				Code: e.Failed,
+				Msg:  "The parameters are not formatted correctly",
+				Data: nil,
+			}))
+			return
+		}
+		dId, err := strconv.ParseInt(req.DeveloperId, 10, 64)
+		if err != nil {
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
+		var workspace = &workspace.Workspace{
+			Id:        req.WorkspaceId,
+			Name:      req.Name,
+			UpdatedBy: uint64(dId),
+		}
+		err = ctx.WorkspaceService.WorkspaceNameModify(c, workspace)
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, types.NewValidResponse(&types.Resp{
+				Code: e.Failed,
+				Msg:  err.Error(),
+			}))
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusOK, types.NewValidResponse(&types.Resp{
+			Code: e.Success,
+			Msg:  "workspace name modified successfully",
 		}))
 	}
 }

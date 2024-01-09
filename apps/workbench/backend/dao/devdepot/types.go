@@ -5,7 +5,7 @@ import "time"
 type DevDepotItem struct {
 	WorkspaceId string `json:"workspace_id" gorm:"type:char(6);size 6;primary_key;comment:'workspace ID'"`
 	DeveloperId string `json:"developer_id" gorm:"type:varchar;size 20;not null;comment:'Developer ID'"`
-	Role        string `json:"Role" gorm:"type:varchar(10);not null;comment:'role 0-owner 1-Admin 2-Developer 3-Reviewer'"`
+	Role        string `json:"role" gorm:"type:varchar(10);not null;comment:'role 0-owner 1-Admin 2-Developer 3-Reviewer'"`
 	Status      uint8  `json:"status" gorm:"type:tinyint;not null;comment:'status 0-Pending 1-Accept'"`
 	Username    string `json:"username" gorm:"type:varchar(50);not null;comment:'username'"`
 	Email       string `json:"email" gorm:"type:varchar(50);not null;comment:'email'"`
