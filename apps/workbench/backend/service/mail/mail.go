@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/deamgo/workbench/initialize"
-	"github.com/deamgo/workbench/util"
 	"html/template"
 	"log"
 	"math/rand"
