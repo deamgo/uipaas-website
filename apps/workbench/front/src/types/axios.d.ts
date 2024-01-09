@@ -1,3 +1,4 @@
+import { IWorkspaceItemProps } from '@/interface/some';
 import 'axios'
 
 declare module 'axios' {
@@ -12,6 +13,13 @@ declare module 'axios' {
         username: string
         email: string
         avatar: string
+      } |
+      IWorkspaceItemProps[] |
+      IWorkspaceItemProps |
+      string |
+      {
+        records: [],
+        total: number
       }
     }
     code: number;

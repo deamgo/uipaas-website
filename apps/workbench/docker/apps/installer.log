@@ -1,0 +1,392 @@
+2024-01-02T15:35:30.061+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:35:30.081+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:35:44.372+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:35:44.389+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:36:00.384+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:36:00.401+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:36:14.966+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:36:14.986+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:36:30.033+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:36:30.051+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:36:45.366+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:36:45.382+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:37:00.090+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:37:00.107+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:37:15.216+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:37:15.234+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:37:31.322+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:37:31.342+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:37:45.468+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:37:45.487+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:38:01.376+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:38:01.395+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:38:16.839+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:38:16.857+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:38:31.550+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:38:31.571+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:38:46.726+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:38:46.744+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:39:02.082+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:39:02.100+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:39:16.976+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:39:16.995+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:39:32.275+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:39:32.292+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:39:47.254+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:39:47.272+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:40:02.472+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:40:02.490+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:40:17.901+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:40:17.920+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:40:59.187+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:40:59.204+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:41:13.700+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:41:13.720+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:41:28.707+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:41:28.724+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:41:44.160+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:41:44.177+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:41:59.319+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:41:59.337+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:42:14.254+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:42:14.273+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:42:29.323+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:42:29.343+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:42:44.583+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:42:44.601+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:42:59.771+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:42:59.790+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:43:14.815+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:43:14.832+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:43:30.532+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:43:30.551+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:43:45.938+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:43:45.957+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:44:00.550+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:44:00.570+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:44:15.781+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:44:15.802+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:44:30.942+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:44:30.960+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:44:46.232+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:44:46.250+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:45:01.307+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:45:01.327+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:45:16.269+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:45:16.287+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:45:31.503+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:45:31.521+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:45:47.162+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:45:47.181+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:46:06.751+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:46:06.769+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:46:21.653+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:46:21.671+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:46:36.618+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:46:36.638+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:46:51.743+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:46:51.761+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:47:06.799+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:47:06.818+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:47:22.096+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:47:22.114+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:47:37.060+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:47:37.079+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:47:52.344+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:47:52.362+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:48:07.409+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:48:07.428+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:48:22.568+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:48:22.586+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:48:38.799+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:48:38.817+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:48:53.459+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:48:53.478+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:49:08.682+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:49:08.699+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:49:23.523+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:49:23.542+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:49:38.699+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:49:38.718+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:49:53.935+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:49:53.951+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:50:09.001+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:50:09.023+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:50:24.248+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:50:24.269+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:50:39.899+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:50:39.922+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:50:54.558+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:50:54.574+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:51:13.822+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:51:13.839+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:51:28.497+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:51:28.514+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:51:43.718+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:51:43.738+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:51:58.883+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:51:58.899+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:52:14.118+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:52:14.136+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:52:29.341+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:52:29.358+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:52:42.775+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:52:42.795+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:52:57.377+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:52:57.394+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:53:12.598+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:53:12.617+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:53:27.654+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:53:27.673+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:53:42.682+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:53:42.700+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:53:57.868+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:53:57.886+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:54:12.906+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:54:12.924+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:54:28.111+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:54:28.131+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:54:43.169+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:54:43.191+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:54:58.515+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:54:58.538+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:55:14.061+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:55:14.081+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:55:29.180+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:55:29.197+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:55:44.232+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:55:44.250+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:55:59.746+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:55:59.764+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:56:14.544+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:56:14.563+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:56:29.584+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:56:29.602+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:56:44.919+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:56:44.936+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:56:59.971+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:56:59.989+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:57:15.792+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:57:15.811+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:57:30.591+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:57:30.610+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:57:46.109+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:57:46.128+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:58:00.822+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:58:00.838+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:58:16.071+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:58:16.087+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:58:31.398+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:58:31.417+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:58:46.424+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:58:46.443+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:59:01.811+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:59:01.831+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:59:16.777+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:59:16.795+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:59:42.370+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:59:42.389+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T15:59:57.204+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T15:59:57.222+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:00:11.910+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:00:11.929+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:00:27.197+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:00:27.216+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:00:42.391+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:00:42.407+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:00:57.793+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:00:57.811+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:01:12.589+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:01:12.609+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:01:28.398+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:01:28.415+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:01:43.108+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:01:43.125+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:01:58.159+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:01:58.178+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:02:13.786+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:02:13.802+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:02:28.987+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:02:29.006+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:02:44.003+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:02:44.022+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:03:07.855+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:03:07.875+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:03:22.347+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:03:22.367+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:03:37.728+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:03:37.746+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:03:52.948+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:03:52.970+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:04:08.041+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:04:08.060+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:04:17.559+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:04:17.577+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:04:32.038+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:04:32.057+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:04:47.107+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:04:47.126+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:05:02.218+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:05:02.236+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:05:17.357+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:05:17.376+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:05:32.494+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:05:32.512+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:05:47.631+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:05:47.652+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:06:02.770+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:06:02.786+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:06:18.324+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:06:18.340+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:06:33.243+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:06:33.261+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:06:48.962+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:06:48.976+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:07:03.971+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:07:03.990+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:07:19.327+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:07:19.345+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:07:34.143+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:07:34.161+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:07:49.357+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:07:49.376+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:08:04.371+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:08:04.389+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:08:19.493+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:08:19.512+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:08:34.774+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:08:34.792+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:08:49.692+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:08:49.710+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:09:04.810+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:09:04.829+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:09:20.390+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:09:20.408+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:09:35.653+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:09:35.671+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:09:50.655+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:09:50.674+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:10:06.286+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:10:06.304+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:10:21.088+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:10:21.122+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:10:36.370+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:10:36.388+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:10:51.288+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:10:51.306+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:11:06.512+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:11:06.532+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:11:21.784+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:11:21.803+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:11:37.083+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:11:37.102+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:11:52.373+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:11:52.392+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:12:07.640+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:12:07.659+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:12:22.755+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:12:22.775+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:12:37.845+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:12:37.863+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:12:53.224+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:12:53.243+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:13:08.457+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:13:08.475+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:13:23.507+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:13:23.527+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:13:38.296+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:13:38.315+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:13:53.701+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:13:53.722+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:14:08.845+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:14:08.860+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:14:24.276+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:14:24.296+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:14:39.523+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:14:39.541+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:14:54.873+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:14:54.892+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:15:09.730+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:15:09.748+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:15:24.917+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:15:24.935+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:15:39.816+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:15:39.834+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:15:55.478+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:15:55.495+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:16:10.354+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:16:10.372+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:16:25.497+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:16:25.517+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:16:40.879+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:16:40.898+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:16:56.121+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:16:56.140+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:17:11.737+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:17:11.758+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:17:26.322+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:17:26.339+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:17:41.488+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:17:41.506+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:17:56.936+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:17:56.955+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:18:12.116+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:18:12.149+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:18:26.930+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:18:26.948+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:18:42.019+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:18:42.038+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:18:57.154+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:18:57.173+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:19:12.413+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:19:12.432+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:19:27.896+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:19:27.916+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:19:43.410+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:19:43.430+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:19:58.687+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:19:58.706+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:20:13.517+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:20:13.536+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:20:29.001+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:20:29.020+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:21:11.445+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:21:11.463+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:21:26.112+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:21:26.130+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:21:41.304+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:21:41.323+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:21:56.413+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:21:56.433+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:22:11.558+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:22:11.577+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:22:26.589+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:22:26.608+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:22:41.842+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:22:41.862+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:22:56.994+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:22:57.013+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:23:12.231+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:23:12.249+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:23:27.715+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:23:27.733+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:23:42.641+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:23:42.659+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:23:57.716+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:23:57.734+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:24:13.459+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:24:13.477+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:24:27.972+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:24:27.989+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:24:43.326+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:24:43.344+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:24:58.482+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:24:58.502+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:25:13.845+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:25:13.864+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:25:28.598+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:25:28.617+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:25:43.794+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:25:43.812+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]
+2024-01-02T16:25:59.180+0800	ERROR	Cannot open config file: open /Users/ileecury/MyCode/uipaas-home/apps/workbench/backend/conf/config.yaml: no such file or directory
+2024-01-02T16:25:59.198+0800	INFO	[Init config successfully! GlobalConfig:  {{ 0    }}]

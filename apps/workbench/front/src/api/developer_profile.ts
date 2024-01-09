@@ -1,11 +1,13 @@
 import request from "@/utils/axios"
 import { IUsrAccount } from "./account"
 import { tokenStore } from "@/store/store"
-import Cookies from "js-cookie"
 
-request.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('token')
+// manually refresh rather then auto updated
+// const token = tokenStore.getToken()
+// // request.defaults.headers.common['Authorization'] = 'Bearer ' + Cookies.get('token')
+// request.defaults.headers.common['Authorization'] = 'Bearer ' + token
+// // 'Authorization': 'Bearer ' + Cookies.get('token')
 
-// 'Authorization': 'Bearer ' + Cookies.get('token')
 
 
 function getUserInfo() {
@@ -13,7 +15,8 @@ function getUserInfo() {
     url: '/developer',
     method: 'get',
     headers: {
-      'Content-Type': 'application'
+      'Content-Type': 'application',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -24,7 +27,8 @@ const updateUserName = (id: string, data: IUsrAccount) => {
     method: 'put',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -35,7 +39,8 @@ const verifiPwdEmail = (data: IUsrAccount) => {
     method: 'post',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -46,7 +51,8 @@ const verifiEmail = (data: IUsrAccount) => {
     method: 'post',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -57,7 +63,8 @@ const verifiEmailCode = (data: IUsrAccount) => {
     method: 'put',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -68,7 +75,8 @@ const sendPwdEmailCode = (data: IUsrAccount) => {
     method: 'post',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -79,7 +87,8 @@ const verifiPwdEmailCode = (data: IUsrAccount) => {
     method: 'post',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }
@@ -90,7 +99,8 @@ const updatePwd = (data: IUsrAccount) => {
     method: 'put',
     data: data,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenStore.getToken()
     }
   })
 }

@@ -1,12 +1,16 @@
 .__user_profile_account {
   position: relative;
+  margin: 16rem 24rem;
   width: 100%;
   height: 100%;
 
+  display: flex;
+  flex-direction: column;
+  gap: 16rem;
+
+
   &_title {
-    position: absolute;
-    left: 47rem;
-    top: 43rem;
+    position: relative;
     font-size: 18rem;
     font-weight: normal;
     line-height: 22rem;
@@ -15,9 +19,11 @@
   }
 
   &_container {
-    position: absolute;
-    left: 47rem;
-    top: 83rem;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16rem;
 
     &_wrapper {
       display: flex;
@@ -25,8 +31,8 @@
       align-items: center;
 
       &_input {
-        margin-bottom: 19rem;
         width: 353rem;
+        height: 66rem;
 
         &._sp_withAvatar {
           display: flex;
@@ -38,46 +44,67 @@
         }
       }
 
-      &_edit {}
+      &_edit {
+        position: relative;
+        top: 15rem;
+        left: 4rem;
+      }
     }
   }
 }
 
-._edit_name_input {
-  position: absolute;
-  left: 31rem;
-  top: 121rem;
+._edit_name {
 
-  width: 439rem;
-  height: 32rem;
-}
+  &_title {
+    font-size: 20rem;
+    font-weight: 500;
+    line-height: 28rem;
+    letter-spacing: 0rem;
 
-._edit_name_btn {
-  position: absolute;
-  right: 27rem;
-  bottom: 37rem;
+    font-feature-settings: "kern" on;
+    color: rgba(0, 0, 0, 0.8);
+  }
 
-  width: 106rem;
-  height: 32rem;
+  &_input {
 
-  button {
-    &:disabled {
-      background: rgba(22, 93, 255, 0.5);
+    width: 100%;
+    height: 36rem;
+  }
+
+  &_btn {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+
+    button {
+      &:disabled {
+        background: rgba(22, 93, 255, 0.5);
+      }
     }
   }
 }
+
 
 ._current {
-  position: absolute;
-  left: 29rem;
-  top: 77rem;
+
+  &_title {
+    font-size: 20rem;
+    font-weight: 500;
+    line-height: 28rem;
+    letter-spacing: 0rem;
+
+    font-feature-settings: "kern" on;
+    color: rgba(0, 0, 0, 0.8);
+  }
 
   &_wrapper {
-    width: 483rem;
-    height: 80rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
 
     &_title {
-      margin-bottom: 10rem;
       width: fit-content;
       height: 28rem;
 
@@ -95,18 +122,25 @@
 
     &_content {
       position: relative;
-      width: 439rem;
-      height: 32rem;
+      width: 100%;
+      height: 36rem;
+
+      &_disable {
+        input {
+          color: rgba(0, 0, 0, 0.26) !important;
+          background-color: #F3F5F7 !important;
+        }
+      }
 
       &_send {
         position: absolute;
         top: 0rem;
         right: 0rem;
 
-        width: 94rem;
-        height: 32rem;
-
         button {
+          padding: 7rem 16rem;
+          border-radius: 0 4rem 4rem 0;
+
           &:disabled {
             background: rgba(22, 93, 255, 0.5);
           }
@@ -129,12 +163,10 @@
 }
 
 ._edit_email_btn {
-  position: absolute;
-  right: 16rem;
-  bottom: 14rem;
-
-  width: 123rem;
-  height: 32rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 
   button {
     &:disabled {

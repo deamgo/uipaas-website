@@ -11,11 +11,13 @@ const ContentWorkSpace: React.FC = () => {
 
   return (
     <>
-      <div className="__cwss_header">
-        <Header />
-      </div>
-      <div className="__cwss_content">
-        <Content />
+      <div className="__cwss">
+        <div className="__cwss_header">
+          <Header />
+        </div>
+        <div className="__cwss_content">
+          <Content />
+        </div>
       </div>
     </>
   )

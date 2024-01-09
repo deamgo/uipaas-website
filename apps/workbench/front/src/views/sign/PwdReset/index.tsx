@@ -4,15 +4,12 @@ import './index.less'
 //
 import Input from '@/components/Input'
 import Button from '@/components/Button'
-import Mask from '@/components/Mask'
 //
 import { emailReg, emailVerificationReg, passwordReg } from '@constants/regexp'
 import { ResetPwd, forgotVerify } from '@api/reset_pwd'
 //
-import ArrowLeft from '@assets/sign/arrow-left.svg'
 import $message from '@/components/Message'
-import { Link, useNavigate } from 'react-router-dom'
-import { set } from 'mobx'
+import { useNavigate } from 'react-router-dom'
 
 const PwdReset: React.FC = () => {
 
@@ -94,7 +91,8 @@ const PwdReset: React.FC = () => {
     }).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
-        sessionStorage.setItem('codeKey', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('codeKey', data.code_key)
       } else {
         $message.error(res.value.msg)
       }
@@ -106,15 +104,11 @@ const PwdReset: React.FC = () => {
 
   return (
     <>
-      <div className="__ryp_title">
-        <span>Reset your Password</span>
-        <div className="__ryp_title_row">
-          <Link to='/s'>
-            <img src={ArrowLeft} alt="" />
-          </Link>
-        </div>
-      </div>
       <div className="__ryp_form">
+        <div className="__ryp_title">
+          <div className="__ryp_title_divider"></div>
+          <span>Reset your Password</span>
+        </div>
         <div className="__ryp_form_input">
           <Input
             id='1'
@@ -137,7 +131,9 @@ const PwdReset: React.FC = () => {
             reg={emailVerificationReg}
             outputChange={setEmailVerification} />
           <div className="__ryp_form_input_send">
-            <Button context={sendText} method={handleSend} disabled={bsendAbled} />
+            <Button context={sendText} type='primary' method={handleSend} disabled={bsendAbled} >
+              {sendText}
+            </Button>
           </div>
         </div>
         <div className="__ryp_form_input">
@@ -146,18 +142,24 @@ const PwdReset: React.FC = () => {
             title='Password'
             type='password'
             placeholder='Enter your password'
-            valid='Please enter the password'
+            valid='8+ characters(a-z,A-z,0-9)'
             isNeed={true}
             isShowPwd={true}
             reg={passwordReg}
             outputChange={setPwd} />
         </div>
-      </div>
-      <div className="__ryp_continue">
-        <Button
-          context='Confirm'
-          method={handleContinue}
-          disabled={btnAbled} />
+        <div className="__ryp_form_continue">
+          <Button
+            context='Confirm'
+            type='primary'
+            method={handleContinue}
+            disabled={btnAbled}
+            ys={{
+              width: '100%'
+            }}>
+            Confirm
+          </Button>
+        </div>
       </div>
 
     </>

@@ -11,8 +11,7 @@ const MenuContent: React.FC<mcontent> = (props) => {
   React.useEffect(() => {
     const url = location.pathname
     let urlArr = url.split('/')
-    console.log(urlArr[props.index]);
-    if (urlArr[props.index] === props.matcher) {
+    if (props.path && props.index && urlArr[props.index] === props.matcher) {
       setActive(true)
     } else {
       setActive(false)
@@ -21,7 +20,7 @@ const MenuContent: React.FC<mcontent> = (props) => {
 
   return (
     <>
-      <Link to={props.path}>
+      <Link to={props.path ? props.path : ''} >
         <div className={`__menuc_item ${active ? '__menuc_active' : ''}`}>
           <div className="__menuc_item_svg">
             {props.icon}

@@ -4,7 +4,7 @@ import { resize } from '@utils/adapt'
 //style
 import './index.less'
 //svg
-import signLogoSvg from '@assets/sign/sign-logo.svg'
+import { ReactComponent as SignLogoSvg } from '@assets/sign/sign-logo.svg'
 
 const Sign: React.FC = () => {
 
@@ -16,10 +16,10 @@ const Sign: React.FC = () => {
   return (
     <>
       <div className="__sign">
-        <div className="__sign_logo">
-          <img src={signLogoSvg} alt="UIPaaS" />
-        </div>
         <div className="__sign_container">
+          <div className="__sign_container_logo">
+            <SignLogoSvg />
+          </div>
           <Outlet />
         </div>
       </div>

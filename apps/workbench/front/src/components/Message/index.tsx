@@ -28,7 +28,7 @@ const Message: React.FC = () => {
   };
 
   React.useEffect(() => {
-    if (msgList.length > 2) {
+    if (msgList.length > 1) {
       msgList.shift();
     }
   }, [msgList]);

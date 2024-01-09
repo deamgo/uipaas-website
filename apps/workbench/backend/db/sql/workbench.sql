@@ -53,6 +53,7 @@ CREATE TABLE `developer` (
                              `status` int DEFAULT NULL ,
                              `update_at` datetime DEFAULT NULL,
                              PRIMARY KEY (`id`) USING BTREE,
+                             UNIQUE KEY `username` (`username`),
                              UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

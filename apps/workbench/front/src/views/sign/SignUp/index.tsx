@@ -1,5 +1,4 @@
 import React from 'react'
-import { useObserver } from 'mobx-react-lite'
 import { useNavigate } from 'react-router-dom'
 //style
 import './index.less'
@@ -7,11 +6,10 @@ import './index.less'
 import Input from '@/components/Input'
 import Button from '@/components/Button'
 //
-import { codeReg, usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
+import { usernameReg, emailReg, passwordReg } from '@constants/regexp.ts'
 import $message from '@/components/Message'
 import { usrSignUp } from '@api/sign_up'
 import { IUsrAccount } from '@api/account'
-import { appStore } from '@store/store'
 import { Link } from 'react-router-dom'
 
 
@@ -55,7 +53,8 @@ const SignUp: React.FC = () => {
 
     usrSignUp(usr).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('codeKey', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('codeKey', data.code_key)
         navigate('/s/ev')
       } else {
         $message.error(res.value.msg)
@@ -68,10 +67,6 @@ const SignUp: React.FC = () => {
 
   return (
     <>
-      <div className="__sign_title">
-        <span>Sign up</span>
-        <span>Complete the Information for Account Registration</span>
-      </div>
       <div className="__sign_form">
         {/* <div className="__sign_form_input">
           <Input
@@ -111,29 +106,35 @@ const SignUp: React.FC = () => {
             title='Password'
             type='password'
             placeholder='Enter new password'
-            valid='Please enter your password'
+            valid='8+ characters(a-z,A-z,0-9)'
             isNeed={true}
             isShowPwd={true}
             outputChange={setPwd}
             reg={passwordReg} />
         </div>
-      </div>
-      <div className="__sign_continue">
-        <div className="__sign_continue_tip">
-          <span>Already have an account?</span>
-          <span>
-            <Link to='/s'>Sign in</Link>
-          </span>
-        </div>
-        <Button
-          context='Continue'
-          method={handleContinue}
-          disabled={btnAbled} />
-        <div className="__sign_continue_privacy">
-          <span>By using UIPaaS, you are agreeing to the</span>
-          <span>
-            <a href="/privacy" target='_blank'>Privacy Policy.</a>
-          </span>
+        <div className="__sign_form_continue">
+          <div className="__sign_form_continue_tip">
+            <span>Already have an account?</span>
+            <span>
+              <Link to='/s'>Sign in</Link>
+            </span>
+          </div>
+          <Button
+            context='Continue'
+            type='primary'
+            method={handleContinue}
+            disabled={btnAbled}
+            ys={{
+              width: '100%'
+            }}>
+            Continue
+          </Button>
+          <div className="__sign_form_continue_privacy">
+            <span>By using UIPaaS, you are agreeing to the</span>
+            <span>
+              <a href="/privacy" target='_blank'>Privacy Policy.</a>
+            </span>
+          </div>
         </div>
       </div>
     </>

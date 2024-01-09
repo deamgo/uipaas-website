@@ -2,3 +2,7 @@
 .DS_Store
 **/node_modules
 **/front/**/coverage
+**/workbench/temp
+**/nginx/html
+**/nginx/logs
+**/mysql/log

@@ -1,8 +1,9 @@
 package initialize
 
 import (
-	"gopkg.in/yaml.v3"
 	"os"
+
+	"gopkg.in/yaml.v3"
 
 	"github.com/deamgo/workbench/conf"
 	"github.com/deamgo/workbench/pkg/consts"

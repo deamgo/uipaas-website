@@ -1,5 +1,4 @@
-import { makeAutoObservable, observable, configure, runInAction } from 'mobx'
-import Cookies from 'js-cookie'
+import { makeAutoObservable } from 'mobx'
 import { IWorkspaceItemProps } from '@/interface/some'
 
 class WsStore {
@@ -33,7 +32,7 @@ class WsStore {
   }
 
 
-  setFirst(workspaceName:string){
+  setFirst(workspaceName: string) {
     if (workspaceName.length != 0) {
       let index = this.WsList.findIndex(element => element.name === workspaceName);
       let temp = this.WsList[index];
@@ -44,7 +43,7 @@ class WsStore {
   }
 
 
-  getWsListFirstByWorkspace(workspaceName:string){
+  getWsListFirstByWorkspace(workspaceName: string) {
     this.setFirst(workspaceName)
     return this.WsList
   }
@@ -63,6 +62,7 @@ class CurrentWorkspaceStore {
   }
 
   setCurrentWorkspace(item: typeof this.currentWorkspace) {
+    window.sessionStorage.setItem('currentWorkspace', JSON.stringify(item))
     this.currentWorkspace = item
   }
 
@@ -71,12 +71,14 @@ class CurrentWorkspaceStore {
   }
 
   resetCurrentWorkspace() {
-    this.currentWorkspace = {
-      id: '',
-      name: '',
-      logo: ''
-    }
+    this.currentWorkspace = {} as IWorkspaceItemProps
   }
+
+  loadCurrentWorkspace() {
+    let currentWorkspace = window.sessionStorage.getItem('currentWorkspace')
+    this.setCurrentWorkspace(JSON.parse(currentWorkspace as string))
+  }
+
 }
 
 const wsStore = new WsStore()

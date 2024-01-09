@@ -2,7 +2,8 @@ import React from "react"
 //style
 import './index.less'
 //
-import Eye_open from '@assets/sign/eye-open.svg'
+import { ReactComponent as Eye_open } from '@assets/sign/eye-open.svg'
+import { ReactComponent as Eye_close } from '@assets/sign/eye-closed.svg'
 //
 
 
@@ -73,9 +74,7 @@ const Input: React.FC<InputProps> = (props) => {
             && (
               <>
                 <div className="__input_wrapper_main_show" onClick={handleShowPwd}>
-                  <img
-                    src={Eye_open} />
-                  {!eyev && (<div className="__show_closed"></div>)}
+                  {!eyev ? (<Eye_close />) : (<Eye_open />)}
                 </div>
               </>
             )

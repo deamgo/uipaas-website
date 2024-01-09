@@ -1,6 +1,6 @@
 .__guide {
   position: relative;
-  background-color: #D8D8D8;
+  background-color: #F3F5F7;
   width: 100%;
   height: 100%;
   border-radius: 5rem;
@@ -9,14 +9,21 @@
 
   >h1 {
     position: absolute;
-    top: 31rem;
-    font-size: 18rem;
-    font-weight: bold;
-    line-height: 28rem;
+    top: 16rem;
+
+    font-size: 16rem;
+    font-weight: 500;
+    line-height: 24rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0rem;
+
+    font-feature-settings: "kern" on;
+    color: rgba(0, 0, 0, 0.8);
   }
 
   >h1.one {
-    left: 76rem;
+    left: 66rem;
   }
 
   >h1.two {
@@ -29,19 +36,20 @@
 
   >span {
     position: absolute;
-    top: 94rem;
+    top: 44rem;
     font-size: 14rem;
     font-weight: normal;
-    line-height: 28rem;
+    line-height: 24rem;
+    display: flex;
+    align-items: center;
     letter-spacing: 0rem;
 
     font-feature-settings: "kern" on;
-    color: #1677FF;
-
+    color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
 
     &.one {
-      left: 75rem;
+      left: 66rem;
     }
 
     &.two {

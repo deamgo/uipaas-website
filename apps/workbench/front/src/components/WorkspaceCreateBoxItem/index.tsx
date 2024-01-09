@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import './index.less'
 
 import { Avatar } from "antd";
-import {currentWorkspaceStore, wsStore} from "@/store/wsStore";
+import { currentWorkspaceStore, wsStore } from "@/store/wsStore";
+import { applicationStore } from "@/store/application";
 
 interface WorkspaceItemProps {
     id: string;
@@ -18,7 +19,10 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
 
     const handleChangeCurrentWorkspace = () => {
         currentWorkspaceStore.setCurrentWorkspace(props)
+
         wsStore.setFirst(props.name)
+
+        applicationStore.setAppStats()
 
         navigate('/')
     }
@@ -27,8 +31,8 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
         <>
             <div className="__wcb_box_item" onClick={handleChangeCurrentWorkspace}>
                 {props.logo === "" && <>
-                    <Avatar className="__wcb_box_item_logo" style={{ backgroundColor: 'pink', verticalAlign: 'middle' }}
-                        size={20}>
+                    <Avatar shape="square" className="__wcb_box_item_logo" style={{ backgroundColor: 'gray', verticalAlign: 'middle' }}
+                        size={24}>
                         {props.name.charAt(0).toUpperCase()}
                     </Avatar>
                     <span className="__wcb_box_item_tittle">{props.name}</span>
@@ -37,7 +41,7 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
                 {
                     props.logo !== "" &&
                     <>
-                        <img className="__wcb_box_item_logo" src={props.logo} width={20} height={20}  alt="workspace logo"/>
+                        <img className="__wcb_box_item_logo" src={props.logo} width={20} height={20} alt="workspace logo" />
                         <span className="__wcb_box_item_tittle">{props.name}</span>
                     </>
                 }

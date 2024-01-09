@@ -1,8 +1,12 @@
 .__input_wrapper {
   position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
 
   &_title {
-    margin-bottom: 6rem;
     font-size: 14rem;
     font-weight: normal;
     line-height: 22rem;
@@ -15,13 +19,14 @@
 
   &_main {
     position: relative;
+    width: 100%;
+    height: 100%;
 
     input {
       padding: 0 12rem;
 
       width: 100%;
-      // width: 350rem;
-      height: 32rem;
+      height: 100%;
 
       font-size: 14rem;
       font-weight: normal;
@@ -41,22 +46,26 @@
     &_show {
       position: absolute;
       right: 11rem;
-      top: 9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16rem;
+      height: 16rem;
       display: flex;
       align-items: center;
       justify-content: center;
 
       cursor: pointer;
 
-      img {
-        width: 20.44rem;
-        height: 15.28rem;
+      svg {
+        width: 72.92%;
+        fill: rgba(0, 0, 0, 0.6);
       }
     }
   }
 
   &_invalid {
     position: absolute;
+    bottom: -25rem;
     z-index: 0;
 
     font-size: 14rem;
@@ -74,12 +83,4 @@
 .invalid {
   visibility: visible;
   opacity: 1;
-}
-
-.__show_closed {
-  position: absolute;
-  height: 20rem;
-  border: 1rem solid rgba(0, 0, 0, .45);
-
-  transform: rotate(150deg);
 }

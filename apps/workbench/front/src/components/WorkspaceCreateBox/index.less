@@ -1,144 +1,156 @@
-.__wcb{
+.__wcb {
     position: absolute;
-    top:60px;
-    width: 212px;
-    //height: 180px;
+    top: 50rem;
+    width: 88%;
+    //height: 180rem;
 
     opacity: 1;
-    border-radius: 4px;
+    border-radius: 4rem;
     background: #FFFFFF;
-    border: 1px solid #E5E8EF;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0rem 6rem 30rem 5rem rgba(128, 160, 194, 0.05),
+        0rem 16rem 24rem 2rem rgba(128, 160, 194, 0.1),
+        0rem 8rem 10rem -5rem rgba(128, 160, 194, 0.08);
 
     z-index: 999;
-    &_box{
+
+    &_box {
         overflow: auto;
-        min-height: 60px;
-        height: 240px;
-        &_item{
+        padding: 4rem;
+        min-height: 80rem;
+        max-height: 200rem;
+
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+
+        &_item {
 
             position: relative;
-            left: 3px;
-            top: 10px;
+
+            padding: 8rem;
 
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-direction: column;
+            justify-content: start;
+            flex-direction: row;
+            gap: 8rem;
 
 
             color: black;
 
-            width: 203px;
-            height: 40px;
-            border-radius: 2px;
+            width: 100%;
+            height: 40rem;
+            border-radius: 2rem;
 
-            &_logo{
-                position: absolute;
-                left:25px;
-                border-radius: 100px;
-            }
-            &_tittle{
+            &_logo {
                 position: relative;
-                left: 10px;
-                //top: 3px;
-                font-size: 13px!important;
+            }
+
+            &_tittle {
+                position: relative;
+                font-size: 13rem !important;
             }
         }
-        &_item:first-child{
-            background: rgba(22, 119, 255,0.1) !important;
+
+        &_item:first-child {
+            background: rgba(22, 119, 255, 0.1) !important;
         }
-        &_item +  &_item {
-            margin-top: 10px;
+
+        &_item+&_item {
+            margin-top: 10rem;
         }
-        &_item:hover{
+
+        &_item:hover {
             cursor: pointer;
-            background: rgba(22, 119, 255,0.05);
+            background: rgba(22, 119, 255, 0.05);
         }
     }
-    &_line{
-        position: relative;
-        left: 3px;
-        bottom: 5px;
 
-        width: 203px;
+    &_line {
+        position: relative;
+        bottom: 5rem;
+
+        width: 100%;
         border: 0;
-        height: 1px;
+        height: 1rem;
         background: #D8D8D8;
     }
 
-    &_button{
+    &_button {
         position: relative;
+        border-radius: 4rem;
 
-        left: 0px;
-        bottom: 0px;
+        left: 0rem;
+        bottom: 0rem;
 
-        width: 210px;
-        height: 40px;
-        border: 0px;
+        width: 100%;
+        height: 40rem;
+        border: 0rem;
         background: #FFFFFF;
-        margin-top: 20px;
+        margin-top: 20rem;
 
 
     }
-    &_button:hover{
+
+    &_button:hover {
         cursor: pointer;
     }
 
-    &_add_logo{
+    &_add_logo {
         position: relative;
 
-        right: 12px;
-        top: 4px;
+        right: 12rem;
+        top: 4rem;
     }
 
 
 }
 
-.__wcb_popup{
-    position: absolute;
-    bottom: 23px;
-    left:94px;
-    color: #4E5969;
-    &_setLogo{
-        z-index: 99999;
-        position: absolute;
-        top: 0px;
-        border-radius: 50%;
-        width: 65px;
-        height: 65px;
-        opacity: 100;
-    }
-    &_setLogo:hover{
-        z-index: 99999;
-        position: absolute;
-        top: 0px;
-        border-radius: 50%;
-        width: 65px;
-        height: 65px;
-        background: url("@/assets/layout/workspace-create-upload.png");
-        background-position: center;
-        background-size: 25px 25px;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-color: rgba(140, 140, 140, 0.55);
-    }
+// .__wcb_popup {
+//     position: absolute;
+//     bottom: 23rem;
+//     left: 94rem;
+//     color: #4E5969;
 
-    &_logo:hover{
-        cursor: pointer;
-    }
+//     &_setLogo {
+//         z-index: 99999;
+//         position: absolute;
+//         top: 0rem;
+//         border-radius: 50%;
+//         width: 65rem;
+//         height: 65rem;
+//         opacity: 100;
+//     }
 
-    &_input{
-        position: relative;
-        top:13px;
-    }
-    &_button{
-        position: absolute;
-       left: 236px;
-        top: 106px;
-        height: 32px;
-        width: 106px;
-    }
-}
+//     &_setLogo:hover {
+//         z-index: 99999;
+//         position: absolute;
+//         top: 0rem;
+//         border-radius: 50%;
+//         width: 65rem;
+//         height: 65rem;
+//         background: url("@/assets/layout/workspace-create-upload.png");
+//         background-position: center;
+//         background-size: 25rem 25rem;
+//         background-repeat: no-repeat;
+//         background-attachment: fixed;
+//         background-color: rgba(140, 140, 140, 0.55);
+//     }
 
+//     &_logo:hover {
+//         cursor: pointer;
+//     }
 
+//     &_input {
+//         position: relative;
+//         top: 13rem;
+//     }
+
+//     &_button {
+//         position: absolute;
+//         left: 236rem;
+//         top: 106rem;
+//         height: 32rem;
+//         width: 106rem;
+//     }
+// }

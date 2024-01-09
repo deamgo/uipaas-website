@@ -13,7 +13,6 @@ import { getUserInfo, updateUserName, verifiEmail, verifiEmailCode, verifiPwdEma
 import { IUserInfo } from '@/api/account'
 import $message from '@/components/Message'
 
-
 const UserProfile: React.FC = () => {
 
   const [userInfo, setUserInfo] = React.useState<IUserInfo | null>(null)
@@ -43,24 +42,47 @@ const UserProfile: React.FC = () => {
   const [PwdEditConfirmAble, setPwdEditConfirmAble] = React.useState(true)
   const [send, setSend] = React.useState('Get')
 
+  // const loaderData = useLoaderData() as IUserInfo
+
+
   //
-  const [change, shouldChange] = React.useState(1)
+  // const [change, shouldChange] = React.useState(1)
 
   React.useEffect(() => {
-    getUserInfo().then(res => {
-      if (res.code && res.code === 2005) {
-        $message.warning(res.msg)
+    (async function get() {
+      const { value } = await getUserInfo()
+      if (value.code === 0) {
+        setUserInfo(value.data as IUserInfo)
       }
-      if (res.value?.code === 0) {
-        setUserInfo(res.value.data)
-      } else {
-        $message.error(res.value?.msg)
-      }
-    }).catch(err => {
-      console.log(err);
-      $message.error(err.message)
-    })
-  }, [change])
+    })()
+    return () => {
+      console.log('user effect unmount');
+
+    }
+  }, [])
+
+  // React.useEffect(() => {
+  //   let init = false
+  //   if (!init) {
+  //     getUserInfo().then(res => {
+  //       if (res.code && res.code === 2005) {
+  //         $message.warning(res.msg)
+  //       }
+  //       if (res.value?.code === 0) {
+  //         setUserInfo(res.value.data as IUserInfo)
+  //       } else {
+  //         $message.error(res.value?.msg)
+  //       }
+  //     }).catch(err => {
+  //       console.log(err);
+  //       $message.error(err.message)
+  //     })
+  //     init = true
+  //   }
+  //   return () => {
+  //     init = false
+  //   }
+  // }, [change])
 
   React.useEffect(() => {
     document.body.style.overflow = isMask ? 'hidden' : 'auto'
@@ -103,6 +125,17 @@ const UserProfile: React.FC = () => {
       setPwdEditConfirmAble(true)
     }
   }, [name, currentPassword, newEmail, emailCode, pwdEmailCode, newPassword])
+
+  const getDeveloperInfo = async () => {
+    try {
+      const { value } = await getUserInfo()
+      if (value.code === 0) {
+        setUserInfo(value.data as IUserInfo)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const resetForm = () => {
     setName('')
@@ -147,9 +180,14 @@ const UserProfile: React.FC = () => {
     }).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
+        appStore.setUserInfo({
+          ...appStore.userInfo,
+          email: newEmail
+        })
         handleEditEmail()
         sessionStorage.removeItem('code_key')
-        shouldChange(c => -c)
+        // shouldChange(c => -c)
+        getDeveloperInfo()
       } else {
         $message.error(res.value.msg)
       }
@@ -178,7 +216,6 @@ const UserProfile: React.FC = () => {
 
   const handleEditPwdContinue = () => {
     editPwdContinue()
-
   }
 
   const handleConfirmEditPwd = () => {
@@ -191,7 +228,7 @@ const UserProfile: React.FC = () => {
         $message.success(res.value.msg)
         sessionStorage.removeItem('code_key')
         handleEditPwd()
-        shouldChange(c => -c)
+        getDeveloperInfo()
       }
     }).catch(err => {
       console.log(err);
@@ -222,11 +259,14 @@ const UserProfile: React.FC = () => {
     }).then(res => {
       if (res.value.code === 0) {
         $message.success(res.value.msg)
-        appStore.setUserInfo({
-          ...appStore.userInfo,
-          username: name
-        })
-        shouldChange(c => -c)
+        // appStore.setUserInfo({
+        //   ...appStore.userInfo,
+        //   username: name
+        // })
+        appStore.updateUserInfo()
+        // shouldChange(c => -c)
+        getDeveloperInfo()
+
         handleEditName()
       } else {
         $message.error(res.value.msg)
@@ -279,7 +319,8 @@ const UserProfile: React.FC = () => {
       email: newEmail
     }).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('code_key', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('code_key', data.code_key)
       } else {
         $message.error(res.value.msg)
       }
@@ -298,7 +339,8 @@ const UserProfile: React.FC = () => {
       email: userInfo?.email
     }).then(res => {
       if (res.value.code === 0) {
-        sessionStorage.setItem('code_key', res.value.data.code_key)
+        const data = res.value.data as { code_key: string }
+        sessionStorage.setItem('code_key', data.code_key)
       } else {
         $message.error(res.value.msg)
       }
@@ -310,16 +352,6 @@ const UserProfile: React.FC = () => {
     console.log('send over');
   }
 
-  const editEmial = () => {
-    console.log('Edit email');
-
-  }
-
-  const editPwd = () => {
-    console.log('Edit name');
-
-  }
-
 
 
   return (
@@ -329,23 +361,23 @@ const UserProfile: React.FC = () => {
           <span>Account</span>
         </div>
         <div className="__user_profile_account_container">
+          <div className="_sp_withAvatar">
+            <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
+              {userInfo?.username.charAt(0).toUpperCase()}
+            </Avatar>
+          </div>
           <div className="__user_profile_account_container_wrapper">
-            <div className="__user_profile_account_container_wrapper_input _sp_withAvatar">
-              <Avatar style={{ backgroundColor: '#4080FF', verticalAlign: 'middle' }} size={48} gap={3}>
-                {userInfo?.username.charAt(0).toUpperCase()}
-              </Avatar>
-              <div className="__user_profile_account_container_wrapper_input_besideAvatar">
-                <Input
-                  id='1'
-                  title='Name'
-                  type='text'
-                  isNeed={false}
-                  typeAble={true}
-                  value={userInfo?.username} />
-              </div>
+            <div className="__user_profile_account_container_wrapper_input">
+              <Input
+                id='1'
+                title='Name'
+                type='text'
+                isNeed={false}
+                typeAble={true}
+                value={userInfo?.username} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
-              <Button context='Edit' type='board-primary' method={handleEditName} />
+              <Button context='Edit' type='board-primary' method={handleEditName} >Edit</Button>
             </div>
           </div>
 
@@ -360,7 +392,7 @@ const UserProfile: React.FC = () => {
                 value={userInfo?.email} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
-              <Button context='Edit' type='board-primary' method={handleEditEmail} />
+              <Button context='Edit' type='board-primary' method={handleEditEmail} >Edit</Button>
             </div>
           </div>
 
@@ -375,7 +407,7 @@ const UserProfile: React.FC = () => {
                 value={'......'} />
             </div>
             <div className="__user_profile_account_container_wrapper_edit">
-              <Button context='Edit' type='board-primary' method={handleEditPwd} />
+              <Button context='Edit' type='board-primary' method={handleEditPwd} >Edit</Button>
             </div>
           </div>
         </div>
@@ -384,6 +416,9 @@ const UserProfile: React.FC = () => {
 
       {isEditName &&
         <Popup unit='rem' width={496} height={276} title='Edit name' onClose={handleEditName} >
+          <h1 className="_edit_name_title">
+            Edit name
+          </h1>
           <div className="_edit_name_input">
             <Input
               id='edit_name'
@@ -391,75 +426,87 @@ const UserProfile: React.FC = () => {
               outputChange={setName} />
           </div>
           <div className="_edit_name_btn">
-            <Button context='Save' type='primary' disabled={nameEditAble} method={editName} />
+            <Button context='Save' type='primary' disabled={nameEditAble} method={editName} >
+              Save
+            </Button>
           </div>
         </Popup>
       }
 
       {isEditEmail &&
         <Popup unit='rem' width={496} height={329} title='Edit email' onClose={handleEditEmail} >
+          <h1 className="_current_title">
+            Edit email
+          </h1>
           {!iseditEmailContinue && (
             <>
-              <div className="_current">
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Current email</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <span>{userInfo?.email}</span>
-                  </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Current email</span>
                 </div>
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Current password</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='repeat_pwd'
-                      type='password'
-                      outputChange={setCurrentPassword}
-                      reg={passwordReg} />
-                  </div>
+                <div className="_current_wrapper_content _current_wrapper_content_disable">
+                  <Input
+                    id='current-email'
+                    type='text'
+                    typeAble={true}
+                    value={userInfo?.email} />
+
+                </div>
+              </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Current password</span>
+                </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='repeat_pwd'
+                    type='password'
+                    outputChange={setCurrentPassword}
+                    reg={passwordReg} />
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Continue' type='primary' disabled={emailEditAble} method={handleEditEmailContinue} />
+                <Button context='Continue' type='primary' disabled={emailEditAble} method={handleEditEmailContinue} >
+                  Continue
+                </Button>
               </div>
             </>
           )}
           {iseditEmailContinue && (
             <>
-              <div className="_current">
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>New email</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='edit_email'
-                      type='text'
-                      outputChange={setNewEmail}
-                      reg={emailReg} />
-                  </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>New email</span>
                 </div>
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Email verification code</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='edit_emailVerification'
-                      type='text'
-                      outputChange={setEmailCode}
-                      reg={emailVerificationReg} />
-                    <div className="_current_wrapper_content_send">
-                      <Button context={send} type='primary' disabled={sendAble} method={sendVerifiCode} />
-                    </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='edit_email'
+                    type='text'
+                    outputChange={setNewEmail}
+                    reg={emailReg} />
+                </div>
+              </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Email verification code</span>
+                </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='edit_emailVerification'
+                    type='text'
+                    outputChange={setEmailCode}
+                    reg={emailVerificationReg} />
+                  <div className="_current_wrapper_content_send">
+                    <Button context={send} type='primary' disabled={sendAble} method={sendVerifiCode} >
+                      {send}
+                    </Button>
                   </div>
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Confirm' type='primary' disabled={emailEditConfirmAble} method={handleConfirmEditEmail} />
+                <Button context='Confirm' type='primary' disabled={emailEditConfirmAble} method={handleConfirmEditEmail} >
+                  Continue
+                </Button>
               </div>
             </>
           )}
@@ -468,35 +515,44 @@ const UserProfile: React.FC = () => {
 
       {isEditPwd &&
         <Popup unit='rem' width={496} height={329} title='Edit password' onClose={handleEditPwd} >
+          <h1 className="_current_title">
+            Edit password
+          </h1>
           {!iseditPwdContinue && (
             <>
-              <div className="_current">
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Current email</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <span>{userInfo?.email}</span>
-                  </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Current email</span>
                 </div>
-                <div className="_current_wrapper">
-                  <div className="_current_wrapper_title">
-                    <span>Email verification code</span>
-                  </div>
-                  <div className="_current_wrapper_content">
-                    <Input
-                      id='repeat_pwd'
-                      type='text'
-                      outputChange={setPwdEmailCode}
-                      reg={emailVerificationReg} />
-                    <div className="_current_wrapper_content_send">
-                      <Button context={send} type='primary' disabled={sendAble} method={sendPwdVerifiCode} />
-                    </div>
+                <div className="_current_wrapper_content _current_wrapper_content_disable">
+                  <Input
+                    id='current-email'
+                    type='text'
+                    typeAble={true}
+                    value={userInfo?.email} />
+                </div>
+              </div>
+              <div className="_current_wrapper">
+                <div className="_current_wrapper_title">
+                  <span>Email verification code</span>
+                </div>
+                <div className="_current_wrapper_content">
+                  <Input
+                    id='repeat_pwd'
+                    type='text'
+                    outputChange={setPwdEmailCode}
+                    reg={emailVerificationReg} />
+                  <div className="_current_wrapper_content_send">
+                    <Button context={send} type='primary' disabled={sendAble} method={sendPwdVerifiCode} >
+                      {send}
+                    </Button>
                   </div>
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Continue' type='primary' disabled={pwdEditContinueAble} method={handleEditPwdContinue} />
+                <Button context='Continue' type='primary' disabled={pwdEditContinueAble} method={handleEditPwdContinue} >
+                  Continue
+                </Button>
               </div>
             </>
           )}
@@ -518,7 +574,9 @@ const UserProfile: React.FC = () => {
                 </div>
               </div>
               <div className="_edit_email_btn">
-                <Button context='Confirm' type='primary' disabled={PwdEditConfirmAble} method={handleConfirmEditPwd} />
+                <Button context='Confirm' type='primary' disabled={PwdEditConfirmAble} method={handleConfirmEditPwd} >
+                  Confirm
+                </Button>
               </div>
             </>
           )}

@@ -1,89 +1,88 @@
 .__ryp {
 
   &_title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0rem;
+
+    color: #1D2129;
+
+    span {
+
+      padding: 0 15rem;
+      display: block;
+
+      width: fit-content;
+      font-size: 16rem;
+      font-weight: 500;
+      line-height: 24rem;
+
+      background-color: #fff;
+    }
+
+    &_divider {
+      position: absolute;
+      width: 400rem;
+      height: 0rem;
+      opacity: 1;
+      border: 1rem solid #E7E7E7;
+      z-index: -1;
+    }
+  }
+
+  &_form {
+    padding: 0;
+    gap: 24rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 83rem;
-
-    span {
-      &:nth-child(1) {
-        font-size: 24rem;
-        font-weight: normal;
-        line-height: 28rem;
-      }
-    }
-
-    &_row {
-      position: absolute;
-      left: 0rem;
-      top: 0rem;
-      width: 24rem;
-      height: 24rem;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      cursor: pointer;
-
-      img {
-        width: 71.88%;
-        height: 69.53%;
-      }
-    }
-  }
-
-  &_form {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-
     &_input {
       position: relative;
-      margin-bottom: 26rem;
-      width: 350rem;
-      height: 60rem;
+      width: 400rem;
+      height: 66rem;
 
       &_send {
         position: absolute;
         right: 0;
-        top: 28rem;
-
-        width: 84rem;
-        height: 32rem;
+        top: 30rem;
+        height: 36rem;
 
         cursor: pointer;
 
         button {
-          color: #FFFFFF;
-          background-color: #165DFF;
+          width: fit-content;
+          height: 100%;
+          border-radius: 0 5rem 5rem 0;
+          // color: #FFFFFF;
+          // background-color: #165DFF;
 
-          &:disabled {
-            background-color: rgba(22, 93, 255, 0.5);
-          }
+          transition: .3s;
+
+          // &:disabled {
+          //   background-color: rgba(22, 93, 255, 0.5);
+          // }
         }
       }
     }
-  }
 
-  &_continue {
-    margin-top: 14rem;
-    width: 350rem;
-    height: 32rem;
+    &_continue {
+      width: 400rem;
+      height: fit-content;
 
-    button {
-      background-color: #165DFF;
-      color: #FFFFFF;
+      button {
+        height: 36rem;
+        // background-color: #165DFF;
+        // color: #FFFFFF;
 
-      &:disabled {
-        background-color: rgba(22, 93, 255, 0.5);
+        // &:disabled {
+        //   background-color: rgba(22, 93, 255, 0.5);
+        // }
       }
     }
   }
-
 
 }
