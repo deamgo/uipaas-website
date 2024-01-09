@@ -5,6 +5,7 @@ import './index.less'
 
 import { Avatar } from "antd";
 import { currentWorkspaceStore, wsStore } from "@/store/wsStore";
+import { applicationStore } from "@/store/application";
 
 interface WorkspaceItemProps {
     id: string;
@@ -20,6 +21,8 @@ const WorkspaceCreateBoxItem: React.FC<WorkspaceItemProps> = (props) => {
         currentWorkspaceStore.setCurrentWorkspace(props)
 
         wsStore.setFirst(props.name)
+
+        applicationStore.setAppStats()
 
         navigate('/')
     }

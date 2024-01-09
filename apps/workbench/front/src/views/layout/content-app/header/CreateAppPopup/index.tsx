@@ -8,6 +8,7 @@ import { applicationStore } from '@/store/application'
 //
 
 interface CreateAppPopupProps {
+  // onNotify: () => void
   onClose: () => void
 }
 
@@ -15,8 +16,10 @@ const CreateAppPopup: React.FC<CreateAppPopupProps> = (props) => {
   const [appName, setAppName] = React.useState('')
 
   const handleCreateApp = async () => {
-    applicationStore.createApp(appName)
-    applicationStore.setAppsRefresh(true)
+    await applicationStore.createApp(appName)
+    // props.onNotify()
+    applicationStore.setAppStats()
+    props.onClose()
   }
 
   return (

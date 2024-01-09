@@ -21,20 +21,10 @@ import _Blank from '@/views/layout/_blank'
 import { resize } from '@/utils/adapt'
 import { getDevelopers } from '@/api/workspace_settings'
 import { IUserInfo } from '@/api/account'
-import Cookies from 'js-cookie'
 
 const tokenLoader = async () => {
   resize()
   console.log('tokenLoading');
-  const token = tokenStore.getToken()
-  if (!token) {
-    if (Cookies.get('token')) {
-      tokenStore.setToken(Cookies.get('token') as string)
-    } else {
-      return redirect('/s')
-    }
-    // return redirect('/s')
-  }
   await WorkspaceListLoader()
   await getUserInfo().then(res => {
     console.log('enter get info');
@@ -54,9 +44,18 @@ const tokenLoader = async () => {
       tokenStore.setToken(res.data.token)
     }
   }).catch(err => {
+    console.log(err)
     return redirect('/s')
-    console.log(err);
   })
+  // const token = tokenStore.getToken()
+  // if (!token) {
+  //   if (Cookies.get('token')) {
+  //     tokenStore.setToken(Cookies.get('token') as string)
+  //   } else {
+  //     return redirect('/s')
+  //   }
+  //   return redirect('/s')
+  // }
   return null
 }
 
@@ -74,14 +73,12 @@ const WorkspaceListLoader = async () => {
   try {
     currentWorkspaceStore.loadCurrentWorkspace()
     const { value } = await workspaceList()
-    console.log('enter wsll');
-    console.log(value.data);
 
-    if (value.data && undefined !== typeof currentWorkspaceStore.getCurrentWorkspace()) {
-      console.log('enter wsll set');
-
+    if (value.data) {
       wsStore.setWsList(value.data)
-      currentWorkspaceStore.setCurrentWorkspace(value.data[0])
+      if (!currentWorkspaceStore.getCurrentWorkspace()) {
+        currentWorkspaceStore.setCurrentWorkspace(value.data[0])
+      }
     }
     // return value.data ? value.data : []
   } catch (err) {

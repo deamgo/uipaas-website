@@ -6,6 +6,7 @@ import { ReactComponent as NoneContent } from '@assets/default/none-content.svg'
 import { applicationStore } from '@/store/application';
 import ApplicationBox from '@/components/ApplicationBox';
 import { currentWorkspaceStore, wsStore } from '@/store/wsStore';
+import { observer } from 'mobx-react-lite';
 
 interface IApplication {
   created_by: number
@@ -18,6 +19,10 @@ interface IApplication {
   workspace_id: string
 }
 
+// interface IContentAppContentProps {
+//   shouldRefresh: number
+// }
+
 const Content: React.FC = () => {
   const [isEmpty, setIsEmpty] = React.useState(false)
   const [appList, setAppList] = React.useState<IApplication[]>([])
@@ -26,18 +31,25 @@ const Content: React.FC = () => {
     if (!currentWorkspaceStore.getCurrentWorkspace()) {
       currentWorkspaceStore.setCurrentWorkspace(wsStore.getWsList()[0])
     }
-    getAppList()
-  }, [applicationStore.appsRefresh])
+    (async function () {
+      await getAppList()
+    }())
+  }, [applicationStore.getAppStats().shouldRefresh])
 
-  const getAppList = async () => {
-    const data = await applicationStore.getApp() as IApplication[]
-    setAppList(data)
-    if (data.length > 0) {
+  React.useEffect(() => {
+    if (appList && appList.length > 0) {
       setIsEmpty(false)
     } else {
       setIsEmpty(true)
     }
+  }, [appList])
+
+  const getAppList = async () => {
+    const data = await applicationStore.getApp() as IApplication[]
+    setAppList(data)
   }
+
+  // const memorizeGetAppList = React.useMemo(() => getAppList, [applicationStore.getAppStats().shouldRefresh])
 
   return (
     <>
@@ -56,7 +68,7 @@ const Content: React.FC = () => {
         ) : (
           <>
             <div className="__appcontent_apps">
-              {appList.map(item => (
+              {appList && appList.map(item => (
                 <>
                   <ApplicationBox id={item.id} key={item.id} name={item.name} desc={item.description} label={item.status} />
                 </>
@@ -69,4 +81,4 @@ const Content: React.FC = () => {
   )
 }
 
-export default Content
+export default observer(Content)

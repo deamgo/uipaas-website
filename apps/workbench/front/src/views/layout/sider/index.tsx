@@ -10,9 +10,9 @@ import MultiplySelector from '@/components/multiplySelector';
 import { Avatar } from 'antd';
 import { ReactComponent as Application } from '@assets/layout/application.svg'
 import { ReactComponent as Wssettings } from '@assets/layout/wssettings.svg'
-import { ReactComponent as Resource } from '@assets/layout/resource.svg'
-import { ReactComponent as Environments } from '@assets/layout/environments.svg'
-import { ReactComponent as Nottification } from '@assets/layout/nottification.svg'
+// import { ReactComponent as Resource } from '@assets/layout/resource.svg'
+// import { ReactComponent as Environments } from '@assets/layout/environments.svg'
+// import { ReactComponent as Nottification } from '@assets/layout/nottification.svg'
 import { ReactComponent as Down } from '@assets/comps/down.svg'
 import { observer } from 'mobx-react-lite';
 import { IMultiplySelectorPropsItem, mcontent } from '@/interface/some';

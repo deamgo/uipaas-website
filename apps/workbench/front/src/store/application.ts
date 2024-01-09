@@ -1,6 +1,9 @@
 import { createApplication, getApplicationList } from '@/api/application'
 import { makeAutoObservable } from 'mobx'
 
+interface IAppStats {
+  shouldRefresh: boolean,
+}
 
 class Application {
 
@@ -8,10 +11,16 @@ class Application {
     makeAutoObservable(this)
   }
 
-  appsRefresh: boolean = false
+  AppStats: IAppStats = {
+    shouldRefresh: false
+  }
 
-  setAppsRefresh(value: boolean) {
-    this.appsRefresh = value
+  getAppStats() {
+    return this.AppStats
+  }
+
+  setAppStats() {
+    this.AppStats.shouldRefresh = !this.AppStats.shouldRefresh
   }
 
   async createApp(name: string) {
@@ -30,22 +39,19 @@ class Application {
   }
 
   async getApp() {
-    if (this.appsRefresh) {
-      try {
-        const { value } = await getApplicationList()
-        if (value.code === 0) {
-          if (value.data !== null) {
-            this.appsRefresh = false
-            return value.data
-          }
-          return []
-        } else {
-          return []
+    try {
+      const { value } = await getApplicationList()
+      if (value.code === 0) {
+        if (value.data !== null) {
+          return value.data
         }
-      } catch (error) {
-        console.log(error);
+        return []
+      } else {
         return []
       }
+    } catch (error) {
+      console.log(error);
+      return []
     }
   }
 }

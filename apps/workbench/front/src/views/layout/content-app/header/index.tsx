@@ -10,11 +10,14 @@ import Mask from '@/components/Mask';
 import CreateAppPopup from './CreateAppPopup';
 
 
+// interface IContentAppHeaderProps {
+//   onNotify: () => void
+// }
+
 const Header: React.FC = () => {
 
   const [isMask, setMask] = React.useState(false)
   const [isCreatApp, setCreatApp] = React.useState(false)
-  const [appName, setAppName] = React.useState('')
 
   React.useEffect(() => {
     document.body.style.overflow = isMask ? 'hidden' : 'auto'
@@ -27,9 +30,8 @@ const Header: React.FC = () => {
   const handleCreate = () => {
     handleMask()
     setCreatApp(!isCreatApp)
-    console.log('Create');
-    console.log(appName);
   }
+
   return (
     <>
       <div className="__header">
@@ -55,19 +57,6 @@ const Header: React.FC = () => {
       {isCreatApp && (
         <>
           <CreateAppPopup onClose={handleCreate} />
-          {/* <Popup unit='rem' width={480} height={238} title='Create app' onClose={handleCreate}>
-            <div className="_create_app_input">
-              <Input
-                id='createappinput'
-                title='App Name'
-                placeholder='Enter your app name'
-                outputChange={setAppName}
-                isNeed={true} />
-            </div>
-            <div className="_create_app_confirm">
-              <Button type='primary'>Confirm</Button>
-            </div>
-          </Popup> */}
         </>
       )}
     </>

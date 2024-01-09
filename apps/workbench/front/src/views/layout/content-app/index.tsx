@@ -4,12 +4,14 @@ import './index.less'
 import Guide from "./guide";
 import Header from "./header";
 import Content from "./content";
+import { observer } from "mobx-react-lite";
 //
 
 
 const ContentApp: React.FC = () => {
 
   const [fstGuide, setFstGuide] = React.useState(true)
+
 
   return (
     <>
@@ -32,4 +34,4 @@ const ContentApp: React.FC = () => {
   )
 }
 
-export default ContentApp
+export default observer(ContentApp)
